@@ -26,20 +26,32 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
     {
         if(*musique%2==0)
         {
+            printf("1");
+        destroy_sample(sample1);
+        printf("2");
         sample1= load_wav(listeMusique[*musique]);
+        printf("3");
         reallocate_voice(voice,sample1);
+        printf("4");
         voice_start(voice);
+        printf("5");
         voice_set_volume(voice,50);
-        destroy_sample(sample2);
+        ;
         *condition=0;
         }
         else if(*musique%2==1)
         {
+        destroy_sample(sample2);
+        printf("6");
+
         sample2= load_wav(listeMusique[*musique]);
-        reallocate_voice(voice,sample1);
+        printf("7");
+        reallocate_voice(voice,sample2);
+        printf("8");
         voice_start(voice);
+        printf("9");
         voice_set_volume(voice,50);
-        destroy_sample(sample1);
+
         *condition=0;
         }
 
