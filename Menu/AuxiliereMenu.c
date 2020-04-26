@@ -34,7 +34,7 @@ void dechargementImage(BITMAP *image[12])
 }
 
 
-void toucheClavier(char chaine[100], BITMAP *buffer, int *pos, FONT *minecraft)
+void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
 {
     int touche;
     char ASCII, code;
@@ -62,7 +62,7 @@ void toucheClavier(char chaine[100], BITMAP *buffer, int *pos, FONT *minecraft)
             chaine[*pos] = '\0';
         }
     }
-    textout(temp, minecraft, chaine, 0,3, makecol(255,255,255));
+    textout(temp, font, chaine, 0,3, makecol(255,255,255));
     stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
     destroy_bitmap(temp);
 }

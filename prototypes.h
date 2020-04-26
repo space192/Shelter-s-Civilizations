@@ -60,9 +60,9 @@ void chargementImageMenu(BITMAP *image[12]);
 void dechargementImage(BITMAP *image[12]);
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom);
 void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde);
-void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, FONT *police);
+void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos);
 void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
-void toucheClavier(char *chaine, BITMAP *buffer, int *pos, FONT *minecraft);
+void toucheClavier(char *chaine, BITMAP *buffer, int *pos);
 void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int *sauvegarde);
 
 

@@ -3,12 +3,6 @@
 int main()
 {
     lancerAllegro(1280, 1024);
-    FONT *police = load_ttf_font("Police/minecraft.ttf", 11, ALLEGTTF_NOSMOOTH);
-    if(police == NULL)
-    {
-        allegro_message("erreur lors du chargement de la police");
-        exit(EXIT_FAILURE);
-    }
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP *image[12];
     char chaine[100];
@@ -31,7 +25,7 @@ int main()
         }
         if(scene == 2)
         {
-            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos, police);
+            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos);
         }
         if(scene == 3)
         {

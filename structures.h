@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <allegro.h>
 #include <math.h>
-#include "Police/allegttf.h"
 typedef struct Joueur
 {
     int or;

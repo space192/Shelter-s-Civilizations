@@ -711,3 +711,76 @@
 	"ttcalc.h"
 	"ttmemory.h"
 
+1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+	"../../prototypes.h"
+
+1587868990 c:\users\arthur\documents\github\projet-semestre-2-ing1\prototypes.h
+	"structures.h"
+
+1587868969 c:\users\arthur\documents\github\projet-semestre-2-ing1\structures.h
+	"logg.h"
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<math.h>
+
+1587851252 c:\users\arthur\documents\github\projet-semestre-2-ing1\logg.h
+	<allegro.h>
+	<vorbis/vorbisfile.h>
+	"prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+	"../../prototypes.h"
+
+1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+	"../../prototypes.h"
+
+1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+	"../../prototypes.h"
+
+1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\animation ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+	"../prototypes.h"
+
+1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\jeu.c
+	"prototypes.h"
+
+1587851252 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\logg.c
+	<string.h>
+	"prototypes.h"
+
+1587868964 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\main.c
+	"prototypes.h"
+
+1587868990 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
+	"../prototypes.h"
+
+1587868990 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
+	"../prototypes.h"
+
