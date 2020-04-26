@@ -4,19 +4,19 @@ void gererDeplacement(int *deplAffX,int *deplAffY)
 {
     if((key[KEY_UP]||(key[KEY_W]))&&(*deplAffY>0))
     {
-        *deplAffY-=8;
+        *deplAffY-=4;
     }
     if((key[KEY_DOWN]||(key[KEY_S]))&&(*deplAffY<2048))
     {
-        *deplAffY+=8;
+        *deplAffY+=4;
     }
     if((key[KEY_LEFT]||(key[KEY_A]))&&(*deplAffX>0))
     {
-        *deplAffX-=8;
+        *deplAffX-=4;
     }
     if((key[KEY_RIGHT]||(key[KEY_D]))&&(*deplAffX<2560))
     {
-        *deplAffX+=8;
+        *deplAffX+=4;
     }
 }
 

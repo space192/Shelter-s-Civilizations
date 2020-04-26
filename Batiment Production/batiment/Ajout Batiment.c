@@ -518,7 +518,6 @@ void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int 
                 actuel = liste->premier;
                 while((actuel!=NULL)&&(condition==1))
                 {
-                    printf("%d %d %d %d %d\n",actuel->niveau,actuel->x,actuel->y,x,y);
                     if((x==actuel->x-deplAffX)&&(y==actuel->y-deplAffY)&&(actuel->niveau==2))
                     {
                         circlefill(page,x+30,y+30,25,makecol(255,0,0));
@@ -561,5 +560,9 @@ void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int 
             }
         }
     }
+    circlefill(page,borne.xDeb-deplAffX+30,borne.yDeb-deplAffY+90,25,makecol(255,0,0));
+    circlefill(page,borne.xDeb-deplAffX+90,borne.yDeb-deplAffY+90,25,makecol(255,0,0));
+    circlefill(page,borne.xDeb-deplAffX+30,borne.yDeb-deplAffY+150,25,makecol(255,0,0));
+    circlefill(page,borne.xDeb-deplAffX+90,borne.yDeb-deplAffY+150,25,makecol(255,0,0));
     free(actuel);
 }
