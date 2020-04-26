@@ -55,16 +55,14 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
 
 
 
-    t_maillonBR *actuel=(t_maillonBR*) malloc(sizeof(t_maillonBR));
-    if(actuel==NULL)
-    {
-        printf("erreur d'allocation dynamique 9\n");
-        exit(EXIT_FAILURE);
-    }
+    t_maillonBR *actuel;
     actuel = liste->premier;
     while(actuel !=NULL)
     {
-        draw_sprite(page,batiments[((actuel->type) -1)+(actuel->niveau*3)],actuel->x-deplAffX,actuel->y-deplAffY);
+        if(actuel->type<4)
+        {
+            draw_sprite(page,batiments[((actuel->type) -1)+(actuel->niveau*3)],actuel->x-deplAffX,actuel->y-deplAffY);
+        }
         actuel = actuel->suivant;
     }
 
@@ -156,8 +154,8 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
 
     if(*angle<28)
     {
-        (*couleurR)+=0.200;
-        (*angle)+=0.025;
+        (*couleurR)+=0.400;
+        (*angle)+=0.050;
     }
 
     if(*angle>=28)
@@ -179,12 +177,14 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
         {
             if(actuel->niveau<2)
             {
-                printf("pute");
                 circle(page,actuel->x+30-deplAffX,actuel->y+30-deplAffY,(*angle),makecol(255,(*couleurR),(*couleurR)));
             }
             else if(actuel->niveau==2)
             {
-                circle(page,actuel->x+60-deplAffX,actuel->y+60-deplAffY,(*angle)*2,makecol(255,(*couleurR),(*couleurR)));
+                if(actuel->type!=4)
+                {
+                    circle(page,actuel->x+60-deplAffX,actuel->y+60-deplAffY,(*angle)*2,makecol(255,(*couleurR),(*couleurR)));
+                }
             }
         }
         actuel=actuel->suivant;

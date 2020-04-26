@@ -326,15 +326,15 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 
         if(niveauBatiment==0)
         {
-            actuel->ticMax=8000;
+            actuel->ticMax=2000;
         }
         else if(niveauBatiment==1)
         {
-            actuel->ticMax=8000;
+            actuel->ticMax=2000;
         }
         else if(niveauBatiment==2)
         {
-            actuel->ticMax=8000;
+            actuel->ticMax=2000;
         }
 
     }
@@ -345,15 +345,15 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 
         if(niveauBatiment==0)
         {
-            actuel->ticMax=12000;
+            actuel->ticMax=3000;
         }
         else if(niveauBatiment==1)
         {
-            actuel->ticMax=12000;
+            actuel->ticMax=3000;
         }
         else if(niveauBatiment==2)
         {
-            actuel->ticMax=12000;
+            actuel->ticMax=3000;
         }
 
     }
@@ -364,15 +364,15 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 
         if(niveauBatiment==0)
         {
-            actuel->ticMax=18000;
+            actuel->ticMax=4000;
         }
         if(niveauBatiment==1)
         {
-            actuel->ticMax=18000;
+            actuel->ticMax=4000;
         }
         if(niveauBatiment==2)
         {
-            actuel->ticMax=18000;
+            actuel->ticMax=4000;
         }
 
     }
@@ -518,6 +518,7 @@ void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int 
                 actuel = liste->premier;
                 while((actuel!=NULL)&&(condition==1))
                 {
+                    printf("%d %d %d %d %d\n",actuel->niveau,actuel->x,actuel->y,x,y);
                     if((x==actuel->x-deplAffX)&&(y==actuel->y-deplAffY)&&(actuel->niveau==2))
                     {
                         circlefill(page,x+30,y+30,25,makecol(255,0,0));

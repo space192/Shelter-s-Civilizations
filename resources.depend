@@ -355,3 +355,359 @@
 1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
 	"../prototypes.h"
 
+1587868612 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+	"../../prototypes.h"
+
+1587865966 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
+	"structures.h"
+
+1587865966 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
+	"logg.h"
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<math.h>
+	"Police/allegttf.h"
+
+1587865966 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\logg.h
+	<allegro.h>
+	<vorbis/vorbisfile.h>
+	"prototypes.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\allegttf.h
+	<allegro.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+	"../../prototypes.h"
+
+1587867908 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
+	"../../prototypes.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+	"../../prototypes.h"
+
+1587867763 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+	"../prototypes.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+	"../../prototypes.h"
+
+1587866408 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
+	"../../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\defense.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\animation ennemi.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
+	"../prototypes.h"
+
+1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+	"../prototypes.h"
+
+1587866955 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
+	"prototypes.h"
+
+1587865966 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\logg.c
+	<string.h>
+	"prototypes.h"
+
+1587865966 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\main.c
+	"prototypes.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
+	"../prototypes.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
+	"../prototypes.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaclip.c
+	"internal.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\internal.h
+	<allegro.h>
+	"freetype/freetype.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\freetype.h
+	"fterrid.h"
+	"ftnameid.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\fterrid.h
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ftnameid.h
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaload1.c
+	<stdio.h>
+	<allegro.h>
+	<allegro/internal/aintern.h>
+	<string.h>
+	<ctype.h>
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaload2.c
+	<string.h>
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaload3.c
+	<allegro.h>
+	<allegro/internal/aintern.h>
+	"allegttf.h"
+	"internal.h"
+	<string.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aamap.c
+	<allegro.h>
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aasetup.c
+	"allegttf.h"
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext.c
+	<stdio.h>
+	<stdarg.h>
+	<allegro.h>
+	"allegttf.h"
+	"internal.h"
+	<allegro/internal/aintern.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext15.c
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext16.c
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext1x.c
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext24.c
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext32.c
+	"internal.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aatext8.c
+	"allegttf.h"
+	"internal.h"
+	<stdio.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttapi.c
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttcache.h"
+	"ttfile.h"
+	"ttobjs.h"
+	"ttload.h"
+	"ttgload.h"
+	"ttraster.h"
+	"ttextend.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttconfig.h
+	"ft_conf.h"
+	<stdlib.h>
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ft_conf.h
+	<limits.h>
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttengine.h
+	"tttypes.h"
+	"ttconfig.h"
+	"freetype.h"
+	"ttmutex.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\tttypes.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttmutex.h
+	"ttconfig.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcalc.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttmemory.h
+	"ttconfig.h"
+	"tttypes.h"
+	<string.h>
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcache.h
+	"tttypes.h"
+	"ttconfig.h"
+	"ttmutex.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttfile.h
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+	"ttdebug.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttdebug.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttobjs.h
+	"ttconfig.h"
+	"ttengine.h"
+	"ttmutex.h"
+	"ttcache.h"
+	"tttables.h"
+	"ttcmap.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\tttables.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcmap.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttload.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttgload.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttraster.h
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttextend.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcache.c
+	"ttengine.h"
+	"ttmemory.h"
+	"ttcache.h"
+	"ttobjs.h"
+	"ttdebug.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcalc.c
+	"ttcalc.h"
+	"ttdebug.h"
+	"tttables.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttcmap.c
+	"ttobjs.h"
+	"ttdebug.h"
+	"ttfile.h"
+	"ttmemory.h"
+	"ttload.h"
+	"ttcmap.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttdebug.c
+	"ttdebug.h"
+	"tttables.h"
+	"ttobjs.h"
+	<stdio.h>
+	<stdarg.h>
+	<string.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttextend.c
+	"ttextend.h"
+	"ttengine.h"
+	"ttmemory.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttfile.c
+	"ttconfig.h"
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	"freetype.h"
+	"tttypes.h"
+	"ttdebug.h"
+	"ttengine.h"
+	"ttmutex.h"
+	"ttmemory.h"
+	"ttfile.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttgload.c
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttfile.h"
+	"tttables.h"
+	"ttobjs.h"
+	"ttgload.h"
+	"ttmemory.h"
+	"tttags.h"
+	"ttload.h"
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\tttags.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttinterp.c
+	"freetype.h"
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttinterp.h"
+	<memory.h>
+	"ttdebug.h"
+	<conio.h>
+
+1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttinterp.h
+	"ttconfig.h"
+	"ttobjs.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttload.c
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttfile.h"
+	"tttables.h"
+	"ttobjs.h"
+	"ttmemory.h"
+	"tttags.h"
+	"ttload.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttmemory.c
+	"ttdebug.h"
+	"ttmemory.h"
+	"ttengine.h"
+	<stdio.h>
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttmutex.c
+	"ttmutex.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttobjs.c
+	"ttobjs.h"
+	"ttfile.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttload.h"
+	"ttinterp.h"
+	"ttdebug.h"
+	"ttextend.h"
+
+1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\freetype\ttraster.c
+	"ttraster.h"
+	"ttdebug.h"
+	"tttypes.h"
+	"ttengine.h"
+	"ttcalc.h"
+	"ttmemory.h"
+

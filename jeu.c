@@ -150,13 +150,13 @@ void jeu()
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY);
 
         ajouterDefense(page,menuD,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound);
-
         dessinerMechant(horde, page, deplAffX, deplAffY, Seq);
         if(listedef->premier!=NULL)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
         }
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice);
+
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
 
