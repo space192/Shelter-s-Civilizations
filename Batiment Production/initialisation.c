@@ -174,14 +174,14 @@ t_listeEDD *InitialisationEDD()
 
 }
 
-void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet, SAMPLE *musique1, SAMPLE *musique2, SAMPLE *musique3, SAMPLE *musique4, SAMPLE *musique5, SAMPLE *musique6)
+void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet)
 {
-    destroy_sample(musique1);
+    /*destroy_sample(musique1);
     destroy_sample(musique2);
     destroy_sample(musique3);
     destroy_sample(musique4);
     destroy_sample(musique5);
-    destroy_sample(musique6);
+    destroy_sample(musique6);*/
     destroy_sample(selectSound);
     destroy_sample(newBSound);
     destroy_sample(buzzer);

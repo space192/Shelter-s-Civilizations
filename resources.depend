@@ -355,14 +355,13 @@
 1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
 	"../prototypes.h"
 
-1587869291 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1587869433 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1587869050 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
+1587875005 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
-1587869050 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
-	"logg.h"
+1587871359 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -385,13 +384,13 @@
 1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
-1587867763 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+1587872995 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
 	"../prototypes.h"
 
 1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
 	"../../prototypes.h"
 
-1587866408 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
+1587875018 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
 	"../../prototypes.h"
 
 1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
@@ -415,7 +414,7 @@
 1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1587866955 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
+1587874381 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
 1587865966 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\logg.c

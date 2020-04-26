@@ -20,15 +20,31 @@ void gererDeplacement(int *deplAffX,int *deplAffY)
     }
 }
 
-void gererMusique(int *condition,int *musique,int voice[6])
+void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2)
 {
     if(*condition==1)
     {
-        voice_start(voice[*musique]);
-        voice_set_volume(voice[*musique],50);
+        if(*musique%2==0)
+        {
+        sample1= load_wav(listeMusique[*musique]);
+        reallocate_voice(voice,sample1);
+        voice_start(voice);
+        voice_set_volume(voice,50);
+        destroy_sample(sample2);
         *condition=0;
+        }
+        else if(*musique%2==1)
+        {
+        sample2= load_wav(listeMusique[*musique]);
+        reallocate_voice(voice,sample1);
+        voice_start(voice);
+        voice_set_volume(voice,50);
+        destroy_sample(sample1);
+        *condition=0;
+        }
+
     }
-    if(voice_get_position(voice[*musique])==-1)
+    if(voice_get_position(voice)==-1)
     {
         if((*musique)<5)
         {
@@ -42,7 +58,7 @@ void gererMusique(int *condition,int *musique,int voice[6])
     }
 }
 
-void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice[6])
+void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice)
 {
     int x,y;
     if(*pauseActive ==0)
@@ -93,6 +109,6 @@ void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusi
     if((mouse_b & 1)&&(mouse_y >=461)&&(mouse_y <481)&&(mouse_x >=584)&&(mouse_x <=710)&&(*pauseActive==2))
     {
         *volumeMusique = (mouse_x-584)*2;
-        voice_set_volume(voice[*musique],*volumeMusique);
+        voice_set_volume(voice,*volumeMusique);
     }
 }

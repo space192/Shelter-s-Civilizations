@@ -4,10 +4,10 @@
 
 #include "structures.h"
 void jeu();
-void gererMusique(int *condition,int *musique,int voice[6]);
-void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice[6]);
+void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2);
+void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice);
 void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place);
-void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet, SAMPLE *musique1, SAMPLE *musique2, SAMPLE *musique3, SAMPLE *musique4, SAMPLE *musique5, SAMPLE *musique6);
+void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet);
 
 t_listeBR *InitialisationBR(BITMAP* batiments[3]);
 t_listeEDD *InitialisationEDD();

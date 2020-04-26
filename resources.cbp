@@ -82,10 +82,6 @@
 		<Unit filename="jeu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="logg.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="logg.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

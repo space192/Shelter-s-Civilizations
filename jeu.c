@@ -17,6 +17,13 @@ void jeu()
     int pauseActive= 0;
     float angleR= 0;
     float couleurR = 0;
+    char listeMusique[6][100]={"son/musique/sentient.wav",
+    "son/musique/first-light.wav",
+    "son/musique/gathering-horizon.wav",
+    "son/musique/solar-intervention.wav",
+    "son/musique/the-oil-industry.wav",
+    "son/musique/the-search-for-iron.wav"
+    };
 
     t_batimentP batimentP;
     batimentP.x=40;
@@ -80,26 +87,25 @@ void jeu()
     beacon[1]=load_bitmap("image/BR/beacon-antenna.bmp",NULL);
 
 
-    SAMPLE *selectSound = logg_load("son/select.ogg");
-    SAMPLE *newBSound = logg_load("son/put.ogg");
-    SAMPLE *buzzer = logg_load("son/buzzer.ogg");
+    SAMPLE *selectSound = load_wav("son/select.wav");
+    SAMPLE *newBSound =load_wav("son/put.wav");
+    SAMPLE *buzzer = load_wav("son/buzzer.wav");
     SAMPLE *bullet;
 
-    SAMPLE *musique1 = logg_load("son/musique/sentient.ogg");
-    SAMPLE *musique2 = logg_load("son/musique/first-light.ogg");
-    SAMPLE *musique3 = logg_load("son/musique/gathering-horizon.ogg");
-    SAMPLE *musique4 = logg_load("son/musique/solar-intervention.ogg");
-    SAMPLE *musique5 = logg_load("son/musique/the-oil-industry.ogg");
-    SAMPLE *musique6 = logg_load("son/musique/the-search-for-iron.ogg");
-    int voice[6];
+    int voice;
+    SAMPLE *sample1=load_wav(listeMusique[0]);
+    voice = allocate_voice(sample1);
+
+    SAMPLE *sample2;
+
+    voice_start(voice);
+    voice_set_volume(voice,50);
+
+    //destroy_sample(sample);
+
     int musiqueActive =0;
-    int conditionMusique =1;
-    voice[0]= allocate_voice(musique2);
-    voice[1]= allocate_voice(musique1);
-    voice[2]= allocate_voice(musique3);
-    voice[3]= allocate_voice(musique4);
-    voice[4]= allocate_voice(musique5);
-    voice[5]= allocate_voice(musique6);
+    int conditionMusique =0;
+
 
     t_sequence Seq[NB_SEQ] =
     {
@@ -114,7 +120,7 @@ void jeu()
         {"image/ennemi/Ennemi 2 monte.bmp", 16, 80, 67, 8}
     };
 
-    bullet = logg_load("son/tir.ogg");
+    bullet = load_wav("son/tir.wav");
     t_joueur joueur1;
     t_borne borne;
     t_listeBR *listeRessource = InitialisationBR(batiments);
@@ -136,7 +142,7 @@ void jeu()
         clear_bitmap(place);
         creer_horde(horde, NB_MECHANT);
         calculerPosition(horde, chemin, place, angle);
-        gererMusique(&conditionMusique,&musiqueActive,voice);
+        gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
         afficherBase(page,fond,base,fondation,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
         afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
         if(pauseActive==0)
@@ -161,6 +167,6 @@ void jeu()
     }
 
     libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place);
-    libererSon(selectSound,newBSound,buzzer,bullet,musique1,musique2,musique3,musique4,musique5,musique6);
+    libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);
 }
