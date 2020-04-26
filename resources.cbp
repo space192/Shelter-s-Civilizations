@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="resources" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/resources" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/resources" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Batiment Production/batiment/Ajout Batiment.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/batiment/Base.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/batiment/Gerer Batiment.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/batiment/Placement Batiment.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/initialisation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/menu jeu et pause/menu jeu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Batiment Production/menu jeu et pause/pause.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Menu/AuxiliereMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Menu/affichageMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aaclip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aaload1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aaload2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aaload3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aamap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aasetup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext15.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext16.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext1x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext24.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext32.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/aatext8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/allegttf.h" />
+		<Unit filename="Police/freetype/freetype.h" />
+		<Unit filename="Police/freetype/ft_conf.h" />
+		<Unit filename="Police/freetype/fterrid.h" />
+		<Unit filename="Police/freetype/ftnameid.h" />
+		<Unit filename="Police/freetype/header.h" />
+		<Unit filename="Police/freetype/ttapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttcache.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttcache.h" />
+		<Unit filename="Police/freetype/ttcalc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttcalc.h" />
+		<Unit filename="Police/freetype/ttcmap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttcmap.h" />
+		<Unit filename="Police/freetype/ttconfig.h" />
+		<Unit filename="Police/freetype/ttdebug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttdebug.h" />
+		<Unit filename="Police/freetype/ttengine.h" />
+		<Unit filename="Police/freetype/ttextend.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttextend.h" />
+		<Unit filename="Police/freetype/ttfile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttfile.h" />
+		<Unit filename="Police/freetype/ttgload.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttgload.h" />
+		<Unit filename="Police/freetype/ttinterp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttinterp.h" />
+		<Unit filename="Police/freetype/ttload.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttload.h" />
+		<Unit filename="Police/freetype/ttmemory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttmemory.h" />
+		<Unit filename="Police/freetype/ttmutex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttmutex.h" />
+		<Unit filename="Police/freetype/ttobjs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttobjs.h" />
+		<Unit filename="Police/freetype/ttraster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Police/freetype/ttraster.h" />
+		<Unit filename="Police/freetype/tttables.h" />
+		<Unit filename="Police/freetype/tttags.h" />
+		<Unit filename="Police/freetype/tttypes.h" />
+		<Unit filename="Police/internal.h" />
+		<Unit filename="defense/affichage defense.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="defense/defense.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="defense/liste chainée defense.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ennemi/Affichage Ennemi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ennemi/Animation ennemi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ennemi/Gestion ennemi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ennemi/Liste chainée ennemi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jeu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="logg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="logg.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="prototypes.h" />
+		<Unit filename="structures.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

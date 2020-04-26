@@ -1,0 +1,357 @@
+# depslib dependency file v1.0
+1587864800 source:c:\users\arthur\desktop\resources\batiment production\batiment\ajout batiment.c
+	"../../prototypes.h"
+
+1587861251 c:\users\arthur\desktop\resources\prototypes.h
+	"structures.h"
+
+1587861251 c:\users\arthur\desktop\resources\structures.h
+	"logg.h"
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<math.h>
+	"Police/allegttf.h"
+
+1587851252 c:\users\arthur\desktop\resources\logg.h
+	<allegro.h>
+	<vorbis/vorbisfile.h>
+	"prototypes.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\allegttf.h
+	<allegro.h>
+
+1587864800 source:c:\users\arthur\desktop\resources\batiment production\batiment\base.c
+	"../../prototypes.h"
+
+1587865029 source:c:\users\arthur\desktop\resources\batiment production\batiment\gerer batiment.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\batiment production\batiment\placement batiment.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\batiment production\menu jeu et pause\menu jeu.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\batiment production\menu jeu et pause\pause.c
+	"../../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\defense\affichage defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\defense\defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\defense\liste chainée defense.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\ennemi\affichage ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\ennemi\animation ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\ennemi\gestion ennemi.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\ennemi\liste chainée ennemi.c
+	"../prototypes.h"
+
+1587861219 source:c:\users\arthur\desktop\resources\jeu.c
+	"prototypes.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\logg.c
+	<string.h>
+	"prototypes.h"
+
+1587861219 source:c:\users\arthur\desktop\resources\main.c
+	"prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\menu\affichagemenu.c
+	"../prototypes.h"
+
+1587864800 source:c:\users\arthur\desktop\resources\menu\auxilieremenu.c
+	"../prototypes.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aaclip.c
+	"internal.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\internal.h
+	<allegro.h>
+	"freetype/freetype.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\freetype.h
+	"fterrid.h"
+	"ftnameid.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\fterrid.h
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ftnameid.h
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aaload1.c
+	<stdio.h>
+	<allegro.h>
+	<allegro/internal/aintern.h>
+	<string.h>
+	<ctype.h>
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aaload2.c
+	<string.h>
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aaload3.c
+	<allegro.h>
+	<allegro/internal/aintern.h>
+	"allegttf.h"
+	"internal.h"
+	<string.h>
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aamap.c
+	<allegro.h>
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aasetup.c
+	"allegttf.h"
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext.c
+	<stdio.h>
+	<stdarg.h>
+	<allegro.h>
+	"allegttf.h"
+	"internal.h"
+	<allegro/internal/aintern.h>
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext15.c
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext16.c
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext1x.c
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext24.c
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext32.c
+	"internal.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\aatext8.c
+	"allegttf.h"
+	"internal.h"
+	<stdio.h>
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttapi.c
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttcache.h"
+	"ttfile.h"
+	"ttobjs.h"
+	"ttload.h"
+	"ttgload.h"
+	"ttraster.h"
+	"ttextend.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttconfig.h
+	"ft_conf.h"
+	<stdlib.h>
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ft_conf.h
+	<limits.h>
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttengine.h
+	"tttypes.h"
+	"ttconfig.h"
+	"freetype.h"
+	"ttmutex.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\tttypes.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttmutex.h
+	"ttconfig.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttcalc.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttmemory.h
+	"ttconfig.h"
+	"tttypes.h"
+	<string.h>
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttcache.h
+	"tttypes.h"
+	"ttconfig.h"
+	"ttmutex.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttfile.h
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+	"ttdebug.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttdebug.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttobjs.h
+	"ttconfig.h"
+	"ttengine.h"
+	"ttmutex.h"
+	"ttcache.h"
+	"tttables.h"
+	"ttcmap.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\tttables.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttcmap.h
+	"ttconfig.h"
+	"tttypes.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttload.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttgload.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttraster.h
+	"ttconfig.h"
+	"freetype.h"
+	"ttengine.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttextend.h
+	"ttconfig.h"
+	"tttypes.h"
+	"ttobjs.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttcache.c
+	"ttengine.h"
+	"ttmemory.h"
+	"ttcache.h"
+	"ttobjs.h"
+	"ttdebug.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttcalc.c
+	"ttcalc.h"
+	"ttdebug.h"
+	"tttables.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttcmap.c
+	"ttobjs.h"
+	"ttdebug.h"
+	"ttfile.h"
+	"ttmemory.h"
+	"ttload.h"
+	"ttcmap.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttdebug.c
+	"ttdebug.h"
+	"tttables.h"
+	"ttobjs.h"
+	<stdio.h>
+	<stdarg.h>
+	<string.h>
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttextend.c
+	"ttextend.h"
+	"ttengine.h"
+	"ttmemory.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttfile.c
+	"ttconfig.h"
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	"freetype.h"
+	"tttypes.h"
+	"ttdebug.h"
+	"ttengine.h"
+	"ttmutex.h"
+	"ttmemory.h"
+	"ttfile.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttgload.c
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttfile.h"
+	"tttables.h"
+	"ttobjs.h"
+	"ttgload.h"
+	"ttmemory.h"
+	"tttags.h"
+	"ttload.h"
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\tttags.h
+	"ttconfig.h"
+	"freetype.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttinterp.c
+	"freetype.h"
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttinterp.h"
+	<memory.h>
+	"ttdebug.h"
+	<conio.h>
+
+1587851252 c:\users\arthur\desktop\resources\police\freetype\ttinterp.h
+	"ttconfig.h"
+	"ttobjs.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttload.c
+	"tttypes.h"
+	"ttdebug.h"
+	"ttcalc.h"
+	"ttfile.h"
+	"tttables.h"
+	"ttobjs.h"
+	"ttmemory.h"
+	"tttags.h"
+	"ttload.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttmemory.c
+	"ttdebug.h"
+	"ttmemory.h"
+	"ttengine.h"
+	<stdio.h>
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttmutex.c
+	"ttmutex.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttobjs.c
+	"ttobjs.h"
+	"ttfile.h"
+	"ttcalc.h"
+	"ttmemory.h"
+	"ttload.h"
+	"ttinterp.h"
+	"ttdebug.h"
+	"ttextend.h"
+
+1587851252 source:c:\users\arthur\desktop\resources\police\freetype\ttraster.c
+	"ttraster.h"
+	"ttdebug.h"
+	"tttypes.h"
+	"ttengine.h"
+	"ttcalc.h"
+	"ttmemory.h"
+
+1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
+	"../prototypes.h"
+
