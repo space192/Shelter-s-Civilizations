@@ -200,11 +200,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
     }
     else if(*ecrire == 0)
     {
-        //BITMAP *temp =create_bitmap(435, 17);
-        //rectfill(temp,0,0,435,17,makecol(0,0,0));
         textout_ex(buffer, font, chaine, 420, 474, makecol(255,255,255), -1);
-        //stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
-        //destroy_bitmap(temp);
     }
     if(mouse_x >= 420 && mouse_y >= 690 && mouse_x <=620 && mouse_y <=710)
     {
@@ -213,6 +209,8 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
             if(*compteur >=20)
             {
                 *scene = 1;
+                chaine[0] = '\0';
+                *pos = 0;
                 *compteur = 0;
             }
             else

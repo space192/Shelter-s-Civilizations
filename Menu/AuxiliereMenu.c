@@ -38,7 +38,6 @@ void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
 {
     int touche;
     char ASCII, code;
-    //BITMAP *temp = create_bitmap(435, 17);
     if(keypressed())
     {
         touche = readkey();
@@ -63,6 +62,5 @@ void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
         }
     }
     textout_ex(buffer, font, chaine, 420, 474, makecol(255,255,255), -1);
-    //stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
-    //destroy_bitmap(temp);
+    vline(buffer,420 + *pos *8, 473, 483, makecol(255,255,255));
 }
