@@ -202,7 +202,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
     {
         //BITMAP *temp =create_bitmap(435, 17);
         //rectfill(temp,0,0,435,17,makecol(0,0,0));
-        textout(buffer, font, chaine, 416,462, makecol(255,255,255));
+        textout_ex(buffer, font, chaine, 416, 462, makecol(255,255,255), -1);
         //stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
         //destroy_bitmap(temp);
     }

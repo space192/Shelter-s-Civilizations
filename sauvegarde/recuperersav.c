@@ -189,3 +189,74 @@ void ajouterEDDVide(t_listeEDD *liste)
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
 }
+
+
+t_listeEDD *triEDD(t_listeEDD *liste)
+{
+    t_listeEDD *liste2 = malloc(sizeof(t_listeEDD));
+    liste2->premier=NULL;
+    t_maillonEDD *actuel = liste->premier;
+    t_maillonEDD *actuel2 = NULL;
+    t_maillonEDD *precedent=liste->premier;
+    int min;
+    while(liste->premier->suivant != NULL)
+    {
+        actuel2=NULL;
+        actuel=liste->premier;
+        min = liste->premier->numeroEDD;
+        while(actuel!=NULL)
+        {
+            if(min > actuel->numeroEDD)
+            {
+                min = actuel->numeroEDD;
+            }
+            actuel=actuel->suivant;
+        }
+        actuel = liste->premier;
+        precedent= liste->premier;
+        while(actuel->numeroEDD != min)
+        {
+            precedent = actuel;
+            actuel = actuel->suivant;
+        }
+        if(actuel->suivant==NULL)
+        {
+           precedent->suivant = NULL;
+        }
+        else if(min == liste->premier->numeroEDD)
+        {
+            liste->premier = liste->premier->suivant;
+        }
+        else
+        {
+            precedent->suivant = actuel->suivant;
+        }
+        if(liste2->premier==NULL)
+        {
+            liste2->premier = actuel;
+            liste2->premier->suivant = NULL;
+        }
+        else
+        {
+            actuel2=liste2->premier;
+            while(actuel2->suivant!=NULL)
+            {
+                actuel2=actuel2->suivant;
+            }
+            actuel2->suivant = actuel;
+            actuel2->suivant->suivant = NULL;
+        }
+    }
+    actuel2=liste2->premier;
+    while(actuel2->suivant!=NULL)
+    {
+        actuel2=actuel2->suivant;
+    }
+    actuel2->suivant = liste->premier;
+    actuel2->suivant->suivant = NULL;
+    liste->premier = NULL;
+    return liste2;
+}
+
+
+

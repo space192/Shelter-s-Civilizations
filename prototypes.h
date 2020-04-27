@@ -93,6 +93,7 @@ void positionEcran(int* screenx, int* screeny, BITMAP* decor);
 
 //////////////prototype sauvegarde////////////////////
 
+t_listeEDD *triEDD(t_listeEDD *liste);
 void AjouterMaillonBRVide(t_listeBR *liste);
 void recupererBatimentProduction(t_listeBR *liste, int niveau);
 void AjouterMaillonDefenseVide(t_listedef *liste);
