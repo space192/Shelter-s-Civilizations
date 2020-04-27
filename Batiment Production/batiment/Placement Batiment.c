@@ -242,9 +242,13 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
     t_maillonBR *precedent;
     actuel = liste->premier;
 
+    int condition=0;
+
     if((actuel->x==x)&&(actuel->y==y))
     {
         liste->premier=actuel->suivant;
+        condition=1;
+
     }
     else
     {
@@ -252,7 +256,9 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
         actuel=actuel->suivant;
     }
 
-    while(actuel!=NULL)
+    if(condition!=1)
+    {
+            while(actuel!=NULL)
     {
         if((actuel->x==x)&&(actuel->y==y))
         {
@@ -260,6 +266,7 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
         }
         actuel=actuel->suivant;
         precedent=precedent->suivant;
+    }
     }
     free(actuel);
     free(precedent);
