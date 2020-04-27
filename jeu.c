@@ -195,6 +195,7 @@ void jeu(int sauvegarde)
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
+    sauvegarderNiveauUnlock(sauvegarde);
     SauvegarderBatimentProduction(listeRessource, 4);
     SauvegarderEmplacementDisponible(listeEmplacementDefense, 4);
     SauvegarderDefense(listedef, 4);

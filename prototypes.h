@@ -56,8 +56,8 @@ void ajoutBalle(t_listeBalle *defense);
 void animation(BITMAP *image[], BITMAP *buffer, t_defense *defense,int deplAffX, int deplAffY);
 void chargementImageetSon(BITMAP *image[4], SAMPLE *son);
 
-void chargementImageMenu(BITMAP *image[12]);
-void dechargementImage(BITMAP *image[12]);
+void chargementImageMenu(BITMAP *image[13]);
+void dechargementImage(BITMAP *image[13]);
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom);
 void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde);
 void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic);
@@ -94,8 +94,10 @@ void positionEcran(int* screenx, int* screeny, BITMAP* decor);
 //////////////prototype sauvegarde////////////////////
 
 t_listeEDD *triEDD(t_listeEDD *liste);
+void sauvegarderNiveauUnlock(int sauvegarde);
 void AjouterMaillonBRVide(t_listeBR *liste);
 void recupererBatimentProduction(t_listeBR *liste, int niveau);
+int recupererNiveauUnlock();
 void AjouterMaillonDefenseVide(t_listedef *liste);
 void recupererDefense(t_listedef *liste, int niveau);
 void ajouterEDDVide(t_listeEDD *liste);

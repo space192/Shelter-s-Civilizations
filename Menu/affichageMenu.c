@@ -8,19 +8,19 @@ void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float
     switch(etat)
     {
     case 1: //bouton desactivé
-        {
-            posy = 0;
-            break;
-        }
+    {
+        posy = 0;
+        break;
+    }
     case 2: //bouton actié
-        {
-            posy =image->h/3;
-            break;
-        }
+    {
+        posy =image->h/3;
+        break;
+    }
     case 3: //sur le bouton
-        {
-            posy =2*(image->h/3);
-        }
+    {
+        posy =2*(image->h/3);
+    }
     }
     blit(image, temp, posx, posy, 0,0,temp->w, temp->h);
     stretch_blit(temp, buffer, 0,0,temp->w, temp->h, x,y, temp->w*zoom, temp->h*zoom);
@@ -255,95 +255,144 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
 
 void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int *sauvegarde)
 {
-    if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //niveau 1
+    if(*sauvegarde >= 1)
     {
-        if(mouse_b & 1)
+        if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //niveau 1
         {
-            if(*compteur >= 17)
+            if(mouse_b & 1)
             {
-                //lance le jeux avec la sauvegarde du niveau 1
-                *scene = 1;
-                *compteur = 0;
+                if(*compteur >= 17)
+                {
+                    //lance le jeux avec la sauvegarde du niveau 1
+                    *scene = 1;
+                    *compteur = 0;
+                }
+                else
+                {
+                    *compteur = *compteur+1;
+                }
+                rest(4);
             }
-            else
-            {
-                *compteur = *compteur+1;
-            }
-            rest(4);
+            affichageBoutton(image[4], buffer, 3, 390,400, 2.5);
         }
-        affichageBoutton(image[4], buffer, 3, 390,400, 2.5);
+        else
+        {
+            affichageBoutton(image[4], buffer, 2, 390,400, 2.5);
+        }
     }
     else
     {
-        affichageBoutton(image[4], buffer, 2, 390,400, 2.5);
+        affichageBoutton(image[4], buffer, 1, 390, 400, 2.5);
     }
-    if(mouse_x >= 390 && mouse_y>=480 && mouse_x <=890 && mouse_y <=530) //niveau 2
+    if(*sauvegarde >= 2)
     {
-        if(mouse_b & 1)
+        if(mouse_x >= 390 && mouse_y>=480 && mouse_x <=890 && mouse_y <=530) //niveau 2
         {
-            if(*compteur >=17)
+            if(mouse_b & 1)
             {
-                //lancement du jeu avec la sauvegarde du niveau 2
-                *scene = 1;
-                *compteur = 0;
+                if(*compteur >=17)
+                {
+                    //lancement du jeu avec la sauvegarde du niveau 2
+                    *scene = 1;
+                    *compteur = 0;
+                }
+                else
+                {
+                    *compteur = *compteur+1;
+                }
+                rest(4);
             }
-            else
-            {
-                *compteur = *compteur+1;
-            }
-            rest(4);
+            affichageBoutton(image[5], buffer, 3, 390, 480, 2.5);
         }
-        affichageBoutton(image[5], buffer, 3, 390, 480, 2.5);
+        else
+        {
+            affichageBoutton(image[5], buffer,2, 390,480, 2.5);
+        }
     }
     else
     {
-        affichageBoutton(image[5], buffer,2, 390,480, 2.5);
+        affichageBoutton(image[5], buffer, 1, 390, 480, 2.5);
     }
-    if((mouse_x>= 390 && mouse_y>=560)&&(mouse_x <=890 && mouse_y <= 610)) //Niveau 3
+    if(*sauvegarde >= 3)
     {
-        if(mouse_b & 1)
+        if((mouse_x>= 390 && mouse_y>=560)&&(mouse_x <=890 && mouse_y <= 610)) //Niveau 3
         {
-            if(*compteur >=17)
+            if(mouse_b & 1)
             {
-                //lancement du jeu avec la sauvegarde du niveau 3
-                *scene = 1;
-                *compteur = 0;
+                if(*compteur >=17)
+                {
+                    //lancement du jeu avec la sauvegarde du niveau 3
+                    *scene = 1;
+                    *compteur = 0;
+                }
+                else
+                {
+                    *compteur = *compteur+1;
+                }
+                rest(4);
             }
-            else
-            {
-                *compteur = *compteur+1;
-            }
-            rest(4);
+            affichageBoutton(image[6], buffer, 3, 390, 560, 2.5);
         }
-        affichageBoutton(image[6], buffer, 3, 390, 560, 2.5);
+        else
+        {
+            affichageBoutton(image[6],buffer,2,390,560, 2.5);
+        }
     }
     else
     {
-        affichageBoutton(image[6],buffer,2,390,560, 2.5);
+        affichageBoutton(image[6], buffer, 1, 390, 560, 2.5);
     }
-    if((mouse_x>= 390 && mouse_y>=640)&&(mouse_x <=890 && mouse_y <= 690)) //endless mode
+    if(*sauvegarde >= 4)
     {
-        if(mouse_b & 1)
+        if((mouse_x>= 390 && mouse_y>=640)&&(mouse_x <=890 && mouse_y <= 690)) //endless mode
         {
-            if(*compteur >=17)
+            if(mouse_b & 1)
             {
-                dechargementImage(image);
-                jeu(4);
-                chargementImageMenu(image);
-                rest(100);
-                *scene = 1;
-                *compteur = 0;
+                if(*compteur >=17)
+                {
+                    dechargementImage(image);
+                    jeu(4);
+                    chargementImageMenu(image);
+                    rest(100);
+                    *scene = 1;
+                    *compteur = 0;
+                }
+                else
+                {
+                    *compteur = *compteur+1;
+                }
+                rest(4);
             }
-            else
-            {
-                *compteur = *compteur+1;
-            }
-            rest(4);
+            affichageBoutton(image[7], buffer, 3, 390, 640, 2.5);
         }
-        affichageBoutton(image[7], buffer, 3, 390, 640, 2.5);
+        else
+        {
+            affichageBoutton(image[7],buffer,2,390,640, 2.5);
+        }
     }
     else
     {
-        affichageBoutton(image[7],buffer,2,390,640, 2.5);
+        affichageBoutton(image[7], buffer, 1, 390, 640, 2.5);
+    }
+    if((mouse_x>=390 && mouse_y >=720) && (mouse_x <= 890 && mouse_y <=770))
+    {
+        if(mouse_b & 1)
+        {
+           if(*compteur >= 17)
+           {
+               *scene = 1;
+               *compteur = 0;
+           }
+           else
+           {
+               *compteur = *compteur +1;
+           }
+           rest(4);
+        }
+        affichageBoutton(image[12], buffer, 3, 390, 720, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[12], buffer, 2, 390, 720, 2.5);
     }
 }

@@ -258,5 +258,14 @@ t_listeEDD *triEDD(t_listeEDD *liste)
     return liste2;
 }
 
-
-
+int recupererNiveauUnlock()
+{
+    int temp;
+    FILE *fichier = fopen("sauvegarde/unlock.sav", "r");
+    if(fichier == NULL)
+    {
+        allegro_message("erreur lor du chargement de la sauvegarde");
+    }
+    fscanf(fichier, "%d", &temp);
+    return temp;
+}

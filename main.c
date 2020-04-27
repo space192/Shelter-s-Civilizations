@@ -4,7 +4,7 @@ int main()
 {
     lancerAllegro(1280, 1024);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP *image[12];
+    BITMAP *image[13];
     char chaine[100];
     chaine[0] = '\0';
     int compteur=0, sauvegarde = 1, continuer = 1, tuto = 1, ecrire = 0, pos=0, clic=0;
