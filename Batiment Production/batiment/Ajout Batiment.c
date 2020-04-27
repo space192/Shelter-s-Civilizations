@@ -1,6 +1,6 @@
 #include "../../prototypes.h"
 
-void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,SAMPLE *buzzer,SAMPLE *newBSound,SAMPLE *selectSound)
+void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,SAMPLE *buzzer,SAMPLE *newBSound,SAMPLE *selectSound,int *PDV)
 {
     int x;
     int y;
@@ -200,7 +200,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
         if((*agrandissement<2)&&(testSiArgentSuffisant(joueur,0,0,3,buzzer)))
         {
             *agrandissement+=1;
-            ajusterBase(borne,*agrandissement);
+            ajusterBase(borne,*agrandissement,PDV);
         }
 
         *condition = 1;

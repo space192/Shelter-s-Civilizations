@@ -16,6 +16,7 @@ void jeu(int sauvegarde)
     int yp;
     int pauseActive= 0;
     int numeroEDD=8;
+    int PDVMuraille;
 
 
     float angleR= 0;
@@ -139,6 +140,7 @@ void jeu(int sauvegarde)
     t_listeEDD *listeEmplacementDefense = InitialisationEDD();
     t_listeMechant* horde = (t_listeMechant*)malloc(sizeof(t_listeMechant));
 
+
     if(sauvegarde != 0)
     {
         recupererDefense(listedef, sauvegarde);
@@ -149,7 +151,7 @@ void jeu(int sauvegarde)
     joueur1.or=200;
     joueur1.pierre=200;
     joueur1.metal=200;
-    ajusterBase(&borne, agrandissement);
+    ajusterBase(&borne, agrandissement,&PDVMuraille);
     while (!key[KEY_ESC])
     {
         clear_bitmap(page);
@@ -166,7 +168,7 @@ void jeu(int sauvegarde)
         }
         afficherLayoutMenu(page,layoutMenu,miniMap,deplAffX,deplAffY,joueur1);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
-        construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound);
+        construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound,&PDVMuraille);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,buzzer);
 
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound,buzzer);
@@ -176,6 +178,8 @@ void jeu(int sauvegarde)
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
         }
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2);
+
+        printf("%d\n",PDVMuraille);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }

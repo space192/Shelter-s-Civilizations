@@ -160,7 +160,7 @@ void ajusterFondation(int*x,int*y)
     }
 }
 
-void ajusterBase(t_borne *borne, int agrandissement)
+void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
 {
     if(agrandissement == 0)
     {
@@ -168,6 +168,7 @@ void ajusterBase(t_borne *borne, int agrandissement)
         borne->yDeb = 1630;
         borne->xFin = 340;
         borne->yFin = 1870;
+        (*PDV)= 1000;
     }
     else if(agrandissement == 1)
     {
@@ -175,6 +176,7 @@ void ajusterBase(t_borne *borne, int agrandissement)
         borne->yDeb = 1630;
         borne->xFin = 340;
         borne->yFin = 2110;
+        (*PDV)= (*PDV)+1000;
     }
     else if(agrandissement == 2)
     {
@@ -182,6 +184,7 @@ void ajusterBase(t_borne *borne, int agrandissement)
         borne->yDeb = 1390;
         borne->xFin = 340;
         borne->yFin = 2110;
+        (*PDV)= (*PDV)+1000;
     }
 }
 

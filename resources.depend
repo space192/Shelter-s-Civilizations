@@ -355,10 +355,10 @@
 1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588002699 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1588010124 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1588002401 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
+1588010124 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
 1588000258 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
@@ -375,13 +375,13 @@
 1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\allegttf.h
 	<allegro.h>
 
-1588002401 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+1588010124 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
 	"../../prototypes.h"
 
 1587867908 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
 	"../../prototypes.h"
 
-1588002699 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+1588007342 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
 1588000625 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
@@ -424,10 +424,10 @@
 1587869050 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\main.c
 	"prototypes.h"
 
-1588000274 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
+1588007800 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
 	"../prototypes.h"
 
-1587869050 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
+1588007800 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
 	"../prototypes.h"
 
 1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaclip.c
