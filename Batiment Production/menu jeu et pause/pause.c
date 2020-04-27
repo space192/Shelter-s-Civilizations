@@ -26,15 +26,15 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
     {
         if(*musique%2==0)
         {
-            printf("1");
+
         destroy_sample(sample1);
-        printf("2");
+
         sample1= load_wav(listeMusique[*musique]);
-        printf("3");
+
         reallocate_voice(voice,sample1);
-        printf("4");
+
         voice_start(voice);
-        printf("5");
+
         voice_set_volume(voice,50);
         ;
         *condition=0;
@@ -42,14 +42,14 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
         else if(*musique%2==1)
         {
         destroy_sample(sample2);
-        printf("6");
+
 
         sample2= load_wav(listeMusique[*musique]);
-        printf("7");
+
         reallocate_voice(voice,sample2);
-        printf("8");
+
         voice_start(voice);
-        printf("9");
+
         voice_set_volume(voice,50);
 
         *condition=0;
@@ -70,7 +70,7 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
     }
 }
 
-void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice,char listeMusique[6][100])
+void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice,char listeMusique[6][100],int *jeuActif)
 {
     //int x,y;
     if(*pauseActive ==0)
@@ -115,6 +115,11 @@ void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusi
     if((mouse_b & 1)&&(mouse_y >=470)&&(mouse_y <533)&&(mouse_x >=500)&&(mouse_x <=710)&&(*pauseActive==1))
     {
         *pauseActive = 2;
+    }
+    if((mouse_b & 1)&&(mouse_y >=534)&&(mouse_y <581)&&(mouse_x >=500)&&(mouse_x <=710)&&(*pauseActive==1))
+    {
+        //*pauseActive = 2;
+        (*jeuActif)=0;
     }
     if((mouse_b & 1)&&(mouse_y >=372)&&(mouse_y <404)&&(mouse_x >=535)&&(mouse_x <=668)&&(*pauseActive==2))
     {

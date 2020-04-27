@@ -5,7 +5,7 @@
 #include "structures.h"
 void jeu(int sauvegarde);
 void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2);
-void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice,char listeMusique[6][100]);
+void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice,char listeMusique[6][100],int *jeuActif);
 void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place);
 void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet);
 
@@ -23,7 +23,7 @@ int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau);
 int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
 int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,SAMPLE *buzzer);
 void ajusterBase(t_borne *borne, int agrandissement,int *PDV);
-void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* miniMap, int deplAffX,int deplAffY,t_joueur joueur);
+void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITMAP* miniMap, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,int PDV,int agrandissement);
 void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP *batimentP,int *condition,int deplAffX, int deplAffY);
 void ameliorerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatiment(t_listeBR *liste, int x, int y);

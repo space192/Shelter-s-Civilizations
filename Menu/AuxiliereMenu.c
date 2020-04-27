@@ -62,7 +62,7 @@ void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
             chaine[*pos] = '\0';
         }
     }
-    textout_ex(buffer, font, chaine, 416, 462, makecol(255,255,255), -1);
+    textout_ex(buffer, font, chaine, 420, 474, makecol(255,255,255), -1);
     //stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
     //destroy_bitmap(temp);
 }

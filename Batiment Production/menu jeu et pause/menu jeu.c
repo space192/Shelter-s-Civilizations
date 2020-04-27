@@ -1,15 +1,65 @@
 #include "../../prototypes.h"
 
 
-void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* miniMap, int deplAffX,int deplAffY,t_joueur joueur)
+void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITMAP* miniMap, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,int PDV,int agrandissement)
 {
+    t_ennemi *actuel = horde->premier;
+
     draw_sprite(page,layoutMenu,220,0);
+    draw_sprite(page,layoutMenu2,400,969);
+
+    textprintf_ex(page,font,425,980,makecol(255,255,255),-1,"Points de vie de la muraille:");
+    if(agrandissement==0)
+    {
+        if(PDV<=250)
+        {
+            rectfill(page,425,995,425 + (PDV*0.4),1005,makecol(255,0,0));
+        }
+        else
+        {
+            rectfill(page,425,995,425 + (PDV*0.4),1005,makecol(0,255,0));
+        }
+
+    }
+    else if(agrandissement==1)
+    {
+        if(PDV<=500)
+        {
+            rectfill(page,425,995,425 + (PDV*0.2),1005,makecol(255,0,0));
+        }
+        else
+        {
+            rectfill(page,425,995,425 + (PDV*0.2),1005,makecol(0,255,0));
+        }
+
+    }
+    else if(agrandissement==2)
+    {
+        if(PDV<=750)
+        {
+            rectfill(page,425,995,425 + (PDV*0.133333333),1005,makecol(255,0,0));
+        }
+        else
+        {
+            rectfill(page,425,995,425 + (PDV*0.133333333),1005,makecol(0,255,0));
+        }
+
+    }
+
+
     textprintf_ex(page,font,310,20,makecol(255,255,255),-1,"%d",joueur.or);
     textprintf_ex(page,font,310,42,makecol(255,255,255),-1,"%d",joueur.metal);
     textprintf_ex(page,font,310,65,makecol(255,255,255),-1,"%d",joueur.pierre);
 
     draw_sprite(page, miniMap,1103,0);
     rect(page,1104+(deplAffX/22),2+deplAffY/21,1104+59+(deplAffX/22),2+50+deplAffY/21,makecol(255,0,0));
+
+    while(actuel!=NULL)
+    {
+        rectfill(page,1104+(actuel->x/22),actuel->y/21 - 4,1104+2+(actuel->x/22),actuel->y/21 - 2,makecol(255,0,0));
+        actuel=actuel->suivant;
+    }
+
 }
 
 void afficherInfoBatimentBR(BITMAP* page)

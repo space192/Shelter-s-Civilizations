@@ -198,14 +198,17 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,t_
     if(agrandissement==0)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1575-deplAffY);
+        draw_sprite(page,base[agrandissement + 3],407-deplAffX,1625-deplAffY);
     }
     else if(agrandissement == 1)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1578-deplAffY);
+        draw_sprite(page,base[agrandissement + 3],400-deplAffX,1627-deplAffY);
     }
     else if(agrandissement==2)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1338-deplAffY);
+        draw_sprite(page,base[agrandissement + 3],401-deplAffX,1388-deplAffY);
     }
 
 

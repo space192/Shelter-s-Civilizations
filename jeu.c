@@ -17,6 +17,7 @@ void jeu(int sauvegarde)
     int pauseActive= 0;
     int numeroEDD=8;
     int PDVMuraille;
+    int jeuActif=1;
 
 
     float angleR= 0;
@@ -45,13 +46,14 @@ void jeu(int sauvegarde)
 
     BITMAP* beacon[2];
     BITMAP *page;
-    BITMAP* base[3];
+    BITMAP* base[6];
     BITMAP* batiments[9];
     BITMAP *fond = load_bitmap("image/fond.bmp",NULL);
     BITMAP *construc = NULL;
     BITMAP *menuC = NULL;
     BITMAP *menuD = NULL;
     BITMAP *layoutMenu = NULL;
+    BITMAP *layoutMenu2 = NULL;
     BITMAP *miniMap = NULL;
     BITMAP *fondation =NULL;
     BITMAP *pause[4];
@@ -82,11 +84,15 @@ void jeu(int sauvegarde)
     base[0] = load_bitmap("image/base/base1.bmp",NULL);
     base[1] = load_bitmap("image/base/base2.bmp",NULL);
     base[2] = load_bitmap("image/base/base3.bmp",NULL);
+    base[3] = load_bitmap("image/base/muraille1.bmp",NULL);
+    base[4] = load_bitmap("image/base/muraille2.bmp",NULL);
+    base[5] = load_bitmap("image/base/muraille3.bmp",NULL);
 
     construc = load_bitmap("image/menu jeu/construire.bmp",NULL);
     menuC = load_bitmap("image/menu jeu/menuC.bmp",NULL);
     menuD = load_bitmap("image/menu jeu/menuD.bmp",NULL);
     layoutMenu = load_bitmap("image/menu jeu/layoutMenu.bmp",NULL);
+    layoutMenu2 = load_bitmap("image/menu jeu/layoutMenu2.bmp",NULL);
     miniMap = load_bitmap("image/menu jeu/miniMap.bmp",NULL);
     fondation = load_bitmap("image/base/fondation.bmp",NULL);
 
@@ -149,11 +155,19 @@ void jeu(int sauvegarde)
     initAncre(horde);
 
     joueur1.or=200;
-    joueur1.pierre=200;
+    joueur1.pierre=2000;
     joueur1.metal=200;
     ajusterBase(&borne, agrandissement,&PDVMuraille);
-    while (!key[KEY_ESC])
+    while ((!key[KEY_ESC])&&(jeuActif==1))
     {
+        if(key[KEY_UP])
+        {
+            PDVMuraille--;
+        }
+        if(PDVMuraille==0)
+        {
+            jeuActif = 0;
+        }
         clear_bitmap(page);
         clear_bitmap(place);
         creer_horde(horde, NB_MECHANT);
@@ -166,7 +180,7 @@ void jeu(int sauvegarde)
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
-        afficherLayoutMenu(page,layoutMenu,miniMap,deplAffX,deplAffY,joueur1);
+        afficherLayoutMenu(page,layoutMenu,layoutMenu2,miniMap,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound,&PDVMuraille);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,buzzer);
@@ -177,9 +191,7 @@ void jeu(int sauvegarde)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
         }
-        gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2);
-
-        printf("%d\n",PDVMuraille);
+        gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
