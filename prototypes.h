@@ -91,6 +91,17 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
 void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, t_sequence lesSeq[NB_SEQ]);
 void positionEcran(int* screenx, int* screeny, BITMAP* decor);
 
+//////////////prototype sauvegarde////////////////////
+
+void AjouterMaillonBRVide(t_listeBR *liste);
+void recupererBatimentProduction(t_listeBR *liste, int niveau);
+void AjouterMaillonDefenseVide(t_listedef *liste);
+void recupererDefense(t_listedef *liste, int niveau);
+void ajouterEDDVide(t_listeEDD *liste);
+void recupererEmplacementDispo(t_listeEDD *liste, int niveau);
+void SauvegarderBatimentProduction(t_listeBR *liste, int niveau);
+void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau);
+void SauvegarderDefense(t_listedef *liste, int niveau);
 
 #endif // PROTORYPES_H_INCLUDED
 
