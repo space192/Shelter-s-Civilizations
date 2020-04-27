@@ -200,11 +200,11 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
     }
     else if(*ecrire == 0)
     {
-        BITMAP *temp =create_bitmap(435, 17);
-        rectfill(temp,0,0,435,17,makecol(0,0,0));
-        textout(temp, font, chaine, 0,3, makecol(255,255,255));
-        stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
-        destroy_bitmap(temp);
+        //BITMAP *temp =create_bitmap(435, 17);
+        //rectfill(temp,0,0,435,17,makecol(0,0,0));
+        textout(buffer, font, chaine, 416,462, makecol(255,255,255));
+        //stretch_blit(temp, buffer, 0,0,temp->w,temp->h, 416, 462, temp->w, temp->h*2);
+        //destroy_bitmap(temp);
     }
     if(mouse_x >= 420 && mouse_y >= 690 && mouse_x <=620 && mouse_y <=710)
     {
@@ -233,7 +233,9 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
         {
             if(*compteur >=20)
             {
+                dechargementImage(image);
                 jeu(0);
+                chargementImageMenu(image);
                 rest(100);
                 *scene = 1;
                 *compteur = 0;
@@ -327,7 +329,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compte
         {
             if(*compteur >=17)
             {
-                //mode infinie
+                dechargementImage(image);
+                jeu(4);
+                chargementImageMenu(image);
+                rest(100);
                 *scene = 1;
                 *compteur = 0;
             }

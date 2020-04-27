@@ -134,12 +134,15 @@ void jeu(int sauvegarde)
     bullet = load_wav("son/tir.wav");
     t_joueur joueur1;
     t_borne borne;
-    t_listeBR *listeRessource = InitialisationBR(batiments);
+    t_listeBR *listeRessource= InitialisationBR(batiments);
     t_listedef *listedef = initialisationDef();
     t_listeEDD *listeEmplacementDefense = InitialisationEDD();
     t_listeMechant* horde = (t_listeMechant*)malloc(sizeof(t_listeMechant));
 
-
+    if(sauvegarde != 0)
+    {
+        recupererDefense(listedef, sauvegarde);
+    }
     //initSeq(Seq);
     initAncre(horde);
 
@@ -176,7 +179,9 @@ void jeu(int sauvegarde)
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
-
+    SauvegarderBatimentProduction(listeRessource, 4);
+    SauvegarderEmplacementDisponible(listeEmplacementDefense, 4);
+    SauvegarderDefense(listedef, 4);
     libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);
