@@ -7,7 +7,7 @@ int main()
     BITMAP *image[12];
     char chaine[100];
     chaine[0] = '\0';
-    int compteur=0, sauvegarde = 1, continuer = 1, tuto = 1, ecrire = 0, pos=0;
+    int compteur=0, sauvegarde = 1, continuer = 1, tuto = 1, ecrire = 0, pos=0, clic=0;
     chargementImageMenu(image);
     int scene = 1; //valeur scene corresponde au different ecran du menu
                    //1:Menu Principale
@@ -25,7 +25,7 @@ int main()
         }
         if(scene == 2)
         {
-            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos);
+            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos, &clic);
         }
         if(scene == 3)
         {

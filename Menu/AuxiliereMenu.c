@@ -34,7 +34,7 @@ void dechargementImage(BITMAP *image[12])
 }
 
 
-void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
+void toucheClavier(char chaine[100], BITMAP *buffer, int *pos, int *clic)
 {
     int touche;
     char ASCII, code;
@@ -62,5 +62,16 @@ void toucheClavier(char chaine[100], BITMAP *buffer, int *pos)
         }
     }
     textout_ex(buffer, font, chaine, 420, 474, makecol(255,255,255), -1);
-    vline(buffer,420 + *pos *8, 473, 483, makecol(255,255,255));
+    if(*clic < 400 && *clic > 200)
+    {
+        vline(buffer,420 + *pos *8, 473, 483, makecol(255,255,255));
+    }
+    if(*clic < 400)
+    {
+        (*clic)++;
+    }
+    else
+    {
+        *clic = 0;
+    }
 }

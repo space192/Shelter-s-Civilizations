@@ -135,7 +135,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
 
 
 
-void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -196,7 +196,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
     }
     if(*ecrire == 1)
     {
-        toucheClavier(chaine, buffer, pos);
+        toucheClavier(chaine, buffer, pos, clic);
     }
     else if(*ecrire == 0)
     {
