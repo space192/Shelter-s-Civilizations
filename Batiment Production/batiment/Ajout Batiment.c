@@ -140,7 +140,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,*niveaubatiment);
 
-            if((testSiBatimentPresent(liste,x,y,*niveaubatiment)==1)&&(testSiArgentSuffisant(joueur,*niveaubatiment,*typeDeBatiment,buzzer)==1))
+            if((testSiBatimentPresent(liste,x,y,*niveaubatiment)==1)&&(testSiArgentSuffisant(joueur,*niveaubatiment,*typeDeBatiment,0,buzzer)==1))
             {
                 play_sample(newBSound, 200,128, 1000,0);
                 ajouterBatiment(liste,*typeDeBatiment,*niveaubatiment,joueur,x,y);
@@ -197,7 +197,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     }
     else if(*condition == 6)
     {
-        if(*agrandissement<2)
+        if((*agrandissement<2)&&(testSiArgentSuffisant(joueur,0,0,3,buzzer)))
         {
             *agrandissement+=1;
             ajusterBase(borne,*agrandissement);
@@ -210,7 +210,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     (*i)++;
 }
 
-void ajouterDefense(BITMAP* page,BITMAP *menuD,t_listeEDD *listeEDD,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,SAMPLE *newBSound)
+void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *listeEDD,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,SAMPLE *newBSound,SAMPLE *buzzer)
 {
     int x,y;
     if(*condition==7)
@@ -294,7 +294,7 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_listeEDD *listeEDD,t_listedef *
                 ajusterFondation(&x,&y);
             }
 
-            if(testDefensePresente(listeEDD,x,y,*typeDeBatiment)==1)
+            if((testDefensePresente(listeEDD,x,y,*typeDeBatiment)==1)&&(testSiArgentSuffisant(joueur,0,*typeDeBatiment,1,buzzer)==1))
             {
                 play_sample(newBSound, 200,128, 1000,0);
                 nouvelleDefense(listeEDD,listedef,x,y,*typeDeBatiment);

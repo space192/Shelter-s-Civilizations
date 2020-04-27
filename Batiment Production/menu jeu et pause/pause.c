@@ -70,9 +70,9 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
     }
 }
 
-void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice)
+void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusique,int *musique,int voice,char listeMusique[6][100])
 {
-    int x,y;
+    //int x,y;
     if(*pauseActive ==0)
     {
         draw_sprite(page,pause[0],0,0);
@@ -90,6 +90,8 @@ void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusi
         draw_sprite(page,pause[2],400,350);
         rectfill(page,584,461,584+((*volumeMusique)/2),461+10,makecol(255,255,255));
         rectfill(page,584+((*volumeMusique)/2),457,584+((*volumeMusique)/2)+15,457+18,makecol(180,180,180));
+
+        textprintf_ex(page,font,610,428,makecol(255,255,255),-1,"%s",listeMusique[*musique]);
     }
 
     if((mouse_b & 1)&&(mouse_y >=0)&&(mouse_y <=60)&&(mouse_x >=0)&&(mouse_x <=60))

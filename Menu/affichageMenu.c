@@ -233,7 +233,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
         {
             if(*compteur >=20)
             {
-                jeu();
+                jeu(0);
                 rest(100);
                 *scene = 1;
                 *compteur = 0;

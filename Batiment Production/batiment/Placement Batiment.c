@@ -1,91 +1,165 @@
 #include "../../prototypes.h"
 
 
-int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,SAMPLE *buzzer)
+int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,SAMPLE *buzzer)
 {
     int resultat = 0;
-    if(typeDeBatiment==1)
-    {
-        if(niveauBatiment==0)
-        {
-            if(joueur->or>=100)
-            {
-                resultat=1;
-                joueur->or-=100;
-            }
 
-        }
-        else if(niveauBatiment==1)
-        {
-            if(joueur->or>=200)
-            {
-                resultat=1;
-                joueur->or-=200;
-            }
-        }
-        else if(niveauBatiment==2)
-        {
-            if(joueur->or>=300)
-            {
-                resultat=1;
-                joueur->or-=300;
-            }
-        }
-    }
-    else if(typeDeBatiment==2)
+    if(typeDeTest==0)
     {
-        if(niveauBatiment==0)
+        if(typeDeBatiment==1)
         {
-            if(joueur->or>=70)
+            if(niveauBatiment==0)
             {
-                resultat=1;
-                joueur->or-=70;
+                if(joueur->or>=100)
+                {
+                    resultat=1;
+                    joueur->or-=100;
+                }
+
+            }
+            else if(niveauBatiment==1)
+            {
+                if(joueur->or>=200)
+                {
+                    resultat=1;
+                    joueur->or-=200;
+                }
+            }
+            else if(niveauBatiment==2)
+            {
+                if(joueur->or>=300)
+                {
+                    resultat=1;
+                    joueur->or-=300;
+                }
             }
         }
-        else if(niveauBatiment==1)
+        else if(typeDeBatiment==2)
         {
-            if(joueur->or>=140)
+            if(niveauBatiment==0)
             {
-                resultat=1;
-                joueur->or-=140;
+                if(joueur->or>=70)
+                {
+                    resultat=1;
+                    joueur->or-=70;
+                }
+            }
+            else if(niveauBatiment==1)
+            {
+                if(joueur->or>=140)
+                {
+                    resultat=1;
+                    joueur->or-=140;
+                }
+            }
+            else if(niveauBatiment==2)
+            {
+                if(joueur->or>=210)
+                {
+                    resultat=1;
+                    joueur->or-=210;
+                }
             }
         }
-        else if(niveauBatiment==2)
+        else if(typeDeBatiment==3)
         {
-            if(joueur->or>=210)
+            if(niveauBatiment==0)
             {
-                resultat=1;
-                joueur->or-=210;
+                if(joueur->or>=80)
+                {
+                    resultat=1;
+                    joueur->or-=80;
+                }
+            }
+            else if(niveauBatiment==1)
+            {
+                if(joueur->or>=160)
+                {
+                    resultat=1;
+                    joueur->or-=160;
+                }
+            }
+            else if(niveauBatiment==2)
+            {
+                if(joueur->or>=240)
+                {
+                    resultat=1;
+                    joueur->or-=240;
+                }
             }
         }
     }
-    else if(typeDeBatiment==3)
+
+    if(typeDeTest==1)
     {
-        if(niveauBatiment==0)
+        if(typeDeBatiment==1)
         {
-            if(joueur->or>=80)
-            {
-                resultat=1;
-                joueur->or-=80;
-            }
+            if(joueur->metal>=70)
+                {
+                    resultat=1;
+                    joueur->metal-=70;
+                }
         }
-        else if(niveauBatiment==1)
+        else if(typeDeBatiment==2)
         {
-            if(joueur->or>=160)
-            {
-                resultat=1;
-                joueur->or-=160;
-            }
+            if(joueur->metal>=80)
+                {
+                    resultat=1;
+                    joueur->metal-=80;
+                }
         }
-        else if(niveauBatiment==2)
+        else if(typeDeBatiment==3)
         {
-            if(joueur->or>=240)
-            {
-                resultat=1;
-                joueur->or-=240;
-            }
+            if(joueur->metal>=90)
+                {
+                    resultat=1;
+                    joueur->metal-=90;
+                }
         }
+        else if(typeDeBatiment==4)
+        {
+            if(joueur->metal>=140)
+                {
+                    resultat=1;
+                    joueur->metal-=140;
+                }
+        }
+        else if(typeDeBatiment==5)
+        {
+            if(joueur->metal>=160)
+                {
+                    resultat=1;
+                    joueur->metal-=160;
+                }
+        }
+        else if(typeDeBatiment==6)
+        {
+            if(joueur->metal>=180)
+                {
+                    resultat=1;
+                    joueur->metal-=180;
+                }
+        }
+
     }
+    if(typeDeTest==2)
+    {
+        if(joueur->pierre>=50)
+            {
+                    resultat=1;
+                    joueur->pierre-=50;
+            }
+    }
+    if(typeDeTest==3)
+    {
+        if(joueur->pierre>=300)
+            {
+                    resultat=1;
+                    joueur->pierre-=300;
+            }
+    }
+
     if(resultat==0)
     {
         play_sample(buzzer, 200,128, 1000,0);

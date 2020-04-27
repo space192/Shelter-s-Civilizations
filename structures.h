@@ -45,6 +45,7 @@ struct MAILLONEDD
     int afficherFondation;
     int x;
     int y;
+    int numeroEDD;
     t_maillonEDD *suivant;
 };
 

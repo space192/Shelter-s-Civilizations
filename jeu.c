@@ -1,6 +1,6 @@
 #include "prototypes.h"
 
-void jeu()
+void jeu(int sauvegarde)
 {
     int compteur = 0;
     int compteur2 = 0;
@@ -15,6 +15,9 @@ void jeu()
     int xp;
     int yp;
     int pauseActive= 0;
+    int numeroEDD=8;
+
+
     float angleR= 0;
     float couleurR = 0;
     char listeMusique[6][100]={"son/musique/sentient.wav",
@@ -23,6 +26,14 @@ void jeu()
     "son/musique/solar-intervention.wav",
     "son/musique/the-oil-industry.wav",
     "son/musique/the-search-for-iron.wav"
+    };
+
+    char listeMusique2[6][100]={"sentient",
+    "first-light.wav",
+    "gathering-horizon",
+    "solar-intervention",
+    "the-oil-industry",
+    "the-search-for-iron"
     };
 
     t_batimentP batimentP;
@@ -96,7 +107,7 @@ void jeu()
     SAMPLE *sample1=load_wav(listeMusique[0]);
     voice = allocate_voice(sample1);
 
-    SAMPLE *sample2;
+    SAMPLE *sample2 = NULL;
 
     voice_start(voice);
     voice_set_volume(voice,50);
@@ -133,8 +144,8 @@ void jeu()
     initAncre(horde);
 
     joueur1.or=200;
-    joueur1.pierre=0;
-    joueur1.metal=0;
+    joueur1.pierre=200;
+    joueur1.metal=200;
     ajusterBase(&borne, agrandissement);
     while (!key[KEY_ESC])
     {
@@ -153,15 +164,15 @@ void jeu()
         afficherLayoutMenu(page,layoutMenu,miniMap,deplAffX,deplAffY,joueur1);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound);
-        ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY);
+        ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,buzzer);
 
-        ajouterDefense(page,menuD,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound);
+        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound,buzzer);
         dessinerMechant(horde, page, deplAffX, deplAffY, Seq);
         if(listedef->premier!=NULL)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
         }
-        gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice);
+        gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }

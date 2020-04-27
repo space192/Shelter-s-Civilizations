@@ -90,42 +90,51 @@ t_listeEDD *InitialisationEDD()
     maillon->x=x;
     maillon->y=y;
     maillon->afficherFondation=1;
-    maillon->emplacementDisponible=1;
+    maillon->emplacementDisponible=0;
 
     maillon2->x=x+60;
     maillon2->y=y;
     maillon2->afficherFondation=0;
-    maillon2->emplacementDisponible=1;
+    maillon2->emplacementDisponible=0;
 
     maillon3->x=x;
     maillon3->y=y+60;
     maillon3->afficherFondation=0;
-    maillon3->emplacementDisponible=1;
+    maillon3->emplacementDisponible=0;
 
     maillon4->x=x+60;
     maillon4->y=y+60;
     maillon4->afficherFondation=0;
-    maillon4->emplacementDisponible=1;
+    maillon4->emplacementDisponible=0;
 
     maillon5->x=x;
     maillon5->y=y+120;
     maillon5->afficherFondation=1;
-    maillon5->emplacementDisponible=1;
+    maillon5->emplacementDisponible=0;
 
     maillon6->x=x+60;
     maillon6->y=y+120;
     maillon6->afficherFondation=0;
-    maillon6->emplacementDisponible=1;
+    maillon6->emplacementDisponible=0;
 
     maillon7->x=x;
     maillon7->y=y+180;
     maillon7->afficherFondation=0;
-    maillon7->emplacementDisponible=1;
+    maillon7->emplacementDisponible=0;
 
     maillon8->x=x+60;
     maillon8->y=y+180;
     maillon8->afficherFondation=0;
-    maillon8->emplacementDisponible=1;
+    maillon8->emplacementDisponible=0;
+
+    maillon->numeroEDD=1;
+    maillon2->numeroEDD=2;
+    maillon3->numeroEDD=3;
+    maillon4->numeroEDD=4;
+    maillon5->numeroEDD=5;
+    maillon6->numeroEDD=6;
+    maillon7->numeroEDD=7;
+    maillon8->numeroEDD=8;
 
     maillon8->suivant=NULL;
     maillon7->suivant=maillon8;

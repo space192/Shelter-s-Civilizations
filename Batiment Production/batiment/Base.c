@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY)
+void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,SAMPLE *buzzer)
 {
     t_maillonBR *actuel=(t_maillonBR*) malloc(sizeof(t_maillonBR));
 
@@ -16,7 +16,11 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
             y = mouse_y+deplAffY;
             ajusterFondation(&x,&y);
 
-            nouvelleFondation(liste,x,y);
+            if(testSiArgentSuffisant(joueur,0,0,2,buzzer)==1)
+            {
+                nouvelleFondation(liste,x,y,numeroEDD);
+            }
+
 
             *condition = 1;
             *i=0;
@@ -84,7 +88,7 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
     free(actuel);
 }
 
-void nouvelleFondation(t_listeEDD *liste,int x, int y)
+void nouvelleFondation(t_listeEDD *liste,int x, int y,int *numeroEDD)
 {
     t_maillonEDD *maillon=(t_maillonEDD*) malloc(sizeof(t_maillonEDD));
     t_maillonEDD *maillon2=(t_maillonEDD*) malloc(sizeof(t_maillonEDD));
@@ -97,25 +101,40 @@ void nouvelleFondation(t_listeEDD *liste,int x, int y)
         exit(EXIT_FAILURE);
     }
 
+    (*numeroEDD)++;
+
     maillon->x=x;
     maillon->y=y;
     maillon->afficherFondation=1;
     maillon->emplacementDisponible=1;
+    maillon->numeroEDD=(*numeroEDD);
+
+    (*numeroEDD)++;
+
 
     maillon2->x=x+60;
     maillon2->y=y;
     maillon2->afficherFondation=0;
     maillon2->emplacementDisponible=1;
+    maillon2->numeroEDD=(*numeroEDD);
+
+    (*numeroEDD)++;
 
     maillon3->x=x;
     maillon3->y=y+60;
     maillon3->afficherFondation=0;
     maillon3->emplacementDisponible=1;
+    maillon3->numeroEDD=(*numeroEDD);
+
+    (*numeroEDD)++;
 
     maillon4->x=x+60;
     maillon4->y=y+60;
     maillon4->afficherFondation=0;
     maillon4->emplacementDisponible=1;
+    maillon4->numeroEDD=(*numeroEDD);
+
+
 
     maillon4->suivant=liste->premier;
     maillon3->suivant=maillon4;
