@@ -1,5 +1,72 @@
 #include "../prototypes.h"
-void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, t_sequence lesSeq[NB_SEQ])
+
+void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, BITMAP* lesSeq[NB_SEQM])
+{
+    t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
+    BITMAP* temp1 = create_bitmap(54, 42);
+    BITMAP* temp2 = create_bitmap(54, 47);
+    BITMAP* temp3 = create_bitmap(48, 68);
+
+    elemA = horde->premier;
+
+    while(elemA != NULL)
+    {
+
+        imageAfficheMechant(elemA, lesSeq);
+        //printf("TEST 2 : type %d, imgx %d, imgy %d\n", elemA->type, elemA->imgX, elemA->imgY);
+
+        if(elemA->type == 0)
+        {
+            if(elemA->depx == 0)
+            {
+            stretch_blit(lesSeq[elemA->type], temp1, 0, 632, 202, 158, 0, 0, 54, 42);
+            masked_blit(temp1, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp1->w, temp1->h);
+             }
+            else
+            {
+            stretch_blit(lesSeq[elemA->type], temp1, elemA->imgX, elemA->imgY, 202, 158, 0, 0, 54, 42);
+            masked_blit(temp1, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp1->w, temp1->h);
+            }
+    }
+
+        else if (elemA->type == 1)
+        {
+            if(elemA->depx == 0)
+            {
+            stretch_blit(lesSeq[elemA->type], temp2, 0, 880, 248, 220, 0, 0, 54, 47);
+            masked_blit(temp2, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp2->w, temp2->h);
+             }
+            else
+            {
+            stretch_blit(lesSeq[elemA->type], temp2, elemA->imgX, elemA->imgY, 248, 220, 0, 0, 54, 47);
+            masked_blit(temp2, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp2->w, temp2->h);
+            }
+        }
+
+        else if (elemA->type == 2)
+        {
+            if(elemA->depx == 0)
+            {
+            blit(lesSeq[elemA->type], temp3, 48*7, 136, 0, 0, 48, 68);
+            masked_blit(temp3, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp3->w, temp3->h);
+             }
+            else
+            {
+            blit(lesSeq[elemA->type], temp3, elemA->imgX, elemA->imgY, 0, 0, 48, 68);
+            masked_blit(temp3, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp3->w, temp3->h);
+            }
+        }
+
+        //masked_blit(temp, buffer, 0, 0, elemA->x - screenx, elemA->y - screeny, temp->w, temp->h);
+
+        //rectfill(buffer, elemA->x - screenx, elemA->y - screeny, elemA->x + elemA->tx - screenx, elemA->y + elemA->ty - screeny, makecol(255,0,0));
+
+        elemA = elemA->suivant;
+    }
+}
+
+/*
+void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, BITMAP* lesSeq[NB_SEQM])
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
 
@@ -35,6 +102,7 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
         elemA = elemA->suivant;
     }
 }
+*/
 
 
 void positionEcran(int* screenx, int* screeny, BITMAP* decor)

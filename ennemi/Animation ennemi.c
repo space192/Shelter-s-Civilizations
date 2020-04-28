@@ -1,5 +1,95 @@
 #include "../prototypes.h"
 
+
+void initSeqM(BITMAP* tableauSeq[NB_SEQM])
+{
+    int i = 0;
+    char nomFichier[20];
+
+    for (i = 0; i<NB_SEQM; i++)
+    {
+//        sprintf(nomFichier,"image/ennemi/Ennemi %d.bmp", i+1);
+          sprintf(nomFichier,"Ennemi %d.bmp", i+1);
+
+//        printf("nom fichier : %s\n", nomFichier);
+        tableauSeq[i] = load_bitmap(nomFichier, NULL);
+        if (!tableauSeq[i])
+        {
+            allegro_message("pas pu trouver %s", nomFichier);
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
+{
+    int imgx = 0, imgy = 0, imgCourrante = 0;
+    BITMAP* imgDecoup = NULL;
+
+    elemA->cmptImg++; //on incrémente le compteur d'img
+    if(elemA->cmptImg >= elemA->tmpImg)
+    {
+        elemA->imgA++; //si le compteur a atteint le nombre demandé passe à l'img suivante dans la séquence
+
+        if(((elemA->type == 3)&&(elemA->imgA >= 30))||((elemA->type <3)&&(elemA->imgA >= 16)))
+            elemA->imgA = 0;
+    }
+
+    //printf("mechant%d type%d imgA%d  imgx %d  imgy%d\n", elemA->nbE, elemA->type, elemA->imgA, elemA->imgX, elemA->imgY);
+
+    imgCourrante = elemA->imgA;
+
+    if(elemA->type == 2)
+    {
+        if(imgCourrante >= 30)
+            imgCourrante = 0;
+
+        imgx = imgCourrante*48;
+        imgy = elemA->angle*68;
+    }
+    else if(elemA->type == 1)
+    {
+        if(imgCourrante >= 8) //si l'image courante est supérieure à 8, il faut aller a la ligne en dessous
+        {
+            imgCourrante = imgCourrante - 8;
+            imgy = 1;
+        }
+
+        if(imgCourrante >= 16)
+            imgCourrante = 0;
+
+        imgx = imgCourrante*248;
+        imgy = (imgy + 2*elemA->angle)*220;
+    }
+    else if(elemA->type == 0)
+    {
+        if(imgCourrante >= 8) //si l'image courante est supérieure à 8, il faut aller a la ligne en dessous
+        {
+            imgCourrante = imgCourrante - 8;
+            imgy = 1;
+        }
+
+        if(imgCourrante >= 16)
+            imgCourrante = 0;
+
+        imgx = imgCourrante*202;
+        imgy = (imgy + 2*elemA->angle)*158;
+    }
+
+    elemA->imgX = imgx;
+    elemA->imgY = imgy;
+
+    /*
+    if(elemA->type == 1)
+        stretch_blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 202, 158, 0, 0, 54, 42);
+    else if (elemA->type == 2)
+        stretch_blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 202, 158, 0, 0, 54, 47);
+    else if (elemA->type == 3)
+        blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 0, 0, 48, 68);
+    */
+}
+
+/*
 void chargerSequence(t_sequence *sqc)
 {
     int i = 0, ix = 0, iy = 0;
@@ -35,7 +125,7 @@ void chargerSequence(t_sequence *sqc)
     destroy_bitmap(annim); //on libère l'espace memoire de la bitmap
 }
 
-void initSeq(t_sequence tableauSeq[NB_SEQ])
+void initSeqM(t_sequence tableauSeq[NB_SEQ])
 {
     int i = 0;
     for (i = 0; i<NB_SEQ; i++)
@@ -44,3 +134,4 @@ void initSeq(t_sequence tableauSeq[NB_SEQ])
         chargerSequence(&tableauSeq[i]); //on charge toutes les séquences 1 par 1
     }
 }
+*/

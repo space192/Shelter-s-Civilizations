@@ -75,9 +75,9 @@ int testChemin(int x, int y) //test que les mechant ne sortent pas du chemin, ta
 {
     int test = 0;
 
-    if((x < 800) && ((y < 1720 - 30) || (y > 1810 - 30)))
+    if((x < 800) && ((y < 1600) || (y > 1900)))
         test = 1;
-    if(x <= 659)
+    if(x <= 444)
         test = 2;
 
     return test;

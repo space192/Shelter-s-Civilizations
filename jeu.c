@@ -126,18 +126,8 @@ void jeu(int sauvegarde)
     int conditionMusique =0;
 
 
-    t_sequence Seq[NB_SEQ] =
-    {
-        //Nom Fichier       , nbImg, tx, ty, nbCol
-        {"image/ennemi/Ennemi 1 descend.bmp", 16, 80, 65, 8},
-        {"image/ennemi/Ennemi 1 descend beaucoup.bmp", 16, 80, 65, 8},
-        {"image/ennemi/Ennemi 1 avance.bmp", 16, 80, 63, 8},
-        {"image/ennemi/Ennemi 1 monte.bmp", 16, 80, 65, 8},
-        {"image/ennemi/Ennemi 2 descend.bmp", 16, 80, 74, 8},
-        {"image/ennemi/Ennemi 2 descend beaucoup.bmp", 16, 80, 73, 8},
-        {"image/ennemi/Ennemi 2 avance.bmp", 16, 80, 72, 8},
-        {"image/ennemi/Ennemi 2 monte.bmp", 16, 80, 67, 8}
-    };
+    BITMAP* SeqM[NB_SEQM];
+
 
     bullet = load_wav("son/tir.wav");
     t_joueur joueur1;
@@ -163,7 +153,7 @@ void jeu(int sauvegarde)
     {
         recupererDefense(listedef, sauvegarde);
     }
-    //initSeq(Seq);
+    initSeqM(SeqM);
     initAncre(horde);
 
     joueur1.or=200;
@@ -176,13 +166,17 @@ void jeu(int sauvegarde)
 
         clear_bitmap(page);
         clear_bitmap(place);
+
+        //génétation des ennemis
         creer_horde(horde, NB_MECHANT);
-        calculerPosition(horde, chemin, place, angle);
+
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
         afficherBase(page,fond,base,fondation,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
         afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
         if(pauseActive==0)
         {
+            //calcule des positions des ennemis
+            calculerPosition(horde, chemin, place, angle);
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
@@ -190,9 +184,10 @@ void jeu(int sauvegarde)
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound,&PDVMuraille);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,buzzer);
-
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound,buzzer);
-        dessinerMechant(horde, page, deplAffX, deplAffY, Seq);
+        //affichage des ennemis
+        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
+
         if(listedef->premier!=NULL)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
@@ -200,6 +195,9 @@ void jeu(int sauvegarde)
 
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
+
+        textprintf(page, font, 10, 10, makecol(255, 255, 255), "x: %d; y: %d", mouse_x, mouse_y);
+        textprintf(page, font, 10, 20, makecol(255, 255, 255), "xs: %d; ys: %d", deplAffX + mouse_x, deplAffY + mouse_y);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }

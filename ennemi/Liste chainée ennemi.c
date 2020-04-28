@@ -24,7 +24,7 @@ void ajouterEnnemi(t_listeMechant* ancre)
     }
 
     actuel = ancre->premier; //si ancre n'est pas NULL, alors on peut continuer le programme
-    nouveau = creerEnnemis((rand()%2), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
+    nouveau = creerEnnemis((rand()%3), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
 
     while(actuel->suivant != NULL) //on teste tant que l'adresse du maillon suivant n'est pas nulle est donc qu'on est pas arrivee a la fin de la liste
         actuel = actuel->suivant;  //On avance dans la liste en passant à l'élément suivant
@@ -97,6 +97,7 @@ t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb)
     nouveau->y = y - nouveau->ty/2;
     nouveau->type = type;
     nouveau->numero = nb;
+    nouveau->centre = nouveau->tx/2;
 
     nouveau->cmptDx = 0;
     nouveau->cmptDy = 0;
@@ -107,6 +108,7 @@ t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb)
     nouveau->tmpImg = 5;
     nouveau->imgA = 0;
     nouveau->angle = 2;
+
 
     return nouveau;
 }

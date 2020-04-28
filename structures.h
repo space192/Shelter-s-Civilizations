@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <allegro.h>
 #include <math.h>
+#include <string.h>
+
 typedef struct Joueur
 {
     int or;
@@ -111,17 +113,23 @@ struct ennemi
     int x, y;
     int depx, depy;
     int tx, ty;
-    int POL;
+    int POL; //point de vie
     int centre;
     int numero;
-    int type;
+    int type; //c'est le type de l'ennemi
+
     int cmptDx, tmpDx;
     int cmptDy, tmpDy;
-    int imgA;
-    int cmptImg, tmpImg;
+
+    int imgA; //c'est l'image actuelle dans la séquence
+    int imgX, imgY;
+    int cmptImg, tmpImg; //c'est le compteur pour gérer la vitesse de l'animation
+
     int angle;
+
     t_ennemi *suivant;
 };
+
 typedef struct listeMechant
 {
     int nbElement;
@@ -137,22 +145,13 @@ typedef struct Bouton
     int ty;
 }t_bouton;
 
-typedef struct sequence
-{
-    char* nomFichier;
-    int nbImg;
-    int tx, ty;
-    int nbCol;
-    BITMAP** img;
+#define NB_SEQM 3
 
-} t_sequence;
-
-#define NB_SEQ 8
-
-#define NB_MECHANT 10
+#define NB_MECHANT 100
 #define VITESSE 2
-#define ESP_X 10
-#define ESP_Y 10
+#define ESP_X 30
+#define ESP_Y 30
+
 #endif // STRUCTURES_H_INCLUDED
 
 
