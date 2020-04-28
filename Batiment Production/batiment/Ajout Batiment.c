@@ -1,6 +1,6 @@
 #include "../../prototypes.h"
 
-void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,SAMPLE *buzzer,SAMPLE *newBSound,SAMPLE *selectSound,int *PDV)
+void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4])
 {
     int x;
     int y;
@@ -8,7 +8,8 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
 
     if((mouse_b & 1)&&(*condition==1)&&(*i>=300)&&(mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=712))
     {
-        play_sample(selectSound, 200,128, 1000,0);
+        //play_sample(selectSound, 200,128, 1000,0);
+        voice_start(voice[0]);
     }
 
     if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=150))&&(*condition==1))
@@ -140,9 +141,10 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,*niveaubatiment);
 
-            if((testSiBatimentPresent(liste,x,y,*niveaubatiment)==1)&&(testSiArgentSuffisant(joueur,*niveaubatiment,*typeDeBatiment,0,buzzer)==1))
+            if((testSiBatimentPresent(liste,x,y,*niveaubatiment)==1)&&(testSiArgentSuffisant(joueur,*niveaubatiment,*typeDeBatiment,0,voice)==1))
             {
-                play_sample(newBSound, 200,128, 1000,0);
+                //play_sample(newBSound, 200,128, 1000,0);
+                voice_start(voice[1]);
                 ajouterBatiment(liste,*typeDeBatiment,*niveaubatiment,joueur,x,y);
             }
 
@@ -197,7 +199,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     }
     else if(*condition == 6)
     {
-        if((*agrandissement<2)&&(testSiArgentSuffisant(joueur,0,0,3,buzzer)))
+        if((*agrandissement<2)&&(testSiArgentSuffisant(joueur,0,0,3,voice)))
         {
             *agrandissement+=1;
             ajusterBase(borne,*agrandissement,PDV);
@@ -210,7 +212,7 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     (*i)++;
 }
 
-void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *listeEDD,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,SAMPLE *newBSound,SAMPLE *buzzer)
+void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *listeEDD,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,int voice[4])
 {
     int x,y;
     if(*condition==7)
@@ -294,9 +296,10 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
                 ajusterFondation(&x,&y);
             }
 
-            if((testDefensePresente(listeEDD,x,y,*typeDeBatiment)==1)&&(testSiArgentSuffisant(joueur,0,*typeDeBatiment,1,buzzer)==1))
+            if((testDefensePresente(listeEDD,x,y,*typeDeBatiment)==1)&&(testSiArgentSuffisant(joueur,0,*typeDeBatiment,1,voice)==1))
             {
-                play_sample(newBSound, 200,128, 1000,0);
+                //play_sample(newBSound, 200,128, 1000,0);
+                voice_start(voice[1]);
                 nouvelleDefense(listeEDD,listedef,x,y,*typeDeBatiment);
 
             }

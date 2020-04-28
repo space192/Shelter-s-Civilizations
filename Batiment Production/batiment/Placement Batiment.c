@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,SAMPLE *buzzer)
+int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4])
 {
     int resultat = 0;
 
@@ -162,7 +162,8 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
 
     if(resultat==0)
     {
-        play_sample(buzzer, 200,128, 1000,0);
+        //play_sample(buzzer, 200,128, 1000,0);
+        voice_start(voice[2]);
     }
     return resultat;
 }

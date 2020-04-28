@@ -108,7 +108,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     SAMPLE *selectSound = load_wav("son/select.wav");
     SAMPLE *newBSound =load_wav("son/put.wav");
     SAMPLE *buzzer = load_wav("son/buzzer.wav");
-    SAMPLE *bullet;
+    SAMPLE *bullet = load_wav("son/tir.wav");;
+
+    int voiceB[4];
+    voiceB[0]=allocate_voice(selectSound);
+    voiceB[1]=allocate_voice(newBSound);
+    voiceB[2]=allocate_voice(buzzer);
+    voiceB[3]=allocate_voice(bullet);
+
 
     int voice;
     SAMPLE *sample1=load_wav(listeMusique[0]);
@@ -128,7 +135,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     BITMAP* SeqM[NB_SEQM];
 
 
-    bullet = load_wav("son/tir.wav");
     t_joueur joueur1;
     t_borne borne;
     t_listeBR *listeRessource = NULL;
@@ -181,15 +187,15 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         }
         afficherLayoutMenu(page,layoutMenu,layoutMenu2,miniMap,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
-        construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,buzzer,newBSound,selectSound,&PDVMuraille);
-        ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,buzzer);
-        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,newBSound,buzzer);
+        construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
+        ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
+        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
         //affichage des ennemis
         dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
 
         if(listedef->premier!=NULL)
         {
-            gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
+            gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
         }
 
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);

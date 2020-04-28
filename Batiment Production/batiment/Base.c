@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,SAMPLE *buzzer)
+void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4])
 {
     t_maillonBR *actuel;
 
@@ -16,7 +16,7 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
             y = mouse_y+deplAffY;
             ajusterFondation(&x,&y);
 
-            if(testSiArgentSuffisant(joueur,0,0,2,buzzer)==1)
+            if(testSiArgentSuffisant(joueur,0,0,2,voice)==1)
             {
                 nouvelleFondation(liste,x,y,numeroEDD);
             }

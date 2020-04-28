@@ -40,7 +40,7 @@ int testBalle(t_defense defense, t_balle balle)
     return verif;
 }
 
-void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4], SAMPLE *son,int deplAffX, int deplAffY)
+void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4])
 {
     t_defense *actuelDef = listedef->premier;
     t_ennemi *actuelMec = listeMechant->premier;
@@ -80,6 +80,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                 ajoutBalle(actuelDef->liste);
                 actuelDef->valeurCanon = 0;
                 //play_sample(son, 15,128, 1000, 0);
+                voice_start(voice[3]);
             }
             else
             {
