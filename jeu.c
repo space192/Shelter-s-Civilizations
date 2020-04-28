@@ -18,6 +18,7 @@ void jeu(int sauvegarde)
     int numeroEDD=8;
     int PDVMuraille;
     int jeuActif=1;
+    int tutoA=1;
 
 
     float angleR= 0;
@@ -160,14 +161,8 @@ void jeu(int sauvegarde)
     ajusterBase(&borne, agrandissement,&PDVMuraille);
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
-        if(key[KEY_UP])
-        {
-            PDVMuraille--;
-        }
-        if(PDVMuraille==0)
-        {
-            jeuActif = 0;
-        }
+
+
         clear_bitmap(page);
         clear_bitmap(place);
         creer_horde(horde, NB_MECHANT);
@@ -191,6 +186,8 @@ void jeu(int sauvegarde)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,bullet,deplAffX,deplAffY);
         }
+
+        tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);

@@ -9,6 +9,8 @@ void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusiq
 void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place);
 void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet);
 
+void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueur,t_listeEDD *liste2,t_listedef *liste3);
+
 t_listeBR *InitialisationBR(BITMAP* batiments[3]);
 t_listeEDD *InitialisationEDD();
 void incrementerTic(t_listeBR* liste,BITMAP* page, float *angle,float *couleurR,int deplAffX,int deplAffY);

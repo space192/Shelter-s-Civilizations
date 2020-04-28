@@ -52,6 +52,9 @@
 		<Unit filename="Batiment Production/menu jeu et pause/pause.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Batiment Production/menu jeu et pause/tutoriel.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Menu/AuxiliereMenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
