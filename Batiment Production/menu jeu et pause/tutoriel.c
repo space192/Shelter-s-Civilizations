@@ -32,7 +32,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
         (*tutoA)=2;
     }
 
-    if((*tutoA)>=2&&(*tutoA)<1000)
+    if((*tutoA)>=2&&(*tutoA)<2000)
     {
         rectfill(page,290,840,960,975,makecol(255,255,255));
         rectfill(page,300,850,950,965,makecol(0,0,0));
@@ -43,7 +43,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
         (*tutoA)++;
     }
 
-    if((*tutoA)==1000)
+    if((*tutoA)==2000)
     {
         rectfill(page,290,840,1060,975,makecol(255,255,255));
         rectfill(page,300,850,1050,965,makecol(0,0,0));
@@ -65,7 +65,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
             (*tutoA)++;
         }
     }
-    if((*tutoA)==1001)
+    if((*tutoA)==2001)
     {
         rectfill(page,290,840,980,975,makecol(255,255,255));
         rectfill(page,300,850,970,965,makecol(0,0,0));
@@ -77,11 +77,11 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
 
         if(joueur.metal>200)
         {
-            (*tutoA)=1002;
+            (*tutoA)=2002;
         }
 
     }
-    if((*tutoA)==1002)
+    if((*tutoA)==2002)
     {
         rectfill(page,290,840,960,975,makecol(255,255,255));
         rectfill(page,300,850,950,965,makecol(0,0,0));
@@ -98,12 +98,12 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
         {
             if(actuel2->numeroEDD==12)
             {
-                (*tutoA)=1003;
+                (*tutoA)=2003;
             }
             actuel2=actuel2->suivant;
         }
     }
-    if((*tutoA)==1003)
+    if((*tutoA)==2003)
     {
         rectfill(page,290,840,980,975,makecol(255,255,255));
         rectfill(page,300,850,970,965,makecol(0,0,0));
@@ -115,10 +115,10 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
 
         if(liste3->premier !=NULL)
         {
-            (*tutoA)=1004;
+            (*tutoA)=2004;
         }
     }
-    if((*tutoA>=1004)&&(*tutoA<2004))
+    if((*tutoA>=2004)&&(*tutoA<4004))
     {
         rectfill(page,290,840,1050,975,makecol(255,255,255));
         rectfill(page,300,850,1040,965,makecol(0,0,0));
@@ -128,7 +128,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
         textprintf_ex(page,font,305,900,makecol(255,255,255),-1,"Le dernier permet d’agrandir  la base, mais attention, cela vous coutera cher !");
         (*tutoA)++;
     }
-    if((*tutoA>=2004)&&(*tutoA<3004))
+    if((*tutoA>=4004)&&(*tutoA<5004))
     {
         rectfill(page,290,840,960,975,makecol(255,255,255));
         rectfill(page,300,850,950,965,makecol(0,0,0));
@@ -137,7 +137,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
         (*tutoA)++;
     }
 
-    if((*tutoA)==3004)
+    if((*tutoA)==5004)
     {
         (*tutoA)=0;
     }
