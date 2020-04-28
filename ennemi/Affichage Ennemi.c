@@ -63,6 +63,11 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
 
         elemA = elemA->suivant;
     }
+    destroy_bitmap(temp1);
+    destroy_bitmap(temp2);
+    destroy_bitmap(temp3);
+    elemA = NULL;
+    free(elemA);
 }
 
 /*

@@ -45,7 +45,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y)
 }
 
 
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde)
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde)
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -135,7 +135,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
 
 
 
-void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -232,7 +232,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
             if(*compteur >=20)
             {
                 dechargementImage(image);
-                jeu(0);
+                jeu(0, *tuto, chaine);
                 chargementImageMenu(image);
                 rest(100);
                 *scene = 1;
@@ -253,7 +253,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur
 }
 
 
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int *sauvegarde)
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde)
 {
     if(*sauvegarde >= 1)
     {
@@ -351,7 +351,7 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compte
                 if(*compteur >=17)
                 {
                     dechargementImage(image);
-                    jeu(4);
+                    jeu(4, 0, NULL);
                     chargementImageMenu(image);
                     rest(100);
                     *scene = 1;

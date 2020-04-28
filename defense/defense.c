@@ -79,7 +79,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
             {
                 ajoutBalle(actuelDef->liste);
                 actuelDef->valeurCanon = 0;
-                play_sample(son, 15,128, 1000, 0);
+                //play_sample(son, 15,128, 1000, 0);
             }
             else
             {
@@ -133,7 +133,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                 {
                     if((actuelBalle->millieuAvantX > actuelMec->x && actuelBalle->millieuAvantY > actuelMec->y)|| (actuelBalle->millieuAvantX < actuelMec->x + actuelMec->tx && actuelBalle->millieuAvantY < actuelMec->y + actuelMec->ty))
                     {
-                        actuelMec->POL -= actuelBalle->degat;
+                        //actuelMec->POL -= actuelBalle->degat;
                     }
                     actuelBalle = actuelBalle->suivant;
                 }

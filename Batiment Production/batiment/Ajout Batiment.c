@@ -440,12 +440,7 @@ void afficherDefenseDisponible(t_listeEDD *listeEDD,BITMAP* page,int *typeDeBati
 void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int typeDeBatiment)
 {
     int i;
-    t_maillonEDD *actuel=(t_maillonEDD*) malloc(sizeof(t_maillonEDD));
-    if(actuel==NULL||listeEDD==NULL)
-    {
-        printf("erreur d'allocation dynamique 14\n");
-        exit(EXIT_FAILURE);
-    }
+    t_maillonEDD *actuel;
     actuel = listeEDD->premier;
 
     while(actuel!=NULL)
@@ -475,6 +470,8 @@ void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int 
             actuel=actuel->suivant;
         }
     }
+    actuel = NULL;
+    free(actuel);
 }
 
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne)

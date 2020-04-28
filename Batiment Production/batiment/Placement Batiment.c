@@ -217,6 +217,8 @@ void determinerBatiment(t_listeBR *liste,int *x, int *y,int *niveauBatiment)
             actuel=actuel->suivant;
         }
     }
+    actuel = NULL;
+    free(actuel);
 }
 
 
@@ -233,6 +235,7 @@ void ameliorerBatiment(t_listeBR *liste, int x, int y)
         }
         actuel= actuel->suivant;
     }
+    actuel = NULL;
     free(actuel);
 }
 
@@ -268,6 +271,8 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
         precedent=precedent->suivant;
     }
     }
+    actuel = NULL;
+    precedent = NULL;
     free(actuel);
     free(precedent);
 }
@@ -349,7 +354,7 @@ int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau)
         }
 
     }
-
+    actuel = NULL;
     free(actuel);
 
     return resultat;
@@ -414,6 +419,7 @@ int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment)
 
 
     }
+    actuel = NULL;
     free(actuel);
     return resultat;
 }

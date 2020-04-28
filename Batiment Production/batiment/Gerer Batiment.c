@@ -189,6 +189,7 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
         }
         actuel=actuel->suivant;
     }
+    actuel = NULL;
     free(actuel);
 }
 

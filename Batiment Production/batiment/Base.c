@@ -3,7 +3,7 @@
 
 void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,SAMPLE *buzzer)
 {
-    t_maillonBR *actuel=(t_maillonBR*) malloc(sizeof(t_maillonBR));
+    t_maillonBR *actuel;
 
     int x,y;
     if(*condition==3)
@@ -84,7 +84,7 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
             *condition=1;
         }
     }
-
+    actuel = NULL;
     free(actuel);
 }
 
@@ -224,6 +224,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,t_
             actuel=actuel->suivant;
         }
     }
+    actuel = NULL;
     free(actuel);
 }
 

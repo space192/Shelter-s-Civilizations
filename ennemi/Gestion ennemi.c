@@ -225,4 +225,6 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
         putpixel(place, elemA->x, elemA->y, makecol(255,255,255));
         elemA = elemA->suivant;
     }
+    elemA = NULL;
+    free(elemA);
 }

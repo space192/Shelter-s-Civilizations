@@ -24,7 +24,7 @@ void initSeqM(BITMAP* tableauSeq[NB_SEQM])
 void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
 {
     int imgx = 0, imgy = 0, imgCourrante = 0;
-    BITMAP* imgDecoup = NULL;
+    //BITMAP* imgDecoup = NULL;
 
     elemA->cmptImg++; //on incrémente le compteur d'img
     if(elemA->cmptImg >= elemA->tmpImg)

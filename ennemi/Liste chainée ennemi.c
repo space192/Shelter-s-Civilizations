@@ -31,6 +31,8 @@ void ajouterEnnemi(t_listeMechant* ancre)
 
     nouveau->suivant = NULL;   //On donne comme adresse suivante à cet éléement NULL car c'est le dernier de la liste
     actuel->suivant = nouveau;   //L'ancien dernier element de la liste pointe maintenant sur le nouvel element suivant
+    actuel = NULL;
+    free(actuel);
 }
 
 void creer_horde(t_listeMechant* ancreH, int nbMechant)

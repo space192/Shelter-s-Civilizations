@@ -1,6 +1,6 @@
 #include "prototypes.h"
 
-void jeu(int sauvegarde)
+void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 {
     int compteur = 0;
     int compteur2 = 0;
@@ -18,7 +18,6 @@ void jeu(int sauvegarde)
     int numeroEDD=8;
     int PDVMuraille;
     int jeuActif=1;
-    int tutoA=1;
 
 
     float angleR= 0;
@@ -196,9 +195,6 @@ void jeu(int sauvegarde)
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
-        textprintf(page, font, 10, 10, makecol(255, 255, 255), "x: %d; y: %d", mouse_x, mouse_y);
-        textprintf(page, font, 10, 20, makecol(255, 255, 255), "xs: %d; ys: %d", deplAffX + mouse_x, deplAffY + mouse_y);
-
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
     sauvegarderNiveauUnlock(sauvegarde);
@@ -208,7 +204,7 @@ void jeu(int sauvegarde)
         SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
         SauvegarderDefense(listedef, sauvegarde);
     }
-    libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place);
+    libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);
 }

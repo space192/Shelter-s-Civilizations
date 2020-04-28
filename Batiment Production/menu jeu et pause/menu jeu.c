@@ -59,7 +59,8 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITM
         rectfill(page,1104+(actuel->x/22),actuel->y/21 - 4,1104+2+(actuel->x/22),actuel->y/21 - 2,makecol(255,0,0));
         actuel=actuel->suivant;
     }
-
+    actuel = NULL;
+    free(actuel);
 }
 
 void afficherInfoBatimentBR(BITMAP* page)

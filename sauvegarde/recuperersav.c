@@ -267,5 +267,6 @@ int recupererNiveauUnlock()
         allegro_message("erreur lor du chargement de la sauvegarde");
     }
     fscanf(fichier, "%d", &temp);
+    fclose(fichier);
     return temp;
 }

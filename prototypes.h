@@ -3,10 +3,10 @@
 
 
 #include "structures.h"
-void jeu(int sauvegarde);
+void jeu(int sauvegarde, int tutoA, char *pseudoJoueur);
 void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2);
 void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice,char listeMusique[6][100],int *jeuActif);
-void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place);
+void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[]);
 void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet);
 
 void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueur,t_listeEDD *liste2,t_listedef *liste3);
@@ -61,11 +61,11 @@ void chargementImageetSon(BITMAP *image[4], SAMPLE *son);
 void chargementImageMenu(BITMAP *image[13]);
 void dechargementImage(BITMAP *image[13]);
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom);
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde);
-void NouvellePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic);
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde);
+void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic);
 void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
 void toucheClavier(char *chaine, BITMAP *buffer, int *pos, int *clic);
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[12], int *scene, int *compteur, int *sauvegarde);
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde);
 
 
 ////////////////prototype bilbioMechant.h///////////////////////////////////////
