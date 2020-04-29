@@ -23,7 +23,7 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)
     {
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
-        horde->typeMechant[3] = 0;
+        horde->typeMechant[2] = 0;
 
         horde->nbVague = 5;
     }
@@ -31,7 +31,7 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)
     {
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
-        horde->typeMechant[3] = 1;
+        horde->typeMechant[2] = 1;
 
         horde->nbVague = 5;
     }
@@ -39,14 +39,14 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)
     {
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
-        horde->typeMechant[3] = 2;
+        horde->typeMechant[2] = 2;
 
         horde->nbVague = 5;
     }
 
     horde->vagueM = 0;
     horde->nbFait = 0;
-    horde->nbAfaire = horde->typeMechant[0] + horde->typeMechant[1] + horde->typeMechant[3]; //nombre de mechant à faire
+    horde->nbAfaire = horde->typeMechant[0] + horde->typeMechant[1] + horde->typeMechant[2]; //nombre de mechant à faire
     horde->listeActua = 1; //la liste a ete actualise
 
 }
@@ -132,7 +132,6 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
                 ancreH->cmptG++;
                 if((ancreH->cmptG >= ancreH->tmpG)) //on incremente le compteur pour qu'il ajoute un ennemi a la horde à un certains interval de temps
                 {
-
                     if(ancreH->nbElement == 0)
                     {
                         ajouterPremierEnnemi(ancreH);

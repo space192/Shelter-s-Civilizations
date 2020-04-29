@@ -159,7 +159,7 @@ typedef struct Bouton
 
 #define NB_SEQM 3
 
-#define NB_MECHANT 100
+#define NB_MECHANT 10
 #define NB_MECHANT_MAX 50 //nombre de mechant simultanement sur la map
 
 #define VITESSE 2
