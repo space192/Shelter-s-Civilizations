@@ -113,7 +113,6 @@ struct ennemi
     int x, y;
     int depx, depy;
     int tx, ty;
-    int POL; //point de vie
     int centre;
     int numero;
     int type; //c'est le type de l'ennemi
@@ -124,6 +123,11 @@ struct ennemi
     int imgA; //c'est l'image actuelle dans la séquence
     int imgX, imgY;
     int cmptImg, tmpImg; //c'est le compteur pour gérer la vitesse de l'animation
+
+    int pvM; //point de vie
+
+    int degatsM; //different degat en fonction du type d'ennemi
+    int cmptDeg, tmpDeg; //different
 
     int angle;
 
@@ -137,7 +141,12 @@ typedef struct listeMechant
 
     int nbVague;
     int vagueM; //numero de la vague
+
     int typeMechant[3];
+    int pvM[3];
+    int degatsM[3]; //different degat en fonction du type d'ennemi
+    int tmpDegat[3]; //differentes vitesse d'attaques des ennemis en fonction de leur type
+
     int nbAfaire; //c'est le nombre de mechant qui doivent etre créer dans la vagque
     int nbFait; //C'est le nombre de mechant qui ont été créer
     int vagueFinis; //0 = NON, 1 = OUI

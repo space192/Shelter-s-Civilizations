@@ -17,13 +17,25 @@ void initAncre(t_listeMechant* horde)
     horde->vagueFinis = 0; //on commence avec la vague qui n'est pas finis
 }
 
-void actualiserListeMechant(t_listeMechant* horde, int niveau)
+void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQUE DES MECHANTS EN FONCTION DU NIVEAU
 {
-    if(niveau == 1)
+    if(niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 10;
-        horde->typeMechant[1] = 5;
-        horde->typeMechant[2] = 0;
+        horde->typeMechant[0] = 10; //nombre de petit mechant par vague
+        horde->typeMechant[1] = 5; //nombre de moyen mechant
+        horde->typeMechant[2] = 0; //nombre de boss
+
+        horde->pvM[0] = 20; //point de vie des mechants
+        horde->pvM[1] = 50;
+        horde->pvM[2] = 200;
+
+        horde->degatsM[0] = 5; //degat des mechants
+        horde->degatsM[1] = 10;
+        horde->degatsM[2] = 20;
+
+        horde->tmpDegat[0] = 30; //vitesse t'attaque des mechants
+        horde->tmpDegat[1] = 100;
+        horde->tmpDegat[2] = 200;
 
         horde->nbVague = 5;
     }
@@ -33,6 +45,18 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)
         horde->typeMechant[1] = 5;
         horde->typeMechant[2] = 1;
 
+        horde->pvM[0] = 20;
+        horde->pvM[1] = 50;
+        horde->pvM[2] = 200;
+
+        horde->degatsM[0] = 5;
+        horde->degatsM[1] = 10;
+        horde->degatsM[2] = 20;
+
+        horde->tmpDegat[0] = 30;
+        horde->tmpDegat[1] = 100;
+        horde->tmpDegat[2] = 200;
+
         horde->nbVague = 5;
     }
     else if(niveau == 3)
@@ -40,6 +64,18 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
         horde->typeMechant[2] = 2;
+
+        horde->pvM[0] = 20;
+        horde->pvM[1] = 50;
+        horde->pvM[2] = 200;
+
+        horde->degatsM[0] = 5;
+        horde->degatsM[1] = 10;
+        horde->degatsM[2] = 20;
+
+        horde->tmpDegat[0] = 30;
+        horde->tmpDegat[1] = 100;
+        horde->tmpDegat[2] = 200;
 
         horde->nbVague = 5;
     }
@@ -57,13 +93,13 @@ int typeEnnemiGenerer(int nbMechant[3])
 
     while(generer == 0) //on sort un nombre du tableau avec le nombre de mechant
     {
-    alea = rand()%3;
+        alea = rand()%3;
 
-      if(nbMechant[alea] > 0)
-      {
-          nbMechant[alea]--;
-          generer = 1;
-      }
+        if(nbMechant[alea] > 0)
+        {
+            nbMechant[alea]--;
+            generer = 1;
+        }
     }
     return alea;
 }
@@ -79,7 +115,7 @@ void ajouterPremierEnnemi(t_listeMechant* ancre)
         printf("Donnee impossible à lire ou allocation dynamique non reussie dans le programme ajouterEnnemi");
         exit(EXIT_FAILURE);
     }
-    ancre->premier = creerEnnemis(typeEnnemiGenerer(ancre->typeMechant), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
+    ancre->premier = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
     ancre->premier->suivant = NULL;
 }
 
@@ -96,7 +132,7 @@ void ajouterEnnemi(t_listeMechant* ancre)
     }
 
     actuel = ancre->premier; //si ancre n'est pas NULL, alors on peut continuer le programme
-    nouveau = creerEnnemis(typeEnnemiGenerer(ancre->typeMechant), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
+    nouveau = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
 
     while(actuel->suivant != NULL) //on teste tant que l'adresse du maillon suivant n'est pas nulle est donc qu'on est pas arrivee a la fin de la liste
         actuel = actuel->suivant;  //On avance dans la liste en passant à l'élément suivant
@@ -147,20 +183,19 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
                 }
             }
             else if((ancreH->nbFait == ancreH->nbAfaire) && (ancreH->nbElement == 0)) //si on a fait tous les mechant et qu'il n'en reste plus sur la map, on indique que la vague est finie
-                {
-                    ancreH->vagueFinis = 1;
-                    ancreH->vagueM ++;
+            {
+                ancreH->vagueFinis = 1;
+                ancreH->vagueM ++;
 
-                    if(ancreH->vagueM >= ancreH->nbVague)
-                    {
-                        niveauFINIS = 1;//le niveau est finis
-                        printf("LE NIVEAU EST FINIS MOTHERFUCKER, j'ecris ca pour pas avoir de warning psq on a pas encore fait de quoi passer au niveau suivant %d\n", niveauFINIS);
-                    }
+                if(ancreH->vagueM >= ancreH->nbVague)
+                {
+                    niveauFINIS = 1;//le niveau est finis
+                    printf("LE NIVEAU EST FINIS MOTHERFUCKER, j'ecris ca pour pas avoir de warning psq on a pas encore fait de quoi passer au niveau suivant %d\n", niveauFINIS);
                 }
+            }
         }
     }//fin else if vague pas finie
 }
-
 
 void posAlea(int* x, int* y)
 {
@@ -197,7 +232,7 @@ void posAlea(int* x, int* y)
     *y = (rand()%(yMax-yMin+1)) + yMin;
 }
 
-t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb)
+t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int tmpDx, int tmpDy, int nb)
 {
     t_ennemi *nouveau = malloc(sizeof(t_ennemi));
     int x = 0, y = 0;
@@ -224,6 +259,10 @@ t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb)
     nouveau->imgA = 0;
     nouveau->angle = 2;
 
+    nouveau->pvM = ancre->pvM[type];
+    nouveau->degatsM = ancre->degatsM[type];
+    nouveau->cmptDeg = 0;
+    nouveau->tmpDeg = ancre->tmpDegat[type];
 
     return nouveau;
 }
@@ -255,3 +294,39 @@ void supprimerListe(t_listeMechant* ancre)
         supprimerElementTete(ancre);
     }
 }
+
+void attaquerMur(t_listeMechant* horde, int* pvMur)
+{
+    int degatInfli = 0;
+    t_ennemi* actuel; //On déclare une variable qui permet de parcourir la liste
+
+    if (horde == NULL) //on test que l'allocation dynamique a fonctionnée et que les donnees recues en parametre sont bonnes
+    {
+        printf("Donnee impossible à lire ou allocation dynamique non reussie dans le programme attaquerMur\n");
+        exit(EXIT_FAILURE);
+    }
+    if(horde->premier!=NULL)
+    {
+        actuel = horde->premier; //si horde n'est pas NULL, alors on peut continuer le programme
+
+        while(actuel->suivant != NULL) //on teste tant que l'adresse du maillon suivant n'est pas nulle est donc qu'on est pas arrivee a la fin de la liste
+        {
+            if(actuel->x < 475)
+            {
+                actuel->cmptDeg++;
+                if(actuel->cmptDeg >= actuel->tmpDeg)
+                {
+                    actuel->cmptDeg = 0;
+                    degatInfli = degatInfli + actuel->degatsM;
+                }
+            }
+            actuel = actuel->suivant;  //On avance dans la liste en passant à l'élément suivant
+        }
+    }
+    *pvMur = *pvMur - degatInfli;
+}
+
+
+
+
+

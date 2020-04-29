@@ -197,6 +197,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
         //affichage des ennemis
         dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
+        attaquerMur(horde, &PDVMuraille);
 
         if(listedef->premier!=NULL)
         {

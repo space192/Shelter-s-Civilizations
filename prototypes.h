@@ -83,7 +83,7 @@ void ajouterPremierEnnemi(t_listeMechant* ancre);
 void ajouterEnnemi(t_listeMechant* ancre);
 void creer_horde(t_listeMechant* ancreH, int niveau, int vit);
 void posAlea(int* x, int* y);
-t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb);
+t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int tmpDx, int tmpDy, int nb);
 void supprimerElementTete(t_listeMechant* ancre);
 void supprimerListe(t_listeMechant* ancre);
 
@@ -99,10 +99,13 @@ void etalement(t_ennemi* elem, BITMAP* place);
 void replacementY(t_ennemi *elem);
 void calculeAngle(t_ennemi *mechant, BITMAP* angle);
 void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese);
+void attaquerMur(t_listeMechant* horde, int* pvMur);
+
 
 //gestion affichage des ennemis
 void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, BITMAP* lesSeq[NB_SEQM]);
 void positionEcran(int* screenx, int* screeny, BITMAP* decor);
+
 
 //////////////prototype sauvegarde////////////////////
 
