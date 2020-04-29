@@ -2,13 +2,72 @@
 
 void initAncre(t_listeMechant* horde)
 {
-    horde->premier = (t_ennemi*)malloc(sizeof(t_ennemi));
+    horde->premier = NULL;//(t_ennemi*)malloc(sizeof(t_ennemi));
 
-    horde->nbElement = 1;
-    horde->premier = creerEnnemis((rand()%2), 1, 1, horde->nbElement); //on ajoute un ennemi car il faut au minimum un ennemi
-    horde->premier->suivant = NULL;
-    horde->cmpt = 0;
-    horde->tmp = 20;
+    horde->nbElement = 0; //nb de mechant sur la map
+    //horde->premier = creerEnnemis((rand()%2), 1, 1, horde->nbElement); //on ajoute un ennemi car il faut au minimum un ennemi
+    horde->cmptG = 0;
+    horde->tmpG = 20; //temps entre chaque generation d'ennemis
+    horde->cmptV = 0;
+    horde->tmpV = 200; //temsp entre les vagues
+
+    horde->listeActua = 0;
+
+    horde->nbFait = 0;
+    horde->vagueFinis = 0; //on commence avec la vague qui n'est pas finis
+
+   // horde->premier->suivant = NULL;
+
+}
+
+void actualiserListeMechant(t_listeMechant* horde, int niveau, int nbMechant[3])
+{
+    if(niveau == 1)
+    {
+        nbMechant[0] = 10;
+        nbMechant[1] = 5;
+        nbMechant[3] = 0;
+
+        horde->nbVague = 5;
+    }
+    else if(niveau == 2)
+    {
+        nbMechant[0] = 10;
+        nbMechant[1] = 5;
+        nbMechant[3] = 1;
+
+        horde->nbVague = 5;
+    }
+    else if(niveau == 3)
+    {
+        nbMechant[0] = 10;
+        nbMechant[1] = 5;
+        nbMechant[3] = 2;
+
+        horde->nbVague = 5;
+    }
+
+    horde->vagueM = 0;
+    horde->nbFait = 0;
+    horde->nbAfaire = nbMechant[0] + nbMechant[1] + nbMechant[2]; //nombre de mechant à faire
+
+    horde->listeActua = 1; //la liste a ete actualise
+}
+
+void ajouterPremierEnnemi(t_listeMechant* ancre)
+{
+    t_ennemi* nouveau = (t_ennemi*)malloc(sizeof(t_ennemi)); //On déclare le nouveau maillon au quel on alloue dynamiquement un espace mémoire
+
+    ancre->nbElement = 1;   //On incrémente la taille de la chaine
+
+    if (ancre == NULL || nouveau == NULL) //on test que l'allocation dynamique a fonctionnée et que les donnees recues en parametre sont bonnes
+    {
+        printf("Donnee impossible à lire ou allocation dynamique non reussie dans le programme ajouterEnnemi");
+        exit(EXIT_FAILURE);
+    }
+
+    ancre->premier = creerEnnemis((rand()%3), 1, 1, ancre->nbElement);   //On remplie le nouveau maillon avec ces données /
+    ancre->premier->suivant = NULL;
 }
 
 void ajouterEnnemi(t_listeMechant* ancre)
@@ -31,21 +90,62 @@ void ajouterEnnemi(t_listeMechant* ancre)
 
     nouveau->suivant = NULL;   //On donne comme adresse suivante à cet éléement NULL car c'est le dernier de la liste
     actuel->suivant = nouveau;   //L'ancien dernier element de la liste pointe maintenant sur le nouvel element suivant
-    actuel = NULL;
-    free(actuel);
+    //actuel = NULL;
+    //free(actuel);
 }
 
-void creer_horde(t_listeMechant* ancreH, int nbMechant)
+void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
 {
-    if(ancreH->nbElement < nbMechant) //tant que la horde contient moins d'ennemis que demandé on en ajoute
+    int niveauFINIS = 0;
+
+    int nbMechant[3] = {0};
+
+    if(ancreH->listeActua == 0)
+        actualiserListeMechant(ancreH, niveau, nbMechant);
+
+
+    if(ancreH->vagueFinis == 1) //si la vague est finie
     {
-        ancreH->cmpt++;
-        if((ancreH->cmpt == ancreH->tmp)) //on incremente le compteur pour qu'il ajoute un ennemi a la horde à un certains interval de temps
+        //on compte pour attendre le debut de la prochaine vague
+        ancreH->cmptV++;
+        if(ancreH->cmptV >= ancreH->tmpV)
         {
-            ajouterEnnemi(ancreH); //on ajoute un ennemi
-            ancreH->cmpt = 0; //on remet le compteur à 0
+            ancreH->cmptV = 0; //quand on a finis de compter, on remet le compteur a 0
+            ancreH->vagueFinis = 0; //et la vague suivante peut venir
         }
     }
+    else if(ancreH->vagueFinis == 0) //si la vague n'est pas finis
+    {
+        if(ancreH->nbElement < NB_MECHANT_MAX) //si il n'y a pas trop d'ennemis sur la map
+        {
+            //printf("nb fait : %d, nb a faire : %d\n", ancreH->nbFait, ancreH->nbAfaire);
+
+            if( ancreH->nbFait < ancreH->nbAfaire)//tant que la horde contient moins d'ennemis que demandé pour cette vague, on en ajoute
+            {
+                ancreH->cmptG++;
+                if((ancreH->cmptG >= ancreH->tmpG)) //on incremente le compteur pour qu'il ajoute un ennemi a la horde à un certains interval de temps
+                {
+                    if(ancreH->nbElement == 0)
+                    {
+                        ajouterPremierEnnemi(ancreH);
+                    }
+                    ajouterEnnemi(ancreH); //on ajoute un ennemi
+                    ancreH->cmptG = 0; //on remet le compteur à 0
+                }
+            }
+            else if((ancreH->nbFait == ancreH->nbAfaire) && (ancreH->nbElement == 0)) //si on a fait tous les mechant et qu'il n'en reste plus sur la map, on indique que la vague est finie
+                {
+                    ancreH->vagueFinis = 1;
+                    ancreH->vagueM ++;
+
+                    if(ancreH->vagueM >= ancreH->nbVague)
+                    {
+                        niveauFINIS = 1;//le niveau est finis
+                        printf("LE NIVEAU EST FINIS MOTHERFUCKER, j'ecris ca pour pas avoir de warning psq on a pas encore fait de quoi passer au niveau suivant %d\n", niveauFINIS);
+                    }
+                }
+        }
+    }//fin else if vague pas finie
 }
 
 

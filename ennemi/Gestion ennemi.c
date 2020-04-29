@@ -190,7 +190,7 @@ void calculeAngle(t_ennemi *mechant, BITMAP* angle)
         mechant->angle = mechant->angle;
 }
 
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle)
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse)
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
     elemA = ancreH->premier;

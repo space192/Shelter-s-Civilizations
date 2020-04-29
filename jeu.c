@@ -18,7 +18,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int numeroEDD=8;
     int PDVMuraille;
     int jeuActif=1;
-
+    int niveauJeu = 1;
+    int vitesseJeu = 1;
 
     float angleR= 0;
     float couleurR = 0;
@@ -158,6 +159,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     {
         recupererDefense(listedef, sauvegarde);
     }
+
     initSeqM(SeqM);
     initAncre(horde);
 
@@ -173,18 +175,20 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         clear_bitmap(place);
 
         //génétation des ennemis
-        creer_horde(horde, NB_MECHANT);
+        creer_horde(horde, niveauJeu, vitesseJeu);
 
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
         afficherBase(page,fond,base,fondation,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
         afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
+
         if(pauseActive==0)
         {
             //calcule des positions des ennemis
-            calculerPosition(horde, chemin, place, angle);
+            calculerPosition(horde, chemin, place, angle, vitesseJeu);
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
+
         afficherLayoutMenu(page,layoutMenu,layoutMenu2,miniMap,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);

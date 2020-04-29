@@ -74,14 +74,18 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compte
 void chargerSequence(BITMAP* *sqc);
 void initSeqM(BITMAP* tableauSeq[NB_SEQM]);
 void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM]);
+
 //gérération et suppression des ennemis
 void initAncre(t_listeMechant* horde);
+void actualiserListeMechant(t_listeMechant* horde, int niveau, int nbMechant[3]);
 void ajouterEnnemi(t_listeMechant* ancre);
-void creer_horde(t_listeMechant* ancreH, int nbMechant);
+void creer_horde(t_listeMechant* ancreH, int niveau, int vit);
 void posAlea(int* x, int* y);
 t_ennemi *creerEnnemis(int type, int tmpDx, int tmpDy, int nb);
 void supprimerElementTete(t_listeMechant* ancre);
 void supprimerListe(t_listeMechant* ancre);
+void ajouterPremierEnnemi(t_listeMechant* ancre);
+
 //gestion des déplacement et position des ennemis
 void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin);
 int testFuturePlaceLibre(BITMAP* place, t_ennemi* elem);
@@ -93,7 +97,8 @@ void espacementV(t_ennemi* elem, BITMAP* place);
 void etalement(t_ennemi* elem, BITMAP* place);
 void replacementY(t_ennemi *elem);
 void calculeAngle(t_ennemi *mechant, BITMAP* angle);
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle);
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese);
+
 //gestion affichage des ennemis
 void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, BITMAP* lesSeq[NB_SEQM]);
 void positionEcran(int* screenx, int* screeny, BITMAP* decor);

@@ -132,9 +132,20 @@ struct ennemi
 
 typedef struct listeMechant
 {
-    int nbElement;
-    int cmpt, tmp;
+    int nbElement; //nb de mechant qui sont sur le jeu
+    int cmptG, tmpG; //compteur de generation des mechant
+
+    int nbVague;
+    int vagueM; //numero de la vague
+    int nbAfaire; //c'est le nombre de mechant qui doivent etre créer dans la vagque
+    int nbFait; //C'est le nombre de mechant qui ont été créer
+    int vagueFinis; //0 = NON, 1 = OUI
+    int cmptV, tmpV; //compteur de temps entre les vagues
+
+    int listeActua; //booleen qui permet de savoir si la liste est actualise quand on change de niveau
+
     t_ennemi *premier;
+
 }t_listeMechant;
 
 typedef struct Bouton
@@ -148,6 +159,8 @@ typedef struct Bouton
 #define NB_SEQM 3
 
 #define NB_MECHANT 100
+#define NB_MECHANT_MAX 50 //nombre de mechant simultanement sur la map
+
 #define VITESSE 2
 #define ESP_X 30
 #define ESP_Y 30
