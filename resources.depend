@@ -795,10 +795,10 @@
 1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1588178247 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\prototypes.h
+1588187462 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
-1588176981 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\structures.h
+1588186836 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -844,10 +844,10 @@
 1588176283 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\gestion ennemi.c
 	"../prototypes.h"
 
-1588178929 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+1588187487 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1588177704 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\jeu.c
+1588186243 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
 1588067254 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\main.c

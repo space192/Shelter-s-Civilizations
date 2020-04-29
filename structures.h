@@ -137,6 +137,7 @@ typedef struct listeMechant
 
     int nbVague;
     int vagueM; //numero de la vague
+    int typeMechant[3];
     int nbAfaire; //c'est le nombre de mechant qui doivent etre créer dans la vagque
     int nbFait; //C'est le nombre de mechant qui ont été créer
     int vagueFinis; //0 = NON, 1 = OUI

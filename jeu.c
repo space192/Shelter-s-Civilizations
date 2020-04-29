@@ -20,6 +20,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu = 1;
     int vitesseJeu = 1;
+    //int nbMechant[3] = {0, 0, 0};
 
     float angleR= 0;
     float couleurR = 0;
