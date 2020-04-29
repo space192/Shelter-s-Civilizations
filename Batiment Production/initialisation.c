@@ -150,7 +150,7 @@ t_listeEDD *InitialisationEDD()
 
 }
 
- void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[])
+ void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2])
  {
     int i;
 
@@ -184,6 +184,10 @@ t_listeEDD *InitialisationEDD()
     {
         destroy_bitmap(SeqM[i]);
     }
+    for(i=0; i < 2; i++)
+    {
+        destroy_bitmap(beacon[i]);
+    }
 
 }
 
@@ -199,6 +203,11 @@ void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bul
     destroy_sample(newBSound);
     destroy_sample(buzzer);
     destroy_sample(bullet);
+
+    if((selectSound==NULL)&&(newBSound==NULL)&&(buzzer==NULL)&&(bullet==NULL))
+    {
+        printf("ca a marche");
+    }
 }
 
 void detruireListe(t_listeBR *liste1,t_listedef *liste2, t_listeEDD *liste3,t_listeMechant* liste4)
@@ -233,7 +242,9 @@ void detruireListe(t_listeBR *liste1,t_listedef *liste2, t_listeEDD *liste3,t_li
             t_balle *aSupprimer3 = liste2->premier->liste->premier;
             liste2->premier->liste->premier = liste2->premier->liste->premier->suivant;
             free(aSupprimer3);
+
         }
+        free(liste2->premier->liste);
         t_defense *aSupprimer4 = liste2->premier;
         liste2->premier = liste2->premier->suivant;
         free(aSupprimer4);

@@ -81,64 +81,69 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                 actuelDef->valeurCanon = 0;
                 //play_sample(son, 15,128, 1000, 0);
                 voice_start(voice[3]);
+                voice_set_volume(voice[3],10);
             }
             else
             {
                 actuelDef->valeurCanon++;
             }
-            actuelBalle = actuelDef->liste->premier;
-            while(actuelBalle != NULL)
-            {
-                if(actuelBalle->pass == 0)
-                {
-                    actuelBalle->degat = actuelDef->degat;
-                    actuelBalle->angle = actuelDef->angle;
-                    actuelBalle->x = actuelDef->x;
-                    actuelBalle->y = actuelDef->y;
-                    actuelBalle->pass = 1;
-                    actuelBalle->dx = actuelMec->x-actuelDef->x;
-                    actuelBalle->dy = actuelMec->y-actuelDef->y;
-                }
-                if(testBalle(*actuelDef, *actuelBalle) == 1)
-                {
-                    actuelBalle->x += actuelBalle->dx/20;
-                    actuelBalle->y += actuelBalle->dy/20;
-                    rotate_sprite(buffer, image[3], actuelBalle->x-1-deplAffX, actuelBalle->y-25-deplAffY, itofix(actuelBalle->angle));
-                }
-                else
-                {
-                    if(actuelBalle == actuelDef->liste->premier)
-                    {
-                        temp = actuelDef->liste->premier;
-                        actuelDef->liste->premier = actuelBalle->suivant;
-                        free(temp);
-                    }
-                    else if(actuelBalle != actuelDef->liste->premier)
-                    {
-                        temp = actuelBalle;
-                        precedentBalle->suivant = actuelBalle->suivant;
-                        free(temp);
-                        actuelBalle = precedentBalle;
-                    }
-                }
-                actuelBalle->millieuAvantX = actuelBalle->x + 1;
-                actuelBalle->millieuAvantY = actuelBalle->y + 50;
-                precedentBalle = actuelBalle;
-                actuelBalle = actuelBalle->suivant;
-            }
-            actuelMec = listeMechant->premier;
-            while(actuelMec != NULL)
+
+            if(actuelDef->liste->premier!=NULL)
             {
                 actuelBalle = actuelDef->liste->premier;
                 while(actuelBalle != NULL)
                 {
-                    if((actuelBalle->millieuAvantX > actuelMec->x && actuelBalle->millieuAvantY > actuelMec->y)|| (actuelBalle->millieuAvantX < actuelMec->x + actuelMec->tx && actuelBalle->millieuAvantY < actuelMec->y + actuelMec->ty))
+                    if(actuelBalle->pass == 0)
                     {
-                        //actuelMec->POL -= actuelBalle->degat;
+                        actuelBalle->degat = actuelDef->degat;
+                        actuelBalle->angle = actuelDef->angle;
+                        actuelBalle->x = actuelDef->x;
+                        actuelBalle->y = actuelDef->y;
+                        actuelBalle->pass = 1;
+                        actuelBalle->dx = actuelMec->x-actuelDef->x;
+                        actuelBalle->dy = actuelMec->y-actuelDef->y;
                     }
+                    if(testBalle(*actuelDef, *actuelBalle) == 1)
+                    {
+                        actuelBalle->x += actuelBalle->dx/20;
+                        actuelBalle->y += actuelBalle->dy/20;
+                        rotate_sprite(buffer, image[3], actuelBalle->x-1-deplAffX, actuelBalle->y-25-deplAffY, itofix(actuelBalle->angle));
+                    }
+                    else
+                    {
+                        if(actuelBalle == actuelDef->liste->premier)
+                        {
+                            temp = actuelDef->liste->premier;
+                            actuelDef->liste->premier = actuelBalle->suivant;
+                            free(temp);
+                        }
+                        else if(actuelBalle != actuelDef->liste->premier)
+                        {
+                            temp = actuelBalle;
+                            precedentBalle->suivant = actuelBalle->suivant;
+                            free(temp);
+                            actuelBalle = precedentBalle;
+                        }
+                    }
+                    actuelBalle->millieuAvantX = actuelBalle->x + 1;
+                    actuelBalle->millieuAvantY = actuelBalle->y + 50;
+                    precedentBalle = actuelBalle;
                     actuelBalle = actuelBalle->suivant;
                 }
-                actuelMec = actuelMec->suivant;
+                actuelMec = listeMechant->premier;
+                while(actuelMec != NULL)
+                {
+                    actuelBalle = actuelDef->liste->premier;
+                    while(actuelBalle != NULL)
+                    {
+                        if((actuelBalle->x > actuelMec->x && actuelBalle->y > actuelMec->y)&& (actuelBalle->x < actuelMec->x + actuelMec->tx && actuelBalle->y < actuelMec->y + actuelMec->ty))
+                        {
+                            actuelMec->pvM -= actuelBalle->degat;
+                        }
+                        actuelBalle = actuelBalle->suivant;
+                    }
+                    actuelMec = actuelMec->suivant;
+                }
             }
         }
         else if(actuelDef->test == 0)

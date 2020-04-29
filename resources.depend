@@ -355,13 +355,13 @@
 1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588096806 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1588202139 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1588096866 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
+1588204791 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
-1588087260 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
+1588205793 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -376,7 +376,7 @@
 1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\allegttf.h
 	<allegro.h>
 
-1588096802 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+1588202317 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
 	"../../prototypes.h"
 
 1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
@@ -385,10 +385,10 @@
 1588096813 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
-1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+1588206023 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+1588198389 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
 	"../../prototypes.h"
 
 1588106083 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
@@ -397,10 +397,10 @@
 1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
 	"../prototypes.h"
 
-1588096874 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\defense.c
+1588205397 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\defense.c
 	"../prototypes.h"
 
-1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
+1588205875 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
 	"../prototypes.h"
 
 1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
@@ -409,13 +409,13 @@
 1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\animation ennemi.c
 	"../prototypes.h"
 
-1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
+1588203119 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
 	"../prototypes.h"
 
-1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+1588202706 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1588097474 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
+1588204799 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
 1587865966 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\logg.c

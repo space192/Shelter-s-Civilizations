@@ -105,8 +105,19 @@ void ajoutBalle(t_listeBalle *defense)
         else
         {
             balle->pass = 0;
+
+            if(defense->premier==NULL)
+            {
+                defense->premier=balle;
+                balle->suivant=NULL;
+            }
+            else
+            {
             balle->suivant = defense->premier;
             defense->premier = balle;
+            }
+
+
         }
     }
 }

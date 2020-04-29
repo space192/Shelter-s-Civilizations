@@ -6,43 +6,43 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     int y;
 
 
-    if((mouse_b & 1)&&(*condition==1)&&(*i>=300)&&(mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=712))
+    if((mouse_b & 1)&&(*condition==1)&&(*i>=50)&&(mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=712))
     {
         //play_sample(selectSound, 200,128, 1000,0);
         voice_start(voice[0]);
     }
 
-    if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=150))&&(*condition==1))
+    if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =2;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =7;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =3;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =4;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =5;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =8;
         *i=0;
     }
-    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=150))&&(*condition==1))
+    else if(((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=50))&&(*condition==1))
     {
         (*condition) =6;
         *i=0;
@@ -57,70 +57,70 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     {
         draw_sprite(page,menuC,400,16);
         afficherInfoBatimentBR(page);
-        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=150))
+        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=1;
             *niveaubatiment=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=3;
             *niveaubatiment=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=2;
             *niveaubatiment=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=1;
             *niveaubatiment=1;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=3;
             *niveaubatiment=1;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=2;
             *niveaubatiment=1;
         }
-        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=150))
+        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=1;
             *niveaubatiment=2;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=3;
             *niveaubatiment=2;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=898)&&(mouse_x <=958))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=898)&&(mouse_x <=958))&&(*i>=50))
         {
             *condition=21;
             *i=0;
             *typeDeBatiment=2;
             *niveaubatiment=2;
         }
-        else if((mouse_b & 1)&&(*i>=150))
+        else if((mouse_b & 1)&&(*i>=50))
         {
             *condition=1;
             *i=0;
@@ -130,12 +130,12 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     {
         afficherEmplacementDisponible(liste,page,*niveaubatiment,deplAffX,deplAffY,*borne);
 
-        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=150)))
+        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
             *i=0;
         }
-        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=150)))
+        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;
@@ -157,12 +157,12 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     {
         draw_sprite(page,construc,400,16);
         rect(page,588,18,588+60,18+60,makecol(0,255,0));
-        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=150)))
+        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
             *i=0;
         }
-        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=150)))
+        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;
@@ -179,12 +179,12 @@ void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMA
     {
         draw_sprite(page,construc,400,16);
         rect(page,650,18,650+60,18+60,makecol(255,0,0));
-        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=150)))
+        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
             *i=0;
         }
-        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=150)))
+        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;
@@ -219,61 +219,61 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
     {
         draw_sprite(page,menuD,400,16);
         afficherInfoBatimentD(page);
-        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=150))
+        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 1;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=464)&&(mouse_x <=524))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 2;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=526)&&(mouse_x <=586))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 3;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 4;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=650)&&(mouse_x <=710))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 5;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=712)&&(mouse_x <=772))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 6;
             *i=0;
         }
-        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=150))
+        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 7;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 8;
             *i=0;
         }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=898)&&(mouse_x <=958))&&(*i>=150))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=898)&&(mouse_x <=958))&&(*i>=50))
         {
             *condition=71;
             *typeDeBatiment = 9;
             *i=0;
         }
-        else if((mouse_b & 1)&&(*i>=300))
+        else if((mouse_b & 1)&&(*i>=50))
         {
             *condition=1;
             *i=0;
@@ -282,7 +282,7 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
     if(*condition ==71)
     {
         afficherDefenseDisponible(listeEDD,page,typeDeBatiment,deplAffX,deplAffY);
-        if((mouse_b & 1)&&(*i>=150))
+        if((mouse_b & 1)&&(*i>=50))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;

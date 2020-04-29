@@ -10,7 +10,7 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
     {
         draw_sprite(page,construc,400,16);
         rect(page,526,18,526+60,18+60,makecol(0,255,0));
-        if((mouse_b & 1)&&(*i>=300))
+        if((mouse_b & 1)&&(*i>=50))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;
@@ -31,12 +31,12 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
     {
         draw_sprite(page,construc,400,16);
         rect(page,712,18,712+60,18+60,makecol(255,0,0));
-        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=150)))
+        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
             *i=0;
         }
-        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=150)))
+        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=81;
             *xp = mouse_x+deplAffX;
@@ -57,12 +57,12 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
             rect(page,*xp-deplAffX,*yp-deplAffY,*xp+60-deplAffX,*yp+60-deplAffY,makecol(0,255,0));
         }
 
-        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=150)))
+        if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
             *i=0;
         }
-        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=150)))
+        else if((mouse_b & 1)&&(((mouse_x>borne->xDeb-deplAffX)||(mouse_x<(borne->xFin +60)-deplAffX)||(mouse_y>borne->yDeb-deplAffY)||(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
         {
             x = mouse_x+deplAffX;
             y = mouse_y+deplAffY;
@@ -168,7 +168,7 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
         borne->yDeb = 1630;
         borne->xFin = 340;
         borne->yFin = 1870;
-        (*PDV)= 1000;
+        (*PDV)= 10000;
     }
     else if(agrandissement == 1)
     {
@@ -176,7 +176,7 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
         borne->yDeb = 1630;
         borne->xFin = 340;
         borne->yFin = 2110;
-        (*PDV)= (*PDV)+1000;
+        (*PDV)= (*PDV)+10000;
     }
     else if(agrandissement == 2)
     {
@@ -184,7 +184,7 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
         borne->yDeb = 1390;
         borne->xFin = 340;
         borne->yFin = 2110;
-        (*PDV)= (*PDV)+1000;
+        (*PDV)= (*PDV)+10000;
     }
 }
 

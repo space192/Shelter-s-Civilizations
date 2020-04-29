@@ -20,6 +20,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu = 1;
     int vitesseJeu = 1;
+    int i;
     //int nbMechant[3] = {0, 0, 0};
 
     float angleR= 0;
@@ -110,7 +111,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     SAMPLE *selectSound = load_wav("son/select.wav");
     SAMPLE *newBSound =load_wav("son/put.wav");
     SAMPLE *buzzer = load_wav("son/buzzer.wav");
-    SAMPLE *bullet = load_wav("son/tir.wav");;
+    SAMPLE *bullet = load_wav("son/tir.wav");
 
     int voiceB[4];
     voiceB[0]=allocate_voice(selectSound);
@@ -164,9 +165,9 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     initSeqM(SeqM);
     initAncre(horde);
 
-    joueur1.or=200;
-    joueur1.pierre=2000;
-    joueur1.metal=200;
+    joueur1.or=20000;
+    joueur1.pierre=200000;
+    joueur1.metal=200000;
     ajusterBase(&borne, agrandissement,&PDVMuraille);
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
@@ -182,6 +183,12 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         afficherBase(page,fond,base,fondation,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
         afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
 
+        if(listedef->premier!=NULL)
+        {
+            gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
+        }
+        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
+
         if(pauseActive==0)
         {
             //calcule des positions des ennemis
@@ -196,19 +203,31 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
         //affichage des ennemis
-        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
+
         attaquerMur(horde, &PDVMuraille);
 
-        if(listedef->premier!=NULL)
-        {
-            gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
-        }
+
 
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
+        supprimerEnnemi(horde);
+
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
+
+    voice_stop(voice);
+    release_voice(voice);
+    destroy_sample(sample1);
+    destroy_sample(sample2);
+
+    for(i=0;i<4;i++)
+    {
+        release_voice(voiceB[i]);
+    }
+
+
+
     sauvegarderNiveauUnlock(sauvegarde);
     if(sauvegarde!=0)
     {
@@ -216,7 +235,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
         SauvegarderDefense(listedef, sauvegarde);
     }
-    libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM);
+    libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);
 }

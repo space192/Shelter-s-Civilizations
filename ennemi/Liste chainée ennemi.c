@@ -25,9 +25,9 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQ
         horde->typeMechant[1] = 5; //nombre de moyen mechant
         horde->typeMechant[2] = 0; //nombre de boss
 
-        horde->pvM[0] = 20; //point de vie des mechants
-        horde->pvM[1] = 50;
-        horde->pvM[2] = 200;
+        horde->pvM[0] = 100; //point de vie des mechants
+        horde->pvM[1] = 250;
+        horde->pvM[2] = 1000;
 
         horde->degatsM[0] = 5; //degat des mechants
         horde->degatsM[1] = 10;
@@ -45,9 +45,9 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQ
         horde->typeMechant[1] = 5;
         horde->typeMechant[2] = 1;
 
-        horde->pvM[0] = 20;
-        horde->pvM[1] = 50;
-        horde->pvM[2] = 200;
+        horde->pvM[0] = 100;
+        horde->pvM[1] = 250;
+        horde->pvM[2] = 1000;
 
         horde->degatsM[0] = 5;
         horde->degatsM[1] = 10;
@@ -65,9 +65,9 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQ
         horde->typeMechant[1] = 5;
         horde->typeMechant[2] = 2;
 
-        horde->pvM[0] = 20;
-        horde->pvM[1] = 50;
-        horde->pvM[2] = 200;
+        horde->pvM[0] = 100;
+        horde->pvM[1] = 250;
+        horde->pvM[2] = 1000;
 
         horde->degatsM[0] = 5;
         horde->degatsM[1] = 10;
@@ -247,7 +247,7 @@ t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int tmpDx, int tmpDy, in
     nouveau->y = y - nouveau->ty/2;
     nouveau->type = type;
     nouveau->numero = nb;
-    nouveau->centre = nouveau->tx/2;
+    nouveau->centre = (nouveau->tx/2 + nouveau->ty/2);
 
     nouveau->cmptDx = 0;
     nouveau->cmptDy = 0;

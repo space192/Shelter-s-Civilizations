@@ -45,6 +45,50 @@ void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin)
     }
 }
 
+void supprimerEnnemi(t_listeMechant *liste)
+{
+    t_ennemi *actuel = NULL;
+    t_ennemi *precedent;
+
+    if(liste->premier!=NULL)
+    {
+        actuel = liste->premier;
+
+        int condition=0;
+        if(actuel->pvM <=0)
+        {
+            liste->premier=actuel->suivant;
+            condition=1;
+
+        }
+        else
+        {
+            precedent=liste->premier;
+            actuel=actuel->suivant;
+        }
+
+        if(condition!=1)
+        {
+            while(actuel!=NULL)
+            {
+
+                if(actuel->pvM<=0)
+                {
+                    precedent->suivant=actuel->suivant;
+                }
+                actuel=actuel->suivant;
+                precedent=precedent->suivant;
+            }
+        }
+    }
+
+
+    actuel = NULL;
+    precedent = NULL;
+    free(actuel);
+    free(precedent);
+}
+
 int testFuturePlaceLibre(BITMAP* place, t_ennemi* elem) //le sous programme renvoie 1 si la place est libre, sinon 0
 {
     int pixel = 0, libre = 1;

@@ -11,37 +11,37 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITM
     textprintf_ex(page,font,425,980,makecol(255,255,255),-1,"Points de vie de la muraille:");
     if(agrandissement==0)
     {
-        if(PDV<=250)
+        if(PDV<=2500)
         {
-            rectfill(page,425,995,425 + (PDV*0.4),1005,makecol(255,0,0));
+            rectfill(page,425,995,425 + (PDV*0.04),1005,makecol(255,0,0));
         }
         else
         {
-            rectfill(page,425,995,425 + (PDV*0.4),1005,makecol(0,255,0));
+            rectfill(page,425,995,425 + (PDV*0.04),1005,makecol(0,255,0));
         }
 
     }
     else if(agrandissement==1)
     {
-        if(PDV<=500)
+        if(PDV<=5000)
         {
-            rectfill(page,425,995,425 + (PDV*0.2),1005,makecol(255,0,0));
+            rectfill(page,425,995,425 + (PDV*0.02),1005,makecol(255,0,0));
         }
         else
         {
-            rectfill(page,425,995,425 + (PDV*0.2),1005,makecol(0,255,0));
+            rectfill(page,425,995,425 + (PDV*0.02),1005,makecol(0,255,0));
         }
 
     }
     else if(agrandissement==2)
     {
-        if(PDV<=750)
+        if(PDV<=7500)
         {
-            rectfill(page,425,995,425 + (PDV*0.133333333),1005,makecol(255,0,0));
+            rectfill(page,425,995,425 + (PDV*0.0133333333),1005,makecol(255,0,0));
         }
         else
         {
-            rectfill(page,425,995,425 + (PDV*0.133333333),1005,makecol(0,255,0));
+            rectfill(page,425,995,425 + (PDV*0.0133333333),1005,makecol(0,255,0));
         }
 
     }
