@@ -19,7 +19,7 @@ void gererDeplacement(int *deplAffX,int *deplAffY);
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY);
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne);
 void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_joueur* joueur, int x, int y);
-void construireNouveauBatiment(t_listeBR *liste,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i, int* typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4]);
+void construireNouveauBatiment(t_listeBR *liste,t_listedef* liste2,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i, int* typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4]);
 void definirCoordonnees(int *x,int *y,t_borne borne,int niveau);
 int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau);
 int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
@@ -29,6 +29,7 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITM
 void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP *batimentP,int *condition,int deplAffX, int deplAffY);
 void ameliorerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatiment(t_listeBR *liste, int x, int y);
+void supprimerBatimentD(t_listedef *liste, int x, int y);
 void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4]);
 void ajusterFondation(int*x,int*y);
 void nouvelleFondation(t_listeEDD *liste,int x, int y,int *numeroEDD);
