@@ -45,7 +45,7 @@ void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin)
     }
 }
 
-void supprimerEnnemi(t_listeMechant *liste)
+void supprimerEnnemi(t_listeMechant *liste,int *score)
 {
     t_ennemi *actuel = NULL;
     t_ennemi *precedent;
@@ -57,6 +57,19 @@ void supprimerEnnemi(t_listeMechant *liste)
         int condition=0;
         if(actuel->pvM <=0)
         {
+            liste->nbElement--;
+            if(actuel->type == 0)
+            {
+                (*score)+=10;
+            }
+            else if(actuel->type == 1)
+            {
+                (*score)+=50;
+            }
+            else if(actuel->type == 2)
+            {
+                (*score)+=200;
+            }
             liste->premier=actuel->suivant;
             condition=1;
 
@@ -74,6 +87,19 @@ void supprimerEnnemi(t_listeMechant *liste)
 
                 if(actuel->pvM<=0)
                 {
+                    liste->nbElement--;
+                    if(actuel->type == 0)
+                    {
+                        (*score)+=10;
+                    }
+                    else if(actuel->type == 1)
+                    {
+                        (*score)+=50;
+                    }
+                    else if(actuel->type == 2)
+                    {
+                        (*score)+=200;
+                    }
                     precedent->suivant=actuel->suivant;
                 }
                 actuel=actuel->suivant;
