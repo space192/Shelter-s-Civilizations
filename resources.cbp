@@ -61,6 +61,13 @@
 		<Unit filename="Menu/affichageMenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Online/affichage.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Online/connexion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Online/socket.h" />
 		<Unit filename="defense/affichage defense.c">
 			<Option compilerVar="CC" />
 		</Unit>
