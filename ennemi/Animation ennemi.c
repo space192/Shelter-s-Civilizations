@@ -79,14 +79,6 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
     elemA->imgX = imgx;
     elemA->imgY = imgy;
 
-    /*
-    if(elemA->type == 1)
-        stretch_blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 202, 158, 0, 0, 54, 42);
-    else if (elemA->type == 2)
-        stretch_blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 202, 158, 0, 0, 54, 47);
-    else if (elemA->type == 3)
-        blit(seqMechant[elemA->type], elemA->imgAFF, imgx, imgy, 0, 0, 48, 68);
-    */
 }
 
 /*
