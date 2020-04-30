@@ -1,4 +1,5 @@
 #include "../prototypes.h"
+#include "../Online/socket.h"
 
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom)
 {
@@ -98,6 +99,8 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
             if(*compteur >=17)
             {
                 *scene = 4;
+                connexionReseau(1, NULL, 0);
+                *scene = 1;
                 *compteur = 0;
             }
             else
