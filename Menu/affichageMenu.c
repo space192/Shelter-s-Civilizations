@@ -419,38 +419,35 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
 }
 
 
-void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement *tableau, int *sourisY, int *y)
+void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
 {
-    int i, ytemp = *y;
-    for(i=0 ; i < 20 ; i++)
+    BITMAP *temp = create_bitmap(402, 800);
+    int i, ytemp = 0;
+    for(i=0;i < 20 ; i++)
     {
-        tableau[i].x = 412;
-        tableau[i].y = ytemp;
+        tableau[i].x =0;
+        tableau[i].y =ytemp;
         ytemp+=40;
         strcpy(tableau[i].chaine, tab[i].prenom);
         tableau[i].score = tab[i].score;
+        stretch_blit(image[14], temp, 0,0,image[14]->w, image[14]->h, tableau[i].x, tableau[i].y, image[14]->w*2.01, image[14]->h*2);
+        textprintf_ex(temp, font, tableau[i].x+15, tableau[i].y+20, makecol(255,255,255), -1, "#%d", i+1);
+        textprintf_ex(temp, font, tableau[i].x+45,tableau[i].y+20, makecol(255,255,255), -1, "%s", tableau[i].chaine);
+        textprintf_ex(temp, font, tableau[i].x+300, tableau[i].y+20, makecol(255,255,255), -1, "score:%d", tableau[i].score);
     }
-    for(i=0; i < 20; i++)
-    {
-        if(tableau[i].y >= 300 && tableau[i].y < 677)
-        {
-            stretch_blit(image[14], buffer, 0,0,image[14]->w, image[14]->h, tableau[i].x, tableau[i].y, image[14]->w*2.01, image[14]->h*2);
-            textprintf_ex(buffer, font, tableau[i].x+15, tableau[i].y+20, makecol(255,255,255), -1, "#%d", i+1);
-            textprintf_ex(buffer, font, tableau[i].x+45,tableau[i].y+20, makecol(255,255,255), -1, "%s", tableau[i].chaine);
-            textprintf_ex(buffer, font, tableau[i].x+300, tableau[i].y+20, makecol(255,255,255), -1, "score:%d", tableau[i].score);
-        }
-    }
+    blit(temp, buffer, 0,*y,412, 355, 402, 340);
     masked_stretch_blit(image[13], buffer, 0,0,image[13]->w, image[13]->h, 390,300,2.5*image[13]->w, 3.025*image[13]->h);
-    if(mouse_b & 1 && mouse_x > 828 && mouse_x < 858 && mouse_y >363 && mouse_y < 658)
+    if(mouse_b & 1 && mouse_x > 828 && mouse_x < 858 && mouse_y >363 && mouse_y < 662)
     {
         *sourisY = mouse_y-10;
-        *y = 935-mouse_y*1.6;
+        *y = (mouse_y-354)*1.554-14;
         affichageBoutton(image[15], buffer, 5, 828, *sourisY, 2.5);
     }
     else
     {
         affichageBoutton(image[15], buffer, 4, 828, *sourisY, 2.5);
     }
+    textprintf_ex(buffer, font, 0,10,makecol(255,255,255), -1, "%d", *y);
     if((mouse_x>=390 && mouse_y >=950) && (mouse_x <= 890 && mouse_y <=1000))
     {
         if(mouse_b & 1)
@@ -472,4 +469,5 @@ void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t
     {
         affichageBoutton(image[12], buffer, 2, 390, 950, 2.5);
     }
+    destroy_bitmap(temp);
 }

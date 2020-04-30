@@ -8,7 +8,7 @@ int main()
     BITMAP *image[16];
     t_classement tableau[20];
     char chaine[100];
-    int sourisY = 355, y=350;
+    int sourisY = 355, y=0;
     chaine[0] = '\0';
     int compteur=0, sauvegarde = 1, continuer = 1, tuto = 0, ecrire = 0, pos=0, clic=0, sauvegardetemp = 4;
     float x=0;
