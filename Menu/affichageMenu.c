@@ -3,8 +3,15 @@
 
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom)
 {
-    BITMAP *temp = create_bitmap(image->w, (image->h)/3);
-    //printf("tx: %d et ty %d\n", temp->w, temp->h);
+    BITMAP *temp = NULL;
+    if(etat < 4)
+    {
+        temp = create_bitmap(image->w, (image->h)/3);
+    }
+    else
+    {
+        temp = create_bitmap(image->w, (image->h)/2);
+    }
     int posx=0,posy=0;
     switch(etat)
     {
@@ -21,6 +28,17 @@ void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float
     case 3: //sur le bouton
     {
         posy =2*(image->h/3);
+        break;
+    }
+    case 4:
+    {
+        posy=0;
+        break;
+    }
+    case 5:
+    {
+        posy = image->h/2;
+        break;
     }
     }
     blit(image, temp, posx, posy, 0,0,temp->w, temp->h);
@@ -46,7 +64,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y)
 }
 
 
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde)
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int sauvegarde)
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -100,7 +118,6 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
             {
                 *scene = 4;
                 connexionReseau(1, NULL, 0);
-                *scene = 1;
                 *compteur = 0;
             }
             else
@@ -138,7 +155,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
 
 
 
-void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -256,7 +273,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
 }
 
 
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde)
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int *sauvegarde)
 {
     char chaine[10] = "test";
     if(*sauvegarde >= 1)
@@ -398,5 +415,62 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compte
     else
     {
         affichageBoutton(image[12], buffer, 2, 390, 720, 2.5);
+    }
+}
+
+
+void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement *tableau, int *sourisY, int *y)
+{
+    int i, ytemp = *y;
+    for(i=0 ; i < 20 ; i++)
+    {
+        tableau[i].x = 412;
+        tableau[i].y = ytemp;
+        ytemp+=40;
+        strcpy(tableau[i].chaine, tab[i].prenom);
+        tableau[i].score = tab[i].score;
+    }
+    for(i=0; i < 20; i++)
+    {
+        if(tableau[i].y >= 290 && tableau[i].y < 800)
+        {
+            stretch_blit(image[14], buffer, 0,0,image[14]->w, image[14]->h, tableau[i].x, tableau[i].y, image[14]->w*2.01, image[14]->h*2);
+            textprintf_ex(buffer, font, tableau[i].x+10,tableau[i].y+10, makecol(255,255,255), -1, "nom:%s", tableau[i].chaine);
+            textprintf_ex(buffer, font, tableau[i].x+300, tableau[i].y+10, makecol(255,255,255), -1, "score:%d", tableau[i].score);
+        }
+    }
+    textprintf_ex(buffer, font, 0,10,makecol(255,255,255), -1, "%d", *y);
+    masked_stretch_blit(image[13], buffer, 0,0,image[13]->w, image[13]->h, 390,300,2.5*image[13]->w, 3*image[13]->h);
+    rectfill(buffer, 412, 708, 813, 850, makecol(0,0,0));
+    if(mouse_b & 1 && mouse_x > 828 && mouse_x < 858 && mouse_y >363 && mouse_y < 658)
+    {
+        *sourisY = mouse_y-10;
+        *y = 935-mouse_y*1.6;
+        affichageBoutton(image[15], buffer, 5, 828, *sourisY, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[15], buffer, 4, 828, *sourisY, 2.5);
+    }
+    if((mouse_x>=390 && mouse_y >=950) && (mouse_x <= 890 && mouse_y <=1000))
+    {
+        if(mouse_b & 1)
+        {
+           if(*compteur >= 17)
+           {
+               *scene = 1;
+               *compteur = 0;
+           }
+           else
+           {
+               *compteur = *compteur +1;
+           }
+           rest(4);
+        }
+        affichageBoutton(image[12], buffer, 3, 390, 950, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[12], buffer, 2, 390, 950, 2.5);
     }
 }

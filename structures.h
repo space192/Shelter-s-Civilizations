@@ -158,13 +158,13 @@ typedef struct listeMechant
 
 }t_listeMechant;
 
-typedef struct Bouton
+typedef struct classement
 {
     int x;
     int y;
-    int tx;
-    int ty;
-}t_bouton;
+    int score;
+    char chaine[100];
+}t_classement;
 
 #define NB_SEQM 3
 

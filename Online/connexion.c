@@ -15,9 +15,11 @@ void connexionReseau(int menu, char nom[100], int score)
     SOCKET connection;
     SOCKADDR_IN connectParam;
     t_joueurClassement joueur;
-    //strcpy(joueur.prenom, nom);
-    //joueur.score = score;
-    int i;
+    if(menu == 2)
+    {
+        strcpy(joueur.prenom, nom);
+        joueur.score = score;
+    }
     if((connection=socket(AF_INET, SOCK_STREAM, 0))<0)
     {
         printf("error socket failed()");
@@ -35,10 +37,6 @@ void connexionReseau(int menu, char nom[100], int score)
         if(menu == 1)
         {
             recv(connection, (char*)tab, 20*sizeof(t_joueurClassement), 0);
-            for(i=0; i < 20; i++)
-            {
-                printf("nom:%s et score:%d\n", tab[i].prenom, tab[i].score);
-            }
         }
         else if(menu ==2)
         {
