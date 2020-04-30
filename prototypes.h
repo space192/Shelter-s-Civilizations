@@ -54,6 +54,7 @@ t_listeMechant *initialisationMech();
 void ajoutDef(t_listedef *liste, int type, int x, int y);
 void ajoutMech(t_listeMechant *liste, int valeur);
 int test(t_defense defense, t_ennemi mechant);
+void verificationListe(t_listedef *listedef);
 void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4]);
 void ajoutBalle(t_listeBalle *defense);
 void animation(BITMAP *image[], BITMAP *buffer, t_defense *defense,int deplAffX, int deplAffY);
