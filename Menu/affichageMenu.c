@@ -258,6 +258,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
 
 void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde)
 {
+    char chaine[10] = "test";
     if(*sauvegarde >= 1)
     {
         if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //niveau 1
@@ -354,7 +355,7 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compte
                 if(*compteur >=17)
                 {
                     dechargementImage(image);
-                    jeu(4, 0, NULL);
+                    jeu(4, 0, chaine);
                     chargementImageMenu(image);
                     rest(100);
                     *scene = 1;

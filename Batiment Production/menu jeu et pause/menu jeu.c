@@ -7,7 +7,6 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,char 
 
     draw_sprite(page,layoutMenu[0],220,0);
     draw_sprite(page,layoutMenu[1],400,969);
-
     textprintf_ex(page,font,425,980,makecol(255,255,255),-1,"Points de vie de la muraille:");
     if(agrandissement==0)
     {

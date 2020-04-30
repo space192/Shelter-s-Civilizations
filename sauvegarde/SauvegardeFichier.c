@@ -3,7 +3,6 @@
 
 void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
 {
-    t_maillonBR *actuel = liste->premier;
     FILE *fichier = NULL;
     FILE *fichier2 = NULL;
     int n=0;
@@ -46,17 +45,19 @@ void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
     }
     else
     {
+        t_maillonBR *actuel = liste->premier;
         while(actuel != NULL)
         {
-            fwrite(actuel, sizeof(t_batimentP), 1, fichier);
+            fwrite(actuel, sizeof(t_maillonBR), 1, fichier);
             n++;
             actuel = actuel->suivant;
         }
         fprintf(fichier2, "%d", n);
+        actuel = NULL;
+        free(actuel);
     }
     fclose(fichier);
     fclose(fichier2);
-    free(actuel);
 }
 
 void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)

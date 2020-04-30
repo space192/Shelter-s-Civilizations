@@ -32,7 +32,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     "son/musique/the-oil-industry.wav",
     "son/musique/the-search-for-iron.wav"
     };
-
     char listeMusique2[6][100]={"sentient",
     "first-light.wav",
     "gathering-horizon",
@@ -142,24 +141,25 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     t_joueur joueur1;
     t_borne borne;
     t_listeBR *listeRessource = NULL;
-    t_listedef *listedef = initialisationDef();
-    t_listeEDD *listeEmplacementDefense= NULL;
+    t_listedef *listedef = NULL;
+    t_listeEDD *listeEmplacementDefense = NULL;
     t_listeMechant* horde = (t_listeMechant*)malloc(sizeof(t_listeMechant));
     if(sauvegarde == 0)
     {
         listeRessource = InitialisationBR(batiments);
         listeEmplacementDefense = InitialisationEDD();
+        listedef = initialisationDef();
     }
-    else
+    else if(sauvegarde == 4)
     {
+        listedef = malloc(sizeof(t_listedef));
+        listedef->premier = NULL;
+        listeEmplacementDefense = malloc(sizeof(t_listeEDD));
+        listeEmplacementDefense->premier = NULL;
+        listeRessource = malloc(sizeof(t_listeBR));
+        listeRessource->premier = NULL;
         recupererBatimentProduction(listeRessource, sauvegarde);
         recupererEmplacementDispo(listeEmplacementDefense, sauvegarde);
-        recupererDefense(listedef, sauvegarde);
-        triEDD(listeEmplacementDefense);
-    }
-
-    if(sauvegarde != 0)
-    {
         recupererDefense(listedef, sauvegarde);
     }
 
@@ -197,7 +197,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
-
         afficherLayoutMenu(page,layoutMenu,miniMap,PseudoJoueur,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
@@ -206,8 +205,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         //affichage des ennemis
 
         attaquerMur(horde, &PDVMuraille);
-
-
 
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
@@ -230,12 +227,12 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
 
     sauvegarderNiveauUnlock(sauvegarde);
-    if(sauvegarde!=0)
-    {
-        SauvegarderBatimentProduction(listeRessource, sauvegarde);
-        SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
-        SauvegarderDefense(listedef, sauvegarde);
-    }
+    //if(sauvegarde!=0)
+    //{
+        SauvegarderBatimentProduction(listeRessource, 4);
+        SauvegarderEmplacementDisponible(listeEmplacementDefense, 4);
+        SauvegarderDefense(listedef, 4);
+    //}
     libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);

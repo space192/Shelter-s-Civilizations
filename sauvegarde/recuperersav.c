@@ -5,6 +5,7 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
     FILE *fichier = NULL;
     FILE *fichier2 = NULL;
     int i,n;
+    t_maillonBR temp;
     switch(niveau)
     {
     case 1:
@@ -21,13 +22,13 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
         }
     case 3:
         {
-            fichier = fopen("sauvegarde/Niveau 3/BR.sav", "wb+");
+            fichier = fopen("sauvegarde/Niveau 3/BR.sav", "rb");
             fichier2 = fopen("sauvegarde/Niveau 3/NBR.sav", "r");
             break;
         }
     case 4:
         {
-            fichier = fopen("sauvegarde/Endless Mode/BR.sav", "wb+");
+            fichier = fopen("sauvegarde/Endless Mode/BR.sav", "rb");
             fichier2 = fopen("sauvegarde/Endless Mode/NBR.sav", "r");
             break;
         }
@@ -45,11 +46,18 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
     }
     else
     {
+        liste->premier = NULL;
         fscanf(fichier2, "%d", &n);
         for(i=0; i < n ; i++)
         {
             AjouterMaillonBRVide(liste);
-            fread(liste->premier, sizeof(t_maillonBR), 1, fichier);
+            fread(&temp, sizeof(t_maillonBR), 1, fichier);
+            liste->premier->niveau = temp.niveau;
+            liste->premier->tic = temp.tic;
+            liste->premier->ticMax = temp.ticMax;
+            liste->premier->type = temp.type;
+            liste->premier->x = temp.x;
+            liste->premier->y = temp.y;
         }
     }
     fclose(fichier);
@@ -67,6 +75,7 @@ void recupererDefense(t_listedef *liste, int niveau)
 {
     FILE *fichier = NULL;
     FILE *fichier2 = NULL;
+    t_defense temp;
     int i,n;
     switch(niveau)
     {
@@ -108,11 +117,25 @@ void recupererDefense(t_listedef *liste, int niveau)
     }
     else
     {
+        liste->premier = NULL;
         fscanf(fichier2, "%d", &n);
         for(i=0; i < n ; i++)
         {
             AjouterMaillonDefenseVide(liste);
-            fread(liste->premier, sizeof(t_defense), 1, fichier);
+            fread(&temp, sizeof(t_defense), 1, fichier);
+            liste->premier->x = temp.x;
+            liste->premier->y = temp.y;
+            liste->premier->cadenceMax = temp.cadenceMax;
+            liste->premier->angle = temp.centre;
+            liste->premier->centre = temp.centre;
+            liste->premier->degat = temp.degat;
+            liste->premier->liste = malloc(sizeof(t_listeBalle));
+            liste->premier->liste->premier = NULL;
+            liste->premier->radius = temp.radius;
+            liste->premier->target = temp.target;
+            liste->premier->test = temp.test;
+            liste->premier->type = temp.type;
+            liste->premier->valeurCanon = temp.valeurCanon;
         }
     }
     fclose(fichier);
@@ -122,16 +145,31 @@ void recupererDefense(t_listedef *liste, int niveau)
 void AjouterMaillonDefenseVide(t_listedef *liste)
 {
     t_defense *nouveau = malloc(sizeof(t_defense));
-    nouveau->suivant = liste->premier;
-    liste->premier = nouveau;
+    if(liste->premier == NULL)
+    {
+        nouveau->suivant = NULL;
+        liste->premier = nouveau;
+    }
+    else
+    {
+        nouveau->suivant = liste->premier;
+        liste->premier = nouveau;
+    }
 }
 
+
+t_maillonEDD *ajoutEDDnada()
+{
+    t_maillonEDD *nouveau = malloc(sizeof(t_maillonEDD));
+    return nouveau;
+}
 
 void recupererEmplacementDispo(t_listeEDD *liste, int niveau)
 {
     FILE *fichier = NULL;
     FILE *fichier2 = NULL;
     int i,n;
+    t_maillonEDD temp;
     switch(niveau)
     {
     case 1:
@@ -172,12 +210,59 @@ void recupererEmplacementDispo(t_listeEDD *liste, int niveau)
     }
     else
     {
+        t_maillonEDD *actuel = liste->premier;
+        t_maillonEDD *precedent = liste->premier;
+        liste->premier = NULL;
+        int compteur, j;
         fscanf(fichier2, "%d", &n);
         for(i=0; i < n; i++)
         {
-            ajouterEDDVide(liste);
-            fread(liste->premier, sizeof(t_maillonEDD), 1, fichier);
+            compteur = 0;
+            fread(&temp, sizeof(t_maillonEDD), 1, fichier);
+            actuel = liste->premier;
+            precedent = liste->premier;
+            while(actuel!=NULL)
+            {
+                if(temp.numeroEDD > actuel->numeroEDD)
+                {
+                    compteur++;
+                }
+                precedent = actuel;
+                actuel = actuel->suivant;
+            }
+            actuel = liste->premier;
+            precedent = liste->premier;
+            for(j=0; j < compteur; j++)
+            {
+                precedent = actuel;
+                actuel = actuel->suivant;
+            }
+            t_maillonEDD *nouveau = ajoutEDDnada();
+            if(actuel == liste->premier)
+            {
+                nouveau->suivant = liste->premier;
+                liste->premier = nouveau;
+                nouveau->x = temp.x;
+                nouveau->y = temp.y;
+                nouveau->afficherFondation = temp.afficherFondation;
+                nouveau->emplacementDisponible = temp.emplacementDisponible;
+                nouveau->numeroEDD = temp.numeroEDD;
+            }
+            else
+            {
+                nouveau->suivant = actuel;
+                precedent->suivant = nouveau;
+                nouveau->x = temp.x;
+                nouveau->y = temp.y;
+                nouveau->afficherFondation = temp.afficherFondation;
+                nouveau->emplacementDisponible = temp.emplacementDisponible;
+                nouveau->numeroEDD = temp.numeroEDD;
+            }
         }
+        actuel = NULL;
+        precedent = NULL;
+        free(actuel);
+        free(precedent);
     }
     fclose(fichier);
     fclose(fichier2);
@@ -188,74 +273,6 @@ void ajouterEDDVide(t_listeEDD *liste)
     t_maillonEDD *nouveau = malloc(sizeof(t_maillonEDD));
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
-}
-
-
-t_listeEDD *triEDD(t_listeEDD *liste)
-{
-    t_listeEDD *liste2 = malloc(sizeof(t_listeEDD));
-    liste2->premier=NULL;
-    t_maillonEDD *actuel = liste->premier;
-    t_maillonEDD *actuel2 = NULL;
-    t_maillonEDD *precedent=liste->premier;
-    int min;
-    while(liste->premier->suivant != NULL)
-    {
-        actuel2=NULL;
-        actuel=liste->premier;
-        min = liste->premier->numeroEDD;
-        while(actuel!=NULL)
-        {
-            if(min > actuel->numeroEDD)
-            {
-                min = actuel->numeroEDD;
-            }
-            actuel=actuel->suivant;
-        }
-        actuel = liste->premier;
-        precedent= liste->premier;
-        while(actuel->numeroEDD != min)
-        {
-            precedent = actuel;
-            actuel = actuel->suivant;
-        }
-        if(actuel->suivant==NULL)
-        {
-           precedent->suivant = NULL;
-        }
-        else if(min == liste->premier->numeroEDD)
-        {
-            liste->premier = liste->premier->suivant;
-        }
-        else
-        {
-            precedent->suivant = actuel->suivant;
-        }
-        if(liste2->premier==NULL)
-        {
-            liste2->premier = actuel;
-            liste2->premier->suivant = NULL;
-        }
-        else
-        {
-            actuel2=liste2->premier;
-            while(actuel2->suivant!=NULL)
-            {
-                actuel2=actuel2->suivant;
-            }
-            actuel2->suivant = actuel;
-            actuel2->suivant->suivant = NULL;
-        }
-    }
-    actuel2=liste2->premier;
-    while(actuel2->suivant!=NULL)
-    {
-        actuel2=actuel2->suivant;
-    }
-    actuel2->suivant = liste->premier;
-    actuel2->suivant->suivant = NULL;
-    liste->premier = NULL;
-    return liste2;
 }
 
 int recupererNiveauUnlock()
