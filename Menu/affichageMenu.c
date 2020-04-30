@@ -142,7 +142,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
     {
         if(mouse_b & 1)
         {
-            if(*compteur >= 20)
+            if(*compteur >= 17)
             {
                 if(*tuto == 1)
                 {

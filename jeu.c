@@ -55,8 +55,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     BITMAP *construc = NULL;
     BITMAP *menuC = NULL;
     BITMAP *menuD = NULL;
-    BITMAP *layoutMenu = NULL;
-    BITMAP *layoutMenu2 = NULL;
+    BITMAP *layoutMenu[3];
+
     BITMAP *miniMap = NULL;
     BITMAP *fondation =NULL;
     BITMAP *pause[4];
@@ -94,8 +94,9 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     construc = load_bitmap("image/menu jeu/construire.bmp",NULL);
     menuC = load_bitmap("image/menu jeu/menuC.bmp",NULL);
     menuD = load_bitmap("image/menu jeu/menuD.bmp",NULL);
-    layoutMenu = load_bitmap("image/menu jeu/layoutMenu.bmp",NULL);
-    layoutMenu2 = load_bitmap("image/menu jeu/layoutMenu2.bmp",NULL);
+    layoutMenu[0] = load_bitmap("image/menu jeu/layoutMenu.bmp",NULL);
+    layoutMenu[1] = load_bitmap("image/menu jeu/layoutMenu2.bmp",NULL);
+    layoutMenu[2] = load_bitmap("image/menu jeu/layoutJoueur.bmp",NULL);
     miniMap = load_bitmap("image/menu jeu/miniMap.bmp",NULL);
     fondation = load_bitmap("image/base/fondation.bmp",NULL);
 
@@ -197,9 +198,9 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
 
-        afficherLayoutMenu(page,layoutMenu,layoutMenu2,miniMap,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
+        afficherLayoutMenu(page,layoutMenu,miniMap,PseudoJoueur,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
-        construireNouveauBatiment(listeRessource,listedef,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
+        construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
         //affichage des ennemis

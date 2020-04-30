@@ -6,7 +6,7 @@
 void jeu(int sauvegarde, int tutoA, char *pseudoJoueur);
 void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2);
 void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice,char listeMusique[6][100],int *jeuActif);
-void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu,BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2]);
+void libereBitmap(BITMAP *page,BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu[3],BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2]);
 void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet);
 
 void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueur,t_listeEDD *liste2,t_listedef *liste3);
@@ -19,17 +19,17 @@ void gererDeplacement(int *deplAffX,int *deplAffY);
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY);
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne);
 void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_joueur* joueur, int x, int y);
-void construireNouveauBatiment(t_listeBR *liste,t_listedef* liste2,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i, int* typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4]);
+void construireNouveauBatiment(t_listeBR *liste,t_listedef* liste2,t_listeEDD *liste3,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i, int* typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4]);
 void definirCoordonnees(int *x,int *y,t_borne borne,int niveau);
 int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau);
 int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
 int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4]);
 void ajusterBase(t_borne *borne, int agrandissement,int *PDV);
-void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu,BITMAP* layoutMenu2,BITMAP* miniMap, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,int PDV,int agrandissement);
+void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,char *PseudoJoueur, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,int PDV,int agrandissement);
 void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP *batimentP,int *condition,int deplAffX, int deplAffY);
 void ameliorerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatiment(t_listeBR *liste, int x, int y);
-void supprimerBatimentD(t_listedef *liste, int x, int y);
+void supprimerBatimentD(t_listedef *liste, t_listeEDD *liste2, int x, int y);
 void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4]);
 void ajusterFondation(int*x,int*y);
 void nouvelleFondation(t_listeEDD *liste,int x, int y,int *numeroEDD);
@@ -40,6 +40,7 @@ void nouvelleDefense(t_listeEDD *liste,t_listedef *listedef,int x, int y,int typ
 void determinerBatiment(t_listeBR *liste,int *x, int *y,int *niveauBatiment);
 void afficherInfoBatimentBR(BITMAP* page);
 void afficherInfoBatimentD(BITMAP* page);
+void afficherInfo(BITMAP* page);
 void detruireListe(t_listeBR *liste1,t_listedef *liste2, t_listeEDD *liste3,t_listeMechant* liste4);
 
 void supprimerEnnemi(t_listeMechant *liste);

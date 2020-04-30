@@ -279,10 +279,13 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
 }
 
 
-void supprimerBatimentD(t_listedef *liste, int x, int y)
+void supprimerBatimentD(t_listedef *liste,t_listeEDD *liste2, int x, int y)
 {
     t_defense *actuel;
     t_defense *precedent;
+    t_maillonEDD *actuel2;
+
+    actuel2= liste2->premier;
     actuel = liste->premier;
 
     int condition=0;
@@ -290,8 +293,30 @@ void supprimerBatimentD(t_listedef *liste, int x, int y)
     printf("%d\n",x);
     printf("%d\n",y);
 
-    if((actuel->x==x)&&(actuel->y==y))
+    if(((actuel->x==x+25)&&(actuel->y==y+25))||((actuel->x==x+50)&&(actuel->y==y+50)))
     {
+        while(actuel2!=NULL)
+        {
+            if((actuel2->x==x&&actuel2->y==y)&&(actuel->type>=3))
+            {
+                actuel2->emplacementDisponible=1;
+                actuel2=actuel2->suivant;
+                actuel2->emplacementDisponible=1;
+                actuel2=actuel2->suivant;
+                actuel2->emplacementDisponible=1;
+                actuel2=actuel2->suivant;
+                actuel2->emplacementDisponible=1;
+
+            }
+            if((actuel2->x==x&&actuel2->y==y)&&(actuel->type<3))
+            {
+                actuel2->emplacementDisponible=1;
+            }
+            actuel2 =actuel2->suivant;
+        }
+
+
+
         liste->premier=actuel->suivant;
         condition=1;
 
@@ -308,8 +333,29 @@ void supprimerBatimentD(t_listedef *liste, int x, int y)
         {
             printf("%d\n",actuel->x);
             printf("%d\n",actuel->y);
-            if((actuel->x==x)&&(actuel->y==y))
+            if(((actuel->x==x+25)&&(actuel->y==y+25))||((actuel->x==x+50)&&(actuel->y==y+50)))
             {
+                while(actuel2!=NULL)
+                {
+                    if((actuel2->x==x&&actuel2->y==y)&&(actuel->type>=3))
+                    {
+                        actuel2->emplacementDisponible=1;
+                        actuel2=actuel2->suivant;
+                        actuel2->emplacementDisponible=1;
+                        actuel2=actuel2->suivant;
+                        actuel2->emplacementDisponible=1;
+                        actuel2=actuel2->suivant;
+                        actuel2->emplacementDisponible=1;
+
+                    }
+                    if((actuel2->x==x&&actuel2->y==y)&&(actuel->type<3))
+                    {
+                        actuel2->emplacementDisponible=1;
+                    }
+                    actuel2 =actuel2->suivant;
+                }
+
+
                 precedent->suivant=actuel->suivant;
             }
             actuel=actuel->suivant;
@@ -317,8 +363,10 @@ void supprimerBatimentD(t_listedef *liste, int x, int y)
         }
     }
     actuel = NULL;
+    actuel2 = NULL;
     precedent = NULL;
     free(actuel);
+    free(actuel2);
     free(precedent);
 }
 
@@ -358,9 +406,9 @@ void definirCoordonnees(int *x,int *y,t_borne borne,int niveau)
     }
     else if(niveau==3)
     {
-        for(i= 40; i<=*x; i+=60)
+        for(i=0; i<=*x; i+=60)
         {
-            for(j=10; j<=*y; j+=60)
+            for(j=70; j<=*y; j+=60)
             {
                 if((*x>=i)&&(*x<i+60)&&(*y>=j)&&(*y<j+60))
                 {

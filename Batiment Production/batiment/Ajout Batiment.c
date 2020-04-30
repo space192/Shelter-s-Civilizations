@@ -1,10 +1,14 @@
 #include "../../prototypes.h"
 
-void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4])
+void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *liste3,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i,int *typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4])
 {
     int x;
     int y;
 
+    if(*condition==1)
+    {
+        afficherInfo(page);
+    }
 
     if((mouse_b & 1)&&(*condition==1)&&(*i>=50)&&(mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=712))
     {
@@ -185,7 +189,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,BITMAP *page,
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,3);
 
-            supprimerBatimentD(liste2,x,y);
+            supprimerBatimentD(liste2,liste3,x,y);
 
             *condition=1;
             *i=0;
