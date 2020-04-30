@@ -96,68 +96,68 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
         if(typeDeBatiment==1)
         {
             if(joueur->metal>=70)
-                {
-                    resultat=1;
-                    joueur->metal-=70;
-                }
+            {
+                resultat=1;
+                joueur->metal-=70;
+            }
         }
         else if(typeDeBatiment==2)
         {
             if(joueur->metal>=80)
-                {
-                    resultat=1;
-                    joueur->metal-=80;
-                }
+            {
+                resultat=1;
+                joueur->metal-=80;
+            }
         }
         else if(typeDeBatiment==3)
         {
             if(joueur->metal>=90)
-                {
-                    resultat=1;
-                    joueur->metal-=90;
-                }
+            {
+                resultat=1;
+                joueur->metal-=90;
+            }
         }
         else if(typeDeBatiment==4)
         {
             if(joueur->metal>=140)
-                {
-                    resultat=1;
-                    joueur->metal-=140;
-                }
+            {
+                resultat=1;
+                joueur->metal-=140;
+            }
         }
         else if(typeDeBatiment==5)
         {
             if(joueur->metal>=160)
-                {
-                    resultat=1;
-                    joueur->metal-=160;
-                }
+            {
+                resultat=1;
+                joueur->metal-=160;
+            }
         }
         else if(typeDeBatiment==6)
         {
             if(joueur->metal>=180)
-                {
-                    resultat=1;
-                    joueur->metal-=180;
-                }
+            {
+                resultat=1;
+                joueur->metal-=180;
+            }
         }
 
     }
     if(typeDeTest==2)
     {
         if(joueur->pierre>=50)
-            {
-                    resultat=1;
-                    joueur->pierre-=50;
-            }
+        {
+            resultat=1;
+            joueur->pierre-=50;
+        }
     }
     if(typeDeTest==3)
     {
         if(joueur->pierre>=300)
-            {
-                    resultat=1;
-                    joueur->pierre-=300;
-            }
+        {
+            resultat=1;
+            joueur->pierre-=300;
+        }
     }
 
     if(resultat==0)
@@ -262,15 +262,15 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
 
     if(condition!=1)
     {
-            while(actuel!=NULL)
-    {
-        if((actuel->x==x)&&(actuel->y==y))
+        while(actuel!=NULL)
         {
-            precedent->suivant=actuel->suivant;
+            if((actuel->x==x)&&(actuel->y==y))
+            {
+                precedent->suivant=actuel->suivant;
+            }
+            actuel=actuel->suivant;
+            precedent=precedent->suivant;
         }
-        actuel=actuel->suivant;
-        precedent=precedent->suivant;
-    }
     }
     actuel = NULL;
     precedent = NULL;
@@ -278,6 +278,49 @@ void supprimerBatiment(t_listeBR *liste, int x, int y)
     free(precedent);
 }
 
+
+void supprimerBatimentD(t_listedef *liste, int x, int y)
+{
+    t_defense *actuel;
+    t_defense *precedent;
+    actuel = liste->premier;
+
+    int condition=0;
+
+    printf("%d\n",x);
+    printf("%d\n",y);
+
+    if((actuel->x==x)&&(actuel->y==y))
+    {
+        liste->premier=actuel->suivant;
+        condition=1;
+
+    }
+    else
+    {
+        precedent=liste->premier;
+        actuel=actuel->suivant;
+    }
+
+    if(condition!=1)
+    {
+        while(actuel!=NULL)
+        {
+            printf("%d\n",actuel->x);
+            printf("%d\n",actuel->y);
+            if((actuel->x==x)&&(actuel->y==y))
+            {
+                precedent->suivant=actuel->suivant;
+            }
+            actuel=actuel->suivant;
+            precedent=precedent->suivant;
+        }
+    }
+    actuel = NULL;
+    precedent = NULL;
+    free(actuel);
+    free(precedent);
+}
 
 
 void definirCoordonnees(int *x,int *y,t_borne borne,int niveau)
@@ -306,6 +349,20 @@ void definirCoordonnees(int *x,int *y,t_borne borne,int niveau)
             for(j=borne.yDeb; j<=borne.yFin; j+=120)
             {
                 if((*x>=i)&&(*x<i+120)&&(*y>=j)&&(*y<j+120))
+                {
+                    *x = i;
+                    *y = j;
+                }
+            }
+        }
+    }
+    else if(niveau==3)
+    {
+        for(i= 40; i<=*x; i+=60)
+        {
+            for(j=10; j<=*y; j+=60)
+            {
+                if((*x>=i)&&(*x<i+60)&&(*y>=j)&&(*y<j+60))
                 {
                     *x = i;
                     *y = j;
