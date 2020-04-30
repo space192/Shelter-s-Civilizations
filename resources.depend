@@ -711,77 +711,78 @@
 	"ttcalc.h"
 	"ttmemory.h"
 
-1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1588245505 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1587868990 c:\users\arthur\documents\github\projet-semestre-2-ing1\prototypes.h
+1588259728 c:\users\arthur\documents\github\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
-1587868969 c:\users\arthur\documents\github\projet-semestre-2-ing1\structures.h
-	"logg.h"
+1588214591 c:\users\arthur\documents\github\projet-semestre-2-ing1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	<math.h>
+	<string.h>
 
 1587851252 c:\users\arthur\documents\github\projet-semestre-2-ing1\logg.h
 	<allegro.h>
 	<vorbis/vorbisfile.h>
 	"prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+1588245505 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
 	"../../prototypes.h"
 
-1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
+1588245505 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
 	"../../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+1588245505 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
-1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+1588245505 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+1588259728 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
 	"../../prototypes.h"
 
-1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
+1588111689 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
 	"../../prototypes.h"
 
 1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\defense.c
+1588259728 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\defense.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
+1588206668 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
+1588086639 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\animation ennemi.c
+1588086396 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\animation ennemi.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
+1588259728 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
 	"../prototypes.h"
 
-1587864800 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+1588259728 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1587868859 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\jeu.c
+1588261506 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
 1587851252 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\logg.c
 	<string.h>
 	"prototypes.h"
 
-1587868964 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\main.c
+1588248291 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\main.c
 	"prototypes.h"
 
-1587868990 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
+1588254225 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
 	"../prototypes.h"
+	"../Online/socket.h"
 
-1587868990 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
+1588099735 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
 	"../prototypes.h"
 
 1588089341 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\sauvegarde\recuperersav.c
@@ -875,4 +876,23 @@
 	<winsock2.h>
 	<stdio.h>
 	<errno.h>
+
+1588086267 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\tutoriel.c
+	"../../prototypes.h"
+
+1588214029 c:\users\arthur\documents\github\projet-semestre-2-ing1\online\socket.h
+
+1588213136 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\online\affichage.c
+
+1588214340 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\online\connexion.c
+	"socket.h"
+	<winsock2.h>
+	<stdio.h>
+	<errno.h>
+
+1588261617 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\sauvegarde\recuperersav.c
+	"../prototypes.h"
+
+1588259074 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
+	"../prototypes.h"
 

@@ -151,17 +151,17 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listeEmplacementDefense = InitialisationEDD();
         listedef = initialisationDef();
     }
-    else if(sauvegarde == 4)
+    else if(sauvegarde != 0)
     {
         listedef = malloc(sizeof(t_listedef));
         listedef->premier = NULL;
+        recupererDefense(listedef, sauvegarde);
         listeEmplacementDefense = malloc(sizeof(t_listeEDD));
         listeEmplacementDefense->premier = NULL;
         listeRessource = malloc(sizeof(t_listeBR));
         listeRessource->premier = NULL;
         recupererBatimentProduction(listeRessource, sauvegarde);
         recupererEmplacementDispo(listeEmplacementDefense, sauvegarde);
-        recupererDefense(listedef, sauvegarde);
     }
 
     initSeqM(SeqM);
@@ -178,7 +178,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         clear_bitmap(page);
         clear_bitmap(place);
 
-        //g�n�tation des ennemis
         creer_horde(horde, niveauJeu, vitesseJeu);
 
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);

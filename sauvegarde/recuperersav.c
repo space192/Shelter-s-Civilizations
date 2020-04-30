@@ -126,7 +126,7 @@ void recupererDefense(t_listedef *liste, int niveau)
             liste->premier->x = temp.x;
             liste->premier->y = temp.y;
             liste->premier->cadenceMax = temp.cadenceMax;
-            liste->premier->angle = temp.centre;
+            liste->premier->angle = 64;
             liste->premier->centre = temp.centre;
             liste->premier->degat = temp.degat;
             liste->premier->liste = malloc(sizeof(t_listeBalle));
