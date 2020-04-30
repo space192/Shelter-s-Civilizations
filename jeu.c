@@ -22,7 +22,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int vitesseJeu = 1;
     int score = 0;
     int i;
-    //int nbMechant[3] = {0, 0, 0};
 
     float angleR= 0;
     float couleurR = 0;
@@ -178,7 +177,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         clear_bitmap(page);
         clear_bitmap(place);
 
-        creer_horde(horde, niveauJeu, vitesseJeu);
+        creer_horde(horde, &niveauJeu, vitesseJeu);
 
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
         afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
@@ -188,7 +187,6 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         {
             gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
         }
-        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
 
         if(pauseActive==0)
         {
@@ -197,13 +195,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
+       //affichage des ennemis
+        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
 
         afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
         ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
-        //affichage des ennemis
 
         attaquerMur(horde, &PDVMuraille);
 
@@ -211,7 +210,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
         supprimerEnnemi(horde,&score);
-
+/*
+        if(key[KEY_U])
+            blit(place, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);      //TEST POUR VOIR LES BITMAP CACHEES
+        if(key[KEY_I])
+            blit(chemin, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
+        if(key[KEY_O])
+            blit(angle, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
+*/
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
 

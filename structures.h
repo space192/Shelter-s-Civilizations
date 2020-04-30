@@ -146,6 +146,7 @@ typedef struct listeMechant
     int pvM[3];
     int degatsM[3]; //different degat en fonction du type d'ennemi
     int tmpDegat[3]; //differentes vitesse d'attaques des ennemis en fonction de leur type
+    int tmpDep[3];
 
     int nbAfaire; //c'est le nombre de mechant qui doivent etre créer dans la vagque
     int nbFait; //C'est le nombre de mechant qui ont été créer

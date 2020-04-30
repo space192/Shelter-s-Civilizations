@@ -267,8 +267,8 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
 
     while(elemA != NULL) //parcours de la horde d'ennemis
     {
-        elemA->cmptDx++;
-        elemA->cmptDy++;
+        elemA->cmptDx = elemA->cmptDx + vitesse;
+        elemA->cmptDy = elemA->cmptDy + vitesse;
 
         actualiserDeplacement(elemA, chemin);
         calculeAngle(elemA, angle);
