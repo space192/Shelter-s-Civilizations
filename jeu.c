@@ -20,6 +20,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu = 1;
     int vitesseJeu = 1;
+    int score = 0;
     int i;
     //int nbMechant[3] = {0, 0, 0};
 
@@ -167,8 +168,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     initAncre(horde);
 
     joueur1.or=20000;
-    joueur1.pierre=200000;
-    joueur1.metal=200000;
+    joueur1.pierre=20000;
+    joueur1.metal=20000;
     ajusterBase(&borne, agrandissement,&PDVMuraille);
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
@@ -198,7 +199,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
 
-        afficherLayoutMenu(page,layoutMenu,miniMap,PseudoJoueur,deplAffX,deplAffY,joueur1,horde,PDVMuraille,agrandissement);
+        afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
@@ -207,12 +208,10 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         attaquerMur(horde, &PDVMuraille);
 
-
-
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
-        supprimerEnnemi(horde);
+        supprimerEnnemi(horde,&score);
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }

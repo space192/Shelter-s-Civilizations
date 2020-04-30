@@ -93,7 +93,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
     t_balle *temp = NULL;
     while(actuelDef != NULL)
     {
-        actuelDef->target = 1000;
+        actuelDef->target = 2000000000;
         actuelDef->test = 0;
         actuelMec = listeMechant->premier;
         while(actuelMec != NULL)
@@ -107,7 +107,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
             }
             actuelMec = actuelMec->suivant;
         }
-        if(actuelDef->target != 1000)
+        if(actuelDef->target != 2000000000)
         {
             actuelDef->test = 1;
             actuelMec = listeMechant->premier;

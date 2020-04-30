@@ -1,9 +1,10 @@
 #include "../../prototypes.h"
 
 
-void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,char *PseudoJoueur, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,int PDV,int agrandissement)
+void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_borne borne,char *PseudoJoueur,int score, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,t_listedef *liste2,int PDV,int agrandissement)
 {
     t_ennemi *actuel = horde->premier;
+    t_defense *actuel2 =liste2->premier;
 
     draw_sprite(page,layoutMenu[0],220,0);
     draw_sprite(page,layoutMenu[1],400,969);
@@ -55,6 +56,8 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,char 
     draw_sprite(page, layoutMenu[2],1103,151);
 
     textprintf_ex(page,font,1113,161,makecol(255,255,255),-1,"%s",PseudoJoueur);
+    textprintf_ex(page,font,1113,176,makecol(255,255,255),-1,"Score actuel :%d", (score+(PDV/5)+(joueur.or/10)+(joueur.metal/10)+(joueur.pierre/10)));
+    textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Vagues restantes: %d",horde->nbVague);
 
     rect(page,1104+(deplAffX/22),2+deplAffY/21,1104+59+(deplAffX/22),2+50+deplAffY/21,makecol(255,0,0));
 
@@ -63,8 +66,19 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,char 
         rectfill(page,1104+(actuel->x/22),actuel->y/21 - 4,1104+2+(actuel->x/22),actuel->y/21 - 2,makecol(255,0,0));
         actuel=actuel->suivant;
     }
+
+    while(actuel2!=NULL)
+    {
+        rectfill(page,1104+(actuel2->x/22),actuel2->y/21 - 4,1104+2+(actuel2->x/22),actuel2->y/21 - 2,makecol(0,255,0));
+        actuel2=actuel2->suivant;
+    }
+
+    rectfill(page,1104+(borne.xDeb/22),(borne.yDeb/21)-2,1114+(borne.xFin/22),2+(borne.yFin/21),makecol(200,200,200));
+
     actuel = NULL;
     free(actuel);
+    actuel2 = NULL;
+    free(actuel2);
 }
 
 void afficherInfoBatimentBR(BITMAP* page)
