@@ -40,6 +40,50 @@ int testBalle(t_defense defense, t_balle balle)
     return verif;
 }
 
+void verificationListe(t_listedef *listedef)
+{
+    t_defense *actuelDef = listedef->premier;
+    t_balle *actuelBalle = actuelDef->liste->premier;
+    t_balle *precedentBalle = actuelDef->liste->premier;
+    t_balle *temp = NULL;
+    while(actuelDef != NULL)
+    {
+        while(actuelBalle != NULL)
+        {
+            if(testBalle(*actuelDef, *actuelBalle) == 0)
+            {
+                if(actuelBalle == actuelDef->liste->premier)
+                {
+                    temp = actuelDef->liste->premier;
+                    actuelDef->liste->premier = actuelDef->liste->premier->suivant;
+                    free(temp);
+                    actuelBalle = actuelDef->liste->premier;
+                }
+                else
+                {
+                    temp = actuelBalle;
+                    precedentBalle->suivant = actuelBalle->suivant;
+                    free(temp);
+                    actuelBalle = precedentBalle;
+                }
+            }
+            else
+            {
+                precedentBalle = actuelBalle;
+                actuelBalle = actuelBalle->suivant;
+            }
+        }
+        actuelDef = actuelDef->suivant;
+    }
+    actuelDef = NULL;
+    actuelBalle = NULL;
+    precedentBalle =NULL;
+    temp = NULL;
+    free(actuelDef);
+    free(actuelBalle);
+    free(temp);
+}
+
 void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4])
 {
     t_defense *actuelDef = listedef->premier;
@@ -109,24 +153,6 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                         actuelBalle->y += actuelBalle->dy/20;
                         rotate_sprite(buffer, image[3], actuelBalle->x-1-deplAffX, actuelBalle->y-25-deplAffY, itofix(actuelBalle->angle));
                     }
-                    else
-                    {
-                        if(actuelBalle == actuelDef->liste->premier)
-                        {
-                            temp = actuelDef->liste->premier;
-                            actuelDef->liste->premier = actuelBalle->suivant;
-                            free(temp);
-                        }
-                        else if(actuelBalle != actuelDef->liste->premier)
-                        {
-                            temp = actuelBalle;
-                            precedentBalle->suivant = actuelBalle->suivant;
-                            free(temp);
-                            actuelBalle = precedentBalle;
-                        }
-                    }
-                    actuelBalle->millieuAvantX = actuelBalle->x + 1;
-                    actuelBalle->millieuAvantY = actuelBalle->y + 50;
                     precedentBalle = actuelBalle;
                     actuelBalle = actuelBalle->suivant;
                 }
@@ -161,6 +187,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
         animation(image, buffer, actuelDef,deplAffX,deplAffY);
         actuelDef = actuelDef->suivant;
     }
+    verificationListe(listedef);
     actuelBalle = NULL;
     actuelDef = NULL;
     actuelMec = NULL;
@@ -172,3 +199,4 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
     free(precedentBalle);
     free(temp);
 }
+

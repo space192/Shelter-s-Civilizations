@@ -116,8 +116,6 @@ void ajoutBalle(t_listeBalle *defense)
             balle->suivant = defense->premier;
             defense->premier = balle;
             }
-
-
         }
     }
 }
