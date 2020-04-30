@@ -23,6 +23,9 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     t_maillonBR *maillon2 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
     t_maillonBR *maillon3 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
     t_maillonBR *maillon4 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
+    t_maillonBR *maillon5 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
+    t_maillonBR *maillon6 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
+    t_maillonBR *maillon7 =(t_maillonBR*) malloc(sizeof(t_maillonBR));
 
     if(liste == NULL||maillon==NULL||maillon3==NULL||maillon2==NULL)
     {
@@ -38,6 +41,12 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     maillon3->y = 1630;
     maillon4->x = 40;
     maillon4->y = 1690;
+    maillon5->x = 40;
+    maillon5->y = 1750;
+    maillon6->x = 100;
+    maillon6->y = 1690;
+    maillon7->x = 100;
+    maillon7->y = 1750;
 
     maillon->tic = 0;
     maillon2->tic = 0;
@@ -47,6 +56,9 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     maillon2->type = 2;
     maillon3->type = 3;
     maillon4->type = 4;
+    maillon5->type = 4;
+    maillon6->type = 4;
+    maillon7->type = 4;
 
     maillon->ticMax = 2000;
     maillon2->ticMax = 3000;
@@ -55,9 +67,15 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     maillon->niveau = 0;
     maillon2->niveau = 0;
     maillon3->niveau = 0;
-    maillon4->niveau = 2;
+    maillon4->niveau = 0;
+    maillon5->niveau = 0;
+    maillon6->niveau = 0;
+    maillon7->niveau = 0;
 
-    maillon4->suivant = NULL;
+    maillon7->suivant = NULL;
+    maillon6->suivant=maillon7;
+    maillon5->suivant=maillon6;
+    maillon4->suivant = maillon5;
     maillon3->suivant = maillon4;
     maillon2->suivant = maillon3;
     maillon->suivant = maillon2;

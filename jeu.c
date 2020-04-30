@@ -181,7 +181,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         creer_horde(horde, niveauJeu, vitesseJeu);
 
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
-        afficherBase(page,fond,base,fondation,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
+        afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
         afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
 
         if(listedef->premier!=NULL)

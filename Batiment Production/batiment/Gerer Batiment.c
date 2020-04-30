@@ -173,7 +173,7 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
         {
             actuel->tic++;
         }
-        else if(actuel->tic==actuel->ticMax)
+        else if((actuel->tic==actuel->ticMax)&&(actuel->type!=4))
         {
             if(actuel->niveau<2)
             {

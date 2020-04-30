@@ -14,7 +14,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
 t_listeBR *InitialisationBR(BITMAP* batiments[3]);
 t_listeEDD *InitialisationEDD();
 void incrementerTic(t_listeBR* liste,BITMAP* page, float *angle,float *couleurR,int deplAffX,int deplAffY);
-void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY);
+void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY);
 void gererDeplacement(int *deplAffX,int *deplAffY);
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY);
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne);

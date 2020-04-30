@@ -570,9 +570,5 @@ void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int 
             }
         }
     }
-    circlefill(page,borne.xDeb-deplAffX+30,borne.yDeb-deplAffY+90,25,makecol(255,0,0));
-    circlefill(page,borne.xDeb-deplAffX+90,borne.yDeb-deplAffY+90,25,makecol(255,0,0));
-    circlefill(page,borne.xDeb-deplAffX+30,borne.yDeb-deplAffY+150,25,makecol(255,0,0));
-    circlefill(page,borne.xDeb-deplAffX+90,borne.yDeb-deplAffY+150,25,makecol(255,0,0));
     free(actuel);
 }
