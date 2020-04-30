@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_borne borne,char *PseudoJoueur,int score, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,t_listedef *liste2,int PDV,int agrandissement)
+void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_borne borne,char *PseudoJoueur,int score,int niveauJeu, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,t_listedef *liste2,int PDV,int agrandissement)
 {
     t_ennemi *actuel = horde->premier;
     t_defense *actuel2 =liste2->premier;
@@ -57,7 +57,9 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_bor
 
     textprintf_ex(page,font,1113,161,makecol(255,255,255),-1,"%s",PseudoJoueur);
     textprintf_ex(page,font,1113,176,makecol(255,255,255),-1,"Score actuel :%d", (score+(PDV/5)+(joueur.or/10)+(joueur.metal/10)+(joueur.pierre/10)));
-    textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Vagues restantes: %d",horde->nbVague);
+    textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Niveau %d",niveauJeu);
+    textprintf_ex(page,font,1113,206,makecol(255,255,255),-1,"Vagues restantes: %d",(horde->nbVague - horde->vagueM));
+    textprintf_ex(page,font,1113,221,makecol(255,255,255),-1,"Nbr d'ennemis: %d",horde->nbElement);
 
     rect(page,1104+(deplAffX/22),2+deplAffY/21,1104+59+(deplAffX/22),2+50+deplAffY/21,makecol(255,0,0));
 

@@ -7,19 +7,9 @@
 			<Cursor1 position="751" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="structures.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ennemi\Affichage Ennemi.c" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3496" topLine="134" />
-		</Cursor>
-	</File>
-	<File name="Batiment Production\batiment\Gerer Batiment.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1235" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="sauvegarde\SauvegardeFichier.c" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1465" topLine="27" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Batiment Production\batiment\Ajout Batiment.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
@@ -27,39 +17,9 @@
 			<Cursor1 position="9811" topLine="191" />
 		</Cursor>
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Batiment Production\menu jeu et pause\tutoriel.c" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="965" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="prototypes.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="708" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Menu\AuxiliereMenu.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1899" topLine="30" />
-		</Cursor>
-	</File>
-	<File name="Menu\affichageMenu.c" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5324" topLine="60" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="30" />
-			<Collapse line="48" />
-		</Folding>
-	</File>
-	<File name="defense\liste chainée defense.c" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2951" topLine="76" />
-		</Cursor>
-	</File>
-	<File name="ennemi\Animation ennemi.c" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="6593" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Batiment Production\menu jeu et pause\menu jeu.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -67,32 +27,42 @@
 			<Cursor1 position="501" topLine="81" />
 		</Cursor>
 	</File>
-	<File name="Batiment Production\menu jeu et pause\tutoriel.c" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6593" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ennemi\Liste chainée ennemi.c" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1388" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Batiment Production\initialisation.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6898" topLine="195" />
-		</Cursor>
-	</File>
-	<File name="defense\defense.c" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3352" topLine="89" />
-		</Cursor>
-	</File>
 	<File name="Batiment Production\batiment\Base.c" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="480" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ennemi\Affichage Ennemi.c" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Batiment Production\menu jeu et pause\pause.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1434" topLine="85" />
+		</Cursor>
+	</File>
+	<File name="Menu\affichageMenu.c" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5324" topLine="60" />
+		</Cursor>
+	</File>
+	<File name="defense\defense.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3352" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="965" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="defense\liste chainée defense.c" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2951" topLine="74" />
+		</Cursor>
+	</File>
+	<File name="sauvegarde\SauvegardeFichier.c" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1465" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="ennemi\Animation ennemi.c" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
@@ -110,14 +80,14 @@
 			<Collapse line="3" />
 		</Folding>
 	</File>
-	<File name="Batiment Production\menu jeu et pause\pause.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ennemi\Liste chainée ennemi.c" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1434" topLine="85" />
+			<Cursor1 position="1388" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="jeu.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="structures.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7843" topLine="193" />
+			<Cursor1 position="3496" topLine="134" />
 		</Cursor>
 	</File>
 	<File name="Batiment Production\batiment\Placement Batiment.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -127,5 +97,30 @@
 		<Folding>
 			<Collapse line="4" />
 		</Folding>
+	</File>
+	<File name="prototypes.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="708" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Batiment Production\initialisation.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6898" topLine="195" />
+		</Cursor>
+	</File>
+	<File name="jeu.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7843" topLine="163" />
+		</Cursor>
+	</File>
+	<File name="Batiment Production\batiment\Gerer Batiment.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1235" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="Menu\AuxiliereMenu.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1899" topLine="30" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

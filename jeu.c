@@ -199,7 +199,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
 
-        afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
+        afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
