@@ -13,6 +13,7 @@ void initAncre(t_listeMechant* horde)
 
     horde->listeActua = 0;
 
+    horde->vagueM = 0;
     horde->nbFait = 0;
     horde->vagueFinis = 0; //on commence avec la vague qui n'est pas finis
 }
@@ -21,9 +22,9 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQ
 {
     if(niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 10; //nombre de petit mechant par vague
-        horde->typeMechant[1] = 5; //nombre de moyen mechant
-        horde->typeMechant[2] = 0; //nombre de boss
+        horde->typeMechant[0] = 10 * (horde->vagueM/2 + 1); //nombre de petit mechant par vague
+        horde->typeMechant[1] = 5 * (horde->vagueM/2 + 1); //nombre de moyen mechant
+        horde->typeMechant[2] = 0 * (horde->vagueM/2 + 1); //nombre de boss
 
         horde->pvM[0] = 100; //point de vie des mechants
         horde->pvM[1] = 250;
@@ -80,7 +81,7 @@ void actualiserListeMechant(t_listeMechant* horde, int niveau)  ///CARACTERISTIQ
         horde->nbVague = 5;
     }
 
-    horde->vagueM = 0;
+//horde->vagueM = 0;
     horde->nbFait = 0;
     horde->nbAfaire = horde->typeMechant[0] + horde->typeMechant[1] + horde->typeMechant[2]; //nombre de mechant à faire
     horde->listeActua = 1; //la liste a ete actualise
@@ -156,6 +157,7 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
         {
             ancreH->cmptV = 0; //quand on a finis de compter, on remet le compteur a 0
             ancreH->vagueFinis = 0; //et la vague suivante peut venir
+            ancreH->listeActua = 0;
         }
     }
     else if(ancreH->vagueFinis == 0) //si la vague n'est pas finis
@@ -168,7 +170,7 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
                 ancreH->cmptG++;
                 if((ancreH->cmptG >= ancreH->tmpG)) //on incremente le compteur pour qu'il ajoute un ennemi a la horde à un certains interval de temps
                 {
-                    if(ancreH->nbElement == 0)
+                    if(ancreH->nbElement <= 0)
                     {
                         ajouterPremierEnnemi(ancreH);
                         ancreH->nbFait++;
@@ -182,7 +184,7 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
                     ancreH->cmptG = 0; //on remet le compteur à 0
                 }
             }
-            else if((ancreH->nbFait == ancreH->nbAfaire) && (ancreH->nbElement == 0)) //si on a fait tous les mechant et qu'il n'en reste plus sur la map, on indique que la vague est finie
+            else if((ancreH->nbFait == ancreH->nbAfaire) && (ancreH->nbElement <= 0)) //si on a fait tous les mechant et qu'il n'en reste plus sur la map, on indique que la vague est finie
             {
                 ancreH->vagueFinis = 1;
                 ancreH->vagueM ++;
@@ -195,6 +197,7 @@ void creer_horde(t_listeMechant* ancreH, int niveau, int vit)
             }
         }
     }//fin else if vague pas finie
+    //printf("vagueA : %d, nbVague : %d,  nbFait %d - %d a faire, nbElement :%d\n", ancreH->vagueM, ancreH->nbVague, ancreH->nbFait, ancreH->nbAfaire, ancreH->nbElement);
 }
 
 void posAlea(int* x, int* y)
