@@ -432,16 +432,15 @@ void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t
     }
     for(i=0; i < 20; i++)
     {
-        if(tableau[i].y >= 290 && tableau[i].y < 800)
+        if(tableau[i].y >= 300 && tableau[i].y < 677)
         {
             stretch_blit(image[14], buffer, 0,0,image[14]->w, image[14]->h, tableau[i].x, tableau[i].y, image[14]->w*2.01, image[14]->h*2);
-            textprintf_ex(buffer, font, tableau[i].x+10,tableau[i].y+10, makecol(255,255,255), -1, "nom:%s", tableau[i].chaine);
-            textprintf_ex(buffer, font, tableau[i].x+300, tableau[i].y+10, makecol(255,255,255), -1, "score:%d", tableau[i].score);
+            textprintf_ex(buffer, font, tableau[i].x+15, tableau[i].y+20, makecol(255,255,255), -1, "#%d", i+1);
+            textprintf_ex(buffer, font, tableau[i].x+45,tableau[i].y+20, makecol(255,255,255), -1, "%s", tableau[i].chaine);
+            textprintf_ex(buffer, font, tableau[i].x+300, tableau[i].y+20, makecol(255,255,255), -1, "score:%d", tableau[i].score);
         }
     }
-    textprintf_ex(buffer, font, 0,10,makecol(255,255,255), -1, "%d", *y);
-    masked_stretch_blit(image[13], buffer, 0,0,image[13]->w, image[13]->h, 390,300,2.5*image[13]->w, 3*image[13]->h);
-    rectfill(buffer, 412, 708, 813, 850, makecol(0,0,0));
+    masked_stretch_blit(image[13], buffer, 0,0,image[13]->w, image[13]->h, 390,300,2.5*image[13]->w, 3.025*image[13]->h);
     if(mouse_b & 1 && mouse_x > 828 && mouse_x < 858 && mouse_y >363 && mouse_y < 658)
     {
         *sourisY = mouse_y-10;

@@ -8,7 +8,7 @@ int main()
     BITMAP *image[16];
     t_classement tableau[20];
     char chaine[100];
-    int sourisY = 355, y=354;
+    int sourisY = 355, y=350;
     chaine[0] = '\0';
     int compteur=0, sauvegarde = 1, continuer = 1, tuto = 0, ecrire = 0, pos=0, clic=0, sauvegardetemp = 4;
     float x=0;
@@ -22,7 +22,6 @@ int main()
     while(!key[KEY_ESC] && continuer == 1)
     {
         clear_bitmap(buffer);
-
         blit(fond,buffer,x,0,0,0,SCREEN_W, SCREEN_H);
         x+=0.4;
         if(x>3071)
@@ -33,7 +32,6 @@ int main()
         {
             x=0;
         }
-
         if(scene == 1)
         {
             MenuPrincipale(buffer, image, &scene, &compteur, sauvegarde);
@@ -54,7 +52,6 @@ int main()
         {
             continuer = 0;
         }
-        //textprintf_ex(buffer, font, 10, 10, makecol(255,255,255), -1, "x:%d et y:%d", mouse_x, mouse_y);
         blit(buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
     }
     destroy_bitmap(fond);
