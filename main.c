@@ -5,8 +5,10 @@ int main()
     lancerAllegro(1280, 1024);
     BITMAP *fond=load_bitmap("image/menu/fondMenu.bmp",NULL);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP *image[13];
+    BITMAP *image[16];
+    t_classement tableau[20];
     char chaine[100];
+    int sourisY = 355, y=354;
     chaine[0] = '\0';
     int compteur=0, sauvegarde = 1, continuer = 1, tuto = 0, ecrire = 0, pos=0, clic=0, sauvegardetemp = 4;
     float x=0;
@@ -43,6 +45,10 @@ int main()
         if(scene == 3)
         {
             ChargerUnePartie(buffer, image, &scene, &compteur, &sauvegardetemp);
+        }
+        if(scene == 4)
+        {
+            leaderBoard(buffer, image, &scene, &compteur, tableau, &sourisY, &y);
         }
         if(scene == 5)
         {

@@ -69,6 +69,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur
 void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
 void toucheClavier(char *chaine, BITMAP *buffer, int *pos, int *clic);
 void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde);
+void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
 
 
 
