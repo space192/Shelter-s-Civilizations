@@ -284,7 +284,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
             {
                 if(*compteur >= 17)
                 {
-                    //lance le jeux avec la sauvegarde du niveau 1
+                    dechargementImage(image);
+                    jeu(1, 0, chaine);
+                    chargementImageMenu(image);
+                    rest(100);
                     *scene = 1;
                     *compteur = 0;
                 }
@@ -313,7 +316,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
             {
                 if(*compteur >=17)
                 {
-                    //lancement du jeu avec la sauvegarde du niveau 2
+                    dechargementImage(image);
+                    jeu(2, 0, chaine);
+                    chargementImageMenu(image);
+                    rest(100);
                     *scene = 1;
                     *compteur = 0;
                 }
@@ -342,7 +348,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
             {
                 if(*compteur >=17)
                 {
-                    //lancement du jeu avec la sauvegarde du niveau 3
+                    dechargementImage(image);
+                    jeu(3, 0, chaine);
+                    chargementImageMenu(image);
+                    rest(100);
                     *scene = 1;
                     *compteur = 0;
                 }
@@ -470,4 +479,72 @@ void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t
         affichageBoutton(image[12], buffer, 2, 390, 950, 2.5);
     }
     destroy_bitmap(temp);
+}
+
+
+
+void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, int *compteur)
+{
+    if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >= 17)
+            {
+                (*niveau)++;
+                *jeuActif = 4;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+        }
+        affichageBoutton(image[0], buffer, 3, 390,400, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[0], buffer, 2, 390,400, 2.5);
+    }
+    if(mouse_x >= 390 && mouse_y>=480 && mouse_x <=890 && mouse_y <=530) //quitter et sauvegarder
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >=17)
+            {
+                *jeuActif = 2;
+                (*niveau)++;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+        }
+        affichageBoutton(image[1], buffer, 3, 390, 480, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[1], buffer,2, 390,480, 2.5);
+    }
+    if((mouse_x>= 390 && mouse_y>=560)&&(mouse_x <=890 && mouse_y <= 610)) //Quitter sans sauvegarder
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >=17)
+            {
+                *jeuActif = 3;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+        }
+        affichageBoutton(image[2], buffer, 3, 390, 560, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[2],buffer,2,390,560, 2.5);
+    }
 }

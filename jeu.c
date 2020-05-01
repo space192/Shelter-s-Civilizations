@@ -18,28 +18,28 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int numeroEDD=8;
     int PDVMuraille;
     int jeuActif=1;
-    int niveauJeu = 1;
-    int vitesseJeu = 1;
+    int niveauJeu;
+    int vitesseJeu = 3;
     int nivMuraille = 1;
     int score = 0;
     int i;
 
     float angleR= 0;
     float couleurR = 0;
-    char listeMusique[6][100]={"son/musique/sentient.wav",
-    "son/musique/first-light.wav",
-    "son/musique/gathering-horizon.wav",
-    "son/musique/solar-intervention.wav",
-    "son/musique/the-oil-industry.wav",
-    "son/musique/the-search-for-iron.wav"
-    };
-    char listeMusique2[6][100]={"sentient",
-    "first-light.wav",
-    "gathering-horizon",
-    "solar-intervention",
-    "the-oil-industry",
-    "the-search-for-iron"
-    };
+    char listeMusique[6][100]= {"son/musique/sentient.wav",
+                                "son/musique/first-light.wav",
+                                "son/musique/gathering-horizon.wav",
+                                "son/musique/solar-intervention.wav",
+                                "son/musique/the-oil-industry.wav",
+                                "son/musique/the-search-for-iron.wav"
+                               };
+    char listeMusique2[6][100]= {"sentient",
+                                 "first-light.wav",
+                                 "gathering-horizon",
+                                 "solar-intervention",
+                                 "the-oil-industry",
+                                 "the-search-for-iron"
+                                };
 
     t_batimentP batimentP;
     batimentP.x=40;
@@ -56,6 +56,10 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     BITMAP *menuC = NULL;
     BITMAP *menuD = NULL;
     BITMAP *layoutMenu[3];
+    BITMAP *transisition[3];
+    transisition[0] = load_bitmap("image/menu/continuer.bmp", NULL);
+    transisition[1] = load_bitmap("image/menu/Quitter et Sauvegarder.bmp", NULL);
+    transisition[2] = load_bitmap("image/menu/Quitter sans Sauvegarder.bmp", NULL);
 
     BITMAP *miniMap = NULL;
     BITMAP *fondation =NULL;
@@ -154,10 +158,11 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         joueur1.pierre=20000;
         joueur1.metal=20000;
         ajusterBase(&borne, agrandissement,&PDVMuraille);
+        niveauJeu = 1;
     }
     else if(sauvegarde != 0)
     {
-        short int temp = 0;
+        int temp = 0;
         listedef = malloc(sizeof(t_listedef));
         listedef->premier = NULL;
         recupererDefense(listedef, sauvegarde);
@@ -167,8 +172,24 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listeRessource->premier = NULL;
         recupererBatimentProduction(listeRessource, sauvegarde);
         recupererEmplacementDispo(listeEmplacementDefense, sauvegarde);
-        recupererAnecdote(&joueur1, &agrandissement, &score, &PDVMuraille);
+        recupererAnecdote(&joueur1, &agrandissement, &score, &PDVMuraille, sauvegarde);
         ajusterBase(&borne, agrandissement,&temp);
+        if(sauvegarde == 1)
+        {
+            niveauJeu = 1;
+        }
+        else if(sauvegarde == 2)
+        {
+            niveauJeu =3;
+        }
+        else if(sauvegarde == 3)
+        {
+            niveauJeu =5;
+        }
+        else if(sauvegarde == 4)
+        {
+            niveauJeu = 7;
+        }
     }
 
     initSeqM(SeqM);
@@ -180,50 +201,68 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         clear_bitmap(page);
         clear_bitmap(place);
 
-        creer_horde(horde, &niveauJeu, vitesseJeu);
-
-        gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
-        afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
-        afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
-
-        if(listedef->premier!=NULL)
+        if(niveauJeu%2==1)
         {
-            gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
+            creer_horde(horde, &niveauJeu, vitesseJeu);
+
+            gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
+            afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
+            afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
+
+            if(listedef->premier!=NULL)
+            {
+                gestion_test_look_shoot_kill(listedef, horde, page, IMGdefense,deplAffX,deplAffY,voiceB);
+            }
+
+            if(pauseActive==0)
+            {
+                //calcule des positions des ennemis
+                calculerPosition(horde, chemin, place, angle, vitesseJeu, nivMuraille);
+                gererDeplacement(&deplAffX,&deplAffY);
+                incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
+            }
+            //affichage des ennemis
+            dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
+
+            afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
+            testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
+            construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
+            ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
+            ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
+
+            attaquerMur(horde, &PDVMuraille);
+
+            tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
+            gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
+
+            supprimerEnnemi(horde,&score);
+        }
+        else if(niveauJeu%2==0 && niveauJeu!= 7)
+        {
+            rectfill(page, 0,0,1280, 1024, makecol(0,0,0));
+            passageNiveau(page, transisition, &niveauJeu, &jeuActif, &compteur);
+            if(niveauJeu == 3) //niveau 2
+            {
+                sauvegarde = 2;
+            }
+            else if(niveauJeu == 5) //niveau 3
+            {
+                sauvegarde = 3;
+            }
+            else if(niveauJeu == 7) //endless mode
+            {
+                sauvegarde = 4;
+            }
+            if(jeuActif == 4)
+            {
+                SauvegarderBatimentProduction(listeRessource, sauvegarde);
+                SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
+                SauvegarderDefense(listedef, sauvegarde);
+                sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
+                jeuActif = 1;
+            }
         }
 
-        if(pauseActive==0)
-        {
-            //calcule des positions des ennemis
-            calculerPosition(horde, chemin, place, angle, vitesseJeu, nivMuraille);
-            gererDeplacement(&deplAffX,&deplAffY);
-            incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
-        }
-       //affichage des ennemis
-        dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
-
-        afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
-        testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
-        construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
-        ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
-        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
-
-        attaquerMur(horde, &PDVMuraille);
-
-        tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
-        gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
-
-        supprimerEnnemi(horde,&score);
-
-        //bouton test vitesse
-        if(mouse_b&1 && (mouse_x>60 - 25) && (mouse_x <60 + 25) && (mouse_y>60 - 25) && (mouse_y <60 + 25) && (vitesseJeu == 1))
-            vitesseJeu = 2;
-        else if (mouse_b&1 && (mouse_x>60 - 25) && (mouse_x <60 + 25) && (mouse_y>60 - 25) && (mouse_y <60 + 25) && (vitesseJeu == 2))
-            vitesseJeu = 1;
-
-        if(vitesseJeu == 1)
-            circlefill(page, 60, 60, 25, makecol(0, 255, 0));
-        else if(vitesseJeu == 2)
-            circlefill(page, 60, 60, 25, makecol(255, 0, 0));
 
 
         if(key[KEY_U])
@@ -241,21 +280,19 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     destroy_sample(sample1);
     destroy_sample(sample2);
 
-    for(i=0;i<4;i++)
+    for(i=0; i<4; i++)
     {
         release_voice(voiceB[i]);
     }
 
-
-
     sauvegarderNiveauUnlock(sauvegarde);
-    //if(sauvegarde!=0)
-    //{
-        SauvegarderBatimentProduction(listeRessource, 4);
-        SauvegarderEmplacementDisponible(listeEmplacementDefense, 4);
-        SauvegarderDefense(listedef, 4);
-        sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille);
-    //}
+    if((sauvegarde != 0 && jeuActif != 3 && jeuActif !=0) || (niveauJeu == 7))
+    {
+        SauvegarderBatimentProduction(listeRessource, sauvegarde);
+        SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
+        SauvegarderDefense(listedef, sauvegarde);
+        sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
+    }
     libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);

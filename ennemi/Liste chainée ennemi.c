@@ -42,9 +42,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 10;
 
-        horde->nbVague = 5;
+        horde->nbVague = 1;
     }
-    else if(*niveau == 2)
+    else if(*niveau == 3)
     {
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
@@ -66,9 +66,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDep[1] = 3;
         horde->tmpDep[2] = 5;
 
-        horde->nbVague = 5;
+        horde->nbVague =5;
     }
-    else if(*niveau == 3)
+    else if(*niveau == 5)
     {
         horde->typeMechant[0] = 10;
         horde->typeMechant[1] = 5;
@@ -91,6 +91,30 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDep[2] = 10;
 
         horde->nbVague = 5;
+    }
+    else if(*niveau == 7)
+    {
+        horde->typeMechant[0] = 10 + horde->vagueM*2; //nombre de petit mechant par vague
+        horde->typeMechant[1] = 5 + horde->vagueM*2; //nombre de moyen mechant
+        horde->typeMechant[2] = 0 + horde->vagueM*2; //nombre de boss
+
+        horde->pvM[0] = 100 + horde->vagueM; //point de vie des mechants
+        horde->pvM[1] = 250 + horde->vagueM;
+        horde->pvM[2] = 1000 + horde->vagueM;
+
+        horde->degatsM[0] = 5 + horde->vagueM; //degat des mechants
+        horde->degatsM[1] = 10 + horde->vagueM;
+        horde->degatsM[2] = 20 + horde->vagueM;
+
+        horde->tmpDegat[0] = 30; //vitesse t'attaque des mechants
+        horde->tmpDegat[1] = 100;
+        horde->tmpDegat[2] = 200;
+
+        horde->tmpDep[0] = 4;
+        horde->tmpDep[1] = 6;
+        horde->tmpDep[2] = 10;
+
+        horde->nbVague = 1000000;
     }
 
 //horde->vagueM = 0;
@@ -156,8 +180,6 @@ void ajouterEnnemi(t_listeMechant* ancre)
 
 void creer_horde(t_listeMechant* ancreH, int* niveau, int vit)
 {
-    int niveauFINIS = 0;
-
     if(ancreH->listeActua == 0)
         actualiserListeMechant(ancreH, niveau);
 
@@ -199,12 +221,13 @@ void creer_horde(t_listeMechant* ancreH, int* niveau, int vit)
             else if((ancreH->nbFait == ancreH->nbAfaire) && (ancreH->nbElement <= 0)) //si on a fait tous les mechant et qu'il n'en reste plus sur la map, on indique que la vague est finie
             {
                 ancreH->vagueFinis = 1;
-                ancreH->vagueM ++;
+                ancreH->vagueM++;
 
                 if(ancreH->vagueM >= ancreH->nbVague)
                 {
-                    niveauFINIS = 1;//le niveau est finis
-                    printf("LE NIVEAU EST FINIS MOTHERFUCKER, j'ecris ca pour pas avoir de warning psq on a pas encore fait de quoi passer au niveau suivant %d\n", niveauFINIS);
+                    (*niveau)++;
+                    ancreH->listeActua = 0;
+                    ancreH->vagueM = 0;
                 }
             }
         }

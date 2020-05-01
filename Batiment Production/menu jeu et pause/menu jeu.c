@@ -56,7 +56,22 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_bor
 
     textprintf_ex(page,font,1113,161,makecol(255,255,255),-1,"%s",PseudoJoueur);
     textprintf_ex(page,font,1113,176,makecol(255,255,255),-1,"Score actuel :%d", (score+(PDV/5)+(joueur.or/10)+(joueur.metal/10)+(joueur.pierre/10)));
-    textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Niveau %d",niveauJeu);
+    if(niveauJeu == 1)
+    {
+        textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Niveau %d",1);
+    }
+    else if(niveauJeu == 3)
+    {
+        textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Niveau %d",2);
+    }
+    else if(niveauJeu == 5)
+    {
+        textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Niveau %d",3);
+    }
+    else if(niveauJeu == 7)
+    {
+        textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Endless Mode");
+    }
     textprintf_ex(page,font,1113,206,makecol(255,255,255),-1,"Vagues restantes: %d",(horde->nbVague - horde->vagueM));
     textprintf_ex(page,font,1113,221,makecol(255,255,255),-1,"Nbr d'ennemis: %d",horde->nbElement);
 

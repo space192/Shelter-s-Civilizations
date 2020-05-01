@@ -41,7 +41,7 @@ void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
     }
     if(fichier == NULL || fichier2 == NULL)
     {
-        allegro_message("erreur lors de la creation du fichier\nou le niveau n'a pas été precisé");
+        allegro_message("erreur fichier batiment production");
     }
     else
     {
@@ -101,7 +101,7 @@ void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)
     }
     if(fichier == NULL || fichier2 == NULL)
     {
-        allegro_message("erreur lors de la creation du fichier\nou le niveau n'a pas été precisé");
+        allegro_message("erreur emplacement dispo");
     }
     else
     {
@@ -159,7 +159,7 @@ void SauvegarderDefense(t_listedef *liste, int niveau)
     }
     if(fichier == NULL || fichier2 == NULL)
     {
-        allegro_message("erreur lors de la creation du fichier\nou le niveau n'a pas été precisé");
+        allegro_message("erreur defense");
     }
     else
     {
@@ -191,12 +191,40 @@ void sauvegarderNiveauUnlock(int sauvegarde)
     fclose(fichier);
 }
 
-void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV)
+void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sauvegarde)
 {
-    FILE *fichier = fopen("sauvegarde/anecdote.sav", "wb");
+    FILE *fichier = NULL;
+    switch(sauvegarde)
+    {
+    case 1:
+        {
+            fichier = fopen("sauvegarde/Niveau 1/anecdote.sav", "wb");
+            break;
+        }
+    case 2:
+        {
+            fichier = fopen("sauvegarde/Niveau 2/anecdote.sav", "wb");
+            break;
+        }
+    case 3:
+        {
+            fichier = fopen("sauvegarde/Niveau 3/anecdote.sav", "wb");
+            break;
+        }
+    case 4:
+        {
+            fichier = fopen("sauvegarde/Endless Mode/anecdote.sav", "wb");
+            break;
+        }
+    default:
+        {
+            fichier = NULL;
+            break;
+        }
+    }
     if(fichier == NULL)
     {
-        printf("erreur lors de l'ouverture du fichier");
+        printf("erreur anecdote");
     }
     else
     {
@@ -204,6 +232,6 @@ void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV)
         fwrite(&TBase, sizeof(int), 1, fichier);
         fwrite(&scoreE, sizeof(int), 1, fichier);
         fwrite(&PDV, sizeof(int), 1, fichier);
+        fclose(fichier);
     }
-    fclose(fichier);
 }

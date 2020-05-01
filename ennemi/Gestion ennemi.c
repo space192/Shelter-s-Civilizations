@@ -57,7 +57,10 @@ void supprimerEnnemi(t_listeMechant *liste,int *score)
         int condition=0;
         if(actuel->pvM <=0)
         {
-            liste->nbElement--;
+            if(liste->nbElement > 0)
+            {
+                liste->nbElement--;
+            }
             if(actuel->type == 0)
             {
                 (*score)+=10;
@@ -87,7 +90,10 @@ void supprimerEnnemi(t_listeMechant *liste,int *score)
 
                 if(actuel->pvM<=0)
                 {
-                    liste->nbElement--;
+                    if(liste->nbElement > 0)
+                    {
+                        liste->nbElement--;
+                    }
                     if(actuel->type == 0)
                     {
                         (*score)+=10;
@@ -107,8 +113,6 @@ void supprimerEnnemi(t_listeMechant *liste,int *score)
             }
         }
     }
-
-
     actuel = NULL;
     precedent = NULL;
     free(actuel);

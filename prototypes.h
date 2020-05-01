@@ -70,6 +70,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
 void toucheClavier(char *chaine, BITMAP *buffer, int *pos, int *clic);
 void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde);
 void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
+void passageNiveau(BITMAP *buffer,BITMAP *bouton[3], int *niveau, int *jeuActif, int *compteur);
 
 
 
@@ -128,8 +129,8 @@ void recupererEmplacementDispo(t_listeEDD *liste, int niveau);
 void SauvegarderBatimentProduction(t_listeBR *liste, int niveau);
 void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau);
 void SauvegarderDefense(t_listedef *liste, int niveau);
-void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV);
-void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV);
+void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV, int sauvegarde);
+void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sauvegarde);
 
 #endif // PROTORYPES_H_INCLUDED
 
