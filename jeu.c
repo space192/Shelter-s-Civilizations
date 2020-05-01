@@ -63,6 +63,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     BITMAP *IMGdefense[4];
     BITMAP *chemin=NULL;
     BITMAP *angle=NULL;
+    BITMAP *IMGMine[2];
+    BITMAP *Explosion = load_bitmap("image/defense/medium-explosion.bmp",NULL);
 
     page=create_bitmap(SCREEN_W,SCREEN_H);
     clear_bitmap(page);
@@ -70,6 +72,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     IMGdefense[1] = load_bitmap("image/defense/2.bmp", NULL);
     IMGdefense[2] = load_bitmap("image/defense/3.bmp", NULL);
     IMGdefense[3] = load_bitmap("image/defense/bullet.bmp", NULL);
+    IMGMine[0]=load_bitmap("image/defense/mine.bmp",NULL);
+    IMGMine[1]=load_bitmap("image/defense/mine2.bmp",NULL);
 
     angle = load_bitmap("image/ennemi/angle nouveau.bmp", NULL);
     chemin = load_bitmap("image/ennemi/chemin nouveau.bmp", NULL);
@@ -109,6 +113,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     beacon[1]=load_bitmap("image/BR/beacon-antenna.bmp",NULL);
 
 
+
     SAMPLE *selectSound = load_wav("son/select.wav");
     SAMPLE *newBSound =load_wav("son/put.wav");
     SAMPLE *buzzer = load_wav("son/buzzer.wav");
@@ -143,6 +148,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     t_borne borne;
     t_listeBR *listeRessource = NULL;
     t_listedef *listedef = NULL;
+    t_listeMine *listeMine=(t_listeMine*)malloc(sizeof(t_listeMine));
+    listeMine->premier= NULL;
     t_listeEDD *listeEmplacementDefense = NULL;
     t_listeMechant* horde = (t_listeMechant*)malloc(sizeof(t_listeMechant));
     if(sauvegarde == 0)
@@ -184,7 +191,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
         afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
-        afficherBatiment(listeRessource,page,batiments,beacon,&batimentP,&conditionBase,deplAffX,deplAffY);
+        afficherBatiment(listeRessource,listeMine,Explosion,page,batiments,beacon,IMGMine,&batimentP,&conditionBase,deplAffX,deplAffY);
 
         if(listedef->premier!=NULL)
         {
@@ -205,9 +212,10 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
         construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
         ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
-        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
+        ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,listeMine,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
 
         attaquerMur(horde, &PDVMuraille);
+        gererMine(listeMine,horde);
 
         tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);

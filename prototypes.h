@@ -26,14 +26,14 @@ int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
 int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4]);
 void ajusterBase(t_borne *borne, int agrandissement,int *PDV);
 void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_borne borne,char *PseudoJoueur,int score,int niveauJeu, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,t_listedef *liste2,int PDV,int agrandissement);
-void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP *batimentP,int *condition,int deplAffX, int deplAffY);
+void afficherBatiment(t_listeBR *liste,t_listeMine*listeMine,BITMAP* explosion,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],BITMAP *IMGMine[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY);
 void ameliorerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatimentD(t_listedef *liste, t_listeEDD *liste2, int x, int y);
 void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4]);
 void ajusterFondation(int*x,int*y);
 void nouvelleFondation(t_listeEDD *liste,int x, int y,int *numeroEDD);
-void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *liste,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,int voice[4]);
+void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *liste,t_listedef *listedef,t_listeMine *listeMine,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,int voice[4]);
 void afficherDefenseDisponible(t_listeEDD *liste,BITMAP* page,int *typeDeBatiment,int deplAffX,int deplAffY);
 void ajusterDefense(int*x,int*y);
 void nouvelleDefense(t_listeEDD *liste,t_listedef *listedef,int x, int y,int typeDeBatiment);
@@ -42,6 +42,8 @@ void afficherInfoBatimentBR(BITMAP* page);
 void afficherInfoBatimentD(BITMAP* page);
 void afficherInfo(BITMAP* page);
 void detruireListe(t_listeBR *liste1,t_listedef *liste2, t_listeEDD *liste3,t_listeMechant* liste4);
+void nouvelleMine(t_listeMine *listeMine,int x, int y,int typeDeBatiment);
+void gererMine(t_listeMine *liste, t_listeMechant *horde);
 
 void supprimerEnnemi(t_listeMechant *liste,int *score);
 

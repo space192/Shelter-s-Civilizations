@@ -222,7 +222,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
     (*i)++;
 }
 
-void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *listeEDD,t_listedef *listedef,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,int voice[4])
+void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *listeEDD,t_listedef *listedef,t_listeMine *listeMine,int *condition,int *typeDeBatiment,int *i,int deplAffX, int deplAffY,int voice[4])
 {
     int x,y;
     if(*condition==7)
@@ -265,22 +265,16 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
             *typeDeBatiment = 6;
             *i=0;
         }
-        if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=50))
+        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834))&&(*i>=50))
         {
-            *condition=71;
-            *typeDeBatiment = 7;
+            *condition=72;
+            *typeDeBatiment = 0;
             *i=0;
         }
         else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896))&&(*i>=50))
         {
-            *condition=71;
-            *typeDeBatiment = 8;
-            *i=0;
-        }
-        else if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=898)&&(mouse_x <=958))&&(*i>=50))
-        {
-            *condition=71;
-            *typeDeBatiment = 9;
+            *condition=72;
+            *typeDeBatiment = 1;
             *i=0;
         }
         else if((mouse_b & 1)&&(*i>=50))
@@ -313,6 +307,24 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
                 nouvelleDefense(listeEDD,listedef,x,y,*typeDeBatiment);
 
             }
+            *condition = 1;
+            *i=0;
+        }
+    }
+    if(*condition==72)
+    {
+        if((mouse_b & 1)&&(*i>=50))
+        {
+            x = mouse_x+deplAffX;
+            y = mouse_y+deplAffY;
+
+
+            ajusterDefense(&x,&y);
+
+
+            voice_start(voice[1]);
+            nouvelleMine(listeMine,x,y,*typeDeBatiment);
+
             *condition = 1;
             *i=0;
         }
@@ -486,6 +498,29 @@ void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int 
     actuel = NULL;
     free(actuel);
 }
+
+void nouvelleMine(t_listeMine *listeMine,int x, int y,int typeDeBatiment)
+{
+    t_maillonMine *actuel = malloc(sizeof(t_maillonMine));
+
+    if(actuel==NULL)
+    {
+        printf("erreur d'allocation dynamique 6\n");
+        exit(EXIT_FAILURE);
+    }
+
+    actuel->x = x;
+    actuel->y = y;
+    actuel->type = typeDeBatiment;
+    actuel->etat=0;
+
+    actuel->suivant = listeMine->premier;
+    listeMine->premier = actuel;
+
+
+}
+
+
 
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne)
 {

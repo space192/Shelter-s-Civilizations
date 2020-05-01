@@ -51,10 +51,26 @@ struct MAILLONEDD
     t_maillonEDD *suivant;
 };
 
+typedef struct MAILLONMINE t_maillonMine;
+struct MAILLONMINE
+{
+
+    int x;
+    int y;
+    int type;
+    int etat;
+    t_maillonMine *suivant;
+};
+
 typedef struct ListeBR
 {
     t_maillonBR *premier;
 } t_listeBR;
+
+typedef struct ListeMine
+{
+    t_maillonMine *premier;
+} t_listeMine;
 
 typedef struct ListeEDD
 {
