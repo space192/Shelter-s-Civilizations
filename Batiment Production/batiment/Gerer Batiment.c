@@ -1,8 +1,10 @@
 #include "../../prototypes.h"
 
-void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY)
+void afficherBatiment(t_listeBR *liste,t_listeMine *listeMine,BITMAP* explosion,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],BITMAP *IMGMine[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY)
 {
     BITMAP* antenne=create_bitmap(54,50);
+    BITMAP* petiteExplosion=create_bitmap(112,94);
+    t_maillonMine *actuel2;
 
     blit(beacon[1], antenne,batimentP->imageX,batimentP->imageY,0,0,54, 50);
 
@@ -66,10 +68,76 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
         actuel = actuel->suivant;
     }
 
+    if(listeMine->premier!=NULL)
+    {
+        actuel2 = listeMine->premier;
+        while(actuel2!=NULL)
+        {
+            if(actuel2->etat==0)
+            {
+                draw_sprite(page,IMGMine[actuel2->type],actuel2->x-deplAffX,actuel2->y-deplAffY);
+            }
+            else if((actuel2->etat>0)&&(actuel2->etat<672))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat,0,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=672)&&(actuel2->etat<1344))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-672,94,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=1344)&&(actuel2->etat<2016))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-1344,188,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=2016)&&(actuel2->etat<2688))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-2016,282,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=2688)&&(actuel2->etat<3360))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-2688,376,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=3360)&&(actuel2->etat<4032))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-3360,470,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=4032)&&(actuel2->etat<4704))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-4032,564,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=4704)&&(actuel2->etat<5376))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-4704,658,0,0,112, 94);
+
+            }
+            else if((actuel2->etat>=5376)&&(actuel2->etat<6048))
+            {
+                blit(explosion, petiteExplosion,actuel2->etat-5376,752,0,0,112, 94);
+
+            }
+            if(actuel2->etat!=0)
+            {
+                draw_sprite(page,petiteExplosion,actuel2->x-deplAffX-25,actuel2->y-deplAffY-50);
+                actuel2->etat+=112;
+            }
+
+
+            actuel2=actuel2->suivant;
+        }
+    }
+
     draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
     draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
     destroy_bitmap(antenne);
     free(actuel);
+    free(actuel2);
 }
 
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY)
@@ -193,3 +261,85 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
     free(actuel);
 }
 
+void gererMine(t_listeMine *liste, t_listeMechant *horde)
+{
+    t_ennemi *mechant;
+    t_maillonMine *actuel;
+    t_maillonMine *actuel2;
+    t_maillonMine *precedent;
+    int condition=0;
+
+
+
+    if(liste->premier!=NULL)
+    {
+        actuel2 = liste->premier;
+
+
+        if(actuel2->etat ==6048)
+        {
+            liste->premier=actuel2->suivant;
+            condition=1;
+
+        }
+        else
+        {
+            precedent=liste->premier;
+            actuel2=actuel2->suivant;
+        }
+        if(condition!=1)
+        {
+            while(actuel2!=NULL)
+            {
+                if(actuel2->etat==6048)
+                {
+                    precedent->suivant=actuel2->suivant;
+                }
+                actuel2=actuel2->suivant;
+                precedent=precedent->suivant;
+            }
+        }
+    }
+    if(liste->premier!=NULL)
+    {
+        actuel=liste->premier;
+        while(actuel!=NULL)
+        {
+            if(horde->premier!=NULL)
+            {
+                mechant=horde->premier;
+                while(mechant!=NULL)
+                {
+                    if((mechant->x>actuel->x)&&(mechant->x<actuel->x+60)&&(mechant->y>actuel->y)&&(mechant->y<actuel->y+60))
+                    {
+                        if(actuel->type==0)
+                        {
+                            mechant->pvM-=30;
+                        }
+                        else if(actuel->type==1)
+                        {
+                            mechant->pvM-=60;
+
+                        }
+                        if(actuel->etat==0)
+                        {
+                            actuel->etat+=112;
+                        }
+
+                    }
+                    mechant=mechant->suivant;
+                }
+            }
+            actuel=actuel->suivant;
+        }
+    }
+
+    actuel=NULL;
+    actuel2=NULL;
+    precedent=NULL;
+
+    free(actuel);
+    free(actuel2);
+    free(precedent);
+
+}
