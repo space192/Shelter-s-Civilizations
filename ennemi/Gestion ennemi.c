@@ -267,6 +267,7 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
 
     while(elemA != NULL) //parcours de la horde d'ennemis
     {
+
         elemA->cmptDx = elemA->cmptDx + vitesse;
         elemA->cmptDy = elemA->cmptDy + vitesse;
 
@@ -279,14 +280,14 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
         if(elemA->x < 800)
             etalement(elemA, place);
 
-        if(elemA->cmptDx >= elemA->tmpDx) //test le compteur pour savoir si on peut deplacer l'ennemi
+        if(elemA->cmptDx >= elemA->tmpDx/vitesse) //test le compteur pour savoir si on peut deplacer l'ennemi
         {
             if(testFuturePlaceLibre(place, elemA) == 1)
                 elemA->x = elemA->x + elemA->depx;
             elemA->cmptDx = 0;
         }
 
-        if(elemA->cmptDy >= elemA->tmpDy)
+        if(elemA->cmptDy >= elemA->tmpDy/vitesse)
         {
             if(testFuturePlaceLibre(place, elemA) == 1)
                 elemA->y = elemA->y + elemA->depy;

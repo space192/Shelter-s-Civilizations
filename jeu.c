@@ -212,6 +212,18 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         gererPause(page,&pauseActive,pause,&volumeMusique,&musiqueActive,voice,listeMusique2,&jeuActif);
 
         supprimerEnnemi(horde,&score);
+
+        //bouton test vitesse
+        if(mouse_b&1 && (mouse_x>60 - 25) && (mouse_x <60 + 25) && (mouse_y>60 - 25) && (mouse_y <60 + 25) && (vitesseJeu == 1))
+            vitesseJeu = 2;
+        else if (mouse_b&1 && (mouse_x>60 - 25) && (mouse_x <60 + 25) && (mouse_y>60 - 25) && (mouse_y <60 + 25) && (vitesseJeu == 2))
+            vitesseJeu = 1;
+
+        if(vitesseJeu == 1)
+            circlefill(page, 60, 60, 25, makecol(0, 255, 0));
+        else if(vitesseJeu == 2)
+            circlefill(page, 60, 60, 25, makecol(255, 0, 0));
+
 /*
         if(key[KEY_U])
             blit(place, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);      //TEST POUR VOIR LES BITMAP CACHEES

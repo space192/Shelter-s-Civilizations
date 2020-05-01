@@ -22,9 +22,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
 {
     if(*niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 10 * (horde->vagueM/2 + 1); //nombre de petit mechant par vague
-        horde->typeMechant[1] = 5 * (horde->vagueM/2 + 1); //nombre de moyen mechant
-        horde->typeMechant[2] = 0 * (horde->vagueM/2 + 1); //nombre de boss
+        horde->typeMechant[0] = 10 + (horde->vagueM/2 * 4); //nombre de petit mechant par vague
+        horde->typeMechant[1] = 5 + (horde->vagueM/2 * 2); //nombre de moyen mechant
+        horde->typeMechant[2] = 0 + (horde->vagueM%5); //nombre de boss
 
         horde->pvM[0] = 100; //point de vie des mechants
         horde->pvM[1] = 250;
@@ -38,9 +38,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 200;
 
-        horde->tmpDep[0] = 2;
-        horde->tmpDep[1] = 3;
-        horde->tmpDep[2] = 5;
+        horde->tmpDep[0] = 4;
+        horde->tmpDep[1] = 6;
+        horde->tmpDep[2] = 10;
 
         horde->nbVague = 5;
     }
@@ -86,9 +86,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 200;
 
-        horde->tmpDep[0] = 2;
-        horde->tmpDep[1] = 3;
-        horde->tmpDep[2] = 5;
+        horde->tmpDep[0] = 4;
+        horde->tmpDep[1] = 6;
+        horde->tmpDep[2] = 10;
 
         horde->nbVague = 5;
     }
@@ -270,7 +270,14 @@ t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int nb)
     nouveau->tmpDy = ancre->tmpDep[type];
 
     nouveau->cmptImg = 0;
+
+    if(type == 0)
     nouveau->tmpImg = 5;
+    else if(type == 1)
+    nouveau->tmpImg = 10;
+    else if(type == 2)
+    nouveau->tmpImg = 500;
+
     nouveau->imgA = 0;
     nouveau->angle = 2;
 

@@ -26,24 +26,21 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
     int imgx = 0, imgy = 0, imgCourrante = 0;
     //BITMAP* imgDecoup = NULL;
 
+    //printf("type : %d, tmpImg ; %d\n", elemA->type, elemA->tmpImg);
     elemA->cmptImg++; //on incrémente le compteur d'img
     if(elemA->cmptImg >= elemA->tmpImg)
     {
         elemA->imgA++; //si le compteur a atteint le nombre demandé passe à l'img suivante dans la séquence
 
-        if(((elemA->type == 3)&&(elemA->imgA >= 30))||((elemA->type <3)&&(elemA->imgA >= 16)))
+        if(((elemA->type == 2)&&(elemA->imgA >= 30))||((elemA->type <2)&&(elemA->imgA >= 16)))
             elemA->imgA = 0;
     }
-
     //printf("mechant%d type%d imgA%d  imgx %d  imgy%d\n", elemA->nbE, elemA->type, elemA->imgA, elemA->imgX, elemA->imgY);
 
     imgCourrante = elemA->imgA;
 
     if(elemA->type == 2)
     {
-        if(imgCourrante >= 30)
-            imgCourrante = 0;
-
         imgx = imgCourrante*48;
         imgy = elemA->angle*68;
     }
@@ -54,9 +51,6 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
             imgCourrante = imgCourrante - 8;
             imgy = 1;
         }
-
-        if(imgCourrante >= 16)
-            imgCourrante = 0;
 
         imgx = imgCourrante*248;
         imgy = (imgy + 2*elemA->angle)*220;
@@ -69,16 +63,12 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
             imgy = 1;
         }
 
-        if(imgCourrante >= 16)
-            imgCourrante = 0;
-
         imgx = imgCourrante*202;
         imgy = (imgy + 2*elemA->angle)*158;
     }
 
     elemA->imgX = imgx;
     elemA->imgY = imgy;
-
 }
 
 /*
