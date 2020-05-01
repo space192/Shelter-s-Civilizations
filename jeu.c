@@ -71,8 +71,8 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     IMGdefense[2] = load_bitmap("image/defense/3.bmp", NULL);
     IMGdefense[3] = load_bitmap("image/defense/bullet.bmp", NULL);
 
-    angle = load_bitmap("image/ennemi/angle mechant.bmp", NULL);
-    chemin = load_bitmap("image/ennemi/chemin ennemi.bmp", NULL);
+    angle = load_bitmap("image/ennemi/angle nouveau.bmp", NULL);
+    chemin = load_bitmap("image/ennemi/chemin nouveau.bmp", NULL);
     BITMAP *place =create_bitmap(fond->w, fond->h);
 
     batiments[0]= load_bitmap("image/BR/OR1.bmp",NULL);
