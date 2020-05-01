@@ -26,7 +26,6 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
     {
         if(*musique%2==0)
         {
-        printf("%d\n",*musique);
         destroy_sample(sample1);
 
         sample1= load_wav(listeMusique[*musique]);
@@ -40,7 +39,6 @@ void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100
         }
         else if(*musique%2==1)
         {
-        printf("%d\n",*musique);
         destroy_sample(sample2);
 
 
