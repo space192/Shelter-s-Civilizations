@@ -101,10 +101,11 @@ int testChemin(int x, int y);
 int espacementH(t_ennemi* elem, BITMAP* place, int *chemin);
 int testUtile(BITMAP* place, int x, int y);
 void espacementV(t_ennemi* elem, BITMAP* place);
-void etalement(t_ennemi* elem, BITMAP* place);
+void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur);
+void etalement(t_ennemi* elem, BITMAP* place, int nivMur);
 void replacementY(t_ennemi *elem);
 void calculeAngle(t_ennemi *mechant, BITMAP* angle);
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese);
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese, int nivMur);
 void attaquerMur(t_listeMechant* horde, int* pvMur);
 
 

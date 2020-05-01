@@ -20,6 +20,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu = 1;
     int vitesseJeu = 1;
+    int nivMuraille = 1;
     int score = 0;
     int i;
 
@@ -193,7 +194,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         if(pauseActive==0)
         {
             //calcule des positions des ennemis
-            calculerPosition(horde, chemin, place, angle, vitesseJeu);
+            calculerPosition(horde, chemin, place, angle, vitesseJeu, nivMuraille);
             gererDeplacement(&deplAffX,&deplAffY);
             incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
         }
@@ -224,14 +225,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         else if(vitesseJeu == 2)
             circlefill(page, 60, 60, 25, makecol(255, 0, 0));
 
-/*
+
         if(key[KEY_U])
             blit(place, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);      //TEST POUR VOIR LES BITMAP CACHEES
         if(key[KEY_I])
             blit(chemin, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
         if(key[KEY_O])
             blit(angle, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
-*/
+
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
 

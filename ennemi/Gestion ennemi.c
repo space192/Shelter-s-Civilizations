@@ -145,9 +145,9 @@ int testChemin(int x, int y) //test que les mechant ne sortent pas du chemin, ta
 {
     int test = 0;
 
-    if((x < 800) && ((y < 1600) || (y > 1900)))
+    if((x < 600) && ((y < 1630) || (y > 1870 - 30)))
         test = 1;
-    if(x <= 444)
+    if(x <= 445)
         test = 2;
 
     return test;
@@ -213,11 +213,18 @@ void espacementV(t_ennemi* elem, BITMAP* place)
     }
 }
 
-void etalement(t_ennemi* elem, BITMAP* place)
+void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur)
+{
+        //shit
+}
+
+void etalement(t_ennemi* elem, BITMAP* place, int nivMur)
 {
     int bloquer = 0, chemin = 0; //chemin est un booleen qui est à 0 tant que les mechants sont sur le chemin, 1 s'ils en sortent et 2 s'ils sont au bout
 
     bloquer = espacementH(elem, place, &chemin);
+
+    //printf("bloquer : %d, chemin : %d\n", bloquer, chemin);
 
     if((bloquer == 1)) //si les ennemis ne peuvent plus avancer mais pas au bout du chemin
         espacementV(elem, place);
@@ -260,7 +267,7 @@ void calculeAngle(t_ennemi *mechant, BITMAP* angle)
         mechant->angle = mechant->angle;
 }
 
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse)
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse, int nivMur)
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
     elemA = ancreH->premier;
@@ -274,11 +281,11 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
         actualiserDeplacement(elemA, chemin);
         calculeAngle(elemA, angle);
 
-        if(elemA->x <=800) //si on arrive dans la zone devant le mur où les mechant s'etalent, on les distances de 5 pixels en verticale
+        if(elemA->x <= 800) //si on arrive dans la zone devant le mur où les mechant s'etalent, on les distances de 5 pixels en verticale
             replacementY(elemA);
 
         if(elemA->x < 800)
-            etalement(elemA, place);
+            etalement(elemA, place, nivMur);
 
         if(elemA->cmptDx >= elemA->tmpDx/vitesse) //test le compteur pour savoir si on peut deplacer l'ennemi
         {

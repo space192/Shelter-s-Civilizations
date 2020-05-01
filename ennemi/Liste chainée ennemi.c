@@ -22,7 +22,7 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
 {
     if(*niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 10 + (horde->vagueM/2 * 4); //nombre de petit mechant par vague
+        horde->typeMechant[0] = 50 + (horde->vagueM/2 * 4); //nombre de petit mechant par vague
         horde->typeMechant[1] = 5 + (horde->vagueM/2 * 2); //nombre de moyen mechant
         horde->typeMechant[2] = 0 + (horde->vagueM%5); //nombre de boss
 
