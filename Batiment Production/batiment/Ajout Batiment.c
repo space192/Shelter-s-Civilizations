@@ -161,6 +161,55 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
     {
         draw_sprite(page,construc,400,16);
         rect(page,588,18,588+60,18+60,makecol(0,255,0));
+
+        if((mouse_b & 1)&&(((mouse_x>(borne->xFin +60)-deplAffX)&&(mouse_x<(borne->xFin +60+60)-deplAffX)&&(mouse_y>borne->yDeb-deplAffY)&&(mouse_y<borne->yFin-deplAffY))&&(*i>=50)))
+        {
+
+
+            if(testSiArgentSuffisant(joueur,0,0,5,voice)==1)
+            {
+                if(*agrandissement==0)
+                {
+                    if(*PDV<=9800)
+                    {
+                        (*PDV)+=2000;
+                    }
+                    else
+                    {
+                        (*PDV)=10000;
+                    }
+                }
+                else if(*agrandissement==1)
+                {
+                    if(*PDV<=19800)
+                    {
+                        (*PDV)+=2000;
+                    }
+                    else
+                    {
+                        (*PDV)=20000;
+                    }
+                }
+                else if(*agrandissement==1)
+                {
+                    if(*PDV<=29800)
+                    {
+                        (*PDV)+=2000;
+                    }
+                    else
+                    {
+                        (*PDV)=30000;
+                    }
+                }
+
+            }
+
+
+            *condition = 1;
+
+            *i=0;
+        }
+
         if((mouse_b & 1)&&(((mouse_x<borne->xDeb-deplAffX)||(mouse_x>(borne->xFin +60)-deplAffX)||(mouse_y<borne->yDeb-deplAffY)||(mouse_y>borne->yFin-deplAffY))&&(*i>=50)))
         {
             *condition=1;
@@ -178,6 +227,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
 
             *i=0;
         }
+
     }
     else if(*condition == 5)
     {
@@ -321,9 +371,12 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
 
             ajusterDefense(&x,&y);
 
+            if(testSiArgentSuffisant(joueur,0,*typeDeBatiment,4,voice)==1)
+            {
+                voice_start(voice[1]);
+                nouvelleMine(listeMine,x,y,*typeDeBatiment);
+            }
 
-            voice_start(voice[1]);
-            nouvelleMine(listeMine,x,y,*typeDeBatiment);
 
             *condition = 1;
             *i=0;

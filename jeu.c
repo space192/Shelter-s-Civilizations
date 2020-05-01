@@ -299,7 +299,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         SauvegarderDefense(listedef, sauvegarde);
         sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
     }
-    libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
+    libereBitmap(page,transisition,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);
-    detruireListe(listeRessource,listedef,listeEmplacementDefense,horde);
+    detruireListe(listeRessource,listedef,listeEmplacementDefense,listeMine,horde);
 }

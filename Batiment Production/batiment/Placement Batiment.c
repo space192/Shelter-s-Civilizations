@@ -159,6 +159,34 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
             joueur->pierre-=300;
         }
     }
+    if(typeDeTest==4)
+    {
+
+        if(typeDeBatiment==0)
+        {
+            if(joueur->metal>=10)
+            {
+                resultat=1;
+                joueur->metal-=10;
+            }
+        }
+        else if(typeDeBatiment==1)
+        {
+            if(joueur->metal>=15)
+            {
+                resultat=1;
+                joueur->metal-=15;
+            }
+        }
+    }
+    if(typeDeTest==5)
+    {
+        if(joueur->pierre>=200)
+        {
+            resultat=1;
+            joueur->pierre-=200;
+        }
+    }
 
     if(resultat==0)
     {

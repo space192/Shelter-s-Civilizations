@@ -186,7 +186,7 @@ typedef struct classement
 #define NB_SEQM 3
 
 #define NB_MECHANT 10
-#define NB_MECHANT_MAX 50 //nombre de mechant simultanement sur la map
+#define NB_MECHANT_MAX 80 //nombre de mechant simultanement sur la map
 
 #define VITESSE 2
 #define ESP_X 30

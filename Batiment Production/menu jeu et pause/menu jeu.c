@@ -6,6 +6,8 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_bor
     t_ennemi *actuel = horde->premier;
     t_defense *actuel2 =liste2->premier;
 
+    char carac=236;
+
     draw_sprite(page,layoutMenu[0],220,0);
     draw_sprite(page,layoutMenu[1],400,969);
     textprintf_ex(page,font,425,980,makecol(255,255,255),-1,"Points de vie de la muraille:");
@@ -73,6 +75,11 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_bor
         textprintf_ex(page,font,1113,191,makecol(255,255,255),-1,"Endless Mode");
     }
     textprintf_ex(page,font,1113,206,makecol(255,255,255),-1,"Vagues restantes: %d",(horde->nbVague - horde->vagueM));
+    //textprintf_ex(page,font,1113,206,makecol(255,255,255),-1,"Vagues restantes: %c",carac);
+
+
+
+
     textprintf_ex(page,font,1113,221,makecol(255,255,255),-1,"Nbr d'ennemis: %d",horde->nbElement);
 
     rect(page,1104+(deplAffX/22),2+deplAffY/21,1104+59+(deplAffX/22),2+50+deplAffY/21,makecol(255,0,0));
@@ -237,6 +244,24 @@ void afficherInfoBatimentD(BITMAP* page)
             textprintf_ex(page,font,722,175,makecol(255,255,255),-1,"Niveau : 2");
 
         }
+        if(((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=774)&&(mouse_x <=834)))
+        {
+            rectfill(page,772,98,926,202,makecol(255,255,255));
+            rectfill(page,774,100,924,200,makecol(0,0,0));
+            textprintf_ex(page,font,784,125,makecol(255,255,255),-1,"Coute:  10 Metal");
+            textprintf_ex(page,font,784,150,makecol(255,255,255),-1,"Type: Mine");
+            textprintf_ex(page,font,784,175,makecol(255,255,255),-1,"Niveau : 1");
+
+        }
+        else if(((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=836)&&(mouse_x <=896)))
+        {
+            rectfill(page,834,98,988,202,makecol(255,255,255));
+            rectfill(page,836,100,986,200,makecol(0,0,0));
+            textprintf_ex(page,font,846,125,makecol(255,255,255),-1,"Coute:  15 Metal");
+            textprintf_ex(page,font,846,150,makecol(255,255,255),-1,"Type: Mine");
+            textprintf_ex(page,font,846,175,makecol(255,255,255),-1,"Niveau : 2");
+
+        }
 }
 
 void afficherInfo(BITMAP* page)
@@ -268,9 +293,10 @@ void afficherInfo(BITMAP* page)
         }
         else if(((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=588)&&(mouse_x <=648)))
         {
-            rectfill(page,586,98,810,142,makecol(255,255,255));
-            rectfill(page,588,100,808,140,makecol(0,0,0));
+            rectfill(page,586,98,810,202,makecol(255,255,255));
+            rectfill(page,588,100,808,200,makecol(0,0,0));
             textprintf_ex(page,font,598,125,makecol(255,255,255),-1,"Amelioration de batiments");
+            textprintf_ex(page,font,536,150,makecol(255,255,255),-1,"Reparation de la Muraille");
 
 
         }
