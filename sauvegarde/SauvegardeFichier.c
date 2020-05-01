@@ -190,3 +190,20 @@ void sauvegarderNiveauUnlock(int sauvegarde)
     }
     fclose(fichier);
 }
+
+void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV)
+{
+    FILE *fichier = fopen("sauvegarde/anecdote.sav", "wb");
+    if(fichier == NULL)
+    {
+        printf("erreur lors de l'ouverture du fichier");
+    }
+    else
+    {
+        fwrite(&joueur, sizeof(t_joueur), 1, fichier);
+        fwrite(&TBase, sizeof(int), 1, fichier);
+        fwrite(&scoreE, sizeof(int), 1, fichier);
+        fwrite(&PDV, sizeof(int), 1, fichier);
+    }
+    fclose(fichier);
+}

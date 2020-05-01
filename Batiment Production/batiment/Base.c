@@ -186,6 +186,7 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
         borne->yFin = 2110;
         (*PDV)= (*PDV)+10000;
     }
+
 }
 
 void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY)

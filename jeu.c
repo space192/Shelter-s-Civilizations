@@ -149,9 +149,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listeRessource = InitialisationBR(batiments);
         listeEmplacementDefense = InitialisationEDD();
         listedef = initialisationDef();
+        joueur1.or=20000;
+        joueur1.pierre=20000;
+        joueur1.metal=20000;
+        ajusterBase(&borne, agrandissement,&PDVMuraille);
     }
     else if(sauvegarde != 0)
     {
+        short int temp = 0;
         listedef = malloc(sizeof(t_listedef));
         listedef->premier = NULL;
         recupererDefense(listedef, sauvegarde);
@@ -161,15 +166,12 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listeRessource->premier = NULL;
         recupererBatimentProduction(listeRessource, sauvegarde);
         recupererEmplacementDispo(listeEmplacementDefense, sauvegarde);
+        recupererAnecdote(&joueur1, &agrandissement, &score, &PDVMuraille);
+        ajusterBase(&borne, agrandissement,&temp);
     }
 
     initSeqM(SeqM);
     initAncre(horde);
-
-    joueur1.or=20000;
-    joueur1.pierre=20000;
-    joueur1.metal=20000;
-    ajusterBase(&borne, agrandissement,&PDVMuraille);
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
 
@@ -239,6 +241,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         SauvegarderBatimentProduction(listeRessource, 4);
         SauvegarderEmplacementDisponible(listeEmplacementDefense, 4);
         SauvegarderDefense(listedef, 4);
+        sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille);
     //}
     libereBitmap(page,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);

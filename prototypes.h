@@ -127,6 +127,8 @@ void recupererEmplacementDispo(t_listeEDD *liste, int niveau);
 void SauvegarderBatimentProduction(t_listeBR *liste, int niveau);
 void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau);
 void SauvegarderDefense(t_listedef *liste, int niveau);
+void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV);
+void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV);
 
 #endif // PROTORYPES_H_INCLUDED
 

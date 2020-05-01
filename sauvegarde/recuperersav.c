@@ -287,3 +287,21 @@ int recupererNiveauUnlock()
     fclose(fichier);
     return temp;
 }
+
+void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV)
+{
+    FILE *fichier = fopen("sauvegarde/anecdote.sav", "rb");
+    if(fichier == NULL)
+    {
+        printf("erreur lors de l'ouverture du fichier");
+    }
+    else
+    {
+        fread(joueur, sizeof(t_joueur), 1, fichier);
+        fread(TBase, sizeof(int), 1, fichier);
+        fread(scoreE, sizeof(int), 1, fichier);
+        fread(PDV, sizeof(int), 1, fichier);
+    }
+    fclose(fichier);
+}
+
