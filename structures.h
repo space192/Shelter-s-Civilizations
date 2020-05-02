@@ -157,11 +157,11 @@ typedef struct listeMechant
     int nbVague;
     int vagueM; //numero de la vague
 
-    int typeMechant[3];
-    int pvM[3];
-    int degatsM[3]; //different degat en fonction du type d'ennemi
-    int tmpDegat[3]; //differentes vitesse d'attaques des ennemis en fonction de leur type
-    int tmpDep[3];
+    int typeMechant[5]; //nombre de mechant par type
+    int pvM[5];
+    int degatsM[5]; //different degat en fonction du type d'ennemi
+    int tmpDegat[5]; //differentes vitesse d'attaques des ennemis en fonction de leur type
+    int tmpDep[5];
 
     int nbAfaire; //c'est le nombre de mechant qui doivent etre créer dans la vagque
     int nbFait; //C'est le nombre de mechant qui ont été créer
