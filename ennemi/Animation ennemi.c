@@ -4,13 +4,13 @@
 void initSeqM(BITMAP* tableauSeq[NB_SEQM])
 {
     int i = 0;
-    char nomFichier[20];
+    char nomFichier[50];
 
     for (i = 0; i<NB_SEQM; i++)
     {
-//        sprintf(nomFichier,"image/ennemi/Ennemi %d.bmp", i+1);
-          sprintf(nomFichier,"Ennemi %d.bmp", i+1);
+          sprintf(nomFichier,"image/ennemi/Ennemi %d.bmp", i+1);
 
+          printf("fichier : %s\n", nomFichier);
 //        printf("nom fichier : %s\n", nomFichier);
         tableauSeq[i] = load_bitmap(nomFichier, NULL);
         if (!tableauSeq[i])
