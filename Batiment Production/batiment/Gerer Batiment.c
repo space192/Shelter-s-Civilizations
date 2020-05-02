@@ -136,6 +136,7 @@ void afficherBatiment(t_listeBR *liste,t_listeMine *listeMine,BITMAP* explosion,
     draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
     draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
     destroy_bitmap(antenne);
+    destroy_bitmap(petiteExplosion);
     free(actuel);
     free(actuel2);
 }

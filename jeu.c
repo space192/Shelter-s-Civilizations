@@ -232,6 +232,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             //affichage des ennemis
             dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
 
+
             afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
             testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
             construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
