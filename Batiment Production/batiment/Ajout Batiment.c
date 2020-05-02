@@ -170,7 +170,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
             {
                 if(*agrandissement==0)
                 {
-                    if(*PDV<=9800)
+                    if(*PDV<=8000)
                     {
                         (*PDV)+=2000;
                     }
@@ -181,7 +181,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
                 }
                 else if(*agrandissement==1)
                 {
-                    if(*PDV<=19800)
+                    if(*PDV<=18000)
                     {
                         (*PDV)+=2000;
                     }
@@ -192,7 +192,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
                 }
                 else if(*agrandissement==1)
                 {
-                    if(*PDV<=29800)
+                    if(*PDV<=28000)
                     {
                         (*PDV)+=2000;
                     }
