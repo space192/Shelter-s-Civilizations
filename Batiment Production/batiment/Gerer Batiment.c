@@ -1,10 +1,12 @@
 #include "../../prototypes.h"
 
-void afficherBatiment(t_listeBR *liste,t_listeMine *listeMine,BITMAP* explosion,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],BITMAP *IMGMine[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY)
+void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY)
 {
     BITMAP* antenne=create_bitmap(54,50);
-    BITMAP* petiteExplosion=create_bitmap(112,94);
-    t_maillonMine *actuel2;
+
+
+    t_maillonBR *actuel;
+    actuel = liste->premier;
 
     blit(beacon[1], antenne,batimentP->imageX,batimentP->imageY,0,0,54, 50);
 
@@ -57,16 +59,30 @@ void afficherBatiment(t_listeBR *liste,t_listeMine *listeMine,BITMAP* explosion,
 
 
 
-    t_maillonBR *actuel;
-    actuel = liste->premier;
+
     while(actuel !=NULL)
     {
         if(actuel->type<4)
         {
+            printf("%d\n",((actuel->type) -1)+(actuel->niveau*3));
             draw_sprite(page,batiments[((actuel->type) -1)+(actuel->niveau*3)],actuel->x-deplAffX,actuel->y-deplAffY);
         }
         actuel = actuel->suivant;
     }
+
+
+    draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
+    draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
+    destroy_bitmap(antenne);
+
+    free(actuel);
+
+}
+
+void afficherMine(t_listeMine *listeMine,BITMAP* page,BITMAP *IMGMine[2],BITMAP* explosion,int deplAffX,int deplAffY)
+{
+    t_maillonMine *actuel2;
+    BITMAP* petiteExplosion=create_bitmap(112,94);
 
     if(listeMine->premier!=NULL)
     {
@@ -133,12 +149,9 @@ void afficherBatiment(t_listeBR *liste,t_listeMine *listeMine,BITMAP* explosion,
         }
     }
 
-    draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
-    draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
-    destroy_bitmap(antenne);
     destroy_bitmap(petiteExplosion);
-    free(actuel);
     free(actuel2);
+
 }
 
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY)

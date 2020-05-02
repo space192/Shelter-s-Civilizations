@@ -215,7 +215,8 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
             afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
-            afficherBatiment(listeRessource, listeMine, Explosion, page, batiments, beacon, IMGMine, &batimentP, &conditionBase, deplAffX, deplAffY);
+            afficherBatiment(listeRessource, page, batiments, beacon, &batimentP, &conditionBase, deplAffX, deplAffY);
+            afficherMine(listeMine,page,IMGMine,Explosion,deplAffX,deplAffY);
 
             if(listedef->premier!=NULL)
             {
