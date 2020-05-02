@@ -6,8 +6,6 @@ void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_bor
     t_ennemi *actuel = horde->premier;
     t_defense *actuel2 =liste2->premier;
 
-    char carac=236;
-
     draw_sprite(page,layoutMenu[0],220,0);
     draw_sprite(page,layoutMenu[1],400,969);
     textprintf_ex(page,font,425,980,makecol(255,255,255),-1,"Points de vie de la muraille:");
@@ -296,7 +294,7 @@ void afficherInfo(BITMAP* page)
             rectfill(page,586,98,810,202,makecol(255,255,255));
             rectfill(page,588,100,808,200,makecol(0,0,0));
             textprintf_ex(page,font,598,125,makecol(255,255,255),-1,"Amelioration de batiments");
-            textprintf_ex(page,font,536,150,makecol(255,255,255),-1,"Reparation de la Muraille");
+            textprintf_ex(page,font,598,150,makecol(255,255,255),-1,"Reparation de la Muraille");
 
 
         }

@@ -558,6 +558,31 @@ int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment)
     return resultat;
 }
 
+int testMinePresente(t_listeMine *liste, int x,int y)
+{
+    int resultat=1;
+    t_maillonMine *actuel;
+
+    if(liste->premier==NULL)
+    {
+        resultat = 1;
+    }
+    else
+    {
+            actuel=liste->premier;
+            while(actuel!=NULL)
+            {
+                if((actuel->x==x)&&(actuel->y==y))
+                {
+                    resultat = 0;
+                }
+                actuel=actuel->suivant;
+            }
+    }
+
+    return resultat;
+}
+
 void ajusterDefense(int*x,int*y)
 {
     int i,j;
