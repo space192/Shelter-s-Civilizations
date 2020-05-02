@@ -794,35 +794,35 @@
 1588077724 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\tutoriel.c
 	"../../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1588430400 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1588187462 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\prototypes.h
+1588433997 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
-1588186836 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\structures.h
+1588424599 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	<math.h>
 	<string.h>
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\base.c
+1588411381 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\base.c
 	"../../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
+1588372391 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
 	"../../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+1588411381 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\initialisation.c
+1588411381 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
 	"../../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
+1588372391 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
 	"../../prototypes.h"
 
 1588081674 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\menu jeu et pause\tutoriel.c
@@ -831,40 +831,42 @@
 1588014908 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\defense\affichage defense.c
 	"../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\defense\defense.c
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\defense\defense.c
 	"../prototypes.h"
 
-1587913469 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\defense\liste chainée defense.c
+1588244655 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\defense\liste chainée defense.c
 	"../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\affichage ennemi.c
+1588440127 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\affichage ennemi.c
 	"../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\animation ennemi.c
+1588440693 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\animation ennemi.c
 	"../prototypes.h"
 
-1588176283 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\gestion ennemi.c
+1588439361 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\gestion ennemi.c
 	"../prototypes.h"
 
-1588187487 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+1588440914 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1588186243 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\jeu.c
+1588440818 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
-1588067254 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\main.c
+1588430400 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\main.c
 	"prototypes.h"
+	"Online/socket.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\menu\affichagemenu.c
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\menu\affichagemenu.c
+	"../prototypes.h"
+	"../Online/socket.h"
+
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\menu\auxilieremenu.c
 	"../prototypes.h"
 
-1588067254 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\menu\auxilieremenu.c
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\sauvegarde\recuperersav.c
 	"../prototypes.h"
 
-1588148376 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\sauvegarde\recuperersav.c
-	"../prototypes.h"
-
-1588067254 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
+1588411382 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
 	"../prototypes.h"
 
 1588216086 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\online\socket.h
@@ -895,4 +897,12 @@
 
 1588259074 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
 	"../prototypes.h"
+
+1588430400 c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\online\socket.h
+
+1588430400 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\online\connexion.c
+	"socket.h"
+	<winsock2.h>
+	<stdio.h>
+	<errno.h>
 
