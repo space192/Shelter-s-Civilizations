@@ -84,6 +84,16 @@ void verificationListe(t_listedef *listedef)
     free(temp);
 }
 
+void viderBalle(t_listeBalle *liste)
+{
+    while(liste->premier != NULL)
+    {
+        t_balle *aSupprimer = liste->premier;
+        liste->premier = liste->premier->suivant;
+        free(aSupprimer);
+    }
+}
+
 void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4])
 {
     t_defense *actuelDef = listedef->premier;
@@ -182,6 +192,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
             {
                 actuelDef->angle = (int)actuelDef->angle-1;
             }
+            viderBalle(actuelDef->liste);
         }
         //rotate_sprite(buffer, carre, actuelDef->x-25, actuelDef->y-25, itofix(actuelDef->angle));
         animation(image, buffer, actuelDef,deplAffX,deplAffY);

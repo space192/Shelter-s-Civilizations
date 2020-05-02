@@ -22,9 +22,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
 {
     if(*niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 50 + (horde->vagueM/2 * 4); //nombre de petit mechant par vague
-        horde->typeMechant[1] = 5 + (horde->vagueM/2 * 2); //nombre de moyen mechant
-        horde->typeMechant[2] = 0 + (horde->vagueM%5); //nombre de boss
+        horde->typeMechant[0] = 10; //nombre de petit mechant par vague
+        horde->typeMechant[1] = 5; //nombre de moyen mechant
+        horde->typeMechant[2] = 0; //nombre de boss
 
         horde->pvM[0] = 100; //point de vie des mechants
         horde->pvM[1] = 250;
@@ -42,13 +42,13 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 10;
 
-        horde->nbVague = 1;
+        horde->nbVague = 5;
     }
     else if(*niveau == 3)
     {
-        horde->typeMechant[0] = 10;
-        horde->typeMechant[1] = 5;
-        horde->typeMechant[2] = 1;
+        horde->typeMechant[0] = 20;
+        horde->typeMechant[1] = 10;
+        horde->typeMechant[2] = 3;
 
         horde->pvM[0] = 100;
         horde->pvM[1] = 250;
@@ -70,9 +70,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
     }
     else if(*niveau == 5)
     {
-        horde->typeMechant[0] = 10;
-        horde->typeMechant[1] = 5;
-        horde->typeMechant[2] = 2;
+        horde->typeMechant[0] = 30;
+        horde->typeMechant[1] = 15;
+        horde->typeMechant[2] = 5;
 
         horde->pvM[0] = 100;
         horde->pvM[1] = 250;

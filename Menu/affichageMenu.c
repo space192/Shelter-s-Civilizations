@@ -64,7 +64,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y)
 }
 
 
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde)
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[20], int *scene, int *compteur, int sauvegarde)
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -137,6 +137,26 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur
         {
             if(*compteur >=17)
             {
+                *scene = 1;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+        }
+        affichageBoutton(image[19], buffer, 3, 390, 640, 2.5);
+    }
+    else
+    {
+        affichageBoutton(image[19],buffer,2,390,640, 2.5);
+    }
+    if((mouse_x>= 390 && mouse_y>=720)&&(mouse_x <=890 && mouse_y <= 770)) //exit
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >=17)
+            {
                 *scene = 5;
                 *compteur = 0;
             }
@@ -145,17 +165,17 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur
                 *compteur = *compteur+1;
             }
         }
-        affichageBoutton(image[3], buffer, 3, 390, 640, 2.5);
+        affichageBoutton(image[3], buffer, 3, 390, 720, 2.5);
     }
     else
     {
-        affichageBoutton(image[3],buffer,2,390,640, 2.5);
+        affichageBoutton(image[3],buffer,2,390,720, 2.5);
     }
 }
 
 
 
-void NouvellePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[20], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -273,7 +293,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur
 }
 
 
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int *sauvegarde, int *score, char chaine[100])
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[20], int *scene, int *compteur, int *sauvegarde, int *score, char chaine[100])
 {
     recupererNom(chaine);
     if(*sauvegarde >= 1)
@@ -428,7 +448,7 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compte
 }
 
 
-void leaderBoard(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
+void leaderBoard(BITMAP *buffer, BITMAP *image[20], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
 {
     BITMAP *temp = create_bitmap(402, 800);
     int i, ytemp = 0;
@@ -550,7 +570,7 @@ void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, 
 }
 
 
-void envoieScoreServeur(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, char chaine[100], int score)
+void envoieScoreServeur(BITMAP *buffer, BITMAP *image[20], int *scene, int *compteur, char chaine[100], int score)
 {
     masked_stretch_blit(image[16], buffer, 0,0,image[16]->w, image[16]->h , 340,300,image[16]->w*4, image[16]->h*4);
     textprintf_ex(buffer, font,465,340,makecol(255,255,255), -1, "voulez-vous envoyez le score au serveur %s?", chaine);

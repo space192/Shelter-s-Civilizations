@@ -179,14 +179,23 @@ void SauvegarderDefense(t_listedef *liste, int niveau)
 
 void sauvegarderNiveauUnlock(int sauvegarde)
 {
-    FILE *fichier = fopen("sauvegarde/unlock.sav", "w");
+    FILE *fichier = fopen("sauvegarde/unlock.sav", "r");
     if(fichier == NULL)
     {
         allegro_message("erreur fichier Unlock");
     }
     else
     {
-        fprintf(fichier, "%d", sauvegarde);
+        int test;
+        fscanf(fichier, "%d", &test);
+        if(test < sauvegarde)
+        {
+            freopen("sauvegarde/unlock.sav", "w", fichier);
+            if(fichier != NULL)
+            {
+                fprintf(fichier, "%d", sauvegarde);
+            }
+        }
     }
     fclose(fichier);
 }

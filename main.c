@@ -5,7 +5,7 @@ int main()
     lancerAllegro(1280, 1024);
     BITMAP *fond=load_bitmap("image/menu/fondMenu.bmp",NULL);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP *image[19];
+    BITMAP *image[20];
     t_classement tableau[20];
     char chaine[100];
     int sourisY = 355, y=0;
@@ -58,6 +58,10 @@ int main()
         if(scene == 6)
         {
             envoieScoreServeur(buffer, image, &scene, &compteur, chaine, score);
+        }
+        if(scene == 7)
+        {
+            //wiki
         }
         blit(buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
     }

@@ -1,6 +1,6 @@
 #include "../prototypes.h"
 
-void chargementImageMenu(BITMAP *image[19])
+void chargementImageMenu(BITMAP *image[20])
 {
     int i;
     image[0] = load_bitmap("image/menu/nouvelle partie.bmp", NULL);
@@ -22,7 +22,8 @@ void chargementImageMenu(BITMAP *image[19])
     image[16] = load_bitmap("image/menu/Submit score.bmp", NULL);
     image[17] = load_bitmap("image/menu/oui.bmp", NULL);
     image[18] = load_bitmap("image/menu/non.bmp", NULL);
-    for(i =0; i <  18; i++)
+    image[19] = load_bitmap("image/menu/Wiki.bmp", NULL);
+    for(i =0; i <  19; i++)
     {
         if(image[i] == NULL)
         {
@@ -32,10 +33,10 @@ void chargementImageMenu(BITMAP *image[19])
     }
 }
 
-void dechargementImage(BITMAP *image[18])
+void dechargementImage(BITMAP *image[20])
 {
     int i;
-    for(i=0; i < 18; i++)
+    for(i=0; i < 19; i++)
     {
         destroy_bitmap(image[i]);
     }
