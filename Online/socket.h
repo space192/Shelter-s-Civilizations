@@ -12,6 +12,10 @@ struct joueurClassement
 
 int classement;
 t_joueurClassement tab[20];
+int online;
 void connexionReseau(int menu, char nom[100], int score);
+void lancer_Reseau();
+void fermer_reseau();
+void check_online();
 
 #endif

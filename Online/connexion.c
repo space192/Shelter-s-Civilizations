@@ -8,10 +8,6 @@ typedef int socklen_t;
 
 void connexionReseau(int menu, char nom[100], int score)
 {
-#if defined (WIN32)
-    WSADATA WSAData;
-    WSAStartup(MAKEWORD(2,2), &WSAData);
-#endif
     SOCKET connection;
     SOCKADDR_IN connectParam;
     t_joueurClassement joueur;
@@ -38,13 +34,30 @@ void connexionReseau(int menu, char nom[100], int score)
         {
             recv(connection, (char*)tab, 20*sizeof(t_joueurClassement), 0);
         }
-        else if(menu ==2)
+        else if(menu == 2)
         {
             send(connection, (char*)&joueur, sizeof(t_joueurClassement), 0);
             recv(connection, (char*)&classement, sizeof(int), 0);
         }
+        else if(menu == 3)
+        {
+            recv(connection, (char*)&online, sizeof(int), 0);
+        }
     }
     closesocket(connection);
+}
+
+
+void lancer_Reseau()
+{
+    #if defined (WIN32)
+    WSADATA WSAData;
+    WSAStartup(MAKEWORD(2,2), &WSAData);
+#endif
+}
+
+void fermer_reseau()
+{
     #if defined (WIN32)
             WSACleanup();
     #endif
