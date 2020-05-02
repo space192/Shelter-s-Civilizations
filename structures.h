@@ -133,8 +133,7 @@ struct ennemi
     int numero;
     int type; //c'est le type de l'ennemi
 
-    int cmptDx, tmpDx;
-    int cmptDy, tmpDy;
+    int cmptDepM, tmpDepM;
 
     int imgA; //c'est l'image actuelle dans la séquence
     int imgX, imgY;
@@ -185,7 +184,6 @@ typedef struct classement
 
 #define NB_SEQM 3
 
-#define NB_MECHANT 10
 #define NB_MECHANT_MAX 80 //nombre de mechant simultanement sur la map
 
 #define VITESSE 2

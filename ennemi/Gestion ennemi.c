@@ -13,35 +13,46 @@ void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin)
 
     couleur = getpixel(chemin, mechantA->x, mechantA->y);
 
-    if(couleur == r) //le mechant se déplace horizontalement
+    if(mechantA->type == 0)
     {
-        mechantA->depx = -1 * i;
-        mechantA->depy = 0 * i;
-    }
-    else if (couleur == v)//le mechant monte
-    {
-        mechantA->depx = -1 * i;
-        mechantA->depy = -1 * i;
-    }
-    else if (couleur == b)//le mechant descend
-    {
-        mechantA->depx = -1 * i;
-        mechantA->depy = 1 * i;
-    }
-    else if (couleur == j)//le mechant est dans le lac
-    {
-        mechantA->depx = -1 * i/2;
-        mechantA->depy = 2 * i;
-    }
-    else if (couleur == bc)//le mechant déscend beaucoup
-    {
-        mechantA->depx = -1 * i;
-        mechantA->depy = 2 * i;
+        if (couleur == j)//le mechant est dans le lac
+        {
+            mechantA->depx = -1;
+            mechantA->depy = 0;
+        }
+        else
+        {
+            mechantA->depx = -2;
+            mechantA->depy = 0;
+        }
     }
     else
     {
-        mechantA->depx = 0 * i;
-        mechantA->depy = 0 * i;
+        if(couleur == r) //le mechant se déplace horizontalement
+        {
+            mechantA->depx = -1 * i;
+            mechantA->depy = 0 * i;
+        }
+        else if (couleur == v)//le mechant monte
+        {
+            mechantA->depx = -1 * i;
+            mechantA->depy = -1 * i;
+        }
+        else if (couleur == b)//le mechant descend
+        {
+            mechantA->depx = -1 * i;
+            mechantA->depy = 1 * i;
+        }
+        else if (couleur == bc)//le mechant déscend beaucoup
+        {
+            mechantA->depx = -1 * i;
+            mechantA->depy = 2 * i;
+        }
+        else
+        {
+            mechantA->depx = 0 * i;
+            mechantA->depy = 0 * i;
+        }
     }
 }
 
@@ -145,19 +156,44 @@ int testPlaceLibre(BITMAP* place, int x, int y) //le sous programme renvoie 1 si
     return libre;
 }
 
-int testChemin(int x, int y) //test que les mechant ne sortent pas du chemin, tant qu'ils sont sur le chemin on renvoie 0, envoie 1 si ils sortent du chemin et 2 s'ils sont au bout
+int testChemin(t_ennemi *elemA, int x, int y, int nivMur) //test que les mechant ne sortent pas du chemin, tant qu'ils sont sur le chemin on renvoie 0, envoie 1 si ils sortent du chemin et 2 s'ils sont au bout
 {
     int test = 0;
 
-    if((x < 600) && ((y < 1630) || (y > 1870 - 30)))
-        test = 1;
-    if(x <= 445)
-        test = 2;
+    if(elemA->type == 0)
+    {
+        if(nivMur == 1)
+        {
+            if((x < 800) && ((y < 1580) || (y > 1925)))
+                test = 1;
+        }
+        else if(nivMur == 2)
+        {
+            if((x < 800) && ((y < 1580) || (y > 2165)))
+                test = 1;
+        }
+        else if(nivMur == 3)
+        {
+            if((x < 800) && ((y < 1340) || (y > 2165)))
+                test = 1;
+        }
+
+        if(x <= 445)
+            test = 2;
+    }
+    else
+    {
+        if((x < 800) && ((y < 1630) || (y > 1870)))
+            test = 1;
+        if(x <= 445)
+            test = 2;
+    }
+
 
     return test;
 }
 
-int espacementH(t_ennemi* elem, BITMAP* place, int *chemin) //espace horizontalement de 5 pixels les mechants et renvoie 1 s'ils sont bloqués
+int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur) //espace horizontalement de 5 pixels les mechants et renvoie 1 s'ils sont bloqués
 {
     int i = 0, libre = 1, bloquer = 0;
 
@@ -165,7 +201,7 @@ int espacementH(t_ennemi* elem, BITMAP* place, int *chemin) //espace horizontale
     {
         i++;
         libre = testPlaceLibre(place, elem->x - i, elem->y);
-        *chemin = testChemin(elem->x - i, elem->y); //on verifie qu'il reste sur le chemin
+        *chemin = testChemin(elem, elem->x - i, elem->y, nivMur); //on verifie qu'il reste sur le chemin
     }
 
     if(i == ESP_X + 1)//on a largement la place pour avancer et on avance
@@ -194,7 +230,7 @@ int testUtile(BITMAP* place, int x, int y) //fonction qui teste si c'est utile d
     return test;
 }
 
-void espacementV(t_ennemi* elem, BITMAP* place)
+void espacementV(t_ennemi* elem, BITMAP* place, int nivMur)
 {
     int libreH = 0, libreB = 0; //booleen pour savoir si la place au dessus en dessous du mechant est libre
     int cheminH = 0, cheminB = 0; //booleen pour savoir si la place au dessus ou en dessous est dnas le chemin
@@ -202,8 +238,8 @@ void espacementV(t_ennemi* elem, BITMAP* place)
     libreH = testPlaceLibre(place, elem->x, elem->y - ESP_Y);
     libreB = testPlaceLibre(place, elem->x, elem->y + ESP_Y);
 
-    cheminH = testChemin(elem->x, elem->y - ESP_Y);
-    cheminB = testChemin(elem->x, elem->y + ESP_Y);
+    cheminH = testChemin(elem, elem->x, elem->y - ESP_Y, nivMur);
+    cheminB = testChemin(elem, elem->x, elem->y + ESP_Y, nivMur);
 
     if((libreH == 1)  && (cheminH == 0) && (testUtile(place, elem->x - ESP_X, elem->y - ESP_Y) == 1))
     {
@@ -219,19 +255,19 @@ void espacementV(t_ennemi* elem, BITMAP* place)
 
 void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur)
 {
-        //shit
+    //shit
 }
 
 void etalement(t_ennemi* elem, BITMAP* place, int nivMur)
 {
     int bloquer = 0, chemin = 0; //chemin est un booleen qui est à 0 tant que les mechants sont sur le chemin, 1 s'ils en sortent et 2 s'ils sont au bout
 
-    bloquer = espacementH(elem, place, &chemin);
+    bloquer = espacementH(elem, place, &chemin, nivMur);
 
     //printf("bloquer : %d, chemin : %d\n", bloquer, chemin);
 
     if((bloquer == 1)) //si les ennemis ne peuvent plus avancer mais pas au bout du chemin
-        espacementV(elem, place);
+        espacementV(elem, place, nivMur);
 }
 
 void replacementY(t_ennemi *elem)
@@ -271,6 +307,15 @@ void calculeAngle(t_ennemi *mechant, BITMAP* angle)
         mechant->angle = mechant->angle;
 }
 
+void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur)
+{
+            if(elemA->x <= 800) //si on arrive dans la zone devant le mur où les mechant s'etalent, on les distances de 5 pixels en verticale
+                replacementY(elemA);
+
+            if(elemA->x < 800)
+                etalement(elemA, place, nivMur);
+}
+
 void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse, int nivMur)
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
@@ -279,31 +324,33 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
     while(elemA != NULL) //parcours de la horde d'ennemis
     {
 
-        elemA->cmptDx = elemA->cmptDx + vitesse;
-        elemA->cmptDy = elemA->cmptDy + vitesse;
+        elemA->cmptDepM= elemA->cmptDepM + vitesse;
 
+        //ON ACTUALISE LES DEPLACEMENTS DES ENNEMIS
         actualiserDeplacement(elemA, chemin);
-        calculeAngle(elemA, angle);
 
-        if(elemA->x <= 800) //si on arrive dans la zone devant le mur où les mechant s'etalent, on les distances de 5 pixels en verticale
-            replacementY(elemA);
 
-        if(elemA->x < 800)
-            etalement(elemA, place, nivMur);
+        //ON CALCULE L'ANGLE DES ENNEMIS
+        if (elemA->type == 0)
+            elemA->angle = 2;
+        else
+            calculeAngle(elemA, angle);
 
-        if(elemA->cmptDx >= elemA->tmpDx/vitesse) //test le compteur pour savoir si on peut deplacer l'ennemi
+
+
+        //ON REPLACE OU ETALE LES ENNEMIS QUAND ILS ARRIEVENT AU MUR
+        ennemiDevantMur(place, elemA, nivMur);
+
+        //ON ACTUALISE LES DEPLACEMENT
+
+        if(elemA->cmptDepM >= elemA->tmpDepM) //test le compteur pour savoir si on peut deplacer l'ennemi
         {
-            if(testFuturePlaceLibre(place, elemA) == 1)
                 elemA->x = elemA->x + elemA->depx;
-            elemA->cmptDx = 0;
+                elemA->y = elemA->y + elemA->depy;
+
+            elemA->cmptDepM = 0;
         }
 
-        if(elemA->cmptDy >= elemA->tmpDy/vitesse)
-        {
-            if(testFuturePlaceLibre(place, elemA) == 1)
-                elemA->y = elemA->y + elemA->depy;
-            elemA->cmptDy = 0;
-        }
         putpixel(place, elemA->x, elemA->y, makecol(255,255,255));
         elemA = elemA->suivant;
     }

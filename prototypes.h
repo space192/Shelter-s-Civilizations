@@ -89,11 +89,11 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM]);
 void initAncre(t_listeMechant* horde);
 void actualiserListeMechant(t_listeMechant* horde, int* niveau);
 int typeEnnemiGenerer(int nbMechant[3]);
-void ajouterPremierEnnemi(t_listeMechant* ancre);
-void ajouterEnnemi(t_listeMechant* ancre);
-void creer_horde(t_listeMechant* ancreH, int* niveau, int vit);
-void posAlea(int* x, int* y);
-t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int nb);
+void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur);
+void ajouterEnnemi(t_listeMechant* ancre, int nivMur);
+void creer_horde(t_listeMechant* ancreH, int* niveau, int vit, int nivMur);
+void posAlea(int* x, int* y, int nivMur, int type);
+t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int nb, int nivMur);
 void supprimerElementTete(t_listeMechant* ancre);
 void supprimerListe(t_listeMechant* ancre);
 
@@ -101,15 +101,16 @@ void supprimerListe(t_listeMechant* ancre);
 void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin);
 int testFuturePlaceLibre(BITMAP* place, t_ennemi* elem);
 int testPlaceLibre(BITMAP* place, int x, int y);
-int testChemin(int x, int y);
-int espacementH(t_ennemi* elem, BITMAP* place, int *chemin);
+int testChemin(t_ennemi* elemA, int x, int y, int nivMur);
+int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur);
 int testUtile(BITMAP* place, int x, int y);
-void espacementV(t_ennemi* elem, BITMAP* place);
+void espacementV(t_ennemi* elem, BITMAP* place, int nivMur);
 void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur);
 void etalement(t_ennemi* elem, BITMAP* place, int nivMur);
 void replacementY(t_ennemi *elem);
 void calculeAngle(t_ennemi *mechant, BITMAP* angle);
 void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese, int nivMur);
+void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur);
 void attaquerMur(t_listeMechant* horde, int* pvMur);
 
 

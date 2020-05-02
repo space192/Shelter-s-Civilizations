@@ -20,7 +20,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu;
     int vitesseJeu = 3;
-    int nivMuraille = 1;
+    int nivMuraille = 3;
     int score = 0;
     int i;
 
@@ -211,7 +211,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         if(niveauJeu%2==1)
         {
-            creer_horde(horde, &niveauJeu, vitesseJeu);
+            creer_horde(horde, &niveauJeu, vitesseJeu, nivMuraille);
 
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
             afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
