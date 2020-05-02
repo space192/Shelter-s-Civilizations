@@ -54,9 +54,12 @@ void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin)
             mechantA->depy = 0 * i;
         }
     }
+
+    /*if(mechantA->type == 3  ||  mechantA->type == 4)
+        printf("posx %d, posy%d, depx %d, depxy %d\n", mechantA->x, mechantA->y, mechantA->depx, mechantA->depy);*/
 }
 
-void supprimerEnnemi(t_listeMechant *liste,int *score)
+void supprimerEnnemi(t_listeMechant *liste ,int *score)
 {
     t_ennemi *actuel = NULL;
     t_ennemi *precedent;
@@ -83,6 +86,14 @@ void supprimerEnnemi(t_listeMechant *liste,int *score)
             else if(actuel->type == 2)
             {
                 (*score)+=200;
+            }
+            else if(actuel->type == 3)
+            {
+                (*score)+=1000;
+            }
+            else if(actuel->type == 4)
+            {
+                (*score)+=1000;
             }
             liste->premier=actuel->suivant;
             condition=1;
@@ -116,6 +127,14 @@ void supprimerEnnemi(t_listeMechant *liste,int *score)
                     else if(actuel->type == 2)
                     {
                         (*score)+=200;
+                    }
+                    else if(actuel->type == 3)
+                    {
+                        (*score)+=1000;
+                    }
+                    else if(actuel->type == 4)
+                    {
+                    (*score)+=1000;
                     }
                     precedent->suivant=actuel->suivant;
                 }
@@ -324,7 +343,7 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
     while(elemA != NULL) //parcours de la horde d'ennemis
     {
 
-        elemA->cmptDepM= elemA->cmptDepM + vitesse;
+        elemA->cmptDepM = elemA->cmptDepM + vitesse;
 
         //ON ACTUALISE LES DEPLACEMENTS DES ENNEMIS
         actualiserDeplacement(elemA, chemin);
@@ -337,12 +356,10 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
             calculeAngle(elemA, angle);
 
 
-
         //ON REPLACE OU ETALE LES ENNEMIS QUAND ILS ARRIEVENT AU MUR
         ennemiDevantMur(place, elemA, nivMur);
 
         //ON ACTUALISE LES DEPLACEMENT
-
         if(elemA->cmptDepM >= elemA->tmpDepM) //test le compteur pour savoir si on peut deplacer l'ennemi
         {
                 elemA->x = elemA->x + elemA->depx;

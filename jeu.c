@@ -20,7 +20,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int jeuActif=1;
     int niveauJeu;
     int vitesseJeu = 3;
-    int nivMuraille = 3;
+//    int nivMuraille = 1;  //niveau de la muraille : 1-petit  2-extension vers le bas  3-extension vers le haut
     int score = 0;
     int i;
 
@@ -211,7 +211,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         if(niveauJeu%2==1)
         {
-            creer_horde(horde, &niveauJeu, vitesseJeu, nivMuraille);
+            creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
 
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
             afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
@@ -225,7 +225,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             if(pauseActive==0)
             {
                 //calcule des positions des ennemis
-                calculerPosition(horde, chemin, place, angle, vitesseJeu, nivMuraille);
+                calculerPosition(horde, chemin, place, angle, vitesseJeu, agrandissement);
                 gererDeplacement(&deplAffX,&deplAffY);
                 incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
             }

@@ -88,9 +88,9 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM]);
 //gérération et suppression des ennemis
 void initAncre(t_listeMechant* horde);
 void actualiserListeMechant(t_listeMechant* horde, int* niveau);
-int typeEnnemiGenerer(int nbMechant[3]);
-void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur);
-void ajouterEnnemi(t_listeMechant* ancre, int nivMur);
+int typeEnnemiGenerer(int nbMechant[5], int numVague, int* niveau);
+void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur, int numVague, int* niveau);
+void ajouterEnnemi(t_listeMechant* ancre, int nivMur, int numVague, int* niveau);
 void creer_horde(t_listeMechant* ancreH, int* niveau, int vit, int nivMur);
 void posAlea(int* x, int* y, int nivMur, int type);
 t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int nb, int nivMur);

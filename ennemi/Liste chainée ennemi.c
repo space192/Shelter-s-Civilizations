@@ -22,25 +22,35 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
 {
     if(*niveau == 1)  //pour le niveau 1
     {
-        horde->typeMechant[0] = 5 + horde->vagueM*2; //nombre de petit mechant par vague
-        horde->typeMechant[1] = 5 + horde->vagueM*2; //nombre de moyen mechant
-        horde->typeMechant[2] = 10 + horde->vagueM*2; //nombre de boss
+        horde->typeMechant[0] = 10 + horde->vagueM*2; //nombre de traceurs par vague
+        horde->typeMechant[1] = 5 + horde->vagueM*2; //nombre de limace
+        horde->typeMechant[2] = 10 + horde->vagueM*2; //nombre de mec vénère
+        horde->typeMechant[3] = 0; //nombre de boss
+        horde->typeMechant[4] = 0;
 
         horde->pvM[0] = 50; //point de vie des mechants
         horde->pvM[1] = 100;
         horde->pvM[2] = 50;
+        horde->pvM[3] = 1000;
+        horde->pvM[4] = 1000;
 
         horde->degatsM[0] = 5; //degat des mechants
         horde->degatsM[1] = 10;
         horde->degatsM[2] = 5;
+        horde->degatsM[3] = 100;
+        horde->degatsM[4] = 100;
 
         horde->tmpDegat[0] = 50; //vitesse t'attaque des mechants
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 50;
+        horde->tmpDegat[3] = 200;
+        horde->tmpDegat[4] = 200;
 
         horde->tmpDep[0] = 4;
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 4;
+        horde->tmpDep[3] = 15;
+        horde->tmpDep[4] = 15;
 
         horde->nbVague = 5;
     }
@@ -49,22 +59,32 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[0] = 15 + horde->vagueM*2;
         horde->typeMechant[1] = 10 + horde->vagueM*2;
         horde->typeMechant[2] = 20 + horde->vagueM*2;
+        horde->typeMechant[3] = 0; //nombre de boss
+        horde->typeMechant[4] = 0;
 
         horde->pvM[0] = 100;
         horde->pvM[1] = 150;
         horde->pvM[2] = 100;
+        horde->pvM[3] = 1000;
+        horde->pvM[4] = 1000;
 
         horde->degatsM[0] = 5; //degat des mechants
         horde->degatsM[1] = 10;
         horde->degatsM[2] = 5;
+        horde->degatsM[3] = 100;
+        horde->degatsM[4] = 100;
 
         horde->tmpDegat[0] = 50; //vitesse t'attaque des mechants
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 50;
+        horde->tmpDegat[3] = 200;
+        horde->tmpDegat[4] = 200;
 
         horde->tmpDep[0] = 4;
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 4;
+        horde->tmpDep[3] = 10;
+        horde->tmpDep[4] = 10;
 
         horde->nbVague =5;
     }
@@ -73,22 +93,32 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[0] = 20 + horde->vagueM*2;
         horde->typeMechant[1] = 10 + horde->vagueM*2;
         horde->typeMechant[2] = 25;
+        horde->typeMechant[3] = (horde->vagueM%5)*horde->vagueM/5;
+        horde->typeMechant[4] = (horde->vagueM%5)*horde->vagueM/5;
 
         horde->pvM[0] = 150;
         horde->pvM[1] = 200;
         horde->pvM[2] = 150;
+        horde->pvM[3] = 1000;
+        horde->pvM[4] = 1000;
 
         horde->degatsM[0] = 10; //degat des mechants
         horde->degatsM[1] = 15;
         horde->degatsM[2] = 10;
+        horde->degatsM[3] = 100;
+        horde->degatsM[4] = 100;
 
         horde->tmpDegat[0] = 50; //vitesse t'attaque des mechants
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 50;
+        horde->tmpDegat[3] = 200;
+        horde->tmpDegat[4] = 200;
 
         horde->tmpDep[0] = 4;
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 4;
+        horde->tmpDep[3] = 10;
+        horde->tmpDep[4] = 10;
 
         horde->nbVague = 5;
     }
@@ -96,41 +126,56 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
     {
         horde->typeMechant[0] = 10 + horde->vagueM*2; //nombre de petit mechant par vague
         horde->typeMechant[1] = 5 + horde->vagueM*2; //nombre de moyen mechant
-        horde->typeMechant[2] = 0 + horde->vagueM*2; //nombre de boss
+        horde->typeMechant[2] = 10 + horde->vagueM*2;
+        horde->typeMechant[3] = (horde->vagueM%5)*horde->vagueM/5;; //nombre de boss
+        horde->typeMechant[4] = (horde->vagueM%5)*horde->vagueM/5;;
 
         horde->pvM[0] = 150 + horde->vagueM; //point de vie des mechants
         horde->pvM[1] = 250 + horde->vagueM;
         horde->pvM[2] = 150 + horde->vagueM;
+        horde->pvM[3] = 150 + horde->vagueM;
+        horde->pvM[4] = 150 + horde->vagueM;
 
-        horde->degatsM[0] = 5 + horde->vagueM; //degat des mechants
-        horde->degatsM[1] = 10 + horde->vagueM;
-        horde->degatsM[2] = 20 + horde->vagueM;
+        horde->degatsM[0] = 10 + horde->vagueM; //degat des mechants
+        horde->degatsM[1] = 15 + horde->vagueM;
+        horde->degatsM[2] = 10 + horde->vagueM;
+        horde->degatsM[2] = 100 + horde->vagueM;
+        horde->degatsM[2] = 100 + horde->vagueM;
 
         horde->tmpDegat[0] = 50; //vitesse t'attaque des mechants
         horde->tmpDegat[1] = 100;
         horde->tmpDegat[2] = 50;
+        horde->tmpDegat[2] = 200;
+        horde->tmpDegat[2] = 200;
 
         horde->tmpDep[0] = 4;
         horde->tmpDep[1] = 6;
         horde->tmpDep[2] = 4;
+        horde->tmpDep[3] = 10;
+        horde->tmpDep[4] = 10;
 
         horde->nbVague = 1000000;
     }
 
 //horde->vagueM = 0;
     horde->nbFait = 0;
-    horde->nbAfaire = horde->typeMechant[0] + horde->typeMechant[1] + horde->typeMechant[2]; //nombre de mechant à faire
+    horde->nbAfaire = horde->typeMechant[0] + horde->typeMechant[1] + horde->typeMechant[2] + horde->typeMechant[3] + horde->typeMechant[4]; //nombre de mechant à faire
     horde->listeActua = 1; //la liste a ete actualise
 
 }
 
-int typeEnnemiGenerer(int nbMechant[3])
+int typeEnnemiGenerer(int nbMechant[5], int numVague, int *niveau)
 {
     int alea = 0, generer = 0;
 
+
     while(generer == 0) //on sort un nombre du tableau avec le nombre de mechant
     {
-        alea = rand()%3;
+
+        /*if((numVague%5 == 0) && ((*niveau)>5))
+            alea = rand()%5;
+        else*/
+            alea = rand()%5;
 
         if(nbMechant[alea] > 0)
         {
@@ -138,10 +183,11 @@ int typeEnnemiGenerer(int nbMechant[3])
             generer = 1;
         }
     }
+
     return alea;
 }
 
-void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur)
+void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur, int numVague, int *niveau)
 {
     t_ennemi* nouveau = (t_ennemi*)malloc(sizeof(t_ennemi)); //On déclare le nouveau maillon au quel on alloue dynamiquement un espace mémoire
 
@@ -152,11 +198,11 @@ void ajouterPremierEnnemi(t_listeMechant* ancre, int nivMur)
         printf("Donnee impossible à lire ou allocation dynamique non reussie dans le programme ajouterEnnemi");
         exit(EXIT_FAILURE);
     }
-    ancre->premier = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant), ancre->nbElement, nivMur);   //On remplie le nouveau maillon avec ces données /
+    ancre->premier = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant, numVague, niveau), ancre->nbElement, nivMur);   //On remplie le nouveau maillon avec ces données /
     ancre->premier->suivant = NULL;
 }
 
-void ajouterEnnemi(t_listeMechant* ancre, int nivMur)
+void ajouterEnnemi(t_listeMechant* ancre, int nivMur, int numVague, int *niveau)
 {
     t_ennemi* nouveau = (t_ennemi*)malloc(sizeof(t_ennemi)); //On déclare le nouveau maillon au quel on alloue dynamiquement un espace mémoire
     t_ennemi* actuel; //On déclare une variable qui permet de parcourir la liste
@@ -169,7 +215,7 @@ void ajouterEnnemi(t_listeMechant* ancre, int nivMur)
     }
 
     actuel = ancre->premier; //si ancre n'est pas NULL, alors on peut continuer le programme
-    nouveau = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant), ancre->nbElement, nivMur);   //On remplie le nouveau maillon avec ces données /
+    nouveau = creerEnnemis(ancre, typeEnnemiGenerer(ancre->typeMechant, numVague, niveau), ancre->nbElement, nivMur);   //On remplie le nouveau maillon avec ces données /
 
     while(actuel->suivant != NULL) //on teste tant que l'adresse du maillon suivant n'est pas nulle est donc qu'on est pas arrivee a la fin de la liste
         actuel = actuel->suivant;  //On avance dans la liste en passant à l'élément suivant
@@ -206,12 +252,12 @@ void creer_horde(t_listeMechant* ancreH, int* niveau, int vit, int nivMur)
                 {
                     if(ancreH->nbElement <= 0)
                     {
-                        ajouterPremierEnnemi(ancreH, nivMur);
+                        ajouterPremierEnnemi(ancreH, nivMur, ancreH->vagueM, niveau);
                         ancreH->nbFait++;
                     }
                     else
                     {
-                        ajouterEnnemi(ancreH, nivMur); //on ajoute un ennemi
+                        ajouterEnnemi(ancreH, nivMur, ancreH->vagueM, niveau); //on ajoute un ennemi
                         ancreH->nbFait++;
                     }
 
@@ -246,21 +292,21 @@ void posAlea(int* x, int* y, int nivMur, int type)
     {
         switch(nivMur)
         {
-        case 1 : //point d'apparition du haut
+        case 0 : //point d'apparition du haut
             yMin = 1580 + 30;
             yMax = 1925;
             break;
-        case 2 : //point d'apparition du haut
+        case 1 : //point d'apparition du haut
             yMin = 1580 + 30;
             yMax = 2165;
             break;
-        case 3 : //point d'apparition du haut
+        case 2 : //point d'apparition du haut
             yMin = 1340 + 30;
             yMax = 2165;
             break;
         }
-            xMin = 3840;
-            xMax = 3840;
+        xMin = 3840;
+        xMax = 3840;
     }
     else
     {
@@ -314,14 +360,20 @@ t_ennemi *creerEnnemis(t_listeMechant *ancre, int type, int nb, int nivMur)
     nouveau->tmpDepM = ancre->tmpDep[type];
 
 
+
     nouveau->cmptImg = 0;
 
     if(type == 0)
-        nouveau->tmpImg = 5;
+        nouveau->tmpImg = 2;
     else if(type == 1)
-        nouveau->tmpImg = 10;
+        nouveau->tmpImg = 2;
     else if(type == 2)
-        nouveau->tmpImg = 500;
+        nouveau->tmpImg = 3;
+    else if(type == 3)
+        nouveau->tmpImg = 10;
+    else if(type == 4)
+        nouveau->tmpImg = 10;
+
 
     nouveau->imgA = 0;
     nouveau->angle = 2;

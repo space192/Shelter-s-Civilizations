@@ -3,9 +3,6 @@
 void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int screeny, BITMAP* lesSeq[NB_SEQM])
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
-    BITMAP* temp1 = create_bitmap(54, 42);
-    BITMAP* temp2 = create_bitmap(54, 47);
-    BITMAP* temp3 = create_bitmap(48, 68);
 
     elemA = horde->premier;
 
@@ -17,6 +14,8 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
 
         if(elemA->type == 0)
         {
+                BITMAP* temp1 = create_bitmap(54, 42);
+
             if(elemA->depx == 0)
             {
             stretch_blit(lesSeq[elemA->type], temp1, 0, 632, 202, 158, 0, 0, 54, 42);
@@ -27,10 +26,13 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
             stretch_blit(lesSeq[elemA->type], temp1, elemA->imgX, elemA->imgY, 202, 158, 0, 0, 54, 42);
             masked_blit(temp1, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp1->w, temp1->h);
             }
-    }
+                destroy_bitmap(temp1);
 
+        }
         else if (elemA->type == 1)
         {
+                BITMAP* temp2 = create_bitmap(54, 47);
+
             if(elemA->depx == 0)
             {
             stretch_blit(lesSeq[elemA->type], temp2, 0, 880, 248, 220, 0, 0, 54, 47);
@@ -41,10 +43,12 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
             stretch_blit(lesSeq[elemA->type], temp2, elemA->imgX, elemA->imgY, 248, 220, 0, 0, 54, 47);
             masked_blit(temp2, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp2->w, temp2->h);
             }
+                destroy_bitmap(temp2);
         }
-
         else if (elemA->type == 2)
         {
+                BITMAP* temp3 = create_bitmap(48, 68);
+
             if(elemA->depx == 0)
             {
             blit(lesSeq[elemA->type], temp3, 48*7, 136, 0, 0, 48, 68);
@@ -55,6 +59,39 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
             blit(lesSeq[elemA->type], temp3, elemA->imgX, elemA->imgY, 0, 0, 48, 68);
             masked_blit(temp3, buffer, 0, 0, elemA->x - screenx - elemA->tx, elemA->y - screeny - elemA->ty, temp3->w, temp3->h);
             }
+                destroy_bitmap(temp3);
+        }
+        else if(elemA->type == 3)
+        {
+                BITMAP* temp4 = create_bitmap(108, 94);
+
+            if(elemA->depx == 0)
+            {
+            stretch_blit(lesSeq[1], temp4, 0, 632, 248, 220, 0, 0, 108, 94);
+            masked_blit(temp4, buffer, 0, 0, elemA->x - screenx - 60, elemA->y - screeny - 60, temp4->w, temp4->h);
+             }
+            else
+            {
+            stretch_blit(lesSeq[1], temp4, elemA->imgX, elemA->imgY, 248, 220, 0, 0, 108, 94);
+            masked_blit(temp4, buffer, 0, 0, elemA->x - screenx - 60, elemA->y - screeny - 60, temp4->w, temp4->h);
+            }
+                destroy_bitmap(temp4);
+        }
+        else if (elemA->type == 4)
+        {
+                BITMAP* temp5 = create_bitmap(96, 136);
+
+            if(elemA->depx == 0)
+            {
+            stretch_blit(lesSeq[2], temp5, 48*7, 136, 48, 68, 0, 0, 96, 136);
+            masked_blit(temp5, buffer, 0, 0, elemA->x - screenx - 60, elemA->y - screeny - 60, temp5->w, temp5->h);
+             }
+            else
+            {
+            stretch_blit(lesSeq[2], temp5, elemA->imgX, elemA->imgY, 48, 68, 0, 0, 96, 136);
+            masked_blit(temp5, buffer, 0, 0, elemA->x - screenx - 60, elemA->y - screeny - 60 , temp5->w, temp5->h);
+            }
+                destroy_bitmap(temp5);
         }
 
         //masked_blit(temp, buffer, 0, 0, elemA->x - screenx, elemA->y - screeny, temp->w, temp->h);
@@ -63,9 +100,6 @@ void dessinerMechant(t_listeMechant* horde, BITMAP* buffer, int screenx, int scr
 
         elemA = elemA->suivant;
     }
-    destroy_bitmap(temp1);
-    destroy_bitmap(temp2);
-    destroy_bitmap(temp3);
     elemA = NULL;
     free(elemA);
 }

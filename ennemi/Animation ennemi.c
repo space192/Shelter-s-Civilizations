@@ -10,8 +10,6 @@ void initSeqM(BITMAP* tableauSeq[NB_SEQM])
     {
           sprintf(nomFichier,"image/ennemi/Ennemi %d.bmp", i+1);
 
-          printf("fichier : %s\n", nomFichier);
-//        printf("nom fichier : %s\n", nomFichier);
         tableauSeq[i] = load_bitmap(nomFichier, NULL);
         if (!tableauSeq[i])
         {
@@ -32,19 +30,21 @@ void imageAfficheMechant(t_ennemi *elemA, BITMAP* seqMechant[NB_SEQM])
     {
         elemA->imgA++; //si le compteur a atteint le nombre demandé passe à l'img suivante dans la séquence
 
-        if(((elemA->type == 2)&&(elemA->imgA >= 30))||((elemA->type <2)&&(elemA->imgA >= 16)))
+        if((((elemA->type == 2)||(elemA->type == 4))&&(elemA->imgA >= 30)) || (((elemA->type < 2) || (elemA->type == 3)) &&(elemA->imgA >= 16)))
             elemA->imgA = 0;
+
+        elemA->cmptImg = 0;
     }
-    //printf("mechant%d type%d imgA%d  imgx %d  imgy%d\n", elemA->nbE, elemA->type, elemA->imgA, elemA->imgX, elemA->imgY);
+
 
     imgCourrante = elemA->imgA;
 
-    if(elemA->type == 2)
+    if((elemA->type == 2) || (elemA->type == 4))
     {
         imgx = imgCourrante*48;
         imgy = elemA->angle*68;
     }
-    else if(elemA->type == 1)
+    else if((elemA->type == 1) || (elemA->type == 3))
     {
         if(imgCourrante >= 8) //si l'image courante est supérieure à 8, il faut aller a la ligne en dessous
         {
