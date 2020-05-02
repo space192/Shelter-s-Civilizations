@@ -309,7 +309,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
         sauvegarderMine(listeMine, sauvegarde);
     }
-    libereBitmap(page,transisition,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
+    libereBitmap(page,transisition,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon,IMGMine);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,listeMine,horde);
     return score+(PDVMuraille/5)+(joueur1.or/10)+(joueur1.metal/10)+(joueur1.pierre/10);

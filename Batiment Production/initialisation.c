@@ -168,7 +168,7 @@ t_listeEDD *InitialisationEDD()
 
 }
 
- void libereBitmap(BITMAP *page,BITMAP *transisition[3],BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu[3],BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2])
+ void libereBitmap(BITMAP *page,BITMAP *transisition[3],BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu[3],BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2],BITMAP* IMGMine[2])
  {
     int i;
 
@@ -206,6 +206,7 @@ t_listeEDD *InitialisationEDD()
     for(i=0; i < 2; i++)
     {
         destroy_bitmap(beacon[i]);
+        destroy_bitmap(IMGMine[i]);
     }
 }
 
