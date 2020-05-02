@@ -64,7 +64,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y)
 }
 
 
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int sauvegarde)
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde)
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -90,7 +90,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur
     {
         affichageBoutton(image[1], buffer, 1, 390,480, 2.5);
     }
-    else if(sauvegarde == 1 && mouse_x >= 390 && mouse_y>=480 && mouse_x <=890 && mouse_y <=530)
+    else if(sauvegarde >= 1 && mouse_x >= 390 && mouse_y>=480 && mouse_x <=890 && mouse_y <=530)
     {
         if(mouse_b & 1)
         {
@@ -155,7 +155,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur
 
 
 
-void NouvellePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -252,10 +252,10 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur
             if(*compteur >=20)
             {
                 dechargementImage(image);
-                jeu(0, *tuto, chaine);
+                *score = jeu(0, *tuto, chaine);
                 chargementImageMenu(image);
                 rest(100);
-                *scene = 1;
+                *scene = 6;
                 *compteur = 0;
             }
             else
@@ -273,9 +273,9 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur
 }
 
 
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, int *sauvegarde)
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int *sauvegarde, int *score, char chaine[100])
 {
-    char chaine[10] = "test";
+    recupererNom(chaine);
     if(*sauvegarde >= 1)
     {
         if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //niveau 1
@@ -285,10 +285,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
                 if(*compteur >= 17)
                 {
                     dechargementImage(image);
-                    jeu(1, 0, chaine);
+                    *score = jeu(1, 0, chaine);
                     chargementImageMenu(image);
                     rest(100);
-                    *scene = 1;
+                    *scene = 6;
                     *compteur = 0;
                 }
                 else
@@ -317,10 +317,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
                 if(*compteur >=17)
                 {
                     dechargementImage(image);
-                    jeu(2, 0, chaine);
+                    *score = jeu(2, 0, chaine);
                     chargementImageMenu(image);
                     rest(100);
-                    *scene = 1;
+                    *scene = 6;
                     *compteur = 0;
                 }
                 else
@@ -349,10 +349,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
                 if(*compteur >=17)
                 {
                     dechargementImage(image);
-                    jeu(3, 0, chaine);
+                    *score = jeu(3, 0, chaine);
                     chargementImageMenu(image);
                     rest(100);
-                    *scene = 1;
+                    *scene = 6;
                     *compteur = 0;
                 }
                 else
@@ -381,10 +381,10 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
                 if(*compteur >=17)
                 {
                     dechargementImage(image);
-                    jeu(4, 0, chaine);
+                    *score = jeu(4, 0, chaine);
                     chargementImageMenu(image);
                     rest(100);
-                    *scene = 1;
+                    *scene = 6;
                     *compteur = 0;
                 }
                 else
@@ -428,7 +428,7 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[16], int *scene, int *compte
 }
 
 
-void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
+void leaderBoard(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
 {
     BITMAP *temp = create_bitmap(402, 800);
     int i, ytemp = 0;
@@ -546,5 +546,55 @@ void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, 
     else
     {
         affichageBoutton(image[2],buffer,2,390,560, 2.5);
+    }
+}
+
+
+void envoieScoreServeur(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, char chaine[100], int score)
+{
+    masked_stretch_blit(image[16], buffer, 0,0,image[16]->w, image[16]->h , 340,300,image[16]->w*4, image[16]->h*4);
+    textprintf_ex(buffer, font,465,340,makecol(255,255,255), -1, "voulez-vous envoyez le score au serveur %s?", chaine);
+    if((mouse_x>= 380 && mouse_y>=455)&&(mouse_x <=620 && mouse_y <= 480)) //non
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >= 17)
+            {
+                *scene = 1;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+            rest(4);
+        }
+        affichageBoutton(image[18], buffer, 3, 380,455, 1.2);
+    }
+    else
+    {
+        affichageBoutton(image[18], buffer, 2, 380,455, 1.2);
+    }
+    if((mouse_x>= 645 && mouse_y>=455)&&(mouse_x <=885 && mouse_y <= 480)) //oui
+    {
+        if(mouse_b & 1)
+        {
+            if(*compteur >= 17)
+            {
+                connexionReseau(2, chaine, score);
+                *scene = 1;
+                *compteur = 0;
+            }
+            else
+            {
+                *compteur = *compteur+1;
+            }
+            rest(4);
+        }
+        affichageBoutton(image[17], buffer, 3, 645,455, 1.2);
+    }
+    else
+    {
+        affichageBoutton(image[17], buffer, 2, 645,455, 1.2);
     }
 }

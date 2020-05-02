@@ -1,6 +1,6 @@
 #include "prototypes.h"
 
-void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
+int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 {
     int compteur = 0;
     int compteur2 = 0;
@@ -181,6 +181,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         recupererEmplacementDispo(listeEmplacementDefense, sauvegarde);
         recupererAnecdote(&joueur1, &agrandissement, &score, &PDVMuraille, sauvegarde);
         ajusterBase(&borne, agrandissement,&temp);
+        recupererMine(listeMine, sauvegarde);
         if(sauvegarde == 1)
         {
             niveauJeu = 1;
@@ -267,10 +268,14 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
                 SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
                 SauvegarderDefense(listedef, sauvegarde);
                 sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
+                sauvegarderMine(listeMine, sauvegarde);
                 jeuActif = 1;
             }
         }
-
+        if(PDVMuraille <= 0)
+        {
+            jeuActif = 4;
+        }
         if(key[KEY_U])
             blit(place, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);      //TEST POUR VOIR LES BITMAP CACHEES
         if(key[KEY_I])
@@ -291,15 +296,21 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         release_voice(voiceB[i]);
     }
 
-    sauvegarderNiveauUnlock(sauvegarde);
-    if((sauvegarde != 0 && jeuActif != 3 && jeuActif !=0) || (niveauJeu == 7))
+    if(jeuActif != 4)
+    {
+        sauvegarderNiveauUnlock(sauvegarde);
+        sauvegarderNom(PseudoJoueur);
+    }
+    if((sauvegarde != 0 && jeuActif != 3 && jeuActif !=1 && jeuActif != 4) || (niveauJeu == 7))
     {
         SauvegarderBatimentProduction(listeRessource, sauvegarde);
         SauvegarderEmplacementDisponible(listeEmplacementDefense, sauvegarde);
         SauvegarderDefense(listedef, sauvegarde);
         sauvegardeAnecdote(joueur1, agrandissement, score, PDVMuraille, sauvegarde);
+        sauvegarderMine(listeMine, sauvegarde);
     }
     libereBitmap(page,transisition,base,batiments,fond,construc,menuC,menuD,layoutMenu,miniMap,fondation,pause,IMGdefense,chemin,angle,place, SeqM,beacon);
     libererSon(selectSound,newBSound,buzzer,bullet);
     detruireListe(listeRessource,listedef,listeEmplacementDefense,listeMine,horde);
+    return score+(PDVMuraille/5)+(joueur1.or/10)+(joueur1.metal/10)+(joueur1.pierre/10);
 }

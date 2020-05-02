@@ -101,7 +101,7 @@ void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)
     }
     if(fichier == NULL || fichier2 == NULL)
     {
-        allegro_message("erreur emplacement dispo");
+        allegro_message("erreur fichier emplacement dispo");
     }
     else
     {
@@ -159,7 +159,7 @@ void SauvegarderDefense(t_listedef *liste, int niveau)
     }
     if(fichier == NULL || fichier2 == NULL)
     {
-        allegro_message("erreur defense");
+        allegro_message("erreur fichier defense");
     }
     else
     {
@@ -182,7 +182,7 @@ void sauvegarderNiveauUnlock(int sauvegarde)
     FILE *fichier = fopen("sauvegarde/unlock.sav", "w");
     if(fichier == NULL)
     {
-        allegro_message("erreur lors de l'ouverture du fichier");
+        allegro_message("erreur fichier Unlock");
     }
     else
     {
@@ -224,7 +224,7 @@ void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sau
     }
     if(fichier == NULL)
     {
-        printf("erreur anecdote");
+        allegro_message("erreur fichier anecdote");
     }
     else
     {
@@ -233,5 +233,79 @@ void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sau
         fwrite(&scoreE, sizeof(int), 1, fichier);
         fwrite(&PDV, sizeof(int), 1, fichier);
         fclose(fichier);
+    }
+}
+
+
+void sauvegarderNom(char *nom)
+{
+    FILE *fichier = fopen("sauvegarde/sauvegardeNom.sav", "w");
+    if(fichier == NULL)
+    {
+        allegro_message("erreur fichier Nom");
+    }
+    else
+    {
+        fprintf(fichier, "%s", nom);
+        fclose(fichier);
+    }
+}
+
+
+void sauvegarderMine(t_listeMine *liste, int niveau)
+{
+    FILE *fichier = NULL;
+    FILE *fichier2 = NULL;
+    switch(niveau)
+    {
+    case 1:
+        {
+            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "wb");
+            fichier2 = fopen("sauvegarde/Niveau 1/nMine.sav", "w");
+            break;
+        }
+    case 2:
+        {
+            fichier = fopen("sauvegarde/Niveau 2/Mine.sav", "wb");
+            fichier2 = fopen("sauvegarde/Niveau 2/nMine.sav", "w");
+            break;
+        }
+    case 3:
+        {
+            fichier = fopen("sauvegarde/Niveau 3/Mine.sav", "wb");
+            fichier2 = fopen("sauvegarde/Niveau 3/nMine.sav", "w");
+            break;
+        }
+    case 4:
+        {
+            fichier = fopen("sauvegarde/Endless Mode/Mine.sav", "wb");
+            fichier2 = fopen("sauvegarde/Endless Mode/nMine.sav", "w");
+            break;
+        }
+    default:
+        {
+            fichier = NULL;
+            fichier2 = NULL;
+        }
+    }
+    if(fichier == NULL || fichier2 == NULL)
+    {
+        allegro_message("erreur fichier Mine");
+    }
+    else
+    {
+        int n = 0;
+        t_maillonMine *actuel = liste->premier;
+        while(actuel != NULL)
+        {
+            fwrite(actuel, sizeof(t_maillonMine), 1, fichier);
+            n++;
+            actuel = actuel->suivant;
+        }
+        actuel = NULL;
+        free(actuel);
+        fprintf(fichier2, "%d", n);
+        fclose(fichier);
+        fclose(fichier2);
     }
 }

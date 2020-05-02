@@ -333,3 +333,92 @@ void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV, int 
     fclose(fichier);
 }
 
+void recupererNom(char *chaine)
+{
+    FILE *fichier = fopen("sauvegarde/sauvegardeNom.sav", "r");
+    if(fichier == NULL)
+    {
+        printf("erreur lors de l'ouverture du fichier");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        fgets(chaine, 99, fichier);
+        fclose(fichier);
+    }
+}
+
+void ajouterMineVide(t_listeMine *liste)
+{
+    t_maillonMine *nouveau = malloc(sizeof(t_maillonMine));
+    if(nouveau == NULL)
+    {
+        allegro_message("erreur d'allocation dynamique");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        nouveau->suivant = liste->premier;
+        liste->premier = nouveau;
+    }
+}
+
+void recupererMine(t_listeMine *liste, int niveau)
+{
+    FILE *fichier= NULL, *fichier2= NULL;
+    switch(niveau)
+    {
+    case 1:
+        {
+            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "rb");
+            fichier2 = fopen("sauvegarde/Niveau 1/nMine.sav", "r");
+            break;
+        }
+    case 2:
+        {
+            fichier = fopen("sauvegarde/Niveau 2/Mine.sav", "rb");
+            fichier2 = fopen("sauvegarde/Niveau 2/nMine.sav", "r");
+            break;
+        }
+    case 3:
+        {
+            fichier = fopen("sauvegarde/Niveau 3/Mine.sav", "rb");
+            fichier2 = fopen("sauvegarde/Niveau 3/nMine.sav", "r");
+            break;
+        }
+    case 4:
+        {
+            fichier = fopen("sauvegarde/Endless Mode/Mine.sav", "rb");
+            fichier2 = fopen("sauvegarde/Endless Mode/nMine.sav", "r");
+            break;
+        }
+    default:
+        {
+            fichier = NULL;
+            fichier2 = NULL;
+            break;
+        }
+    }
+    if(fichier == NULL || fichier2 == NULL)
+    {
+        allegro_message("erreur fichier Mine");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        int i,max;
+        t_maillonMine temp;
+        fscanf(fichier2, "%d", &max);
+        for(i=0; i < max; i++)
+        {
+            ajouterMineVide(liste);
+            fread(&temp, sizeof(t_maillonMine), 1 , fichier);
+            liste->premier->x = temp.x;
+            liste->premier->y = temp.y;
+            liste->premier->type = temp.type;
+            liste->premier->etat = temp.etat;
+        }
+        fclose(fichier);
+        fclose(fichier2);
+    }
+}

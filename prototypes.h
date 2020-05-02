@@ -3,7 +3,7 @@
 
 
 #include "structures.h"
-void jeu(int sauvegarde, int tutoA, char *pseudoJoueur);
+int jeu(int sauvegarde, int tutoA, char *pseudoJoueur);
 void gererMusique(int *condition,int *musique,int voice,char listeMusique[6][100],SAMPLE* sample1,SAMPLE* sample2);
 void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4],int* volumeMusique,int *musique,int voice,char listeMusique[6][100],int *jeuActif);
 void libereBitmap(BITMAP *page,BITMAP *transisition[3],BITMAP *base[3],BITMAP *batiments[9],BITMAP *fond,BITMAP *construc,BITMAP *menuC,BITMAP *menuD,BITMAP *layoutMenu[3],BITMAP *miniMap,BITMAP *fondation,BITMAP *pause[4],BITMAP *IMGdefense[4],BITMAP* chemin,BITMAP* angle,BITMAP* place, BITMAP *SeqM[],BITMAP* beacon[2]);
@@ -63,17 +63,17 @@ void ajoutBalle(t_listeBalle *defense);
 void animation(BITMAP *image[], BITMAP *buffer, t_defense *defense,int deplAffX, int deplAffY);
 void chargementImageetSon(BITMAP *image[4], SAMPLE *son);
 
-void chargementImageMenu(BITMAP *image[13]);
-void dechargementImage(BITMAP *image[13]);
+void chargementImageMenu(BITMAP *image[19]);
+void dechargementImage(BITMAP *image[19]);
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom);
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde);
-void NouvellePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic);
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde);
+void NouvellePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score);
 void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
 void toucheClavier(char *chaine, BITMAP *buffer, int *pos, int *clic);
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[13], int *scene, int *compteur, int *sauvegarde);
-void leaderBoard(BITMAP *buffer, BITMAP *image[16], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, int *sauvegarde, int *score,char *chaine);
+void leaderBoard(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
 void passageNiveau(BITMAP *buffer,BITMAP *bouton[3], int *niveau, int *jeuActif, int *compteur);
-
+void envoieScoreServeur(BITMAP *buffer, BITMAP *image[19], int *scene, int *compteur, char *chaine, int score);
 
 
 
@@ -133,6 +133,10 @@ void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau);
 void SauvegarderDefense(t_listedef *liste, int niveau);
 void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV, int sauvegarde);
 void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sauvegarde);
+void recupererNom(char *chaine);
+void sauvegarderNom(char *nom);
+void recupererMine(t_listeMine *liste, int niveau);
+void sauvegarderMine(t_listeMine *liste, int niveau);
 
 #endif // PROTORYPES_H_INCLUDED
 

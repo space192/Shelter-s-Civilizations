@@ -1,6 +1,6 @@
 #include "../prototypes.h"
 
-void chargementImageMenu(BITMAP *image[16])
+void chargementImageMenu(BITMAP *image[19])
 {
     int i;
     image[0] = load_bitmap("image/menu/nouvelle partie.bmp", NULL);
@@ -19,19 +19,23 @@ void chargementImageMenu(BITMAP *image[16])
     image[13] = load_bitmap("image/reseau/affichage score.bmp", NULL);
     image[14] = load_bitmap("image/reseau/barre Score.bmp", NULL);
     image[15] = load_bitmap("image/reseau/slider1.bmp", NULL);
-    for(i =0; i <  16; i++)
+    image[16] = load_bitmap("image/menu/Submit score.bmp", NULL);
+    image[17] = load_bitmap("image/menu/oui.bmp", NULL);
+    image[18] = load_bitmap("image/menu/non.bmp", NULL);
+    for(i =0; i <  18; i++)
     {
         if(image[i] == NULL)
         {
             allegro_message("erreur chargement image %d", i);
+            exit(EXIT_FAILURE);
         }
     }
 }
 
-void dechargementImage(BITMAP *image[16])
+void dechargementImage(BITMAP *image[18])
 {
     int i;
-    for(i=0; i < 16; i++)
+    for(i=0; i < 18; i++)
     {
         destroy_bitmap(image[i]);
     }

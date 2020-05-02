@@ -5,19 +5,22 @@ int main()
     lancerAllegro(1280, 1024);
     BITMAP *fond=load_bitmap("image/menu/fondMenu.bmp",NULL);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP *image[16];
+    BITMAP *image[19];
     t_classement tableau[20];
     char chaine[100];
     int sourisY = 355, y=0;
     chaine[0] = '\0';
-    int compteur=0, sauvegarde = 1, continuer = 1, tuto = 0, ecrire = 0, pos=0, clic=0, sauvegardetemp = 4;
+    int compteur=0, sauvegarde, continuer = 1, tuto = 0, ecrire = 0, pos=0, clic=0;
     float x=0;
     chargementImageMenu(image);
+    sauvegarde = recupererNiveauUnlock();
     int scene = 1; //valeur scene corresponde au different ecran du menu
+    int score;
     //1:Menu Principale
     //2:Nouvelle Partie
     //3:Chargement Partie
     //4:Score en ligne
+    //6:question envoyé le score ?
 
     while(!key[KEY_ESC] && continuer == 1)
     {
@@ -38,11 +41,11 @@ int main()
         }
         if(scene == 2)
         {
-            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos, &clic);
+            NouvellePartie(buffer, image, &scene, &compteur, sauvegarde, &tuto,&ecrire, chaine, &pos, &clic, &score);
         }
         if(scene == 3)
         {
-            ChargerUnePartie(buffer, image, &scene, &compteur, &sauvegardetemp);
+            ChargerUnePartie(buffer, image, &scene, &compteur, &sauvegarde, &score, chaine);
         }
         if(scene == 4)
         {
@@ -51,6 +54,10 @@ int main()
         if(scene == 5)
         {
             continuer = 0;
+        }
+        if(scene == 6)
+        {
+            envoieScoreServeur(buffer, image, &scene, &compteur, chaine, score);
         }
         blit(buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
     }
