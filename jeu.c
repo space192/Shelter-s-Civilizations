@@ -234,7 +234,7 @@ void jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
             testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
             construireNouveauBatiment(listeRessource,listedef,listeEmplacementDefense,page,menuC,construc,&conditionConstruction, &compteur2, &typeDeBatiment,&niveauBatiment,&agrandissement,&joueur1,deplAffX, deplAffY,&borne,&PDVMuraille,voiceB);
-            ajouterFondation(page,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
+            ajouterFondation(page,chemin,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
             ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,listeMine,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
 
             attaquerMur(horde, &PDVMuraille);

@@ -371,7 +371,7 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
 
             ajusterDefense(&x,&y);
 
-            if(testSiArgentSuffisant(joueur,0,*typeDeBatiment,4,voice)==1)
+            if(testSiArgentSuffisant(joueur,0,*typeDeBatiment,4,voice)==1&&(testMinePresente(listeMine,x,y))==1)
             {
                 voice_start(voice[1]);
                 nouvelleMine(listeMine,x,y,*typeDeBatiment);

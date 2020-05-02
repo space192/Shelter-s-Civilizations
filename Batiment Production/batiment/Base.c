@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4])
+void ajouterFondation(BITMAP* page,BITMAP* chemin,BITMAP *construc,t_listeEDD *liste,int *condition,t_listeBR *listeBR,int *xp,int *yp,int *i,int *niveaubatiment,t_borne *borne,int deplAffX, int deplAffY,int *numeroEDD,t_joueur* joueur,int voice[4])
 {
     t_maillonBR *actuel;
 
@@ -16,7 +16,7 @@ void ajouterFondation(BITMAP* page,BITMAP *construc,t_listeEDD *liste,int *condi
             y = mouse_y+deplAffY;
             ajusterFondation(&x,&y);
 
-            if(testSiArgentSuffisant(joueur,0,0,2,voice)==1)
+            if(testSiArgentSuffisant(joueur,0,0,2,voice)==1&&(x>360)&&(makecol(255,255,0)!=(getpixel(chemin,x,y)))&&(makecol(255,255,0)!=(getpixel(chemin,x+120,y+120)))&&(makecol(50,50,50)!=(getpixel(chemin,x,y)))&&(makecol(50,50,50)!=(getpixel(chemin,x+120,y+120)))&&(makecol(255,255,0)!=(getpixel(chemin,x,y+120)))&&(makecol(255,255,0)!=(getpixel(chemin,x+120,y)))&&(makecol(50,50,50)!=(getpixel(chemin,x+120,y)))&&(makecol(50,50,50)!=(getpixel(chemin,x,y+120))))
             {
                 nouvelleFondation(liste,x,y,numeroEDD);
             }
