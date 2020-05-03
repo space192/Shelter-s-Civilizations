@@ -167,7 +167,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listedef = initialisationDef();
         joueur1.or=300;
         joueur1.pierre=300;
-        joueur1.metal=300;
+        joueur1.metal=3000;
         ajusterBase(&borne, agrandissement,&PDVMuraille);
         niveauJeu = 1;
     }
@@ -207,7 +207,6 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     initSeqM(SeqM);
     initAncre(horde);
 
-    PDVMuraille = 10;
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
 

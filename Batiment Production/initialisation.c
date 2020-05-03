@@ -106,7 +106,7 @@ t_listeEDD *InitialisationEDD()
     maillon->x=x;
     maillon->y=y;
     maillon->afficherFondation=1;
-    maillon->emplacementDisponible=0;
+    maillon->emplacementDisponible=1;
 
     maillon2->x=x+60;
     maillon2->y=y;
@@ -136,7 +136,7 @@ t_listeEDD *InitialisationEDD()
     maillon7->x=x;
     maillon7->y=y+180;
     maillon7->afficherFondation=0;
-    maillon7->emplacementDisponible=0;
+    maillon7->emplacementDisponible=1;
 
     maillon8->x=x+60;
     maillon8->y=y+180;
