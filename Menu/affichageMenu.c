@@ -64,7 +64,7 @@ void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y) //ges
 }
 
 
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int sauvegarde) //gestion des boutons du menu principale redirection autre programme
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int sauvegarde) //gestion des boutons du menu principale redirection autre programme
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -175,7 +175,7 @@ void MenuPrincipale(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur
 
 
 //gestion de la creation de nouvelle partie avec l'entrée du prenom, ainsi que la case permettant d'acceder au tutoriel
-void NouvellePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score)
+void NouvellePartie(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score)
 {
     masked_stretch_blit(image[10], buffer, 0,0,image[10]->w, image[10]->h, 390,400, image[10]->w*2, image[10]->h*2);
     if(mouse_x>=800 && mouse_y >=535 && mouse_x<=840 && mouse_y <=575)
@@ -293,7 +293,7 @@ void NouvellePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur
 }
 
 //gestion des differentes sauvegarde a partir des fichiers pour les 4 niveaux differents
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *sauvegarde, int *score, char chaine[100])
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *sauvegarde, int *score, char chaine[100])
 {
     recupererNom(chaine);
     if(*sauvegarde >= 1)
@@ -448,7 +448,7 @@ void ChargerUnePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compte
 }
 
 //gestion de l'affichage du leaderboard du jeu grace a une requette au serveur
-void leaderBoard(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
+void leaderBoard(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, t_classement *tableau, int *sourisY,int *y)
 {
     BITMAP *temp = create_bitmap(402, 800);
     int i, ytemp = 0;
@@ -570,7 +570,7 @@ void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, 
 }
 
 //permet de demander a l'utilisateur si il veut envoyer son score au serveur
-void envoieScoreServeur(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, char chaine[100], int score)
+void envoieScoreServeur(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, char chaine[100], int score)
 {
     masked_stretch_blit(image[16], buffer, 0,0,image[16]->w, image[16]->h , 340,300,image[16]->w*4, image[16]->h*4);
     textprintf_ex(buffer, font,465,340,makecol(255,255,255), -1, "voulez-vous envoyez le score au serveur %s?", chaine);
@@ -619,7 +619,7 @@ void envoieScoreServeur(BITMAP *buffer, BITMAP *image[38], int *scene, int *comp
     }
 }
 //affichage du wiki du jeu
-void wiki(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *article)
+void wiki(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *article)
 {
     if((mouse_b & 1)&&(mouse_x>= 380 && mouse_y>=130)&&(mouse_x <=475 && mouse_y <= 235)) //home WIKI
     {
@@ -627,51 +627,51 @@ void wiki(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *art
     }
     else if((mouse_b & 1)&&(mouse_x>= 400 && mouse_y>=275)&&(mouse_x <=447 && mouse_y <= 283)) //mine d'or
     {
-        *article = 1;
+        *article = 24;
     }
     else if((mouse_b & 1)&&(mouse_x>= 403 && mouse_y>=291)&&(mouse_x <=445 && mouse_y <= 300)) //carriere
     {
-        *article = 2;
+        *article = 25;
     }
     else if((mouse_b & 1)&&(mouse_x>= 400 && mouse_y>=307)&&(mouse_x <=450 && mouse_y <= 315)) //fonderie
     {
-        *article = 3;
+        *article = 26;
     }
     else if((mouse_b & 1)&&(mouse_x>= 407 && mouse_y>=336)&&(mouse_x <=445 && mouse_y <= 345)) //bertha
     {
-        *article = 4;
+        *article = 27;
     }
     else if((mouse_b & 1)&&(mouse_x>= 395 && mouse_y>=352)&&(mouse_x <=455 && mouse_y <= 361)) //laserinator
     {
-        *article = 5;
+        *article = 28;
     }
     else if((mouse_b & 1)&&(mouse_x>= 392 && mouse_y>=368)&&(mouse_x <=457 && mouse_y <= 378)) //terminator
     {
-        *article = 7;
+        *article = 29;
     }
     else if((mouse_b & 1)&&(mouse_x>= 398 && mouse_y>=383)&&(mouse_x <=450 && mouse_y <= 392)) //les Mines
     {
-        *article = 8;
+        *article = 30;
     }
     else if((mouse_b & 1)&&(mouse_x>= 398 && mouse_y>=414)&&(mouse_x <=450 && mouse_y <= 423)) //RadCafard
     {
-        *article = 9;
+        *article = 31;
     }
     else if((mouse_b & 1)&&(mouse_x>= 379 && mouse_y>=430)&&(mouse_x <=470 && mouse_y <= 440)) //infected centipede
     {
-        *article = 10;
+        *article = 32;
     }
     else if((mouse_b & 1)&&(mouse_x>= 392 && mouse_y>=447)&&(mouse_x <=454 && mouse_y <= 456)) //les Runners
     {
-        *article = 11;
+        *article = 33;
     }
     else if((mouse_b & 1)&&(mouse_x>= 389 && mouse_y>=480)&&(mouse_x <=460 && mouse_y <= 490)) //Hotel de ville
     {
-        *article = 12;
+        *article = 34;
     }
     else if((mouse_b & 1)&&(mouse_x>= 410 && mouse_y>=497)&&(mouse_x <=439 && mouse_y <= 507)) //Base
     {
-        *article = 13;
+        *article = 35;
     }
     if(*article == 0)
     {
@@ -679,7 +679,7 @@ void wiki(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *art
     }
     else
     {
-        blit(image[23 + *article], buffer, 0,0,494, 208, SCREEN_W, SCREEN_H);
+        blit(image[*article], buffer, 0,0,494, 208, SCREEN_W, SCREEN_H);
     }
     masked_stretch_blit(image[20], buffer, 0,0,image[20]->w, image[20]->h, 350,100,3*image[20]->w, 6*image[20]->h);
     masked_blit(image[23], buffer, 0,0,365, 250, SCREEN_W, SCREEN_H);

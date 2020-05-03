@@ -7,7 +7,7 @@ int main()
     lancer_Reseau();
     BITMAP *fond=load_bitmap("image/menu/fondMenu.bmp",NULL);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP *image[38];
+    BITMAP *image[37];
     t_classement tableau[20];
     char chaine[100];
     int sourisY = 355, y=0;

@@ -2,7 +2,7 @@
 
 t_listedef *initialisationDef()
 {
-    t_listedef *liste = malloc(sizeof(t_listedef));
+    t_listedef *liste = malloc(sizeof(t_listedef)); //creation de la liste chainée
     if(liste == NULL)
     {
         allegro_message("erreur d'allocation dynamique");
@@ -35,7 +35,7 @@ void ajoutDef(t_listedef *liste, int type, int x, int y)
         defense->suivant = liste->premier;
         liste->premier = defense;
         defense->type = type;
-        defense->x = x;
+        defense->x = x;                         //specification des differents parametre de la defense
         defense->y = y;
         defense->valeurCanon = 0;
         defense->angle = 64;
@@ -87,7 +87,7 @@ void ajoutDef(t_listedef *liste, int type, int x, int y)
     }
 }
 
-void ajoutBalle(t_listeBalle *defense)
+void ajoutBalle(t_listeBalle *defense)          //chaque defense possede une tete de liste chainée
 {
     if(defense == NULL)
     {
@@ -96,7 +96,7 @@ void ajoutBalle(t_listeBalle *defense)
     }
     else
     {
-        t_balle *balle = malloc(sizeof(t_balle));
+        t_balle *balle = malloc(sizeof(t_balle));   //on aloue une nouvelle balle
         if(balle == NULL)
         {
             allegro_message("erreur d'allocation dynamique");
@@ -104,7 +104,7 @@ void ajoutBalle(t_listeBalle *defense)
         }
         else
         {
-            balle->pass = 0;
+            balle->pass = 0; //balle doit passer par le calcul d'angle
 
             if(defense->premier==NULL)
             {

@@ -1,6 +1,6 @@
 #include "../prototypes.h"
 
-void chargementImageMenu(BITMAP *image[38])
+void chargementImageMenu(BITMAP *image[37])
 {
     int i;
     image[0] = load_bitmap("image/menu/nouvelle partie.bmp", NULL);
@@ -33,14 +33,13 @@ void chargementImageMenu(BITMAP *image[38])
     image[27] = load_bitmap("image/menu/wiki/Bertha.bmp", NULL);
     image[28] = load_bitmap("image/menu/wiki/Laserinator.bmp", NULL);
     image[29] = load_bitmap("image/menu/wiki/terminator.bmp", NULL);
-    image[30] = load_bitmap("image/menu/wiki/terminator.bmp", NULL);
-    image[31] = load_bitmap("image/menu/wiki/Les Mines.bmp", NULL);
-    image[32] = load_bitmap("image/menu/wiki/RadCafard.bmp", NULL);
-    image[33] = load_bitmap("image/menu/wiki/infected centipede.bmp", NULL);
-    image[34] = load_bitmap("image/menu/wiki/les Runners.bmp", NULL);
-    image[35] = load_bitmap("image/menu/wiki/Hotel de Ville.bmp", NULL);
-    image[36] = load_bitmap("image/menu/wiki/Base.bmp", NULL);
-    image[37] = load_bitmap("image/menu/wiki/accueil.bmp", NULL);
+    image[30] = load_bitmap("image/menu/wiki/Les Mines.bmp", NULL);
+    image[31] = load_bitmap("image/menu/wiki/RadCafard.bmp", NULL);
+    image[32] = load_bitmap("image/menu/wiki/infected centipede.bmp", NULL);
+    image[33] = load_bitmap("image/menu/wiki/les Runners.bmp", NULL);
+    image[34] = load_bitmap("image/menu/wiki/Hotel de Ville.bmp", NULL);
+    image[35] = load_bitmap("image/menu/wiki/Base.bmp", NULL);
+    image[36] = load_bitmap("image/menu/wiki/accueil.bmp", NULL);
     for(i =0; i <  24; i++)
     {
         if(image[i] == NULL)
@@ -51,7 +50,7 @@ void chargementImageMenu(BITMAP *image[38])
     }
 }
 
-void dechargementImage(BITMAP *image[38])
+void dechargementImage(BITMAP *image[37])
 {
     int i;
     for(i=0; i < 25; i++)

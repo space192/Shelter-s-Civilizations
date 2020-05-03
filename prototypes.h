@@ -67,18 +67,18 @@ void ajoutBalle(t_listeBalle *defense);
 void animation(BITMAP *image[], BITMAP *buffer, t_defense *defense,int deplAffX, int deplAffY);
 void chargementImageetSon(BITMAP *image[4], SAMPLE *son);
 
-void chargementImageMenu(BITMAP *image[38]);
-void dechargementImage(BITMAP *image[38]);
+void chargementImageMenu(BITMAP *image[37]);
+void dechargementImage(BITMAP *image[37]);
 void affichageBoutton(BITMAP *image,BITMAP *buffer,int etat, int x, int y, float zoom);
-void MenuPrincipale(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int sauvegarde);
-void NouvellePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score);
+void MenuPrincipale(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int sauvegarde);
+void NouvellePartie(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int sauvegarde, int *tuto, int *ecrire, char *chaine, int *pos, int *clic, int *score);
 void affichageCheck(BITMAP *image, BITMAP *buffer, int etat, int x, int y);
 void toucheClavier(char *chaine, BITMAP *buffer, int *pos, int *clic);
-void ChargerUnePartie(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *sauvegarde, int *score,char *chaine);
-void leaderBoard(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
+void ChargerUnePartie(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *sauvegarde, int *score,char *chaine);
+void leaderBoard(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, t_classement tableau[20], int *sourisY, int *y);
 void passageNiveau(BITMAP *buffer,BITMAP *bouton[3], int *niveau, int *jeuActif, int *compteur);
-void envoieScoreServeur(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, char *chaine, int score);
-void wiki(BITMAP *buffer, BITMAP *image[38], int *scene, int *compteur, int *article);
+void envoieScoreServeur(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, char *chaine, int score);
+void wiki(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *article);
 
 
 
