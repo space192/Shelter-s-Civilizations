@@ -445,6 +445,9 @@ void attaquerMur(t_listeMechant* horde, int* pvMur)
         }
     }
     *pvMur = *pvMur - degatInfli;
+
+    if(*pvMur <= 0)
+        *pvMur = 0;
 }
 
 

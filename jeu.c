@@ -241,6 +241,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
                 calculerPosition(horde, chemin, place, angle, vitesseJeu, agrandissement, destructionM);
                 gererDeplacement(&deplAffX,&deplAffY);
                 incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
+                attaquerMur(horde, &PDVMuraille);
             }
             //affichage des ennemis
             dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
@@ -251,7 +252,6 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             ajouterFondation(page,chemin,construc,listeEmplacementDefense,&conditionConstruction,listeRessource,&xp,&yp,&compteur2,&niveauBatiment,&borne,deplAffX,deplAffY,&numeroEDD,&joueur1,voiceB);
             ajouterDefense(page,menuD,&joueur1,listeEmplacementDefense,listedef,listeMine,&conditionConstruction,&typeDeBatiment,&compteur2,deplAffX,deplAffY,voiceB);
 
-            attaquerMur(horde, &PDVMuraille);
             gererMine(listeMine,horde);
 
             tutoriel(page,&tutoA,angleR,listeRessource,joueur1,listeEmplacementDefense,listedef);
