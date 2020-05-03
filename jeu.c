@@ -26,6 +26,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int etat = 0;
     int conditionHDV = 1;
     int destructionM=0;
+    int conditionNiveau1 = 0;
 
     float angleR= 0;
     float couleurR = 0;
@@ -164,9 +165,9 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listeRessource = InitialisationBR(batiments);
         listeEmplacementDefense = InitialisationEDD();
         listedef = initialisationDef();
-        joueur1.or=20000;
-        joueur1.pierre=20000;
-        joueur1.metal=20000;
+        joueur1.or=300;
+        joueur1.pierre=300;
+        joueur1.metal=300;
         ajusterBase(&borne, agrandissement,&PDVMuraille);
         niveauJeu = 1;
     }
@@ -206,7 +207,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     initSeqM(SeqM);
     initAncre(horde);
 
-    PDVMuraille = 10;
+    //PDVMuraille = 10;
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
 
@@ -216,7 +217,14 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         if(niveauJeu%2==1)
         {
-            creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
+            if(conditionNiveau1==8000||niveauJeu!=1)
+            {
+                creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
+            }
+            if(conditionNiveau1<8000)
+            {
+                conditionNiveau1++;
+            }
 
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
             afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY,&destructionM,borne);

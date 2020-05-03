@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int *conditionHDV,int deplAffX, int deplAffY)
-{
+{//affiche les batiments de productions et l'hotel de ville
     BITMAP* antenne=create_bitmap(54,50);
 
 
@@ -10,7 +10,7 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
 
     blit(beacon[1], antenne,batimentP->imageX,batimentP->imageY,0,0,54, 50);
 
-
+    // Le code ci dessous permet de gerer l'animation de l'antenne sur l'hotel de ville
     if((*condition<80)&&((*condition)%10==0))
     {
 
@@ -64,7 +64,6 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
     {
         if(actuel->type<4)
         {
-            //printf("%d\n",((actuel->type) -1)+(actuel->niveau*3));
             draw_sprite(page,batiments[((actuel->type) -1)+(actuel->niveau*3)],actuel->x-deplAffX,actuel->y-deplAffY);
         }
         actuel = actuel->suivant;
@@ -83,7 +82,7 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
 
 }
 
-void afficherMine(t_listeMine *listeMine,BITMAP* page,BITMAP *IMGMine[2],BITMAP* explosion,int deplAffX,int deplAffY)
+void afficherMine(t_listeMine *listeMine,BITMAP* page,BITMAP *IMGMine[2],BITMAP* explosion,int deplAffX,int deplAffY)//Affiche les mines et permet de gérer l'animation de l'explosion des mines
 {
     t_maillonMine *actuel2;
     BITMAP* petiteExplosion=create_bitmap(112,94);
@@ -158,7 +157,7 @@ void afficherMine(t_listeMine *listeMine,BITMAP* page,BITMAP *IMGMine[2],BITMAP*
 
 }
 
-void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY)
+void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY)//Permet de recolter les ressources lorsque l'on clique sur le batiment
 {
     t_maillonBR *actuel;
     actuel = liste->premier;
@@ -168,26 +167,26 @@ void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int depl
         if ((mouse_b & 1)&&((mouse_y+deplAffY >=actuel->y)&&(mouse_y+deplAffY <=actuel->y+60)&&(mouse_x+deplAffX >=actuel->x)&&(mouse_x+deplAffX <=actuel->x+60))&&(actuel->tic==actuel->ticMax))
         {
             actuel->tic = 0;
-            if((actuel->type==1)&&(*i>=50))
+            if(actuel->type==1)//&&(*i>=50))
             {
                 if(actuel->niveau==0)
                 {
-                    joueur->or +=15;
+                    joueur->or +=30;
                     *i=0;
                 }
                 else if(actuel->niveau==1)
                 {
-                    joueur->or +=40;
+                    joueur->or +=65;
                     *i=0;
                 }
                 else if(actuel->niveau==2)
                 {
-                    joueur->or +=80;
+                    joueur->or +=140;
                     *i=0;
                 }
 
             }
-            else if((actuel->type==2)&&(*i>=50))
+            else if(actuel->type==2)
             {
                 if(actuel->niveau==0)
                 {
@@ -206,21 +205,21 @@ void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int depl
                 }
 
             }
-            else if((actuel->type==3)&&(*i>=50))
+            else if(actuel->type==3)
             {
                 if(actuel->niveau==0)
                 {
-                    joueur->metal+=30;
+                    joueur->metal+=35;
                     *i=0;
                 }
                 else if(actuel->niveau==1)
                 {
-                    joueur->metal+=70;
+                    joueur->metal+=80;
                     *i=0;
                 }
                 else if(actuel->niveau==2)
                 {
-                    joueur->metal+=150;
+                    joueur->metal+=170;
                     *i=0;
                 }
             }
@@ -234,10 +233,12 @@ void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int depl
 
 void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR,int deplAffX,int deplAffY)
 {
-
+    //Chaque Batiments a un certains nombres de tics, sir le nombre de tics est maximum alors on pourra récolter des ressources
+    //On peut recolter les ressources quand le nombre de tics est maximum
 
     t_maillonBR *actuel;
 
+    //le code suivant gère l 'animation qui montre que l'on peut recolter des ressources
     if(*angle<28)
     {
         (*couleurR)+=0.400;
@@ -279,7 +280,7 @@ void incrementerTic(t_listeBR* liste,BITMAP *page, float *angle, float *couleurR
     free(actuel);
 }
 
-void gererMine(t_listeMine *liste, t_listeMechant *horde)
+void gererMine(t_listeMine *liste, t_listeMechant *horde)//inflige des degats aux ennemis lorsqu'ils passent sur une mine et la detruit par la suite
 {
     t_ennemi *mechant;
     t_maillonMine *actuel;

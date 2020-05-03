@@ -22,6 +22,7 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 void construireNouveauBatiment(t_listeBR *liste,t_listedef* liste2,t_listeEDD *liste3,BITMAP *page,BITMAP *menuC,BITMAP *construc,int *condition,int *i, int* typeDeBatiment,int *niveaubatiment,int* agrandissement,t_joueur* joueur,int deplAffX,int deplAffY,t_borne *borne,int *PDV,int voice[4]);
 void definirCoordonnees(int *x,int *y,t_borne borne,int niveau);
 int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau);
+int testSiBatimentPresentA(t_listeBR *liste,int x, int y);
 int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
 int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4]);
 void ajusterBase(t_borne *borne, int agrandissement,int *PDV);

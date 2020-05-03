@@ -1,7 +1,7 @@
 #include "../../prototypes.h"
 
 
-int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4])
+int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4])//test si l'argent est suffisant et si oui le déduit
 {
     int resultat = 0;
 
@@ -127,18 +127,18 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
         }
         else if(typeDeBatiment==5)
         {
-            if(joueur->metal>=160)
+            if(joueur->metal>=170)
             {
                 resultat=1;
-                joueur->metal-=160;
+                joueur->metal-=170;
             }
         }
         else if(typeDeBatiment==6)
         {
-            if(joueur->metal>=180)
+            if(joueur->metal>=200)
             {
                 resultat=1;
-                joueur->metal-=180;
+                joueur->metal-=200;
             }
         }
 
@@ -197,7 +197,7 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
 }
 
 
-void determinerBatiment(t_listeBR *liste,int *x, int *y,int *niveauBatiment)
+void determinerBatiment(t_listeBR *liste,int *x, int *y,int *niveauBatiment)//Permet de recuperer les informations d un batiments pour le deplacer par la suite
 {
     int condition =1;
     t_maillonBR *actuel;
@@ -318,8 +318,6 @@ void supprimerBatimentD(t_listedef *liste,t_listeEDD *liste2, int x, int y)
 
     int condition=0;
 
-    printf("%d\n",x);
-    printf("%d\n",y);
 
     if(((actuel->x==x+25)&&(actuel->y==y+25))||((actuel->x==x+50)&&(actuel->y==y+50)))
     {
@@ -399,7 +397,7 @@ void supprimerBatimentD(t_listedef *liste,t_listeEDD *liste2, int x, int y)
 }
 
 
-void definirCoordonnees(int *x,int *y,t_borne borne,int niveau)
+void definirCoordonnees(int *x,int *y,t_borne borne,int niveau)//Permet de replacer les coordonnes dans un quadrillage
 {
     int i,j;
 
@@ -494,6 +492,40 @@ int testSiBatimentPresent(t_listeBR *liste,int x, int y,int niveau)
     return resultat;
 }
 
+int testSiBatimentPresentA(t_listeBR *liste,int x, int y)//Test si des batiments sont présent aux alentours d'un batiments qui va s'ameliorer
+{
+    int resultat = 1;
+    t_maillonBR *actuel;
+    actuel= liste->premier;
+
+
+
+    while(actuel!=NULL)
+    {
+        if(((x+60==actuel->x)&&(actuel->y==y))||((x+60==actuel->x)&&(y+60==actuel->y))||((x==actuel->x)&&(y+60==actuel->y)))
+        {
+            resultat=0;
+        }
+        actuel=actuel->suivant;
+    }
+
+    actuel= liste->premier;
+    while(actuel!=NULL)
+    {
+        if((actuel->x==x&&actuel->y==y)&&(actuel->niveau<1))
+        {
+            resultat=1;
+        }
+        actuel=actuel->suivant;
+    }
+
+    actuel = NULL;
+    free(actuel);
+
+    return resultat;
+}
+
+
 int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment)
 {
     int resultat = 0;
@@ -569,15 +601,15 @@ int testMinePresente(t_listeMine *liste, int x,int y)
     }
     else
     {
-            actuel=liste->premier;
-            while(actuel!=NULL)
+        actuel=liste->premier;
+        while(actuel!=NULL)
+        {
+            if((actuel->x==x)&&(actuel->y==y))
             {
-                if((actuel->x==x)&&(actuel->y==y))
-                {
-                    resultat = 0;
-                }
-                actuel=actuel->suivant;
+                resultat = 0;
             }
+            actuel=actuel->suivant;
+        }
     }
 
     return resultat;

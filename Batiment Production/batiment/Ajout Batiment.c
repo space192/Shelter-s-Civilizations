@@ -4,7 +4,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
 {
     int x;
     int y;
-
+   //Gestion du menu de sélection des actions
     if(*condition==1)
     {
         afficherInfo(page);
@@ -57,7 +57,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
     {
         draw_sprite(page,construc,400,16);
     }
-    else if(*condition==2)
+    else if(*condition==2)//Menu de sélection des batiments
     {
         draw_sprite(page,menuC,400,16);
         afficherInfoBatimentBR(page);
@@ -166,7 +166,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
         {
 
 
-            if(testSiArgentSuffisant(joueur,0,0,5,voice)==1)
+            if(testSiArgentSuffisant(joueur,0,0,5,voice)==1)//Permet la renovation du mur contre de la pierre
             {
                 if(*agrandissement==0)
                 {
@@ -221,7 +221,15 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,1);
 
-            ameliorerBatiment(liste,x,y);
+            if((testSiBatimentPresentA(liste,x,y)==1))//Test pour voir si il y a la place nécessaire pour afficher le batiment
+            {
+                if(testSiArgentSuffisant(joueur,0,1,0,voice)==1)
+                {
+                    ameliorerBatiment(liste,x,y);
+                }
+
+            }
+
 
             *condition = 1;
 
@@ -239,7 +247,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,3);
 
-            supprimerBatimentD(liste2,liste3,x,y);
+            supprimerBatimentD(liste2,liste3,x,y);//Supprimmer des batiments de Défense
 
             *condition=1;
             *i=0;
@@ -250,7 +258,7 @@ void construireNouveauBatiment(t_listeBR *liste,t_listedef *liste2,t_listeEDD *l
             y = mouse_y+deplAffY;
             definirCoordonnees(&x,&y,*borne,1);
 
-            supprimerBatiment(liste,x,y);
+            supprimerBatiment(liste,x,y);//Supprimer des batiments de ressources
 
             *condition = 1;
 
@@ -279,6 +287,7 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
     {
         draw_sprite(page,menuD,400,16);
         afficherInfoBatimentD(page);
+        //Permet de sélectionner quelle type de défense l'on va poser
         if((mouse_b & 1)&&((mouse_y >=18)&&(mouse_y <=76)&&(mouse_x >=402)&&(mouse_x <=462))&&(*i>=50))
         {
             *condition=71;
@@ -352,7 +361,6 @@ void ajouterDefense(BITMAP* page,BITMAP *menuD,t_joueur* joueur,t_listeEDD *list
 
             if((testDefensePresente(listeEDD,x,y,*typeDeBatiment)==1)&&(testSiArgentSuffisant(joueur,0,*typeDeBatiment,1,voice)==1))
             {
-                //play_sample(newBSound, 200,128, 1000,0);
                 voice_start(voice[1]);
                 nouvelleDefense(listeEDD,listedef,x,y,*typeDeBatiment);
 
@@ -423,15 +431,15 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 
         if(niveauBatiment==0)
         {
-            actuel->ticMax=3000;
+            actuel->ticMax=4500;
         }
         else if(niveauBatiment==1)
         {
-            actuel->ticMax=3000;
+            actuel->ticMax=4500;
         }
         else if(niveauBatiment==2)
         {
-            actuel->ticMax=3000;
+            actuel->ticMax=4500;
         }
 
     }
@@ -442,15 +450,15 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
 
         if(niveauBatiment==0)
         {
-            actuel->ticMax=4000;
+            actuel->ticMax=9500;
         }
         if(niveauBatiment==1)
         {
-            actuel->ticMax=4000;
+            actuel->ticMax=9500;
         }
         if(niveauBatiment==2)
         {
-            actuel->ticMax=4000;
+            actuel->ticMax=9500;
         }
 
     }
@@ -458,7 +466,7 @@ void ajouterBatiment(t_listeBR *liste, int typeDeBatiment,int niveauBatiment,t_j
     liste->premier = actuel;
 }
 
-void afficherDefenseDisponible(t_listeEDD *listeEDD,BITMAP* page,int *typeDeBatiment,int deplAffX,int deplAffY)
+void afficherDefenseDisponible(t_listeEDD *listeEDD,BITMAP* page,int *typeDeBatiment,int deplAffX,int deplAffY)//Affiiche les emplacements de defenses disponibles grace à une liste chainée à part entière
 {
     int condition=0;
     int etape=0;
@@ -515,7 +523,7 @@ void afficherDefenseDisponible(t_listeEDD *listeEDD,BITMAP* page,int *typeDeBati
 }
 
 
-void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int typeDeBatiment)
+void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int typeDeBatiment)//Initialise un nouveau maillon defense
 {
     int i;
     t_maillonEDD *actuel;
@@ -552,7 +560,7 @@ void nouvelleDefense(t_listeEDD *listeEDD,t_listedef *listedef,int x, int y,int 
     free(actuel);
 }
 
-void nouvelleMine(t_listeMine *listeMine,int x, int y,int typeDeBatiment)
+void nouvelleMine(t_listeMine *listeMine,int x, int y,int typeDeBatiment) //Initialise un nouveau maillon mine
 {
     t_maillonMine *actuel = malloc(sizeof(t_maillonMine));
 

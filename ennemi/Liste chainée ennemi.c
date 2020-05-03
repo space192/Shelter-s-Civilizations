@@ -7,9 +7,9 @@ void initAncre(t_listeMechant* horde)
     horde->nbElement = 0; //nb de mechant sur la map
     //horde->premier = creerEnnemis((rand()%2), 1, 1, horde->nbElement); //on ajoute un ennemi car il faut au minimum un ennemi
     horde->cmptG = 0;
-    horde->tmpG = 40; //temps entre chaque generation d'ennemis
+    horde->tmpG = 50; //temps entre chaque generation d'ennemis
     horde->cmptV = 0;
-    horde->tmpV = 200; //temsp entre les vagues
+    horde->tmpV = 800; //temsp entre les vagues
 
     horde->listeActua = 0;
 
@@ -28,11 +28,11 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[3] = 0; //nombre de boss
         horde->typeMechant[4] = 0;
 
-        horde->pvM[0] = 50; //point de vie des mechants
-        horde->pvM[1] = 100;
-        horde->pvM[2] = 50;
-        horde->pvM[3] = 1000;
-        horde->pvM[4] = 1000;
+        horde->pvM[0] = 200; //point de vie des mechants
+        horde->pvM[1] = 400;
+        horde->pvM[2] = 200;
+        horde->pvM[3] = 4000;
+        horde->pvM[4] = 4000;
 
         horde->degatsM[0] = 5; //degat des mechants
         horde->degatsM[1] = 10;
@@ -62,11 +62,11 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[3] = 0; //nombre de boss
         horde->typeMechant[4] = 0;
 
-        horde->pvM[0] = 100;
-        horde->pvM[1] = 150;
-        horde->pvM[2] = 100;
-        horde->pvM[3] = 1000;
-        horde->pvM[4] = 1000;
+        horde->pvM[0] = 400;
+        horde->pvM[1] = 600;
+        horde->pvM[2] = 400;
+        horde->pvM[3] = 4000;
+        horde->pvM[4] = 4000;
 
         horde->degatsM[0] = 5; //degat des mechants
         horde->degatsM[1] = 10;
@@ -96,11 +96,11 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[3] = (horde->vagueM%5)*horde->vagueM/5;
         horde->typeMechant[4] = (horde->vagueM%5)*horde->vagueM/5;
 
-        horde->pvM[0] = 150;
-        horde->pvM[1] = 200;
-        horde->pvM[2] = 150;
-        horde->pvM[3] = 1000;
-        horde->pvM[4] = 1000;
+        horde->pvM[0] = 600;
+        horde->pvM[1] = 800;
+        horde->pvM[2] = 600;
+        horde->pvM[3] = 4000;
+        horde->pvM[4] = 4000;
 
         horde->degatsM[0] = 10; //degat des mechants
         horde->degatsM[1] = 15;
@@ -130,11 +130,11 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->typeMechant[3] = (horde->vagueM%5)*horde->vagueM/5;; //nombre de boss
         horde->typeMechant[4] = (horde->vagueM%5)*horde->vagueM/5;;
 
-        horde->pvM[0] = 150 + horde->vagueM; //point de vie des mechants
-        horde->pvM[1] = 250 + horde->vagueM;
-        horde->pvM[2] = 150 + horde->vagueM;
-        horde->pvM[3] = 150 + horde->vagueM;
-        horde->pvM[4] = 150 + horde->vagueM;
+        horde->pvM[0] = 600 + horde->vagueM; //point de vie des mechants
+        horde->pvM[1] = 1000 + horde->vagueM;
+        horde->pvM[2] = 600 + horde->vagueM;
+        horde->pvM[3] = 600 + horde->vagueM;
+        horde->pvM[4] = 600 + horde->vagueM;
 
         horde->degatsM[0] = 10 + horde->vagueM; //degat des mechants
         horde->degatsM[1] = 15 + horde->vagueM;

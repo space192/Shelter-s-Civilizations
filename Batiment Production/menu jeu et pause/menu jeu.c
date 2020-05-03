@@ -228,7 +228,7 @@ void afficherInfoBatimentD(BITMAP* page)
         {
             rectfill(page,648,98,802,202,makecol(255,255,255));
             rectfill(page,650,100,800,200,makecol(0,0,0));
-            textprintf_ex(page,font,660,125,makecol(255,255,255),-1,"Coute:  160 Metal");
+            textprintf_ex(page,font,660,125,makecol(255,255,255),-1,"Coute:  170 Metal");
             textprintf_ex(page,font,660,150,makecol(255,255,255),-1,"Type: Laser");
             textprintf_ex(page,font,660,175,makecol(255,255,255),-1,"Niveau : 2");
 
@@ -237,7 +237,7 @@ void afficherInfoBatimentD(BITMAP* page)
         {
             rectfill(page,710,98,864,202,makecol(255,255,255));
             rectfill(page,712,100,862,200,makecol(0,0,0));
-            textprintf_ex(page,font,722,125,makecol(255,255,255),-1,"Coute:  180 Metal");
+            textprintf_ex(page,font,722,125,makecol(255,255,255),-1,"Coute:  200 Metal");
             textprintf_ex(page,font,722,150,makecol(255,255,255),-1,"Type: Mitrailette");
             textprintf_ex(page,font,722,175,makecol(255,255,255),-1,"Niveau : 2");
 

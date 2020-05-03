@@ -45,42 +45,42 @@ void ajoutDef(t_listedef *liste, int type, int x, int y)
             {
                 defense->radius = 100;
                 defense->cadenceMax = 60;
-                defense->degat = 20;
+                defense->degat = 9;//9/min
                 break;
             }
         case 2:
             {
                 defense->radius = 140;
                 defense->cadenceMax = 40;
-                defense->degat = 14;
+                defense->degat = 8;//12/MIN
                 break;
             }
         case 3:
             {
                 defense->radius = 120;
                 defense->cadenceMax = 20;
-                defense->degat = 3;
+                defense->degat = 6;//18/MIN
                 break;
             }
         case 4:
             {
                 defense->radius = 200;
-                defense->cadenceMax = 102;
-                defense->degat = 60;
+                defense->cadenceMax = 100;
+                defense->degat = 35;//21/MIN
                 break;
             }
         case 5:
             {
                 defense->radius = 240;
-                defense->cadenceMax = 30;
-                defense->degat = 30;
+                defense->cadenceMax = 70;
+                defense->degat = 42;//35/MIN
                 break;
             }
         case 6:
             {
                 defense->radius = 220;
-                defense->cadenceMax = 10;
-                defense->degat = 9;
+                defense->cadenceMax = 30;
+                defense->degat = 20;//40/MIN
                 break;
             }
         }
