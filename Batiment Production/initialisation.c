@@ -185,13 +185,13 @@ t_listeEDD *InitialisationEDD()
     {
         destroy_bitmap(pause[i]);
         destroy_bitmap(IMGdefense[i]);
+        destroy_bitmap(transisition[i]);
     }
 
     for(i=0;i<3;i++)
     {
         destroy_bitmap(base[i]);
         destroy_bitmap(layoutMenu[i]);
-        destroy_bitmap(transisition[i]);
     }
     for(i=0;i<9;i++)
     {

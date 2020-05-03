@@ -60,10 +60,11 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     BITMAP *menuC = NULL;
     BITMAP *menuD = NULL;
     BITMAP *layoutMenu[3];
-    BITMAP *transisition[3];
+    BITMAP *transisition[4];
     transisition[0] = load_bitmap("image/menu/continuer.bmp", NULL);
     transisition[1] = load_bitmap("image/menu/Quitter et Sauvegarder.bmp", NULL);
     transisition[2] = load_bitmap("image/menu/Quitter sans Sauvegarder.bmp", NULL);
+    transisition[3] = load_bitmap("image/menu/Niveau-Reussi.bmp", NULL);
 
     BITMAP *miniMap = NULL;
     BITMAP *fondation =NULL;

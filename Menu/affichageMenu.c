@@ -503,7 +503,7 @@ void leaderBoard(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, t
 
 
 //gestion de l'entre deux niveau
-void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, int *compteur)
+void passageNiveau(BITMAP *buffer,BITMAP *image[4], int *niveau, int *jeuActif, int *compteur)
 {
     if((mouse_x>= 390 && mouse_y>=400)&&(mouse_x <=890 && mouse_y <= 450)) //nouvelle Partie
     {
@@ -567,6 +567,7 @@ void passageNiveau(BITMAP *buffer,BITMAP *image[3], int *niveau, int *jeuActif, 
     {
         affichageBoutton(image[2],buffer,2,390,560, 2.5);
     }
+    masked_blit(image[3], buffer, 0,0,300,300,SCREEN_W, SCREEN_H);
 }
 
 //permet de demander a l'utilisateur si il veut envoyer son score au serveur
