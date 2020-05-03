@@ -168,7 +168,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         listedef = initialisationDef();
         joueur1.or=300;
         joueur1.pierre=300;
-        joueur1.metal=3000;
+        joueur1.metal=400;
         ajusterBase(&borne, agrandissement,&PDVMuraille);
         niveauJeu = 1;
     }
