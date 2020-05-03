@@ -149,3 +149,187 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
     free(actuel);
     free(actuel2);
 }
+
+
+void animationFin(BITMAP*page,BITMAP*explosion,t_listeBR *liste,int *etat,int deplAffX, int deplAffY,int *jeuActif,int *conditionHDV,int *i,int *destructionM,t_borne borne)
+{
+    BITMAP* petiteExplosion=create_bitmap(112,94);
+    t_maillonBR *actuel;
+
+    if(*destructionM==0)
+    {
+        *destructionM=borne.yDeb;
+    }
+    if(*destructionM<borne.yFin)
+    {
+            if(*etat==0)
+            {
+                (*etat)+=112;
+            }
+            if((*etat>0)&&(*etat<672))
+            {
+                blit(explosion, petiteExplosion,*etat,0,0,0,112, 94);
+
+            }
+            else if((*etat>=672)&&(*etat<1344))
+            {
+                blit(explosion, petiteExplosion,*etat-672,94,0,0,112, 94);
+
+            }
+            else if((*etat>=1344)&&(*etat<2016))
+            {
+                blit(explosion, petiteExplosion,*etat-1344,188,0,0,112, 94);
+
+            }
+            else if((*etat>=2016)&&(*etat<2688))
+            {
+                blit(explosion, petiteExplosion,*etat-2016,282,0,0,112, 94);
+
+            }
+            else if((*etat>=2688)&&(*etat<3360))
+            {
+                blit(explosion, petiteExplosion,*etat-2688,376,0,0,112, 94);
+
+            }
+            else if((*etat>=3360)&&(*etat<4032))
+            {
+                blit(explosion, petiteExplosion,*etat-3360,470,0,0,112, 94);
+
+            }
+            else if((*etat>=4032)&&(*etat<4704))
+            {
+                blit(explosion, petiteExplosion,*etat-4032,564,0,0,112, 94);
+
+            }
+            else if((*etat>=4704)&&(*etat<5376))
+            {
+                blit(explosion, petiteExplosion,*etat-4704,658,0,0,112, 94);
+
+            }
+            else if((*etat>=5376)&&(*etat<6048))
+            {
+                blit(explosion, petiteExplosion,*etat-5376,752,0,0,112, 94);
+
+            }
+            if(*etat!=0)
+            {
+                draw_sprite(page,petiteExplosion,borne.xFin-deplAffX-25+40,*destructionM-deplAffY-50);
+                (*etat)+=112;
+            }
+
+            if(*etat==6048)
+            {
+                (*destructionM)+=60;
+                (*etat)=0;
+               *i=0;
+            }
+    }
+
+
+
+
+
+
+
+
+
+
+    if((liste->premier!=NULL&&*i>20)&&(*destructionM==borne.yFin))
+    {
+        //printf("je suis là");
+        actuel = liste->premier;
+
+
+            if(*etat==0)
+            {
+                (*etat)+=112;
+            }
+            if((*etat>0)&&(*etat<672))
+            {
+                blit(explosion, petiteExplosion,*etat,0,0,0,112, 94);
+
+            }
+            else if((*etat>=672)&&(*etat<1344))
+            {
+                blit(explosion, petiteExplosion,*etat-672,94,0,0,112, 94);
+
+            }
+            else if((*etat>=1344)&&(*etat<2016))
+            {
+                blit(explosion, petiteExplosion,*etat-1344,188,0,0,112, 94);
+
+            }
+            else if((*etat>=2016)&&(*etat<2688))
+            {
+                blit(explosion, petiteExplosion,*etat-2016,282,0,0,112, 94);
+
+            }
+            else if((*etat>=2688)&&(*etat<3360))
+            {
+                blit(explosion, petiteExplosion,*etat-2688,376,0,0,112, 94);
+
+            }
+            else if((*etat>=3360)&&(*etat<4032))
+            {
+                blit(explosion, petiteExplosion,*etat-3360,470,0,0,112, 94);
+
+            }
+            else if((*etat>=4032)&&(*etat<4704))
+            {
+                blit(explosion, petiteExplosion,*etat-4032,564,0,0,112, 94);
+
+            }
+            else if((*etat>=4704)&&(*etat<5376))
+            {
+                blit(explosion, petiteExplosion,*etat-4704,658,0,0,112, 94);
+
+            }
+            else if((*etat>=5376)&&(*etat<6048))
+            {
+                blit(explosion, petiteExplosion,*etat-5376,752,0,0,112, 94);
+
+            }
+            if((*etat!=0)&&(actuel->niveau<2))
+            {
+                draw_sprite(page,petiteExplosion,actuel->x-deplAffX-25,actuel->y-deplAffY-50);
+                (*etat)+=112;
+            }
+            if((*etat!=0)&&(actuel->niveau==2))
+            {
+                draw_sprite(page,petiteExplosion,actuel->x-deplAffX-25+30,actuel->y-deplAffY-50+60);
+                (*etat)+=112;
+            }
+            if(*etat==6048)
+            {
+                (*etat)=0;
+                if(actuel->type<4)
+                {
+                    supprimerBatiment(liste,actuel->x,actuel->y);
+                    *i=0;
+                }
+                else if(actuel->type==4)
+                {
+                    supprimerBatiment(liste,actuel->x,actuel->y);
+                    supprimerBatiment(liste,actuel->x+60,actuel->y);
+                    supprimerBatiment(liste,actuel->x,actuel->y+60);
+                    supprimerBatiment(liste,actuel->x+60,actuel->y+60);
+                    *conditionHDV=0;
+                    *i=0;
+                }
+
+            }
+    }
+    else if(liste->premier==NULL)
+    {
+        if(*i>200)
+        {
+            *jeuActif=4;
+        }
+
+    }
+    (*i)++;
+
+    actuel=NULL;
+    free(actuel);
+    destroy_bitmap(petiteExplosion);
+}

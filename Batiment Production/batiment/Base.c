@@ -27,7 +27,7 @@ void ajouterFondation(BITMAP* page,BITMAP* chemin,BITMAP *construc,t_listeEDD *l
 
         }
     }
-    else if(*condition == 8)
+    else if(*condition == 8)//Permet de sélectionner le batiments que l'on va deplacer
     {
         draw_sprite(page,construc,400,16);
         rect(page,712,18,712+60,18+60,makecol(255,0,0));
@@ -46,7 +46,7 @@ void ajouterFondation(BITMAP* page,BITMAP* chemin,BITMAP *construc,t_listeEDD *l
             *i=0;
         }
     }
-    else if(*condition == 81)
+    else if(*condition == 81)//Pemret de placer le batiment que l'on a selectionner
     {
         if(*niveaubatiment==2)
         {
@@ -160,7 +160,7 @@ void ajusterFondation(int*x,int*y)
     }
 }
 
-void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
+void ajusterBase(t_borne *borne, int agrandissement,int*PDV)//Ajuste les emplacements disponibles des batiments de ressources en fonction de la taille de la base
 {
     if(agrandissement == 0)
     {
@@ -189,17 +189,20 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
 
 }
 
-void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY)
+void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY,int *destructionM,t_borne borne)
 {
     t_maillonEDD *actuel;
     actuel=liste->premier;
 
 
     blit(fond,page,0+deplAffX,0+deplAffY,0,0,SCREEN_W,SCREEN_H);
+
+    //Affiche la muraille séprément du reste de la base
+
     if(agrandissement==0)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1575-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],407-deplAffX,1625-deplAffY);
         }
@@ -208,7 +211,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,in
     else if(agrandissement == 1)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1578-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],400-deplAffX,1627-deplAffY);
         }
@@ -217,7 +220,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,in
     else if(agrandissement==2)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1338-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],401-deplAffX,1388-deplAffY);
         }
