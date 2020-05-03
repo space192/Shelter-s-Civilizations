@@ -10,6 +10,8 @@ void initAncre(t_listeMechant* horde)
     horde->tmpG = 50; //temps entre chaque generation d'ennemis
     horde->cmptV = 0;
     horde->tmpV = 800; //temsp entre les vagues
+    horde->cmptDestruc = 0;
+    horde->tmpDestruct = 3000;
 
     horde->listeActua = 0;
 

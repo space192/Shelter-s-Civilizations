@@ -278,17 +278,17 @@ void etalement(t_ennemi* elem, BITMAP* place, int nivMur, int finPartie)
 {
     int bloquer = 0, chemin = 0; //chemin est un booleen qui est à 0 tant que les mechants sont sur le chemin, 1 s'ils en sortent et 2 s'ils sont au bout
 
-    if(finPartie == 0)
-    {
+/*    if(finPartie == 0)
+    {*/
         bloquer = espacementH(elem, place, &chemin, nivMur, finPartie);
 
         if((bloquer == 1)) //si les ennemis ne peuvent plus avancer mais pas au bout du chemin
             espacementV(elem, place, nivMur, finPartie);
-    }
+/*    }
     else if((finPartie != 0) && (elem->x >= 30) && ((elem->y > 1700) && (elem->y < 1800))) //si le mur est cassé
     {
        elem->depx = -3;
-    }
+    }*/
 }
 
 void replacementY(t_ennemi *elem)
@@ -345,7 +345,6 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
     while(elemA != NULL) //parcours de la horde d'ennemis
     {
 
-        elemA->cmptDepM = elemA->cmptDepM + vitesse;
 
         //ON ACTUALISE LES DEPLACEMENTS DES ENNEMIS
         actualiserDeplacement(elemA, chemin);
@@ -360,8 +359,15 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
 
         //ON REPLACE OU ETALE LES ENNEMIS QUAND ILS ARRIEVENT AU MUR
         ennemiDevantMur(place, elemA, nivMur, finPartie);
+        if((finPartie != 0) && (elemA->x >= 50) && ((elemA->y > 1700) && (elemA->y < 1800))) //si le mur est cassé
+        {
+            ancreH->cmptDestruc++;
+            if(ancreH->cmptDestruc >= ancreH->tmpDestruct)
+                elemA->depx = -2;
+        }
 
         //ON ACTUALISE LES DEPLACEMENT
+        elemA->cmptDepM = elemA->cmptDepM + vitesse;
         if(elemA->cmptDepM >= elemA->tmpDepM) //test le compteur pour savoir si on peut deplacer l'ennemi
         {
                 elemA->x = elemA->x + elemA->depx;

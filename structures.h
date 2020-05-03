@@ -153,6 +153,7 @@ typedef struct listeMechant
 {
     int nbElement; //nb de mechant qui sont sur le jeu
     int cmptG, tmpG; //compteur de generation des mechant
+    int cmptDestruc, tmpDestruct; //compteur avant faire avancer les mechant a la fin
 
     int nbVague;
     int vagueM; //numero de la vague
