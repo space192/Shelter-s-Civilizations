@@ -1,6 +1,6 @@
 #include "../../prototypes.h"
 
-void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY)
+void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int *conditionHDV,int deplAffX, int deplAffY)
 {
     BITMAP* antenne=create_bitmap(54,50);
 
@@ -64,15 +64,19 @@ void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP*
     {
         if(actuel->type<4)
         {
-            printf("%d\n",((actuel->type) -1)+(actuel->niveau*3));
+            //printf("%d\n",((actuel->type) -1)+(actuel->niveau*3));
             draw_sprite(page,batiments[((actuel->type) -1)+(actuel->niveau*3)],actuel->x-deplAffX,actuel->y-deplAffY);
         }
         actuel = actuel->suivant;
     }
 
 
-    draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
-    draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
+    if(*conditionHDV==1)
+    {
+        draw_sprite(page,beacon[0],batimentP->x-deplAffX+12,batimentP->y-deplAffY+13);
+        draw_sprite(page,antenne,batimentP->x-deplAffX+33,batimentP->y-deplAffY-15);
+    }
+
     destroy_bitmap(antenne);
 
     free(actuel);

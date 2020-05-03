@@ -67,7 +67,7 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     maillon->niveau = 0;
     maillon2->niveau = 0;
     maillon3->niveau = 0;
-    maillon4->niveau = 0;
+    maillon4->niveau = 2;
     maillon5->niveau = 0;
     maillon6->niveau = 0;
     maillon7->niveau = 0;

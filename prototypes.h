@@ -14,7 +14,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
 t_listeBR *InitialisationBR(BITMAP* batiments[3]);
 t_listeEDD *InitialisationEDD();
 void incrementerTic(t_listeBR* liste,BITMAP* page, float *angle,float *couleurR,int deplAffX,int deplAffY);
-void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY);
+void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY,int *destructionM,t_borne borne);
 void gererDeplacement(int *deplAffX,int *deplAffY);
 void testRecolter(t_listeBR *liste,t_joueur *joueur,int *i,int deplAffX,int deplAffY);
 void afficherEmplacementDisponible(t_listeBR *liste,BITMAP* page,int niveau,int deplAffX,int deplAffY,t_borne borne);
@@ -26,7 +26,7 @@ int testDefensePresente(t_listeEDD *listeEDD,int x,int y,int typeDeBatiment);
 int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment,int typeDeTest,int voice[4]);
 void ajusterBase(t_borne *borne, int agrandissement,int *PDV);
 void afficherLayoutMenu(BITMAP* page,BITMAP* layoutMenu[3],BITMAP* miniMap,t_borne borne,char *PseudoJoueur,int score,int niveauJeu, int deplAffX,int deplAffY,t_joueur joueur,t_listeMechant *horde,t_listedef *liste2,int PDV,int agrandissement);
-void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int deplAffX, int deplAffY);
+void afficherBatiment(t_listeBR *liste,BITMAP* page,BITMAP* batiments[3],BITMAP* beacon[2],t_batimentP* batimentP,int *condition,int *conditionHDV,int deplAffX, int deplAffY);
 void afficherMine(t_listeMine *listeMine,BITMAP* page,BITMAP *IMGMine[2],BITMAP* explosion,int deplAffX,int deplAffY);
 void ameliorerBatiment(t_listeBR *liste, int x, int y);
 void supprimerBatiment(t_listeBR *liste, int x, int y);
@@ -48,6 +48,7 @@ void gererMine(t_listeMine *liste, t_listeMechant *horde);
 int testMinePresente(t_listeMine *liste, int x,int y);
 
 void supprimerEnnemi(t_listeMechant *liste,int *score);
+void animationFin(BITMAP*page,BITMAP*explosion,t_listeBR *liste,int *etat,int deplAffX, int deplAffY,int *jeuActif,int *conditionHDV,int *i,int *destructionM,t_borne borne);
 
 
 /////////////////prototype de lib.h/////////////////////////

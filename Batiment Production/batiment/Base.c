@@ -189,7 +189,7 @@ void ajusterBase(t_borne *borne, int agrandissement,int*PDV)
 
 }
 
-void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY)
+void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,int PDV,t_listeEDD *liste,int agrandissement, int deplAffX, int deplAffY,int *destructionM,t_borne borne)
 {
     t_maillonEDD *actuel;
     actuel=liste->premier;
@@ -199,7 +199,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,in
     if(agrandissement==0)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1575-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],407-deplAffX,1625-deplAffY);
         }
@@ -208,7 +208,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,in
     else if(agrandissement == 1)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1578-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],400-deplAffX,1627-deplAffY);
         }
@@ -217,7 +217,7 @@ void afficherBase(BITMAP* page,BITMAP* fond,BITMAP* base[3],BITMAP* fondation,in
     else if(agrandissement==2)
     {
         draw_sprite(page,base[agrandissement],0-deplAffX,1338-deplAffY);
-        if(PDV>0)
+        if(*destructionM!=borne.yFin)
         {
             draw_sprite(page,base[agrandissement + 3],401-deplAffX,1388-deplAffY);
         }

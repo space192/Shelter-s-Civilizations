@@ -23,6 +23,9 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 //    int nivMuraille = 1;  //niveau de la muraille : 1-petit  2-extension vers le bas  3-extension vers le haut
     int score = 0;
     int i;
+    int etat = 0;
+    int conditionHDV = 1;
+    int destructionM=0;
 
     float angleR= 0;
     float couleurR = 0;
@@ -202,6 +205,8 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
     initSeqM(SeqM);
     initAncre(horde);
+
+    PDVMuraille = 10;
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
 
@@ -214,8 +219,8 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
 
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
-            afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY);
-            afficherBatiment(listeRessource, page, batiments, beacon, &batimentP, &conditionBase, deplAffX, deplAffY);
+            afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY,&destructionM,borne);
+            afficherBatiment(listeRessource, page, batiments, beacon, &batimentP, &conditionBase,&conditionHDV, deplAffX, deplAffY);
             afficherMine(listeMine,page,IMGMine,Explosion,deplAffX,deplAffY);
 
             if(listedef->premier!=NULL)
@@ -276,7 +281,8 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
         }
         if(PDVMuraille <= 0)
         {
-            jeuActif = 4;
+            //jeuActif = 4;
+            animationFin(page,Explosion,listeRessource,&etat,deplAffX,deplAffY,&jeuActif,&conditionHDV,&compteur2,&destructionM,borne);
         }
         if(key[KEY_U])
             blit(place, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);      //TEST POUR VOIR LES BITMAP CACHEES
