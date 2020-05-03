@@ -23,7 +23,7 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
     if(*niveau == 1)  //pour le niveau 1
     {
         horde->typeMechant[0] = 10 + horde->vagueM*2; //nombre de traceurs par vague
-        horde->typeMechant[1] = 5 + horde->vagueM*2; //nombre de limace
+        horde->typeMechant[1] = 15 + horde->vagueM*2; //nombre de limace
         horde->typeMechant[2] = 10 + horde->vagueM*2; //nombre de mec vénère
         horde->typeMechant[3] = 0; //nombre de boss
         horde->typeMechant[4] = 0;
@@ -34,9 +34,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->pvM[3] = 4000;
         horde->pvM[4] = 4000;
 
-        horde->degatsM[0] = 5; //degat des mechants
-        horde->degatsM[1] = 10;
-        horde->degatsM[2] = 5;
+        horde->degatsM[0] = 10; //degat des mechants
+        horde->degatsM[1] = 15;
+        horde->degatsM[2] = 10;
         horde->degatsM[3] = 100;
         horde->degatsM[4] = 100;
 
@@ -56,7 +56,7 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
     }
     else if(*niveau == 3)
     {
-        horde->typeMechant[0] = 15 + horde->vagueM*2;
+        horde->typeMechant[0] = 20 + horde->vagueM*2;
         horde->typeMechant[1] = 10 + horde->vagueM*2;
         horde->typeMechant[2] = 20 + horde->vagueM*2;
         horde->typeMechant[3] = 0; //nombre de boss
@@ -68,9 +68,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->pvM[3] = 4000;
         horde->pvM[4] = 4000;
 
-        horde->degatsM[0] = 5; //degat des mechants
-        horde->degatsM[1] = 10;
-        horde->degatsM[2] = 5;
+        horde->degatsM[0] = 10; //degat des mechants
+        horde->degatsM[1] = 15;
+        horde->degatsM[2] = 10;
         horde->degatsM[3] = 100;
         horde->degatsM[4] = 100;
 
@@ -102,9 +102,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->pvM[3] = 4000;
         horde->pvM[4] = 4000;
 
-        horde->degatsM[0] = 10; //degat des mechants
-        horde->degatsM[1] = 15;
-        horde->degatsM[2] = 10;
+        horde->degatsM[0] = 20; //degat des mechants
+        horde->degatsM[1] = 30;
+        horde->degatsM[2] = 20;
         horde->degatsM[3] = 100;
         horde->degatsM[4] = 100;
 
@@ -136,9 +136,9 @@ void actualiserListeMechant(t_listeMechant* horde, int* niveau)  ///CARACTERISTI
         horde->pvM[3] = 600 + horde->vagueM;
         horde->pvM[4] = 600 + horde->vagueM;
 
-        horde->degatsM[0] = 10 + horde->vagueM; //degat des mechants
-        horde->degatsM[1] = 15 + horde->vagueM;
-        horde->degatsM[2] = 10 + horde->vagueM;
+        horde->degatsM[0] = 20 + horde->vagueM; //degat des mechants
+        horde->degatsM[1] = 30 + horde->vagueM;
+        horde->degatsM[2] = 20 + horde->vagueM;
         horde->degatsM[2] = 100 + horde->vagueM;
         horde->degatsM[2] = 100 + horde->vagueM;
 
@@ -293,15 +293,15 @@ void posAlea(int* x, int* y, int nivMur, int type)
         switch(nivMur)
         {
         case 0 : //point d'apparition du haut
-            yMin = 1580 + 30;
+            yMin = 1580 + 35;
             yMax = 1925;
             break;
         case 1 : //point d'apparition du haut
-            yMin = 1580 + 30;
+            yMin = 1580 + 35;
             yMax = 2165;
             break;
         case 2 : //point d'apparition du haut
-            yMin = 1340 + 30;
+            yMin = 1340 + 35;
             yMax = 2165;
             break;
         }

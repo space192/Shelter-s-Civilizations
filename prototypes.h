@@ -105,16 +105,16 @@ void supprimerListe(t_listeMechant* ancre);
 void actualiserDeplacement(t_ennemi* mechantA, BITMAP* chemin);
 int testFuturePlaceLibre(BITMAP* place, t_ennemi* elem);
 int testPlaceLibre(BITMAP* place, int x, int y);
-int testChemin(t_ennemi* elemA, int x, int y, int nivMur);
-int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur);
+int testChemin(t_ennemi* elemA, int x, int y, int nivMur, int finPartie);
+int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur, int finPartie);
 int testUtile(BITMAP* place, int x, int y);
-void espacementV(t_ennemi* elem, BITMAP* place, int nivMur);
+void espacementV(t_ennemi* elem, BITMAP* place, int nivMur, int finPartie);
 void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur);
-void etalement(t_ennemi* elem, BITMAP* place, int nivMur);
+void etalement(t_ennemi* elem, BITMAP* place, int nivMur, int finPartie);
 void replacementY(t_ennemi *elem);
 void calculeAngle(t_ennemi *mechant, BITMAP* angle);
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese, int nivMur);
-void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur);
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitese, int nivMur, int finPartie);
+void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur, int finPartie);
 void attaquerMur(t_listeMechant* horde, int* pvMur);
 
 

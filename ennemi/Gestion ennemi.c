@@ -175,7 +175,7 @@ int testPlaceLibre(BITMAP* place, int x, int y) //le sous programme renvoie 1 si
     return libre;
 }
 
-int testChemin(t_ennemi *elemA, int x, int y, int nivMur) //test que les mechant ne sortent pas du chemin, tant qu'ils sont sur le chemin on renvoie 0, envoie 1 si ils sortent du chemin et 2 s'ils sont au bout
+int testChemin(t_ennemi *elemA, int x, int y, int nivMur, int finPartie) //test que les mechant ne sortent pas du chemin, tant qu'ils sont sur le chemin on renvoie 0, envoie 1 si ils sortent du chemin et 2 s'ils sont au bout
 {
     int test = 0;
 
@@ -196,23 +196,20 @@ int testChemin(t_ennemi *elemA, int x, int y, int nivMur) //test que les mechant
             if((x < 800) && ((y < 1340) || (y > 2165)))
                 test = 1;
         }
-
-        if(x <= 445)
-            test = 2;
     }
     else
     {
-        if((x < 800) && ((y < 1630) || (y > 1870)))
+        if((x < 800) && ((y < 1630) || (y > 1870))) //si depace en hauteur
             test = 1;
-        if(x <= 445)
-            test = 2;
     }
 
+    if((x <= 445)) //si le mur est pas cassé (finPartie == 0) &&
+        test = 2;
 
     return test;
 }
 
-int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur) //espace horizontalement de 5 pixels les mechants et renvoie 1 s'ils sont bloqués
+int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur, int finPartie) //espace horizontalement de 5 pixels les mechants et renvoie 1 s'ils sont bloqués
 {
     int i = 0, libre = 1, bloquer = 0;
 
@@ -220,7 +217,7 @@ int espacementH(t_ennemi* elem, BITMAP* place, int *chemin, int nivMur) //espace
     {
         i++;
         libre = testPlaceLibre(place, elem->x - i, elem->y);
-        *chemin = testChemin(elem, elem->x - i, elem->y, nivMur); //on verifie qu'il reste sur le chemin
+        *chemin = testChemin(elem, elem->x - i, elem->y, nivMur, finPartie); //on verifie qu'il reste sur le chemin
     }
 
     if(i == ESP_X + 1)//on a largement la place pour avancer et on avance
@@ -249,7 +246,7 @@ int testUtile(BITMAP* place, int x, int y) //fonction qui teste si c'est utile d
     return test;
 }
 
-void espacementV(t_ennemi* elem, BITMAP* place, int nivMur)
+void espacementV(t_ennemi* elem, BITMAP* place, int nivMur, int finPartie)
 {
     int libreH = 0, libreB = 0; //booleen pour savoir si la place au dessus en dessous du mechant est libre
     int cheminH = 0, cheminB = 0; //booleen pour savoir si la place au dessus ou en dessous est dnas le chemin
@@ -257,8 +254,8 @@ void espacementV(t_ennemi* elem, BITMAP* place, int nivMur)
     libreH = testPlaceLibre(place, elem->x, elem->y - ESP_Y);
     libreB = testPlaceLibre(place, elem->x, elem->y + ESP_Y);
 
-    cheminH = testChemin(elem, elem->x, elem->y - ESP_Y, nivMur);
-    cheminB = testChemin(elem, elem->x, elem->y + ESP_Y, nivMur);
+    cheminH = testChemin(elem, elem->x, elem->y - ESP_Y, nivMur, finPartie);
+    cheminB = testChemin(elem, elem->x, elem->y + ESP_Y, nivMur, finPartie);
 
     if((libreH == 1)  && (cheminH == 0) && (testUtile(place, elem->x - ESP_X, elem->y - ESP_Y) == 1))
     {
@@ -277,16 +274,21 @@ void etalementMur(t_ennemi* elemA, BITMAP* place, int nivMur)
     //shit
 }
 
-void etalement(t_ennemi* elem, BITMAP* place, int nivMur)
+void etalement(t_ennemi* elem, BITMAP* place, int nivMur, int finPartie)
 {
     int bloquer = 0, chemin = 0; //chemin est un booleen qui est à 0 tant que les mechants sont sur le chemin, 1 s'ils en sortent et 2 s'ils sont au bout
 
-    bloquer = espacementH(elem, place, &chemin, nivMur);
+    if(finPartie == 0)
+    {
+        bloquer = espacementH(elem, place, &chemin, nivMur, finPartie);
 
-    //printf("bloquer : %d, chemin : %d\n", bloquer, chemin);
-
-    if((bloquer == 1)) //si les ennemis ne peuvent plus avancer mais pas au bout du chemin
-        espacementV(elem, place, nivMur);
+        if((bloquer == 1)) //si les ennemis ne peuvent plus avancer mais pas au bout du chemin
+            espacementV(elem, place, nivMur, finPartie);
+    }
+    else if((finPartie != 0) && (elem->x >= 30) && ((elem->y > 1700) && (elem->y < 1800))) //si le mur est cassé
+    {
+       elem->depx = -3;
+    }
 }
 
 void replacementY(t_ennemi *elem)
@@ -326,16 +328,16 @@ void calculeAngle(t_ennemi *mechant, BITMAP* angle)
         mechant->angle = mechant->angle;
 }
 
-void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur)
+void ennemiDevantMur(BITMAP* place, t_ennemi* elemA, int nivMur, int finPartie)
 {
             if(elemA->x <= 800) //si on arrive dans la zone devant le mur où les mechant s'etalent, on les distances de 5 pixels en verticale
                 replacementY(elemA);
 
             if(elemA->x < 800)
-                etalement(elemA, place, nivMur);
+    etalement(elemA, place, nivMur, finPartie);
 }
 
-void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse, int nivMur)
+void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BITMAP* angle, int vitesse, int nivMur, int finPartie)
 {
     t_ennemi* elemA = NULL; //element actuel permettant de parcourir la liste
     elemA = ancreH->premier;
@@ -357,7 +359,7 @@ void calculerPosition(t_listeMechant* ancreH, BITMAP* chemin, BITMAP* place, BIT
 
 
         //ON REPLACE OU ETALE LES ENNEMIS QUAND ILS ARRIEVENT AU MUR
-        ennemiDevantMur(place, elemA, nivMur);
+        ennemiDevantMur(place, elemA, nivMur, finPartie);
 
         //ON ACTUALISE LES DEPLACEMENT
         if(elemA->cmptDepM >= elemA->tmpDepM) //test le compteur pour savoir si on peut deplacer l'ennemi

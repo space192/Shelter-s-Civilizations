@@ -25,7 +25,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     int i;
     int etat = 0;
     int conditionHDV = 1;
-    int destructionM=0;
+    int destructionM = 0;
     int conditionNiveau1 = 0;
 
     float angleR= 0;
@@ -238,13 +238,12 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             if(pauseActive==0)
             {
                 //calcule des positions des ennemis
-                calculerPosition(horde, chemin, place, angle, vitesseJeu, agrandissement);
+                calculerPosition(horde, chemin, place, angle, vitesseJeu, agrandissement, destructionM);
                 gererDeplacement(&deplAffX,&deplAffY);
                 incrementerTic(listeRessource,page,&angleR,&couleurR,deplAffX,deplAffY);
             }
             //affichage des ennemis
             dessinerMechant(horde, page, deplAffX, deplAffY, SeqM);
-
 
             afficherLayoutMenu(page,layoutMenu,miniMap,borne,PseudoJoueur,score,niveauJeu,deplAffX,deplAffY,joueur1,horde,listedef,PDVMuraille,agrandissement);
             testRecolter(listeRessource,&joueur1, &compteur,deplAffX, deplAffY);
@@ -297,6 +296,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
             blit(chemin, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
         if(key[KEY_O])
             blit(angle, page, deplAffX, deplAffY, 0, 0, SCREEN_W, SCREEN_H);
+
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }
