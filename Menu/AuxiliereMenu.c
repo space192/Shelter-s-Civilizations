@@ -27,7 +27,7 @@ void chargementImageMenu(BITMAP *image[37])
     image[21] = load_bitmap("image/menu/wiki/wiki.bmp", NULL);
     image[22] = load_bitmap("image/menu/wiki/bouton.bmp", NULL);
     image[23] = load_bitmap("image/menu/wiki/Menu Gauche.bmp", NULL);
-    image[24] = load_bitmap("image/menu/wiki/Mine d'or.bmp", NULL);
+    image[24] = load_bitmap("image/menu/wiki/mine.bmp", NULL);
     image[25] = load_bitmap("image/menu/wiki/carriere.bmp", NULL);
     image[26] = load_bitmap("image/menu/wiki/Fonderie.bmp", NULL);
     image[27] = load_bitmap("image/menu/wiki/Bertha.bmp", NULL);
