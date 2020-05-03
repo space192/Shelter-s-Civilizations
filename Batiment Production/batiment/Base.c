@@ -97,7 +97,6 @@ void nouvelleFondation(t_listeEDD *liste,int x, int y,int *numeroEDD)
 
     if(maillon==NULL||maillon2==NULL||maillon3==NULL||maillon4==NULL)
     {
-        printf("erreur d'allocation dynamique 12\n");
         exit(EXIT_FAILURE);
     }
 

@@ -98,14 +98,6 @@ void gererPause(BITMAP *page,int *pauseActive, BITMAP* pause[4], int *volumeMusi
     }
 
 
-    /*if((mouse_b & 1))
-    {
-        x = mouse_x;
-        y = mouse_y;
-        printf("%d",x);
-        printf(" %d\n",y);
-    }*/
-
     if((mouse_b & 1)&&(mouse_y >=386)&&(mouse_y <470)&&(mouse_x >=500)&&(mouse_x <=710)&&(*pauseActive==1))
     {
         *pauseActive = 0;

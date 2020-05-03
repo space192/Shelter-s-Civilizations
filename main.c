@@ -76,7 +76,7 @@ int main()
         {
             masked_blit(titre,buffer,0,0,140,3,SCREEN_W, SCREEN_H);
         }
-        else if(scene!=7)
+        else if(scene!=7&&scene!=6)
         {
             masked_blit(titre,buffer,0,0,140,40,SCREEN_W, SCREEN_H);
         }

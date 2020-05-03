@@ -153,10 +153,10 @@ int testSiArgentSuffisant(t_joueur *joueur,int niveauBatiment,int typeDeBatiment
     }
     if(typeDeTest==3)
     {
-        if(joueur->pierre>=300)
+        if(joueur->pierre>=1300)
         {
             resultat=1;
-            joueur->pierre-=300;
+            joueur->pierre-=1300;
         }
     }
     if(typeDeTest==4)
@@ -357,8 +357,6 @@ void supprimerBatimentD(t_listedef *liste,t_listeEDD *liste2, int x, int y)
     {
         while(actuel!=NULL)
         {
-            printf("%d\n",actuel->x);
-            printf("%d\n",actuel->y);
             if(((actuel->x==x+25)&&(actuel->y==y+25))||((actuel->x==x+50)&&(actuel->y==y+50)))
             {
                 while(actuel2!=NULL)

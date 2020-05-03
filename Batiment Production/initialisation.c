@@ -29,7 +29,6 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
 
     if(liste == NULL||maillon==NULL||maillon3==NULL||maillon2==NULL)
     {
-        printf("erreur d'allocation dynamique 1\n");
         exit(EXIT_FAILURE);
     }
 
@@ -67,7 +66,7 @@ t_listeBR *InitialisationBR(BITMAP* batiments[3])
     maillon->niveau = 0;
     maillon2->niveau = 0;
     maillon3->niveau = 0;
-    maillon4->niveau = 2;
+    maillon4->niveau = 0;
     maillon5->niveau = 0;
     maillon6->niveau = 0;
     maillon7->niveau = 0;
@@ -101,7 +100,6 @@ t_listeEDD *InitialisationEDD()
 
     if(liste == NULL||maillon==NULL||maillon3==NULL||maillon2==NULL||maillon4==NULL||maillon5==NULL||maillon6==NULL||maillon7==NULL||maillon8==NULL)
     {
-        printf("erreur d'allocation dynamique 2\n");
         exit(EXIT_FAILURE);
     }
 
@@ -212,21 +210,10 @@ t_listeEDD *InitialisationEDD()
 
 void libererSon(SAMPLE *selectSound,SAMPLE *newBSound,SAMPLE *buzzer,SAMPLE *bullet)
 {
-    /*destroy_sample(musique1);
-    destroy_sample(musique2);
-    destroy_sample(musique3);
-    destroy_sample(musique4);
-    destroy_sample(musique5);
-    destroy_sample(musique6);*/
     destroy_sample(selectSound);
     destroy_sample(newBSound);
     destroy_sample(buzzer);
     destroy_sample(bullet);
-
-    if((selectSound==NULL)&&(newBSound==NULL)&&(buzzer==NULL)&&(bullet==NULL))
-    {
-        printf("ca a marche");
-    }
 }
 
 void detruireListe(t_listeBR *liste1,t_listedef *liste2, t_listeEDD *liste3,t_listeMine *listeMine,t_listeMechant* liste4)

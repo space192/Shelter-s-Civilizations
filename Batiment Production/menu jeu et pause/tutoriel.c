@@ -9,9 +9,9 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
 
     if((*tutoA)==1)
     {
-    rectfill(page,290,840,930,965,makecol(255,255,255));
-    rectfill(page,300,850,920,955,makecol(0,0,0));
-    textprintf_ex(page,font,305,855,makecol(255,255,255),-1,"Bienvenu dans notre jeu *nomDuJeu* realise dans le cadre de ECETowerDefense");
+    rectfill(page,290,840,990,965,makecol(255,255,255));
+    rectfill(page,300,850,980,955,makecol(0,0,0));
+    textprintf_ex(page,font,305,855,makecol(255,255,255),-1,"Bienvenu dans notre jeu Shelter's Civilizations realise dans le cadre de ECETowerDefense");
     textprintf_ex(page,font,305,870,makecol(255,255,255),-1,"Avant toute chose essayer de vous deplacer");
     textprintf_ex(page,font,305,885,makecol(255,255,255),-1,"Pour cela vous pouvez utiliser [z,q,s,d],ou les fleches directionnels");
     }

@@ -207,7 +207,7 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
     initSeqM(SeqM);
     initAncre(horde);
 
-    //PDVMuraille = 10;
+    PDVMuraille = 10;
     while ((!key[KEY_ESC])&&(jeuActif==1))
     {
 
@@ -217,10 +217,10 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         if(niveauJeu%2==1)
         {
-            if(conditionNiveau1==8000||niveauJeu!=1)
-            {
+            //if(conditionNiveau1==8000||niveauJeu!=1)
+            //{
                 creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
-            }
+            //}
             if(conditionNiveau1<8000)
             {
                 conditionNiveau1++;

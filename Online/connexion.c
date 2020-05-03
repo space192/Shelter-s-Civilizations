@@ -16,16 +16,13 @@ void connexionReseau(int menu, char nom[100], int score)
         strcpy(joueur.prenom, nom);
         joueur.score = score;
     }
-    if((connection=socket(AF_INET, SOCK_STREAM, 0))<0)
-    {
-        printf("error socket failed()");
-    }
+    connection=socket(AF_INET, SOCK_STREAM, 0);
     connectParam.sin_family = AF_INET;              //gestion des parametre de connection (AF_INET = IPV4)
     connectParam.sin_port = htons(PORT);            //gestion du port utilisé(port 23 TELNET)
     connectParam.sin_addr.s_addr = inet_addr("176.185.237.183"); //ip du serveur où sont stocké les scores des joueurs
     if(connect(connection, (SOCKADDR*)&connectParam, sizeof(connectParam))==-1) //connexion au serveur
     {
-        printf("error connection failed");
+
     }
     else
     {
@@ -50,7 +47,7 @@ void connexionReseau(int menu, char nom[100], int score)
 
 void lancer_Reseau()
 {
-    #if defined (WIN32)
+#if defined (WIN32)
     WSADATA WSAData;                                                        //ouverture des socket sur windows
     WSAStartup(MAKEWORD(2,2), &WSAData);
 #endif
@@ -58,7 +55,7 @@ void lancer_Reseau()
 
 void fermer_reseau()
 {
-    #if defined (WIN32)
-            WSACleanup();                                                   //fermeture des socket sur windows
-    #endif
+#if defined (WIN32)
+    WSACleanup();                                                   //fermeture des socket sur windows
+#endif
 }
