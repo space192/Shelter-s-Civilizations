@@ -5,12 +5,12 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
     FILE *fichier = NULL;
     FILE *fichier2 = NULL;
     int i,n;
-    t_maillonBR temp;
+    t_maillonBR temp;           //creation d'un maillon temporaire pour les Batiment de production afin d'eviter de perdre l'adresse de nos liste chainée
     switch(niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/BR.sav", "rb");
+            fichier = fopen("sauvegarde/Niveau 1/BR.sav", "rb"); //gestion du multi niveau
             fichier2 = fopen("sauvegarde/Niveau 1/NBR.sav", "r");
             break;
         }
@@ -54,7 +54,7 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
             fread(&temp, sizeof(t_maillonBR), 1, fichier);
             liste->premier->niveau = temp.niveau;
             liste->premier->tic = temp.tic;
-            liste->premier->ticMax = temp.ticMax;
+            liste->premier->ticMax = temp.ticMax; //du au maillon temporaire on est obligé de recuperer les informations une par une dans les nouveaux maillon
             liste->premier->type = temp.type;
             liste->premier->x = temp.x;
             liste->premier->y = temp.y;
@@ -66,7 +66,7 @@ void recupererBatimentProduction(t_listeBR *liste, int niveau)
 
 void AjouterMaillonBRVide(t_listeBR *liste)
 {
-    t_maillonBR *nouveau = malloc(sizeof(t_maillonBR));
+    t_maillonBR *nouveau = malloc(sizeof(t_maillonBR)); //creation de maillon vide
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
 }
@@ -81,7 +81,7 @@ void recupererDefense(t_listedef *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/defense.sav", "rb");
+            fichier = fopen("sauvegarde/Niveau 1/defense.sav", "rb"); //gestion multi fichier
             fichier2 = fopen("sauvegarde/Niveau 1/Ndefense.sav", "r");
             break;
         }
@@ -119,7 +119,7 @@ void recupererDefense(t_listedef *liste, int niveau)
     {
         liste->premier = NULL;
         fscanf(fichier2, "%d", &n);
-        for(i=0; i < n ; i++)
+        for(i=0; i < n ; i++)                                   //meme systeme de maillon temporaire pour les defenses(du a un default de conception de la liste chainée
         {
             AjouterMaillonDefenseVide(liste);
             fread(&temp, sizeof(t_defense), 1, fichier);
@@ -144,7 +144,7 @@ void recupererDefense(t_listedef *liste, int niveau)
 
 void AjouterMaillonDefenseVide(t_listedef *liste)
 {
-    t_defense *nouveau = malloc(sizeof(t_defense));
+    t_defense *nouveau = malloc(sizeof(t_defense));     //ajout maillon defense vide
     if(liste->premier == NULL)
     {
         nouveau->suivant = NULL;
@@ -174,7 +174,7 @@ void recupererEmplacementDispo(t_listeEDD *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/EDD.sav", "rb");
+            fichier = fopen("sauvegarde/Niveau 1/EDD.sav", "rb"); //gestion multi niveau
             fichier2 = fopen("sauvegarde/Niveau 1/NEDD.sav", "r");
             break;
         }
@@ -243,8 +243,8 @@ void recupererEmplacementDispo(t_listeEDD *liste, int niveau)
                 nouveau->suivant = liste->premier;
                 liste->premier = nouveau;
                 nouveau->x = temp.x;
-                nouveau->y = temp.y;
-                nouveau->afficherFondation = temp.afficherFondation;
+                nouveau->y = temp.y;                                                            //ici gestion de recuperer les maillons dans l'ordre du fait de leur placement
+                nouveau->afficherFondation = temp.afficherFondation;                            //car le emplacement disponible fonctionne par 4 il est donc impossible de separer 1 et 2 de l'autre
                 nouveau->emplacementDisponible = temp.emplacementDisponible;
                 nouveau->numeroEDD = temp.numeroEDD;
             }
@@ -281,7 +281,7 @@ int recupererNiveauUnlock()
     FILE *fichier = fopen("sauvegarde/unlock.sav", "r");
     if(fichier == NULL)
     {
-        allegro_message("erreur lor du chargement de la sauvegarde");
+        allegro_message("erreur lor du chargement de la sauvegarde");  //recuperation non binaire nieau debloqué
     }
     fscanf(fichier, "%d", &temp);
     fclose(fichier);
@@ -295,7 +295,7 @@ void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV, int 
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/anecdote.sav", "rb");
+            fichier = fopen("sauvegarde/Niveau 1/anecdote.sav", "rb"); //gestion multi niveau
             break;
         }
     case 2:
@@ -335,7 +335,7 @@ void recupererAnecdote(t_joueur *joueur, int *TBase, int *scoreE, int *PDV, int 
 
 void recupererNom(char *chaine)
 {
-    FILE *fichier = fopen("sauvegarde/sauvegardeNom.sav", "r");
+    FILE *fichier = fopen("sauvegarde/sauvegardeNom.sav", "r"); //recuperation du nom du joueur
     if(fichier == NULL)
     {
         printf("erreur lors de l'ouverture du fichier");
@@ -370,7 +370,7 @@ void recupererMine(t_listeMine *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "rb");
+            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "rb"); //gestion du multi fichier
             fichier2 = fopen("sauvegarde/Niveau 1/nMine.sav", "r");
             break;
         }
@@ -412,7 +412,7 @@ void recupererMine(t_listeMine *liste, int niveau)
         for(i=0; i < max; i++)
         {
             ajouterMineVide(liste);
-            fread(&temp, sizeof(t_maillonMine), 1 , fichier);
+            fread(&temp, sizeof(t_maillonMine), 1 , fichier); //recuperation de la liste de mine
             liste->premier->x = temp.x;
             liste->premier->y = temp.y;
             liste->premier->type = temp.type;

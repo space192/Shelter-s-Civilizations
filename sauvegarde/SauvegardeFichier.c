@@ -10,7 +10,7 @@ void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/BR.sav", "wb+");
+            fichier = fopen("sauvegarde/Niveau 1/BR.sav", "wb+"); //gestion du multi niveau
             fichier2 = fopen("sauvegarde/Niveau 1/NBR.sav", "w");
             break;
         }
@@ -45,11 +45,11 @@ void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
     }
     else
     {
-        t_maillonBR *actuel = liste->premier;
+        t_maillonBR *actuel = liste->premier; //creation variable parcours
         while(actuel != NULL)
         {
-            fwrite(actuel, sizeof(t_maillonBR), 1, fichier);
-            n++;
+            fwrite(actuel, sizeof(t_maillonBR), 1, fichier); //ecrit chacun des maillons de la liste chainée defense dans le fichier
+            n++;                                             //incremente le nombre de maillon pour pouvoir le sauvegarder aussi pour la prochaine partie
             actuel = actuel->suivant;
         }
         fprintf(fichier2, "%d", n);
@@ -62,7 +62,7 @@ void SauvegarderBatimentProduction(t_listeBR *liste, int niveau)
 
 void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)
 {
-    t_maillonEDD *actuel = liste->premier;
+    t_maillonEDD *actuel = liste->premier;                              //variable de parcours de liste chainée
     FILE *fichier = NULL;
     FILE *fichier2= NULL;
     int n=0;
@@ -70,7 +70,7 @@ void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/EDD.sav", "wb+");
+            fichier = fopen("sauvegarde/Niveau 1/EDD.sav", "wb+"); //gestion multi fichier
             fichier2 = fopen("sauvegarde/Niveau 1/NEDD.sav", "w");
             break;
         }
@@ -107,7 +107,7 @@ void SauvegarderEmplacementDisponible(t_listeEDD *liste, int niveau)
     {
         while(actuel != NULL)
         {
-            fwrite(actuel, sizeof(t_maillonEDD), 1, fichier);
+            fwrite(actuel, sizeof(t_maillonEDD), 1, fichier); //ecriture de chacun des maillons de la liste chainée
             n++;
             actuel = actuel->suivant;
         }
@@ -128,7 +128,7 @@ void SauvegarderDefense(t_listedef *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/defense.sav", "wb+");
+            fichier = fopen("sauvegarde/Niveau 1/defense.sav", "wb+"); //gestion multi niveau
             fichier2 = fopen("sauvegarde/Niveau 1/Ndefense.sav", "w");
             break;
         }
@@ -165,7 +165,7 @@ void SauvegarderDefense(t_listedef *liste, int niveau)
     {
         while(actuel != NULL)
         {
-            fwrite(actuel, sizeof(t_defense), 1, fichier);
+            fwrite(actuel, sizeof(t_defense), 1, fichier); //ecriture de chacun des maillons de la liste chainée de defense
             n++;
             actuel = actuel->suivant;
         }
@@ -190,7 +190,7 @@ void sauvegarderNiveauUnlock(int sauvegarde)
         fscanf(fichier, "%d", &test);
         if(test < sauvegarde)
         {
-            freopen("sauvegarde/unlock.sav", "w", fichier);
+            freopen("sauvegarde/unlock.sav", "w", fichier); //test pour eviter de bloquer le jeu et ensuite si valeur superieur sauvegarde de cette valeur
             if(fichier != NULL)
             {
                 fprintf(fichier, "%d", sauvegarde);
@@ -207,7 +207,7 @@ void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sau
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/anecdote.sav", "wb");
+            fichier = fopen("sauvegarde/Niveau 1/anecdote.sav", "wb"); //gestion multi fichier
             break;
         }
     case 2:
@@ -237,7 +237,7 @@ void sauvegardeAnecdote(t_joueur joueur, int TBase, int scoreE, int PDV, int sau
     }
     else
     {
-        fwrite(&joueur, sizeof(t_joueur), 1, fichier);
+        fwrite(&joueur, sizeof(t_joueur), 1, fichier); //ecriture binaire des differents parametres a sauvegarder
         fwrite(&TBase, sizeof(int), 1, fichier);
         fwrite(&scoreE, sizeof(int), 1, fichier);
         fwrite(&PDV, sizeof(int), 1, fichier);
@@ -255,7 +255,7 @@ void sauvegarderNom(char *nom)
     }
     else
     {
-        fprintf(fichier, "%s", nom);
+        fprintf(fichier, "%s", nom); //sauvegarde nom joueur en non binaire
         fclose(fichier);
     }
 }
@@ -269,7 +269,7 @@ void sauvegarderMine(t_listeMine *liste, int niveau)
     {
     case 1:
         {
-            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "wb");
+            fichier = fopen("sauvegarde/Niveau 1/Mine.sav", "wb"); //gestion multi niveau
             fichier2 = fopen("sauvegarde/Niveau 1/nMine.sav", "w");
             break;
         }
@@ -307,7 +307,7 @@ void sauvegarderMine(t_listeMine *liste, int niveau)
         t_maillonMine *actuel = liste->premier;
         while(actuel != NULL)
         {
-            fwrite(actuel, sizeof(t_maillonMine), 1, fichier);
+            fwrite(actuel, sizeof(t_maillonMine), 1, fichier); //parcours de la liste chainée + sauvegarde maillon + comptage maillon pour sauvegarde
             n++;
             actuel = actuel->suivant;
         }

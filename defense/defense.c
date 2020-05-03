@@ -1,6 +1,6 @@
 #include "../prototypes.h"
 
-double calcul_angle(t_defense defense, t_ennemi mechant)
+double calcul_angle(t_defense defense, t_ennemi mechant) //calcul de l'angle entre le mechant et la defense
 {
     double temp;
     temp = atan2(mechant.y+mechant.centre - defense.y, mechant.x+mechant.centre - defense.x) - atan2(-defense.radius, 0);
@@ -13,7 +13,7 @@ double calcul_angle(t_defense defense, t_ennemi mechant)
     return temp;
 }
 
-int test(t_defense defense, t_ennemi mechant)
+int test(t_defense defense, t_ennemi mechant) //test si enement present dans le rayon d'action de la tourelle
 {
     int verif;
     if((pow(mechant.x - defense.x, 2)+ pow(mechant.y - defense.y, 2) < pow(defense.radius, 2))|| (pow(mechant.x+mechant.tx-defense.x, 2)+pow(mechant.y-defense.y, 2) < pow(defense.radius, 2)) || (pow(mechant.x-defense.x,2)+pow(mechant.y+mechant.ty-defense.y,2) < pow(defense.radius, 2)) || (pow(mechant.x+mechant.tx - defense.x, 2)+pow(mechant.y+mechant.ty-defense.y, 2)<pow(defense.radius, 2)))
@@ -26,7 +26,7 @@ int test(t_defense defense, t_ennemi mechant)
     }
     return verif;
 }
-int testBalle(t_defense defense, t_balle balle)
+int testBalle(t_defense defense, t_balle balle) //test si balle toujours dans la zone de portée de la tourelle
 {
     int verif;
     if((pow(balle.x - defense.x, 2)+ pow(balle.y - defense.y, 2) < pow(defense.radius, 2))|| (pow(balle.x+balle.tx-defense.x, 2)+pow(balle.y-defense.y, 2) < pow(defense.radius, 2)) || (pow(balle.x-defense.x,2)+pow(balle.y+balle.ty-defense.y,2) < pow(defense.radius, 2)) || (pow(balle.x+balle.tx - defense.x, 2)+pow(balle.y+balle.ty-defense.y, 2)<pow(defense.radius, 2)))
@@ -40,7 +40,7 @@ int testBalle(t_defense defense, t_balle balle)
     return verif;
 }
 
-void verificationListe(t_listedef *listedef)
+void verificationListe(t_listedef *listedef) //verification de tout les elements de la liste chainée pour eviter les problemes
 {
     t_defense *actuelDef = listedef->premier;
     t_balle *actuelBalle = actuelDef->liste->premier;
@@ -84,7 +84,7 @@ void verificationListe(t_listedef *listedef)
     free(temp);
 }
 
-void viderBalle(t_listeBalle *liste)
+void viderBalle(t_listeBalle *liste) //vide les balles lorsqu'il n'y a pas d'ennemies dans la zone
 {
     while(liste->premier != NULL)
     {
@@ -94,17 +94,17 @@ void viderBalle(t_listeBalle *liste)
     }
 }
 
-void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4])
+void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMechant, BITMAP *buffer, BITMAP *image[4],int deplAffX, int deplAffY,int voice[4]) //fonction principale defense
 {
     t_defense *actuelDef = listedef->premier;
     t_ennemi *actuelMec = listeMechant->premier;
-    t_balle *precedentBalle = actuelDef->liste->premier;
+    t_balle *precedentBalle = actuelDef->liste->premier;    //creation variable parcours
     t_balle *actuelBalle = actuelDef->liste->premier;
     t_balle *temp = NULL;
     while(actuelDef != NULL)
     {
-        actuelDef->target = 2000000;
-        actuelDef->test = 0;
+        actuelDef->target = 2000000; //valeur target en attendant
+        actuelDef->test = 0;         //chaque defense doit passer un test pour savoir si elle doit s'activer, on la met a 0 pour OFF par defaut
         actuelMec = listeMechant->premier;
         while(actuelMec != NULL)
         {
@@ -112,7 +112,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
             {
                 if(actuelMec->numero < actuelDef->target)
                 {
-                    actuelDef->target = actuelMec->numero;
+                    actuelDef->target = actuelMec->numero;      //determiner quel enemmie attaqué en fonction du numéro de celui ci
                 }
             }
             actuelMec = actuelMec->suivant;
@@ -120,7 +120,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
         if(actuelDef->target != 2000000)
         {
             actuelDef->test = 1;
-            actuelMec = listeMechant->premier;
+            actuelMec = listeMechant->premier;              //si un ennemie present dans la zone, on retourne au mechant qui est le plus proche et donc a target en premier
             while(actuelMec->numero != actuelDef->target)
             {
                 actuelMec = actuelMec->suivant;
@@ -128,14 +128,14 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
         }
         if(actuelDef->test == 1)
         {
-            actuelDef->angle = calcul_angle(*actuelDef, *actuelMec);
+            actuelDef->angle = calcul_angle(*actuelDef, *actuelMec); //calcul de l'angle de la defense avec le mechant
             if(actuelDef->valeurCanon >= actuelDef->cadenceMax)
             {
                 ajoutBalle(actuelDef->liste);
                 actuelDef->valeurCanon = 0;
                 //play_sample(son, 15,128, 1000, 0);
                 voice_start(voice[3]);
-                voice_set_volume(voice[3],10);
+                voice_set_volume(voice[3],10);                      //test par rapport a la cadence de tir de la defense pour l'ajout d'une balle ainsi que de jouer le son de tirer
             }
             else
             {
@@ -149,7 +149,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                 {
                     if(actuelBalle->pass == 0)
                     {
-                        actuelBalle->degat = actuelDef->degat;
+                        actuelBalle->degat = actuelDef->degat; //allocation des nouveau parametre a chacune des balles
                         actuelBalle->angle = actuelDef->angle;
                         actuelBalle->x = actuelDef->x;
                         actuelBalle->y = actuelDef->y;
@@ -161,7 +161,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                     {
                         actuelBalle->x += actuelBalle->dx/20;
                         actuelBalle->y += actuelBalle->dy/20;
-                        rotate_sprite(buffer, image[3], actuelBalle->x-1-deplAffX, actuelBalle->y-25-deplAffY, itofix(actuelBalle->angle));
+                        rotate_sprite(buffer, image[3], actuelBalle->x-1-deplAffX, actuelBalle->y-25-deplAffY, itofix(actuelBalle->angle)); //rotation de la balle
                     }
                     precedentBalle = actuelBalle;
                     actuelBalle = actuelBalle->suivant;
@@ -174,7 +174,7 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
                     {
                         if((actuelBalle->x > actuelMec->x && actuelBalle->y > actuelMec->y)&& (actuelBalle->x < actuelMec->x + actuelMec->tx && actuelBalle->y < actuelMec->y + actuelMec->ty))
                         {
-                            actuelMec->pvM -= actuelBalle->degat;
+                            actuelMec->pvM -= actuelBalle->degat; //gestion des hits zone sur les mechants
                         }
                         actuelBalle = actuelBalle->suivant;
                     }
@@ -186,21 +186,20 @@ void gestion_test_look_shoot_kill(t_listedef *listedef, t_listeMechant *listeMec
         {
             if(actuelDef->angle < 64)
             {
-                actuelDef->angle = (int)actuelDef->angle+1;
+                actuelDef->angle = (int)actuelDef->angle+1; // si tourelle sur OFF se replace sur un angle 90°
             }
             else if (actuelDef->angle > 64)
             {
                 actuelDef->angle = (int)actuelDef->angle-1;
             }
-            viderBalle(actuelDef->liste);
+            viderBalle(actuelDef->liste); //vide les balles
         }
-        //rotate_sprite(buffer, carre, actuelDef->x-25, actuelDef->y-25, itofix(actuelDef->angle));
-        animation(image, buffer, actuelDef,deplAffX,deplAffY);
+        animation(image, buffer, actuelDef,deplAffX,deplAffY); //affiche la tourelle
         actuelDef = actuelDef->suivant;
     }
     verificationListe(listedef);
     actuelBalle = NULL;
-    actuelDef = NULL;
+    actuelDef = NULL;           //on evite les memory leak ;)
     actuelMec = NULL;
     precedentBalle = NULL;
     temp = NULL;

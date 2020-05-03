@@ -11,8 +11,8 @@ void animation(BITMAP *image[4], BITMAP *buffer, t_defense *defense,int deplAffX
     BITMAP *temp;
     if(defense->type <= 3)
     {
-        temp = create_bitmap(image[defense->type-1]->w/8, image[defense->type-1]->h/8);
-    }
+        temp = create_bitmap(image[defense->type-1]->w/8, image[defense->type-1]->h/8);        //creation de bitmap temporaire afin d'afficher les frames avec une animation en
+    }                                                                                          //ayant besoin uniquement d'utiliser un seul fichier pour toute les animations d'une tourelle
     else if(defense->type == 4)
     {
         temp = create_bitmap(image[0]->w/8, image[0]->h/8);
