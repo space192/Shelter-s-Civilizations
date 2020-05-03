@@ -8,6 +8,7 @@ int main()
     BITMAP *fond=load_bitmap("image/menu/fondMenu.bmp",NULL);
     BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP *image[37];
+    BITMAP *titre = load_bitmap("image/menu/titremenu.bmp",NULL);
     t_classement tableau[20];
     char chaine[100];
     int sourisY = 355, y=0;
@@ -70,11 +71,22 @@ int main()
         {
             circlefill(buffer, 1263, 1013, 5,makecol(255,0,0));
         }
+
+        if(scene==4)
+        {
+            masked_blit(titre,buffer,0,0,140,3,SCREEN_W, SCREEN_H);
+        }
+        else if(scene!=7)
+        {
+            masked_blit(titre,buffer,0,0,140,40,SCREEN_W, SCREEN_H);
+        }
+
         blit(buffer, screen, 0,0,0,0,SCREEN_W, SCREEN_H);
     }
     connexionReseau(4, NULL, 0);
     destroy_bitmap(fond);
     destroy_bitmap(buffer);
+    destroy_bitmap(titre);
     dechargementImage(image);
     allegro_exit();
     fermer_reseau();
