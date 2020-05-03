@@ -912,3 +912,173 @@
 
 1588478968 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\icon.rc
 
+1588476866 source:c:\users\arthur\desktop\rendu\client side\batiment production\batiment\ajout batiment.c
+	"../../prototypes.h"
+
+1588517000 c:\users\arthur\desktop\rendu\client side\prototypes.h
+	"structures.h"
+
+1588517000 c:\users\arthur\desktop\rendu\client side\structures.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<math.h>
+	<string.h>
+
+1588481111 source:c:\users\arthur\desktop\rendu\client side\batiment production\batiment\base.c
+	"../../prototypes.h"
+
+1588476866 source:c:\users\arthur\desktop\rendu\client side\batiment production\batiment\gerer batiment.c
+	"../../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\client side\batiment production\batiment\placement batiment.c
+	"../../prototypes.h"
+
+1588532847 source:c:\users\arthur\desktop\rendu\client side\batiment production\initialisation.c
+	"../prototypes.h"
+
+1588476866 source:c:\users\arthur\desktop\rendu\client side\batiment production\menu jeu et pause\menu jeu.c
+	"../../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\client side\batiment production\menu jeu et pause\pause.c
+	"../../prototypes.h"
+
+1588537771 source:c:\users\arthur\desktop\rendu\client side\batiment production\menu jeu et pause\tutoriel.c
+	"../../prototypes.h"
+
+1588476539 source:c:\users\arthur\desktop\rendu\client side\defense\affichage defense.c
+	"../prototypes.h"
+
+1588476812 source:c:\users\arthur\desktop\rendu\client side\defense\defense.c
+	"../prototypes.h"
+
+1588477155 source:c:\users\arthur\desktop\rendu\client side\defense\liste chainée defense.c
+	"../prototypes.h"
+
+1588445769 source:c:\users\arthur\desktop\rendu\client side\ennemi\affichage ennemi.c
+	"../prototypes.h"
+
+1588445769 source:c:\users\arthur\desktop\rendu\client side\ennemi\animation ennemi.c
+	"../prototypes.h"
+
+1588517000 source:c:\users\arthur\desktop\rendu\client side\ennemi\gestion ennemi.c
+	"../prototypes.h"
+
+1588532455 source:c:\users\arthur\desktop\rendu\client side\ennemi\liste chainée ennemi.c
+	"../prototypes.h"
+
+1588478870 source:c:\users\arthur\desktop\rendu\client side\icon.rc
+
+1588537258 source:c:\users\arthur\desktop\rendu\client side\jeu.c
+	"prototypes.h"
+
+1588517918 source:c:\users\arthur\desktop\rendu\client side\main.c
+	"prototypes.h"
+	"Online/socket.h"
+
+1588427304 c:\users\arthur\desktop\rendu\client side\online\socket.h
+
+1588534474 source:c:\users\arthur\desktop\rendu\client side\menu\affichagemenu.c
+	"../prototypes.h"
+	"../Online/socket.h"
+
+1588523382 source:c:\users\arthur\desktop\rendu\client side\menu\auxilieremenu.c
+	"../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\client side\online\connexion.c
+	"socket.h"
+	<winsock2.h>
+	<stdio.h>
+	<errno.h>
+
+1588476539 source:c:\users\arthur\desktop\rendu\client side\sauvegarde\recuperersav.c
+	"../prototypes.h"
+
+1588476364 source:c:\users\arthur\desktop\rendu\client side\sauvegarde\sauvegardefichier.c
+	"../prototypes.h"
+
+1588476866 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\batiment\ajout batiment.c
+	"../../prototypes.h"
+
+1588517000 c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\prototypes.h
+	"structures.h"
+
+1588517000 c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\structures.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<math.h>
+	<string.h>
+
+1588481111 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\batiment\base.c
+	"../../prototypes.h"
+
+1588476866 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\batiment\gerer batiment.c
+	"../../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\batiment\placement batiment.c
+	"../../prototypes.h"
+
+1588532847 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\initialisation.c
+	"../prototypes.h"
+
+1588476866 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\menu jeu et pause\menu jeu.c
+	"../../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\menu jeu et pause\pause.c
+	"../../prototypes.h"
+
+1588537771 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\batiment production\menu jeu et pause\tutoriel.c
+	"../../prototypes.h"
+
+1588476539 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\defense\affichage defense.c
+	"../prototypes.h"
+
+1588476812 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\defense\defense.c
+	"../prototypes.h"
+
+1588477155 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\defense\liste chainée defense.c
+	"../prototypes.h"
+
+1588445769 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\ennemi\affichage ennemi.c
+	"../prototypes.h"
+
+1588445769 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\ennemi\animation ennemi.c
+	"../prototypes.h"
+
+1588517000 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\ennemi\gestion ennemi.c
+	"../prototypes.h"
+
+1588532455 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\ennemi\liste chainée ennemi.c
+	"../prototypes.h"
+
+1588478870 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\icon.rc
+
+1588537258 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\jeu.c
+	"prototypes.h"
+
+1588517918 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\main.c
+	"prototypes.h"
+	"Online/socket.h"
+
+1588427304 c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\online\socket.h
+
+1588534474 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\menu\affichagemenu.c
+	"../prototypes.h"
+	"../Online/socket.h"
+
+1588523382 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\menu\auxilieremenu.c
+	"../prototypes.h"
+
+1588481111 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\online\connexion.c
+	"socket.h"
+	<winsock2.h>
+	<stdio.h>
+	<errno.h>
+
+1588476539 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\sauvegarde\recuperersav.c
+	"../prototypes.h"
+
+1588476364 source:c:\users\arthur\desktop\rendu\rendu paillet senhadji fournier td1\client side\sauvegarde\sauvegardefichier.c
+	"../prototypes.h"
+

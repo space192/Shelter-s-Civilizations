@@ -60,7 +60,7 @@ void tutoriel(BITMAP* page,int *tutoA,int angle,t_listeBR *liste1,t_joueur joueu
             condition++;
             actuel=actuel->suivant;
         }
-        if(condition==5)
+        if(condition>=8)
         {
             (*tutoA)++;
         }

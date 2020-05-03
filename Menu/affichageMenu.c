@@ -476,7 +476,6 @@ void leaderBoard(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, t
     {
         affichageBoutton(image[15], buffer, 4, 828, *sourisY, 2.5);
     }
-    textprintf_ex(buffer, font, 0,10,makecol(255,255,255), -1, "%d", *y);
     if((mouse_x>=390 && mouse_y >=950) && (mouse_x <= 890 && mouse_y <=1000))
     {
         if(mouse_b & 1)

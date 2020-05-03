@@ -217,15 +217,14 @@ int jeu(int sauvegarde, int tutoA, char *PseudoJoueur)
 
         if(niveauJeu%2==1)
         {
-            //if(conditionNiveau1==8000||niveauJeu!=1)
-            //{
+            if(conditionNiveau1==5000||niveauJeu!=1)
+            {
                 creer_horde(horde, &niveauJeu, vitesseJeu, agrandissement);
-            //}
-            if(conditionNiveau1<8000)
+            }
+            if(conditionNiveau1<5000)
             {
                 conditionNiveau1++;
             }
-
             gererMusique(&conditionMusique,&musiqueActive,voice,listeMusique,sample1,sample2);
             afficherBase(page,fond,base,fondation,PDVMuraille,listeEmplacementDefense,agrandissement,deplAffX,deplAffY,&destructionM,borne);
             afficherBatiment(listeRessource, page, batiments, beacon, &batimentP, &conditionBase,&conditionHDV, deplAffX, deplAffY);
