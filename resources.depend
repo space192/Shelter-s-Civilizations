@@ -355,10 +355,10 @@
 1587864842 source:c:\users\arthur\desktop\resources\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588430049 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
+1588475019 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
 	"../../prototypes.h"
 
-1588456568 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
+1588476884 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\prototypes.h
 	"structures.h"
 
 1588429229 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\structures.h
@@ -376,31 +376,31 @@
 1587865964 c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\allegttf.h
 	<allegro.h>
 
-1588380994 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
+1588475019 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\base.c
 	"../../prototypes.h"
 
-1588456568 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
+1588475475 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\gerer batiment.c
 	"../../prototypes.h"
 
-1588378671 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
+1588475638 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\batiment\placement batiment.c
 	"../../prototypes.h"
 
-1588452490 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
+1588462740 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\initialisation.c
 	"../prototypes.h"
 
-1588378715 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
+1588471589 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\menu jeu.c
 	"../../prototypes.h"
 
 1588360837 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\pause.c
 	"../../prototypes.h"
 
-1587865965 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\affichage defense.c
 	"../prototypes.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\defense.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\defense.c
 	"../prototypes.h"
 
-1588209722 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
+1588471589 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\defense\liste chainée defense.c
 	"../prototypes.h"
 
 1588451174 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\affichage ennemi.c
@@ -412,25 +412,25 @@
 1588451174 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\gestion ennemi.c
 	"../prototypes.h"
 
-1588451174 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
+1588472947 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\ennemi\liste chainée ennemi.c
 	"../prototypes.h"
 
-1588456643 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
+1588471589 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\jeu.c
 	"prototypes.h"
 
 1587865966 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\logg.c
 	<string.h>
 	"prototypes.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\main.c
+1588477636 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\main.c
 	"prototypes.h"
 	"Online/socket.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\affichagemenu.c
 	"../prototypes.h"
 	"../Online/socket.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
 	"../prototypes.h"
 
 1587865964 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\police\aaclip.c
@@ -786,13 +786,13 @@
 1588099735 source:c:\users\arthur\documents\github\projet-semestre-2-ing1\menu\auxilieremenu.c
 	"../prototypes.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\sauvegarde\recuperersav.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\sauvegarde\recuperersav.c
 	"../prototypes.h"
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\sauvegarde\sauvegardefichier.c
 	"../prototypes.h"
 
-1588077724 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\tutoriel.c
+1588466672 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\batiment production\menu jeu et pause\tutoriel.c
 	"../../prototypes.h"
 
 1588430400 source:c:\users\romain\documents\ece\travaux de groupes\projet info quirkle - pdeuso ok\projet-semestre-2-ing1\batiment production\batiment\ajout batiment.c
@@ -874,7 +874,7 @@
 
 1588216086 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\online\affichage.c
 
-1588429229 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\online\connexion.c
+1588476884 source:c:\users\plpai\onedrive\documents\github\projet-semestre-2-ing1\online\connexion.c
 	"socket.h"
 	<winsock2.h>
 	<stdio.h>
