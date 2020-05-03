@@ -86,6 +86,9 @@
 		<Unit filename="ennemi/Liste chainée ennemi.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="icon.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="jeu.c">
 			<Option compilerVar="CC" />
 		</Unit>
