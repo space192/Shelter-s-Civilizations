@@ -19,7 +19,7 @@ int main()
     sauvegarde = recupererNiveauUnlock();
     int scene = 1;
     int score;
-    int article = 0;
+    int article = 36;
     connexionReseau(3, NULL, 0);
     while(!key[KEY_ESC] && continuer == 1)
     {

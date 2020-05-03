@@ -623,7 +623,7 @@ void wiki(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *art
 {
     if((mouse_b & 1)&&(mouse_x>= 380 && mouse_y>=130)&&(mouse_x <=475 && mouse_y <= 235)) //home WIKI
     {
-        *article = 0;
+        *article = 36;
     }
     else if((mouse_b & 1)&&(mouse_x>= 400 && mouse_y>=275)&&(mouse_x <=447 && mouse_y <= 283)) //mine d'or
     {
@@ -673,14 +673,7 @@ void wiki(BITMAP *buffer, BITMAP *image[37], int *scene, int *compteur, int *art
     {
         *article = 35;
     }
-    if(*article == 0)
-    {
-
-    }
-    else
-    {
-        blit(image[*article], buffer, 0,0,494, 208, SCREEN_W, SCREEN_H);
-    }
+    blit(image[*article], buffer, 0,0,494, 208, SCREEN_W, SCREEN_H);
     masked_stretch_blit(image[20], buffer, 0,0,image[20]->w, image[20]->h, 350,100,3*image[20]->w, 6*image[20]->h);
     masked_blit(image[23], buffer, 0,0,365, 250, SCREEN_W, SCREEN_H);
     masked_stretch_blit(image[21], buffer, 0,0,image[21]->w, image[21]->h, 365,125,image[21]->w/10, image[21]->h/10);

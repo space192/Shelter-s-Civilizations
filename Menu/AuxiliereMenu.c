@@ -35,11 +35,11 @@ void chargementImageMenu(BITMAP *image[37])
     image[29] = load_bitmap("image/menu/wiki/terminator.bmp", NULL);
     image[30] = load_bitmap("image/menu/wiki/Les Mines.bmp", NULL);
     image[31] = load_bitmap("image/menu/wiki/RadCafard.bmp", NULL);
-    image[32] = load_bitmap("image/menu/wiki/infected centipede.bmp", NULL);
-    image[33] = load_bitmap("image/menu/wiki/les Runners.bmp", NULL);
+    image[32] = load_bitmap("image/menu/wiki/Infected Centiped.bmp", NULL);
+    image[33] = load_bitmap("image/menu/wiki/Les Runners.bmp", NULL);
     image[34] = load_bitmap("image/menu/wiki/Hotel de Ville.bmp", NULL);
     image[35] = load_bitmap("image/menu/wiki/Base.bmp", NULL);
-    image[36] = load_bitmap("image/menu/wiki/accueil.bmp", NULL);
+    image[36] = load_bitmap("image/menu/wiki/page d'accueil.bmp", NULL);
     for(i =0; i <  24; i++)
     {
         if(image[i] == NULL)
